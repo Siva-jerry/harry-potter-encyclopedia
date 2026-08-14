@@ -87,7 +87,7 @@ function Home() {
           preload="auto"
         >
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/library-jp-d4a7e.firebasestorage.app/o/hogwarts-intro.mp4?alt=media&token=df741871-c200-434e-86a9-9b9d82e84cef"
+            src="/videos/home/hogwarts-intro.mp4"
             type="video/mp4"
           />
 

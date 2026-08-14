@@ -7,22 +7,33 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Local environment files
 *.local
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-# Large videos hosted on Firebase Storage
-/public/videos/home/dark-smoke.mp4
-/public/videos/home/hogwarts-intro.mp4
-/public/media/landing-trailer.mp4
+*.swp
+
+# Cache / temporary files
+.cache/
+.eslintcache
+.vite/
+*.tmp

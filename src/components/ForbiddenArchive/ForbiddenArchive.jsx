@@ -120,7 +120,7 @@ function ForbiddenArchive() {
           />
 
           <source
-            src="https://firebasestorage.googleapis.com/v0/b/library-jp-d4a7e.firebasestorage.app/o/dark-smoke.mp4?alt=media&token=af2279a2-426d-46cf-a87f-21adc94e1a30"
+            src="/videos/home/dark-smoke.mp4"
             type="video/mp4"
           />
         </video>

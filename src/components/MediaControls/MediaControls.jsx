@@ -315,7 +315,7 @@ function MediaControls() {
                 preload="auto"
               >
                 <source
-                  src="https://firebasestorage.googleapis.com/v0/b/library-jp-d4a7e.firebasestorage.app/o/landing-trailer.mp4?alt=media&token=7f47646a-1ec1-4a7a-9c5f-faaa94954656"
+                  src="/media/landing-trailer.mp4"
                   type="video/mp4"
                 />
 

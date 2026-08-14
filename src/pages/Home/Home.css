@@ -62,8 +62,8 @@
 
   filter:
     contrast(1.08)
-    brightness(1.08)
-    saturate(2.04);
+    brightness(1.25)
+    saturate(2);
 
   image-rendering: auto;
 }
