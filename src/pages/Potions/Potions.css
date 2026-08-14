@@ -1,0 +1,4280 @@
+/* =========================================================
+   POTIONS
+   THE ALCHEMIST'S VAULT
+========================================================= */
+
+.alchemy-vault {
+  --alchemy-black: #040806;
+  --alchemy-black-soft: #07100c;
+
+  --alchemy-emerald: #55b889;
+  --alchemy-green: #86c778;
+  --alchemy-toxic: #b6e26f;
+
+  --alchemy-gold: #d9a95e;
+  --alchemy-aqua: #7ccbc1;
+  --alchemy-ivory: #ede3ce;
+
+  --alchemy-muted:
+    rgba(222, 228, 215, 0.58);
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  color:
+    var(--alchemy-ivory);
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(53, 117, 83, 0.1),
+      transparent 32%
+    ),
+    #040806;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.alchemy-hero {
+  position: relative;
+
+  min-height: 100svh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+
+.alchemy-hero__background {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(0.74)
+    saturate(0.92)
+    contrast(1.04);
+
+  transform:
+    scale(1.02);
+}
+
+
+.alchemy-hero__veil {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 47%,
+      rgba(78, 155, 105, 0.06),
+      transparent 30%
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(2, 6, 4, 0.91),
+      rgba(3, 10, 7, 0.28) 50%,
+      rgba(2, 6, 4, 0.91)
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(2, 6, 4, 0.22),
+      transparent 50%,
+      #040806 100%
+    );
+
+  box-shadow:
+    inset 0 0 180px
+    rgba(0, 0, 0, 0.68);
+}
+
+
+/* =========================================================
+   HERO MIST
+========================================================= */
+
+.alchemy-hero__mist {
+  position: absolute;
+
+  width: 650px;
+  height: 250px;
+
+  border-radius: 50%;
+
+  filter:
+    blur(70px);
+
+  pointer-events: none;
+
+  opacity: 0.15;
+
+  background:
+    rgba(98, 198, 141, 0.5);
+}
+
+
+.alchemy-hero__mist--one {
+  left: 5%;
+  bottom: 10%;
+
+  animation:
+    alchemyMist
+    10s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+.alchemy-hero__mist--two {
+  right: 3%;
+  bottom: 20%;
+
+  opacity: 0.08;
+
+  background:
+    rgba(218, 172, 94, 0.65);
+
+  animation:
+    alchemyMist
+    13s
+    ease-in-out
+    infinite
+    alternate-reverse;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.alchemy-hero__content {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(
+      1000px,
+      90%
+    );
+
+  text-align: center;
+}
+
+
+.alchemy-hero__seal {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-bottom: 22px;
+
+  color:
+    rgba(217, 169, 94, 0.82);
+}
+
+
+.alchemy-hero__seal span {
+  width: 80px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(217, 169, 94, 0.45)
+    );
+}
+
+
+.alchemy-hero__seal
+span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.alchemy-hero__seal svg {
+  font-size: 1.3rem;
+
+  filter:
+    drop-shadow(
+      0 0 10px
+      rgba(217, 169, 94, 0.4)
+    );
+}
+
+
+.alchemy-kicker {
+  margin:
+    0 0 15px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.42em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(124, 203, 193, 0.7);
+}
+
+
+.alchemy-hero h1 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      5rem,
+      12vw,
+      10.5rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.75;
+
+  letter-spacing:
+    -0.045em;
+
+  color:
+    rgba(237, 227, 206, 0.97);
+
+  text-shadow:
+    0 20px 55px
+    rgba(0, 0, 0, 0.6);
+}
+
+
+.alchemy-hero h1 span {
+  display: block;
+
+  margin-top: 30px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    clamp(
+      0.62rem,
+      1.4vw,
+      0.95rem
+    );
+
+  letter-spacing: 0.36em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(217, 169, 94, 0.74);
+}
+
+
+.alchemy-hero__description {
+  width:
+    min(
+      600px,
+      92%
+    );
+
+  margin:
+    27px auto 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  line-height: 1.9;
+
+  color:
+    rgba(222, 228, 215, 0.65);
+}
+
+
+/* =========================================================
+   HERO STATS
+========================================================= */
+
+.alchemy-hero__stats {
+  width:
+    min(
+      600px,
+      90%
+    );
+
+  margin:
+    28px auto 0;
+
+  padding:
+    14px 20px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr 1px
+    1fr 1px
+    1fr;
+
+  align-items: center;
+
+  border-top:
+    1px solid
+    rgba(217, 169, 94, 0.12);
+
+  border-bottom:
+    1px solid
+    rgba(85, 184, 137, 0.11);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(6, 19, 13, 0.45),
+      transparent
+    );
+
+  backdrop-filter:
+    blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+}
+
+
+.alchemy-hero__stats > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.alchemy-hero__stats strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1.2rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(237, 227, 206, 0.9);
+}
+
+
+.alchemy-hero__stats span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(117, 183, 145, 0.6);
+}
+
+
+.alchemy-hero__stats > i {
+  width: 1px;
+  height: 28px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(217, 169, 94, 0.25),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   ENTER BUTTON
+========================================================= */
+
+.alchemy-enter {
+  margin-top: 30px;
+
+  min-width: 220px;
+
+  padding:
+    15px 20px;
+
+  border:
+    1px solid
+    rgba(217, 169, 94, 0.27);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(19, 48, 33, 0.55),
+      rgba(22, 18, 10, 0.4)
+    );
+
+  color:
+    rgba(237, 227, 206, 0.86);
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.35s ease,
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+
+.alchemy-enter span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.47rem;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+}
+
+
+.alchemy-enter:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(217, 169, 94, 0.65);
+
+  background:
+    rgba(70, 126, 89, 0.18);
+}
+
+
+.alchemy-hero__note {
+  position: absolute;
+
+  z-index: 5;
+
+  bottom: 22px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.3rem;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(123, 175, 145, 0.35);
+}
+
+
+/* =========================================================
+   SHARED HEADING
+========================================================= */
+
+.alchemy-heading {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(
+      720px,
+      90%
+    );
+
+  margin:
+    0 auto 60px;
+
+  text-align: center;
+}
+
+
+.alchemy-heading--left {
+  width: 100%;
+
+  margin:
+    0 0 45px;
+
+  text-align: left;
+}
+
+
+.alchemy-heading > p {
+  margin:
+    0 0 14px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.48rem;
+
+  letter-spacing: 0.28em;
+
+  color:
+    rgba(93, 185, 139, 0.7);
+}
+
+
+.alchemy-heading h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3rem,
+      6vw,
+      5.8rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.9;
+
+  color:
+    rgba(237, 227, 206, 0.94);
+}
+
+
+.alchemy-heading h2 span {
+  color:
+    rgba(217, 169, 94, 0.92);
+}
+
+
+.alchemy-heading > small {
+  display: block;
+
+  margin-top: 18px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.9rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(215, 224, 210, 0.52);
+}
+
+
+/* =========================================================
+   APOTHECARY
+========================================================= */
+
+.apothecary {
+  position: relative;
+
+  min-height: 900px;
+
+  padding:
+    120px 5vw;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+.apothecary__background {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.33;
+
+  filter:
+    brightness(0.68)
+    saturate(0.8);
+}
+
+
+.apothecary__veil {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #040806 0%,
+      rgba(4, 10, 7, 0.7) 18%,
+      rgba(4, 10, 7, 0.68) 82%,
+      #040806 100%
+    ),
+
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(83, 152, 105, 0.08),
+      transparent 55%
+    );
+}
+
+
+.apothecary__inner {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(
+      1200px,
+      100%
+    );
+
+  margin: auto;
+}
+
+
+/* =========================================================
+   SHELVES
+========================================================= */
+
+.apothecary__shelves {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+}
+
+
+.apothecary-shelf {
+  --shelf-color:
+    85, 184, 137;
+
+  position: relative;
+
+  min-height: 125px;
+
+  padding: 22px;
+
+  border:
+    1px solid
+    rgba(
+      var(--shelf-color),
+      0.12
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8, 20, 14, 0.88),
+      rgba(4, 9, 6, 0.78)
+    );
+
+  color:
+    rgba(237, 227, 206, 0.75);
+
+  display: grid;
+
+  grid-template-columns:
+    auto
+    45px
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 15px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease;
+}
+
+
+.apothecary-shelf::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        var(--shelf-color),
+        0.7
+      ),
+      transparent
+    );
+
+  opacity: 0;
+
+  transition:
+    opacity 0.4s ease;
+}
+
+
+.apothecary-shelf:hover,
+.apothecary-shelf--active {
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(
+      var(--shelf-color),
+      0.42
+    );
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        var(--shelf-color),
+        0.12
+      ),
+      rgba(4, 9, 6, 0.9)
+    );
+}
+
+
+.apothecary-shelf:hover::before,
+.apothecary-shelf--active::before {
+  opacity: 1;
+}
+
+
+.apothecary-shelf--iconic {
+  --shelf-color:
+    217, 169, 94;
+}
+
+
+.apothecary-shelf--healing {
+  --shelf-color:
+    113, 201, 186;
+}
+
+
+.apothecary-shelf--dark {
+  --shelf-color:
+    155, 69, 85;
+}
+
+
+.apothecary-shelf--mind {
+  --shelf-color:
+    168, 144, 200;
+}
+
+
+.apothecary-shelf--transformation {
+  --shelf-color:
+    120, 175, 194;
+}
+
+
+.apothecary-shelf__number {
+  font-family:
+    var(--font-story);
+
+  font-size: 1.8rem;
+
+  color:
+    rgba(
+      var(--shelf-color),
+      0.42
+    );
+}
+
+
+.apothecary-shelf__icon {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(
+      var(--shelf-color),
+      0.2
+    );
+
+  border-radius: 50%;
+
+  color:
+    rgba(
+      var(--shelf-color),
+      0.8
+    );
+}
+
+
+.apothecary-shelf__icon svg {
+  font-size: 1.2rem;
+}
+
+
+.apothecary-shelf small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--shelf-color),
+      0.52
+    );
+}
+
+
+.apothecary-shelf strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1.1rem;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   BREWING TABLE
+========================================================= */
+
+.brewing-table {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding:
+    120px 5vw 150px;
+
+  overflow: hidden;
+}
+
+
+.brewing-table__background {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.23;
+
+  filter:
+    brightness(0.67)
+    saturate(0.8);
+}
+
+
+.brewing-table__veil {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #040806,
+      rgba(4, 9, 6, 0.76) 15%,
+      rgba(4, 9, 6, 0.74) 85%,
+      #040806
+    );
+}
+
+
+.brewing-table__inner {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      1400px,
+      100%
+    );
+
+  margin: auto;
+}
+
+
+.brewing-table__category {
+  margin-bottom: 25px;
+
+  padding-bottom: 13px;
+
+  border-bottom:
+    1px solid
+    rgba(104, 181, 137, 0.1);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.44rem;
+
+  letter-spacing: 0.19em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(217, 169, 94, 0.7);
+}
+
+
+.brewing-table__category strong {
+  font-weight: 400;
+}
+
+
+.brewing-table__category span {
+  color:
+    rgba(112, 176, 142, 0.48);
+}
+
+
+/* =========================================================
+   POTION GRID
+========================================================= */
+
+.potion-shelf-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    35px 15px;
+}
+
+
+/* =========================================================
+   POTION VESSEL
+========================================================= */
+
+.potion-vessel {
+  --liquid:
+    85, 184, 137;
+
+  position: relative;
+
+  min-height: 470px;
+
+  padding:
+    20px 16px 44px;
+
+  border:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.08
+    );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(8, 17, 12, 0.35),
+      rgba(3, 8, 5, 0.75)
+    );
+
+  color:
+    rgba(237, 227, 206, 0.84);
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.45s ease,
+    border-color 0.45s ease,
+    background 0.45s ease;
+}
+
+
+.potion-vessel:hover {
+  transform:
+    translateY(-9px);
+
+  border-color:
+    rgba(
+      var(--liquid),
+      0.34
+    );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        var(--liquid),
+        0.08
+      ),
+      rgba(3, 8, 5, 0.9)
+    );
+}
+
+
+/* =========================================================
+   GLOBAL LIQUID COLORS
+========================================================= */
+
+.potion-vessel--gold,
+.restricted-potion--gold,
+.potion-modal__window--gold,
+.potion-index__record--gold {
+  --liquid:
+    217, 169, 94;
+}
+
+
+.potion-vessel--green,
+.restricted-potion--green,
+.potion-modal__window--green,
+.potion-index__record--green {
+  --liquid:
+    92, 174, 108;
+}
+
+
+.potion-vessel--rose,
+.restricted-potion--rose,
+.potion-modal__window--rose,
+.potion-index__record--rose {
+  --liquid:
+    206, 116, 147;
+}
+
+
+.potion-vessel--silver,
+.restricted-potion--silver,
+.potion-modal__window--silver,
+.potion-index__record--silver {
+  --liquid:
+    190, 207, 205;
+}
+
+
+.potion-vessel--aqua,
+.restricted-potion--aqua,
+.potion-modal__window--aqua,
+.potion-index__record--aqua {
+  --liquid:
+    113, 201, 186;
+}
+
+
+.potion-vessel--orange,
+.restricted-potion--orange,
+.potion-modal__window--orange,
+.potion-index__record--orange {
+  --liquid:
+    214, 142, 72;
+}
+
+
+.potion-vessel--crimson,
+.restricted-potion--crimson,
+.potion-modal__window--crimson,
+.potion-index__record--crimson {
+  --liquid:
+    174, 68, 74;
+}
+
+
+.potion-vessel--violet,
+.restricted-potion--violet,
+.potion-modal__window--violet,
+.potion-index__record--violet {
+  --liquid:
+    139, 111, 176;
+}
+
+
+.potion-vessel--blue,
+.restricted-potion--blue,
+.potion-modal__window--blue,
+.potion-index__record--blue {
+  --liquid:
+    92, 145, 188;
+}
+
+
+.potion-vessel--blood,
+.restricted-potion--blood,
+.potion-modal__window--blood,
+.potion-index__record--blood {
+  --liquid:
+    142, 53, 70;
+}
+
+
+.potion-vessel--toxic,
+.restricted-potion--toxic,
+.potion-modal__window--toxic,
+.potion-index__record--toxic {
+  --liquid:
+    157, 207, 84;
+}
+
+
+.potion-vessel--lavender,
+.restricted-potion--lavender,
+.potion-modal__window--lavender,
+.potion-index__record--lavender {
+  --liquid:
+    168, 144, 200;
+}
+
+
+.potion-vessel--yellow,
+.restricted-potion--yellow,
+.potion-modal__window--yellow,
+.potion-index__record--yellow {
+  --liquid:
+    222, 198, 92;
+}
+
+
+.potion-vessel--amber,
+.restricted-potion--amber,
+.potion-modal__window--amber,
+.potion-index__record--amber {
+  --liquid:
+    202, 145, 74;
+}
+
+
+.potion-vessel--cyan,
+.restricted-potion--cyan,
+.potion-modal__window--cyan,
+.potion-index__record--cyan {
+  --liquid:
+    92, 190, 196;
+}
+
+
+.potion-vessel--pearl,
+.restricted-potion--pearl,
+.potion-modal__window--pearl,
+.potion-index__record--pearl {
+  --liquid:
+    214, 202, 181;
+}
+
+
+/* =========================================================
+   VESSEL CONTENT
+========================================================= */
+
+.potion-vessel__record {
+  position: absolute;
+
+  top: 18px;
+  left: 18px;
+
+  z-index: 5;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.85rem;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.48
+    );
+}
+
+
+.potion-vessel__halo {
+  position: absolute;
+
+  left: 50%;
+  top: 41%;
+
+  width: 220px;
+  height: 220px;
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--liquid),
+        0.14
+      ),
+      transparent 67%
+    );
+
+  opacity: 0.6;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s ease;
+}
+
+
+.potion-vessel:hover
+.potion-vessel__halo {
+  opacity: 1;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.15);
+}
+
+
+.potion-vessel__image {
+  position: relative;
+
+  z-index: 2;
+
+  height: 310px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.potion-vessel__image img {
+  width: 85%;
+  height: 90%;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.96)
+    saturate(0.95)
+    drop-shadow(
+      0 25px 25px
+      rgba(0, 0, 0, 0.65)
+    );
+
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+
+.potion-vessel:hover
+.potion-vessel__image img {
+  transform:
+    translateY(-8px)
+    scale(1.04);
+
+  filter:
+    brightness(1.06)
+    saturate(1.04)
+    drop-shadow(
+      0 25px 28px
+      rgba(
+        var(--liquid),
+        0.15
+      )
+    );
+}
+
+
+.potion-vessel__base {
+  position: relative;
+
+  z-index: 4;
+
+  text-align: center;
+}
+
+
+.potion-vessel__base small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.29rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.62
+    );
+}
+
+
+.potion-vessel__base strong {
+  display: block;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.45rem;
+
+  font-weight: 400;
+}
+
+
+.potion-vessel__base span {
+  display: block;
+
+  margin-top: 5px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.74rem;
+
+  color:
+    rgba(220, 225, 213, 0.45);
+}
+
+
+.potion-vessel__inspect {
+  position: absolute;
+
+  left: 50%;
+  bottom: 15px;
+
+  width:
+    calc(100% - 30px);
+
+  transform:
+    translate(-50%, 6px);
+
+  opacity: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.3rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.72
+    );
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+.potion-vessel:hover
+.potion-vessel__inspect {
+  opacity: 1;
+
+  transform:
+    translate(-50%, 0);
+}
+
+
+/* =========================================================
+   RESTRICTED CAULDRON
+========================================================= */
+
+.restricted-cauldron {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding:
+    130px 5vw;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(112, 35, 53, 0.12),
+      transparent 40%
+    ),
+
+    linear-gradient(
+      180deg,
+      #040806,
+      #080506 50%,
+      #040806
+    );
+}
+
+
+.restricted-cauldron::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.16;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(
+        255,
+        255,
+        255,
+        0.015
+      ) 6px
+    );
+
+  pointer-events: none;
+}
+
+
+.restricted-cauldron__mist {
+  position: absolute;
+
+  top: 25%;
+  left: 50%;
+
+  width: 800px;
+  height: 300px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  filter:
+    blur(100px);
+
+  background:
+    rgba(119, 49, 70, 0.1);
+}
+
+
+.restricted-heading {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(
+      680px,
+      92%
+    );
+
+  margin:
+    0 auto 75px;
+
+  text-align: center;
+}
+
+
+.restricted-heading > div {
+  width: 54px;
+  height: 54px;
+
+  margin:
+    0 auto 22px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(164, 74, 91, 0.28);
+
+  color:
+    rgba(185, 87, 103, 0.7);
+}
+
+
+.restricted-heading > p {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.27em;
+
+  color:
+    rgba(172, 79, 95, 0.7);
+}
+
+
+.restricted-heading h2 {
+  margin:
+    15px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.4rem,
+      7vw,
+      6.4rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.8;
+
+  color:
+    rgba(231, 220, 205, 0.93);
+}
+
+
+.restricted-heading h2 span {
+  display: block;
+
+  color:
+    rgba(160, 65, 83, 0.88);
+}
+
+
+.restricted-heading > small {
+  display: block;
+
+  margin:
+    25px auto 0;
+
+  max-width: 520px;
+
+  font-family:
+    var(--font-story);
+
+  line-height: 1.8;
+
+  color:
+    rgba(211, 202, 192, 0.48);
+}
+
+
+/* =========================================================
+   RESTRICTED GRID
+========================================================= */
+
+.restricted-grid {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(
+      1250px,
+      100%
+    );
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 14px;
+}
+
+
+.restricted-potion {
+  --liquid:
+    154, 65, 82;
+
+  position: relative;
+
+  min-height: 300px;
+
+  padding: 30px;
+
+  border:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.12
+    );
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(
+        var(--liquid),
+        0.06
+      ),
+      rgba(4, 7, 5, 0.88)
+    );
+
+  color:
+    rgba(233, 222, 207, 0.86);
+
+  display: grid;
+
+  grid-template-columns:
+    200px 1fr;
+
+  align-items: center;
+
+  gap: 25px;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+.restricted-potion:hover {
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(
+      var(--liquid),
+      0.4
+    );
+}
+
+
+.restricted-potion__index {
+  position: absolute;
+
+  top: 18px;
+  right: 20px;
+
+  font-family:
+    var(--font-story);
+
+  color:
+    rgba(
+      var(--liquid),
+      0.36
+    );
+}
+
+
+.restricted-potion__visual {
+  position: relative;
+
+  height: 230px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.restricted-potion__visual span {
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--liquid),
+        0.15
+      ),
+      transparent 68%
+    );
+}
+
+
+.restricted-potion__visual img {
+  position: relative;
+
+  z-index: 2;
+
+  width: 90%;
+  height: 95%;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.94)
+    drop-shadow(
+      0 20px 25px
+      rgba(0, 0, 0, 0.6)
+    );
+}
+
+
+.restricted-potion__copy small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.68
+    );
+}
+
+
+.restricted-potion__copy h3 {
+  margin:
+    9px 0 10px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 2rem;
+
+  font-weight: 400;
+}
+
+
+.restricted-potion__copy p {
+  margin: 0;
+
+  max-width: 350px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.83rem;
+
+  line-height: 1.65;
+
+  color:
+    rgba(218, 211, 201, 0.5);
+}
+
+
+.restricted-potion__copy > span {
+  display: block;
+
+  margin-top: 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.28rem;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.62
+    );
+}
+
+
+/* =========================================================
+   MASTER INDEX
+========================================================= */
+
+.potion-index {
+  position: relative;
+
+  padding:
+    130px 5vw 100px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #040806,
+      #050c08
+    );
+}
+
+
+.potion-index__inner {
+  width:
+    min(
+      1250px,
+      100%
+    );
+
+  margin: auto;
+}
+
+
+.potion-index__heading {
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 45px;
+}
+
+
+.potion-index__heading p {
+  margin:
+    0 0 12px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.23em;
+
+  color:
+    rgba(90, 177, 132, 0.65);
+}
+
+
+.potion-index__heading h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.8rem,
+      5vw,
+      4.8rem
+    );
+
+  font-weight: 400;
+
+  color:
+    rgba(237, 227, 206, 0.92);
+}
+
+
+.potion-index__heading h2 span {
+  color:
+    rgba(217, 169, 94, 0.88);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.potion-search {
+  width: 170px;
+  height: 46px;
+
+  padding:
+    0 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  border:
+    1px solid
+    rgba(93, 176, 133, 0.14);
+
+  background:
+    rgba(6, 15, 10, 0.7);
+
+  transition:
+    width 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+.potion-search--open {
+  width: 310px;
+
+  border-color:
+    rgba(217, 169, 94, 0.3);
+}
+
+
+.potion-search__trigger,
+.potion-search__label,
+.potion-search__close {
+  flex-shrink: 0;
+
+  padding: 0;
+
+  border: 0;
+
+  background: none;
+
+  color:
+    rgba(198, 218, 203, 0.62);
+
+  cursor: pointer;
+}
+
+
+.potion-search__trigger {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.potion-search__label {
+  flex: 1;
+
+  text-align: left;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.35rem;
+
+  letter-spacing: 0.12em;
+}
+
+
+.potion-search__close {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.potion-search input {
+  min-width: 0;
+
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color:
+    rgba(237, 227, 206, 0.8);
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.35rem;
+
+  letter-spacing: 0.08em;
+}
+
+
+/* =========================================================
+   INDEX
+========================================================= */
+
+.potion-index__labels,
+.potion-index__record {
+  display: grid;
+
+  grid-template-columns:
+    70px
+    minmax(230px, 1.5fr)
+    1fr
+    1fr
+    30px;
+
+  gap: 20px;
+
+  align-items: center;
+}
+
+
+.potion-index__labels {
+  padding:
+    0 18px 12px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.28rem;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(105, 166, 131, 0.42);
+}
+
+
+.potion-index__record {
+  --liquid:
+    85, 184, 137;
+
+  width: 100%;
+
+  min-height: 82px;
+
+  padding:
+    13px 18px;
+
+  border: none;
+
+  border-top:
+    1px solid
+    rgba(94, 166, 124, 0.075);
+
+  background: transparent;
+
+  color:
+    rgba(221, 225, 214, 0.62);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+
+.potion-index__record:last-child {
+  border-bottom:
+    1px solid
+    rgba(94, 166, 124, 0.075);
+}
+
+
+.potion-index__record:hover {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--liquid),
+        0.08
+      ),
+      transparent
+    );
+
+  color:
+    rgba(237, 227, 206, 0.9);
+}
+
+
+.potion-index__record
+> span:first-child {
+  font-family:
+    var(--font-story);
+
+  color:
+    rgba(
+      var(--liquid),
+      0.55
+    );
+}
+
+
+.potion-index__record strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(237, 227, 206, 0.84);
+}
+
+
+.potion-index__record
+strong small {
+  display: block;
+
+  margin-top: 4px;
+
+  font-size: 0.7rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(213, 219, 208, 0.38);
+}
+
+
+.potion-index__record > span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.33rem;
+
+  letter-spacing: 0.09em;
+
+  text-transform: uppercase;
+}
+
+
+.potion-index__record > svg {
+  color:
+    rgba(
+      var(--liquid),
+      0.55
+    );
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.potion-index__empty {
+  min-height: 240px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  color:
+    rgba(113, 180, 145, 0.4);
+}
+
+
+.potion-index__empty svg {
+  font-size: 2rem;
+}
+
+
+.potion-index__empty strong {
+  font-family:
+    var(--font-story);
+
+  font-weight: 400;
+
+  color:
+    rgba(237, 227, 206, 0.65);
+}
+
+
+.potion-index__empty span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   INDEX FOOTER
+========================================================= */
+
+.potion-index__footer {
+  margin-top: 35px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.28rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(118, 161, 135, 0.36);
+}
+
+
+.potion-index__footer i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(104, 170, 132, 0.12),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   POPUP ROOT
+
+   IMPORTANT:
+   This is rendered in document.body
+   using createPortal().
+========================================================= */
+
+.potion-modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100000;
+
+  width: 100vw;
+  height: 100dvh;
+
+  display: grid;
+
+  place-items: center;
+
+  padding:
+    clamp(
+      16px,
+      3vw,
+      34px
+    );
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   POPUP BACKDROP
+========================================================= */
+
+.potion-modal__backdrop {
+  position: absolute;
+
+  z-index: 0;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(38, 93, 60, 0.11),
+      transparent 38%
+    ),
+
+    rgba(1, 4, 2, 0.91);
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  cursor: default;
+
+  animation:
+    potionModalBackdropIn
+    0.3s ease
+    both;
+}
+
+
+/* =========================================================
+   POPUP WINDOW
+========================================================= */
+
+.potion-modal__window {
+  --liquid:
+    85, 184, 137;
+
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      1160px,
+      calc(100vw - 68px)
+    );
+
+  height:
+    min(
+      760px,
+      calc(100dvh - 68px)
+    );
+
+  max-width: 1160px;
+
+  max-height: 760px;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(340px, 42%)
+    minmax(0, 58%);
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.22
+    );
+
+  background:
+    linear-gradient(
+      125deg,
+      rgba(
+        var(--liquid),
+        0.075
+      ),
+      rgba(4, 11, 7, 0.985) 36%,
+      rgba(3, 7, 5, 0.995)
+    );
+
+  box-shadow:
+    0 50px 150px
+    rgba(0, 0, 0, 0.78),
+
+    0 0 60px
+    rgba(
+      var(--liquid),
+      0.055
+    );
+
+  animation:
+    potionModalWindowIn
+    0.5s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+
+/* =========================================================
+   POPUP DECORATIVE FRAME
+========================================================= */
+
+.potion-modal__frame {
+  position: absolute;
+
+  z-index: 50;
+
+  inset: 10px;
+
+  pointer-events: none;
+
+  border:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.035
+    );
+}
+
+
+.potion-modal__corner {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+}
+
+
+.potion-modal__corner::before,
+.potion-modal__corner::after {
+  content: "";
+
+  position: absolute;
+
+  background:
+    rgba(
+      var(--liquid),
+      0.5
+    );
+}
+
+
+.potion-modal__corner::before {
+  width: 34px;
+  height: 1px;
+}
+
+
+.potion-modal__corner::after {
+  width: 1px;
+  height: 34px;
+}
+
+
+.potion-modal__corner--tl {
+  left: -1px;
+  top: -1px;
+}
+
+
+.potion-modal__corner--tr {
+  right: -1px;
+  top: -1px;
+
+  transform:
+    rotate(90deg);
+}
+
+
+.potion-modal__corner--bl {
+  left: -1px;
+  bottom: -1px;
+
+  transform:
+    rotate(-90deg);
+}
+
+
+.potion-modal__corner--br {
+  right: -1px;
+  bottom: -1px;
+
+  transform:
+    rotate(180deg);
+}
+
+
+/* =========================================================
+   POPUP CLOSE
+========================================================= */
+
+.potion-modal__close {
+  position: absolute;
+
+  z-index: 100;
+
+  top: 18px;
+  right: 18px;
+
+  width: 41px;
+  height: 41px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.25
+    );
+
+  background:
+    rgba(2, 8, 5, 0.8);
+
+  color:
+    rgba(238, 231, 215, 0.74);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  backdrop-filter:
+    blur(7px);
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease;
+}
+
+
+.potion-modal__close:hover {
+  transform:
+    rotate(90deg);
+
+  border-color:
+    rgba(
+      var(--liquid),
+      0.7
+    );
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   POPUP VISUAL
+========================================================= */
+
+.potion-modal__visual {
+  position: relative;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-right:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.1
+    );
+
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(
+        var(--liquid),
+        0.1
+      ),
+      transparent 47%
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(5, 14, 9, 0.96),
+      rgba(2, 7, 4, 0.99)
+    );
+}
+
+
+.potion-modal__visual::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.12;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(
+        255,
+        255,
+        255,
+        0.018
+      ) 6px
+    );
+}
+
+
+/* =========================================================
+   POPUP GLOW
+========================================================= */
+
+.potion-modal__glow {
+  position: absolute;
+
+  left: 50%;
+  top: 49%;
+
+  width: 390px;
+  height: 390px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--liquid),
+        0.2
+      ),
+      rgba(
+        var(--liquid),
+        0.07
+      ) 40%,
+      transparent 68%
+    );
+
+  filter:
+    blur(10px);
+}
+
+
+/* =========================================================
+   POPUP ORBITS
+========================================================= */
+
+.potion-modal__orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 49%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.13
+    );
+
+  pointer-events: none;
+}
+
+
+.potion-modal__orbit--outer {
+  width: 370px;
+  height: 370px;
+
+  animation:
+    potionModalOrbit
+    19s linear
+    infinite;
+}
+
+
+.potion-modal__orbit--inner {
+  width: 285px;
+  height: 285px;
+
+  border-style: dashed;
+
+  opacity: 0.65;
+
+  animation:
+    potionModalOrbitReverse
+    13s linear
+    infinite;
+}
+
+
+.potion-modal__orbit span,
+.potion-modal__orbit i,
+.potion-modal__orbit b {
+  position: absolute;
+
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      var(--liquid),
+      0.9
+    );
+
+  box-shadow:
+    0 0 11px
+    rgba(
+      var(--liquid),
+      0.65
+    );
+}
+
+
+.potion-modal__orbit span {
+  left: 50%;
+  top: -3px;
+}
+
+
+.potion-modal__orbit i {
+  right: -3px;
+  top: 50%;
+}
+
+
+.potion-modal__orbit b {
+  left: -3px;
+  top: 50%;
+}
+
+
+/* =========================================================
+   POPUP POTION IMAGE
+========================================================= */
+
+.potion-modal__visual > img {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(70%, 320px);
+  height: 72%;
+
+  object-fit: contain;
+
+  filter:
+    brightness(1.05)
+    saturate(1.02)
+    drop-shadow(
+      0 30px 35px
+      rgba(0, 0, 0, 0.72)
+    );
+
+  animation:
+    potionModalBottleIn
+    0.7s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+
+/* =========================================================
+   POPUP NUMBER
+========================================================= */
+
+.potion-modal__record-number {
+  position: absolute;
+
+  z-index: 6;
+
+  left: 28px;
+  top: 26px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 3.2rem;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.24
+    );
+}
+
+
+/* =========================================================
+   SPECIMEN LABEL
+========================================================= */
+
+.potion-modal__specimen-label {
+  position: absolute;
+
+  z-index: 7;
+
+  left: 30px;
+  right: 30px;
+  bottom: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.potion-modal__specimen-label span,
+.potion-modal__specimen-label small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.28rem;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.54
+    );
+}
+
+
+.potion-modal__specimen-label i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--liquid),
+        0.25
+      ),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   POPUP CONTENT
+========================================================= */
+
+.potion-modal__content {
+  min-width: 0;
+  min-height: 0;
+
+  padding:
+    52px 48px 30px;
+
+  overflow-y: auto;
+
+  overscroll-behavior:
+    contain;
+
+  scrollbar-width:
+    thin;
+
+  scrollbar-color:
+    rgba(
+      var(--liquid),
+      0.28
+    )
+    transparent;
+
+  text-align: left;
+}
+
+
+.potion-modal__content::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.potion-modal__content::-webkit-scrollbar-track {
+  background:
+    transparent;
+}
+
+
+.potion-modal__content::-webkit-scrollbar-thumb {
+  background:
+    rgba(
+      var(--liquid),
+      0.22
+    );
+
+  border-radius: 20px;
+}
+
+
+/* =========================================================
+   MODAL HEADER
+========================================================= */
+
+.potion-modal__header {
+  padding-right: 48px;
+  padding-bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.1
+    );
+}
+
+
+.potion-modal__header > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.potion-modal__header span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.48rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(234, 223, 203, 0.7);
+}
+
+
+.potion-modal__header small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.54
+    );
+}
+
+
+.potion-modal__header svg {
+  flex-shrink: 0;
+
+  font-size: 1.25rem;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.68
+    );
+}
+
+
+/* =========================================================
+   RECORD BAR
+========================================================= */
+
+.potion-modal__record-bar {
+  margin-top: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.potion-modal__record-bar span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.29rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(199, 210, 195, 0.37);
+}
+
+
+.potion-modal__record-bar strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.65rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.72
+    );
+}
+
+
+.potion-modal__record-bar i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    rgba(
+      var(--liquid),
+      0.09
+    );
+}
+
+
+/* =========================================================
+   MODAL ALIAS
+========================================================= */
+
+.potion-modal__alias {
+  margin:
+    28px 0 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.72
+    );
+}
+
+
+/* =========================================================
+   MODAL TITLE
+========================================================= */
+
+.potion-modal__content h2 {
+  margin:
+    8px 0 0;
+
+  max-width: 560px;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.8rem,
+      4.4vw,
+      4.7rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.025em;
+
+  color:
+    rgba(241, 232, 215, 0.96);
+}
+
+
+/* =========================================================
+   MODAL QUOTE
+========================================================= */
+
+.potion-modal__content blockquote {
+  margin:
+    22px 0 0;
+
+  padding:
+    2px 0
+    2px 16px;
+
+  border-left:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.4
+    );
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.98rem;
+
+  font-style: italic;
+
+  line-height: 1.6;
+
+  color:
+    rgba(223, 219, 205, 0.62);
+}
+
+
+/* =========================================================
+   MODAL DESCRIPTION
+========================================================= */
+
+.potion-modal__description {
+  margin:
+    20px 0 0;
+
+  max-width: 590px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.86rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(219, 224, 212, 0.6);
+}
+
+
+/* =========================================================
+   MODAL FACTS
+========================================================= */
+
+.potion-modal__facts {
+  margin-top: 27px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.1
+    );
+
+  border-left:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.1
+    );
+}
+
+
+.potion-modal__fact {
+  min-height: 78px;
+
+  padding:
+    14px 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 5px;
+
+  border-right:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.1
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.1
+    );
+}
+
+
+.potion-modal__fact--wide {
+  grid-column:
+    1 / -1;
+}
+
+
+.potion-modal__fact small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.29rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.56
+    );
+}
+
+
+.potion-modal__fact strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.77rem;
+
+  line-height: 1.45;
+
+  font-weight: 400;
+
+  color:
+    rgba(234, 226, 211, 0.78);
+}
+
+
+.potion-modal__risk {
+  color:
+    rgba(
+      var(--liquid),
+      0.9
+    ) !important;
+}
+
+
+/* =========================================================
+   MODAL MAGICAL PROPERTIES
+========================================================= */
+
+.potion-modal__properties {
+  margin-top: 27px;
+}
+
+
+.potion-modal__section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+}
+
+
+.potion-modal__section-title span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        var(--liquid),
+        0.17
+      )
+    );
+}
+
+
+.potion-modal__section-title
+span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.potion-modal__section-title small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.3rem;
+
+  letter-spacing: 0.18em;
+
+  white-space: nowrap;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.62
+    );
+}
+
+
+.potion-modal__properties-list {
+  margin-top: 11px;
+}
+
+
+.potion-modal__property {
+  min-height: 44px;
+
+  display: grid;
+
+  grid-template-columns:
+    28px 18px 1fr;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    9px 0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.065
+    );
+}
+
+
+.potion-modal__property > span {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.6rem;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.5
+    );
+}
+
+
+.potion-modal__property svg {
+  font-size: 0.67rem;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.7
+    );
+}
+
+
+.potion-modal__property p {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.74rem;
+
+  color:
+    rgba(216, 221, 209, 0.56);
+}
+
+
+/* =========================================================
+   POPUP NAVIGATION
+========================================================= */
+
+.potion-modal__navigation {
+  margin-top: 27px;
+
+  padding-top: 17px;
+
+  border-top:
+    1px solid
+    rgba(
+      var(--liquid),
+      0.09
+    );
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+
+.potion-modal__navigation button {
+  padding:
+    6px 0;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    rgba(
+      var(--liquid),
+      0.65
+    );
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.3rem;
+
+  letter-spacing: 0.1em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.potion-modal__navigation
+button:hover {
+  color:
+    rgba(243, 232, 215, 0.95);
+}
+
+
+.potion-modal__navigation
+button:first-child:hover {
+  transform:
+    translateX(-3px);
+}
+
+
+.potion-modal__navigation
+button:last-child:hover {
+  transform:
+    translateX(3px);
+}
+
+
+.potion-modal__progress {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.potion-modal__progress strong,
+.potion-modal__progress span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(210, 215, 204, 0.45);
+}
+
+
+.potion-modal__progress strong {
+  color:
+    rgba(
+      var(--liquid),
+      0.72
+    );
+}
+
+
+.potion-modal__progress i {
+  width: 34px;
+  height: 1px;
+
+  background:
+    rgba(
+      var(--liquid),
+      0.2
+    );
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes alchemyMist {
+
+  from {
+    transform:
+      translateX(-20px)
+      scale(0.95);
+  }
+
+  to {
+    transform:
+      translateX(35px)
+      scale(1.08);
+  }
+
+}
+
+
+@keyframes potionModalBackdropIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes potionModalWindowIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px)
+      scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes potionModalBottleIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(18px)
+      scale(0.94);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes potionModalOrbit {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(360deg);
+  }
+
+}
+
+
+@keyframes potionModalOrbitReverse {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(-360deg);
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (
+  max-width: 1150px
+) {
+
+  .potion-shelf-grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .potion-modal__window {
+    width:
+      calc(100vw - 45px);
+
+    height:
+      calc(100dvh - 45px);
+
+    grid-template-columns:
+      40% 60%;
+  }
+
+
+  .potion-modal__content {
+    padding:
+      50px
+      38px
+      28px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (
+  max-width: 900px
+) {
+
+  .apothecary__shelves {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .restricted-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .potion-modal {
+    padding: 18px;
+  }
+
+
+  .potion-modal__window {
+    width:
+      calc(100vw - 36px);
+
+    height:
+      calc(100dvh - 36px);
+
+    grid-template-columns:
+      42% 58%;
+  }
+
+
+  .potion-modal__visual > img {
+    width: 74%;
+  }
+
+
+  .potion-modal__orbit--outer {
+    width: 300px;
+    height: 300px;
+  }
+
+
+  .potion-modal__orbit--inner {
+    width: 230px;
+    height: 230px;
+  }
+
+
+  .potion-modal__content {
+    padding:
+      48px
+      28px
+      25px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (
+  max-width: 760px
+) {
+
+  .alchemy-heading--left {
+    text-align: center;
+  }
+
+
+  .apothecary {
+    padding:
+      100px 20px;
+  }
+
+
+  .brewing-table {
+    padding:
+      100px 20px;
+  }
+
+
+  .potion-shelf-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .potion-index {
+    padding:
+      100px 20px;
+  }
+
+
+  .potion-index__heading {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .potion-search,
+  .potion-search--open {
+    width: 100%;
+  }
+
+
+  .potion-index__labels {
+    display: none;
+  }
+
+
+  .potion-index__record {
+    grid-template-columns:
+      45px
+      1fr
+      25px;
+  }
+
+
+  .potion-index__record
+  > span:nth-of-type(2),
+
+  .potion-index__record
+  > span:nth-of-type(3) {
+    display: none;
+  }
+
+
+  /* =======================================================
+     MOBILE POPUP
+  ======================================================= */
+
+  .potion-modal {
+    display: block;
+
+    padding: 0;
+
+    overflow: hidden;
+  }
+
+
+  .potion-modal__window {
+    width: 100vw;
+    height: 100dvh;
+
+    max-width: none;
+    max-height: none;
+
+    display: block;
+
+    overflow-y: auto;
+
+    border: 0;
+  }
+
+
+  .potion-modal__visual {
+    width: 100%;
+    height: 55svh;
+
+    min-height: 430px;
+
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      rgba(
+        var(--liquid),
+        0.1
+      );
+  }
+
+
+  .potion-modal__visual > img {
+    width:
+      min(
+        55%,
+        270px
+      );
+
+    height: 70%;
+  }
+
+
+  .potion-modal__content {
+    overflow: visible;
+
+    padding:
+      42px
+      24px
+      90px;
+  }
+
+
+  .potion-modal__header {
+    padding-right: 0;
+  }
+
+
+  .potion-modal__close {
+    position: fixed;
+
+    top: 15px;
+    right: 15px;
+  }
+
+
+  .potion-modal__navigation {
+    position: sticky;
+
+    z-index: 80;
+
+    bottom: 0;
+
+    margin:
+      28px -24px -90px;
+
+    padding:
+      15px 20px;
+
+    background:
+      rgba(2, 8, 5, 0.94);
+
+    backdrop-filter:
+      blur(12px);
+
+    -webkit-backdrop-filter:
+      blur(12px);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+  max-width: 560px
+) {
+
+  .alchemy-hero__content {
+    width: 92%;
+  }
+
+
+  .alchemy-hero h1 {
+    font-size:
+      clamp(
+        4rem,
+        20vw,
+        6.3rem
+      );
+  }
+
+
+  .alchemy-hero__stats {
+    width: 100%;
+
+    padding:
+      12px 5px;
+  }
+
+
+  .alchemy-hero__stats span {
+    font-size: 0.25rem;
+
+    letter-spacing: 0.08em;
+  }
+
+
+  .alchemy-hero__note {
+    display: none;
+  }
+
+
+  .alchemy-heading h2 {
+    font-size:
+      clamp(
+        2.7rem,
+        14vw,
+        4.2rem
+      );
+  }
+
+
+  .apothecary__shelves {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .apothecary-shelf {
+    min-height: 105px;
+
+    grid-template-columns:
+      35px
+      38px
+      1fr
+      15px;
+
+    padding: 15px;
+
+    gap: 10px;
+  }
+
+
+  .apothecary-shelf__number {
+    font-size: 1.25rem;
+  }
+
+
+  .potion-shelf-grid {
+    grid-template-columns:
+      1fr;
+
+    gap: 12px;
+  }
+
+
+  .potion-vessel {
+    min-height: 430px;
+  }
+
+
+  .restricted-cauldron {
+    padding:
+      100px 18px;
+  }
+
+
+  .restricted-potion {
+    min-height: auto;
+
+    padding: 20px;
+
+    grid-template-columns:
+      110px 1fr;
+
+    gap: 15px;
+  }
+
+
+  .restricted-potion__visual {
+    height: 180px;
+  }
+
+
+  .restricted-potion__copy h3 {
+    font-size: 1.45rem;
+  }
+
+
+  .restricted-potion__copy p {
+    font-size: 0.7rem;
+  }
+
+
+  /* POPUP */
+
+  .potion-modal__visual {
+    height: 50svh;
+
+    min-height: 380px;
+  }
+
+
+  .potion-modal__orbit--outer {
+    width: 260px;
+    height: 260px;
+  }
+
+
+  .potion-modal__orbit--inner {
+    width: 195px;
+    height: 195px;
+  }
+
+
+  .potion-modal__record-number {
+    left: 22px;
+    top: 21px;
+
+    font-size: 2.4rem;
+  }
+
+
+  .potion-modal__specimen-label {
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+  }
+
+
+  .potion-modal__content {
+    padding:
+      38px
+      20px
+      85px;
+  }
+
+
+  .potion-modal__content h2 {
+    font-size:
+      clamp(
+        2.6rem,
+        13vw,
+        4rem
+      );
+  }
+
+
+  .potion-modal__facts {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .potion-modal__fact--wide {
+    grid-column: auto;
+  }
+
+
+  .potion-modal__navigation {
+    margin:
+      25px -20px -85px;
+
+    padding:
+      14px 17px;
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (
+  max-width: 410px
+) {
+
+  .restricted-potion {
+    grid-template-columns:
+      1fr;
+
+    text-align: center;
+  }
+
+
+  .restricted-potion__visual {
+    height: 200px;
+  }
+
+
+  .restricted-potion__copy p {
+    margin-inline: auto;
+  }
+
+
+  .potion-modal__visual {
+    min-height: 350px;
+  }
+
+
+  .potion-modal__navigation
+  button span {
+    display: none;
+  }
+
+
+  .potion-modal__navigation
+  button {
+    font-size: 1rem;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion: reduce
+) {
+
+  .alchemy-hero__mist,
+
+  .potion-modal__orbit,
+
+  .potion-modal__visual > img {
+    animation: none;
+  }
+
+
+  .potion-vessel,
+  .restricted-potion,
+  .apothecary-shelf,
+  .potion-modal__window {
+    transition-duration:
+      0.01ms;
+  }
+
+}

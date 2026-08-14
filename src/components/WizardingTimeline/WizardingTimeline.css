@@ -1,0 +1,2309 @@
+/* =========================================================
+   SECTION 10 — WIZARDING TIMELINE
+========================================================= */
+
+.wizarding-timeline {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-height: 110vh;
+
+  padding:
+    135px
+    clamp(28px, 6vw, 110px)
+    140px;
+
+  overflow: hidden;
+
+  color: #edf5fb;
+}
+
+
+/* =========================================================
+   INTRO — RIGHT
+========================================================= */
+
+.wizarding-timeline__intro {
+  position: relative;
+  z-index: 20;
+
+  width:
+    min(760px, 94%);
+
+  margin:
+    0 0
+    clamp(75px, 7vw, 110px)
+    auto;
+
+  text-align: right;
+
+  opacity: 0;
+
+  transform:
+    translateY(38px);
+
+  filter:
+    blur(8px);
+}
+
+
+.wizarding-timeline__eyebrow {
+  margin:
+    0 0 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.44em;
+
+  color:
+    rgba(
+      164,
+      199,
+      226,
+      0.62
+    );
+}
+
+
+.wizarding-timeline__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.6rem,
+      6vw,
+      6.5rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.038em;
+
+  color: #edf5fb;
+}
+
+
+.wizarding-timeline__title span {
+  display: block;
+
+  margin-top: 10px;
+  margin-right: 9%;
+
+  font-size: 0.78em;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      166,
+      199,
+      224,
+      0.72
+    );
+}
+
+
+.wizarding-timeline__description {
+  width:
+    min(540px, 100%);
+
+  margin:
+    29px 0 0 auto;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.04rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      190,
+      210,
+      225,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   MEMORY ARCHIVE
+========================================================= */
+
+.wizarding-timeline__archive {
+  position: relative;
+  z-index: 4;
+
+  width:
+    min(1400px, 100%);
+
+  min-height: 760px;
+
+  margin:
+    0 auto;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      171,
+      208,
+      235,
+      0.09
+    );
+
+  background:
+    #040a0f;
+
+  isolation: isolate;
+}
+
+
+/* inner frame */
+
+.wizarding-timeline__archive::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 25;
+
+  inset: 12px;
+
+  border:
+    1px solid
+    rgba(
+      170,
+      205,
+      231,
+      0.035
+    );
+
+  pointer-events: none;
+}
+
+
+/* strong edge vignette */
+
+.wizarding-timeline__archive::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 8;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(
+        3,
+        8,
+        13,
+        0.16
+      )
+      55%,
+      rgba(
+        3,
+        8,
+        13,
+        0.78
+      )
+      100%
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(
+        3,
+        8,
+        13,
+        0.28
+      ),
+      transparent 25%,
+      transparent 72%,
+      rgba(
+        3,
+        8,
+        13,
+        0.5
+      )
+    );
+}
+
+
+/* =========================================================
+   MEMORY IMAGE LAYER
+========================================================= */
+
+.wizarding-timeline__memories {
+  position: absolute;
+
+  z-index: 0;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+/* all memory images fill entire archive */
+
+.wizarding-memory {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  opacity: 0;
+
+  transform:
+    scale(1.07);
+
+  transition:
+    opacity
+      1.25s ease,
+
+    transform
+      5.5s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+
+  pointer-events: none;
+}
+
+
+/* remove all individual positioning */
+
+.wizarding-memory--dark,
+.wizarding-memory--hogwarts,
+.wizarding-memory--battle {
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+/* image */
+
+.wizarding-memory img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter:
+    saturate(0.72)
+    brightness(0.55)
+    contrast(1.08);
+
+  -webkit-mask-image:
+    linear-gradient(
+      180deg,
+      rgba(
+        0,
+        0,
+        0,
+        0.88
+      )
+      0%,
+      #000
+      18%,
+      #000
+      74%,
+      rgba(
+        0,
+        0,
+        0,
+        0.6
+      )
+      100%
+    );
+
+  mask-image:
+    linear-gradient(
+      180deg,
+      rgba(
+        0,
+        0,
+        0,
+        0.88
+      )
+      0%,
+      #000
+      18%,
+      #000
+      74%,
+      rgba(
+        0,
+        0,
+        0,
+        0.6
+      )
+      100%
+    );
+}
+
+
+/* =========================================================
+   ONLY ACTIVE MEMORY IS VISIBLE
+========================================================= */
+
+.wizarding-timeline__archive--dark
+.wizarding-memory--dark,
+
+.wizarding-timeline__archive--hogwarts
+.wizarding-memory--hogwarts,
+
+.wizarding-timeline__archive--battle
+.wizarding-memory--battle {
+  opacity: 0.72;
+
+  transform:
+    scale(1);
+}
+
+
+/* active image stronger */
+
+.wizarding-timeline__archive--dark
+.wizarding-memory--dark img,
+
+.wizarding-timeline__archive--hogwarts
+.wizarding-memory--hogwarts img,
+
+.wizarding-timeline__archive--battle
+.wizarding-memory--battle img {
+  filter:
+    saturate(0.82)
+    brightness(0.64)
+    contrast(1.08);
+}
+
+
+/* =========================================================
+   DARK OVERLAY FOR TEXT READABILITY
+========================================================= */
+
+.wizarding-timeline__archive-glow {
+  position: absolute;
+
+  z-index: 3;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        91,
+        151,
+        194,
+        0.04
+      ),
+      transparent 55%
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(
+        3,
+        8,
+        13,
+        0.35
+      ),
+      rgba(
+        3,
+        8,
+        13,
+        0.08
+      )
+      25%,
+      rgba(
+        3,
+        8,
+        13,
+        0.08
+      )
+      75%,
+      rgba(
+        3,
+        8,
+        13,
+        0.35
+      )
+    );
+}
+
+
+/* =========================================================
+   MIST
+========================================================= */
+
+.wizarding-timeline__mist {
+  position: absolute;
+
+  z-index: 5;
+
+  width: 70%;
+  height: 22%;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        181,
+        210,
+        230,
+        0.045
+      ),
+      transparent 72%
+    );
+
+  filter:
+    blur(34px);
+}
+
+
+.wizarding-timeline__mist--one {
+  left: -18%;
+  top: 38%;
+
+  animation:
+    timelineMistOne
+    17s
+    ease-in-out
+    infinite alternate;
+}
+
+
+.wizarding-timeline__mist--two {
+  right: -20%;
+  bottom: 25%;
+
+  animation:
+    timelineMistTwo
+    21s
+    ease-in-out
+    infinite alternate;
+}
+
+
+/* =========================================================
+   SELECT A MEMORY
+========================================================= */
+
+.wizarding-timeline__archive-label {
+  position: absolute;
+
+  z-index: 20;
+
+  left: 50%;
+  top: 34px;
+
+  width:
+    min(520px, 70%);
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  opacity: 0;
+}
+
+
+.wizarding-timeline__archive-label span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        192,
+        221,
+        241,
+        0.24
+      )
+    );
+}
+
+
+.wizarding-timeline__archive-label
+span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.wizarding-timeline__archive-label p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.32em;
+
+  color:
+    rgba(
+      184,
+      210,
+      228,
+      0.62
+    );
+}
+
+
+/* =========================================================
+   TIMELINE WORLD
+========================================================= */
+
+.wizarding-timeline__world {
+  position: relative;
+
+  z-index: 15;
+
+  width: 100%;
+
+  min-height: 650px;
+
+  padding:
+    95px
+    clamp(30px, 5vw, 75px)
+    70px;
+}
+
+
+/* =========================================================
+   MAIN THREAD
+========================================================= */
+
+.wizarding-timeline__thread {
+  position: absolute;
+
+  z-index: 8;
+
+  left: 7%;
+  right: 7%;
+
+  top: 50%;
+
+  height: 3px;
+
+  transform:
+    translateY(-50%);
+
+  overflow: visible;
+}
+
+
+/* base line */
+
+.wizarding-timeline__thread-base {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 1px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        183,
+        216,
+        239,
+        0.18
+      )
+      6%,
+      rgba(
+        213,
+        235,
+        249,
+        0.42
+      )
+      50%,
+      rgba(
+        183,
+        216,
+        239,
+        0.18
+      )
+      94%,
+      transparent
+    );
+}
+
+
+/* travelling light */
+
+.wizarding-timeline__thread-light {
+  position: absolute;
+
+  left: -16%;
+  top: 0;
+
+  width: 14%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        228,
+        246,
+        255,
+        0.95
+      ),
+      transparent
+    );
+
+  filter:
+    blur(1px)
+    drop-shadow(
+      0 0 10px
+      rgba(
+        129,
+        194,
+        238,
+        0.72
+      )
+    );
+
+  animation:
+    timelineThreadLight
+    8s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   MOMENTS GRID
+========================================================= */
+
+.wizarding-timeline__moments {
+  position: relative;
+
+  z-index: 12;
+
+  width: 100%;
+
+  min-height: 500px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      5,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    clamp(
+      10px,
+      1.6vw,
+      24px
+    );
+}
+
+
+/* =========================================================
+   MOMENT
+========================================================= */
+
+.wizarding-moment {
+  position: relative;
+
+  min-width: 0;
+
+  opacity: 0;
+
+  filter:
+    blur(5px);
+
+  transition:
+    opacity
+      0.5s ease,
+
+    filter
+      0.5s ease;
+}
+
+
+/* after reveal, inactive */
+
+.wizarding-timeline--visible
+.wizarding-moment {
+  opacity: 0.58;
+}
+
+
+/* active event */
+
+.wizarding-timeline--visible
+.wizarding-moment--active {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   TOP EVENT
+========================================================= */
+
+.wizarding-moment--top
+.wizarding-moment__copy {
+  position: absolute;
+
+  left: 50%;
+  bottom:
+    calc(
+      50% + 82px
+    );
+
+  width:
+    min(
+      230px,
+      120%
+    );
+
+  transform:
+    translateX(-50%);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   BOTTOM EVENT
+========================================================= */
+
+.wizarding-moment--bottom
+.wizarding-moment__copy {
+  position: absolute;
+
+  left: 50%;
+  top:
+    calc(
+      50% + 82px
+    );
+
+  width:
+    min(
+      230px,
+      120%
+    );
+
+  transform:
+    translateX(-50%);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+.wizarding-moment__copy small {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.41rem;
+
+  letter-spacing: 0.27em;
+
+  color:
+    rgba(
+      181,
+      211,
+      231,
+      0.65
+    );
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.wizarding-moment__copy h3 {
+  margin:
+    0 auto;
+
+  max-width: 215px;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      1.28rem,
+      1.6vw,
+      1.7rem
+    );
+
+  line-height: 1.1;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      218,
+      233,
+      243,
+      0.7
+    );
+
+  text-shadow:
+    0 2px 15px
+    rgba(
+      0,
+      0,
+      0,
+      0.78
+    );
+
+  transition:
+    color
+      0.4s ease,
+    transform
+      0.4s ease;
+}
+
+
+.wizarding-moment--active
+.wizarding-moment__copy h3 {
+  color: #f6fbff;
+
+  transform:
+    translateY(-3px);
+
+  text-shadow:
+    0 0 22px
+      rgba(
+        132,
+        190,
+        230,
+        0.14
+      ),
+
+    0 3px 18px
+      rgba(
+        0,
+        0,
+        0,
+        0.8
+      );
+}
+
+
+/* =========================================================
+   DETAILS
+========================================================= */
+
+.wizarding-moment__details {
+  max-height: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transform:
+    translateY(8px);
+
+  transition:
+    max-height
+      0.55s ease,
+    opacity
+      0.45s ease,
+    transform
+      0.45s ease;
+}
+
+
+.wizarding-moment--active
+.wizarding-moment__details {
+  max-height: 160px;
+
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+.wizarding-moment__details p {
+  margin:
+    12px auto 11px;
+
+  max-width: 220px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.8rem;
+
+  line-height: 1.55;
+
+  color:
+    rgba(
+      200,
+      217,
+      229,
+      0.66
+    );
+
+  text-shadow:
+    0 2px 10px
+    rgba(
+      0,
+      0,
+      0,
+      0.9
+    );
+}
+
+
+/* =========================================================
+   LINK
+========================================================= */
+
+.wizarding-moment__link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.19em;
+
+  text-transform:
+    uppercase;
+
+  text-decoration: none;
+
+  color:
+    rgba(
+      217,
+      237,
+      250,
+      0.78
+    );
+
+  transition:
+    gap 0.3s ease,
+    color 0.3s ease;
+}
+
+
+.wizarding-moment__link:hover {
+  gap: 10px;
+
+  color:
+    #ffffff;
+}
+
+
+/* =========================================================
+   CONNECTOR
+========================================================= */
+
+.wizarding-moment__connector {
+  position: absolute;
+
+  z-index: 10;
+
+  left: 50%;
+
+  width: 1px;
+
+  transform:
+    translateX(-50%);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        204,
+        229,
+        247,
+        0.34
+      ),
+      rgba(
+        180,
+        214,
+        238,
+        0.04
+      )
+    );
+}
+
+
+.wizarding-moment--top
+.wizarding-moment__connector {
+  top:
+    calc(
+      50% - 60px
+    );
+
+  height: 60px;
+}
+
+
+.wizarding-moment--bottom
+.wizarding-moment__connector {
+  top: 50%;
+
+  height: 60px;
+
+  transform:
+    translateX(-50%)
+    rotate(180deg);
+}
+
+
+/* =========================================================
+   MEMORY ORB
+========================================================= */
+
+.wizarding-moment__orb {
+  position: absolute;
+
+  z-index: 16;
+
+  left: 50%;
+  top: 50%;
+
+  width: 38px;
+  height: 38px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      185,
+      217,
+      240,
+      0.28
+    );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        92,
+        151,
+        192,
+        0.18
+      ),
+      rgba(
+        5,
+        12,
+        19,
+        0.92
+      )
+      72%
+    );
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 0
+    rgba(
+      105,
+      170,
+      218,
+      0
+    );
+
+  transition:
+    transform
+      0.4s ease,
+    border-color
+      0.4s ease,
+    box-shadow
+      0.4s ease,
+    background
+      0.4s ease;
+}
+
+
+/* active */
+
+.wizarding-moment--active
+.wizarding-moment__orb {
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(1.22);
+
+  border-color:
+    rgba(
+      220,
+      241,
+      255,
+      0.72
+    );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        124,
+        187,
+        230,
+        0.3
+      ),
+      rgba(
+        7,
+        18,
+        27,
+        0.94
+      )
+      72%
+    );
+
+  box-shadow:
+    0 0 25px
+      rgba(
+        109,
+        177,
+        225,
+        0.25
+      ),
+
+    inset 0 0 16px
+      rgba(
+        133,
+        196,
+        239,
+        0.1
+      );
+}
+
+
+/* =========================================================
+   ORB CORE
+========================================================= */
+
+.wizarding-moment__orb-core {
+  position: relative;
+
+  z-index: 4;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      235,
+      248,
+      255,
+      0.95
+    );
+
+  box-shadow:
+    0 0 8px
+      rgba(
+        230,
+        247,
+        255,
+        1
+      ),
+
+    0 0 20px
+      rgba(
+        125,
+        192,
+        238,
+        0.76
+      );
+}
+
+
+/* =========================================================
+   ORB RIPPLES
+========================================================= */
+
+.wizarding-moment__orb-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      202,
+      230,
+      249,
+      0.32
+    );
+
+  opacity: 0;
+}
+
+
+.wizarding-moment__orb-ring--one {
+  inset: 4px;
+}
+
+
+.wizarding-moment__orb-ring--two {
+  inset: 8px;
+}
+
+
+.wizarding-moment--active
+.wizarding-moment__orb-ring--one {
+  animation:
+    timelineOrbRipple
+    2.7s
+    ease-out
+    infinite;
+}
+
+
+.wizarding-moment--active
+.wizarding-moment__orb-ring--two {
+  animation:
+    timelineOrbRipple
+    2.7s
+    ease-out
+    0.75s
+    infinite;
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.wizarding-moment__number {
+  position: absolute;
+
+  left: 50%;
+  bottom: 12px;
+
+  transform:
+    translateX(-50%);
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.35rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(
+      166,
+      195,
+      215,
+      0.28
+    );
+}
+
+
+/* =========================================================
+   ACTIVE MEMORY CAPTION
+========================================================= */
+
+.wizarding-timeline__active-caption {
+  position: absolute;
+
+  z-index: 20;
+
+  left: 50%;
+  bottom: 30px;
+
+  width:
+    min(
+      560px,
+      84%
+    );
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap:
+    8px 14px;
+
+  text-align: center;
+
+  animation:
+    timelineCaptionReveal
+    0.7s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.wizarding-timeline__active-caption small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.35rem;
+
+  letter-spacing: 0.22em;
+
+  color:
+    rgba(
+      153,
+      192,
+      219,
+      0.45
+    );
+}
+
+
+.wizarding-timeline__active-caption span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.19em;
+
+  color:
+    rgba(
+      190,
+      218,
+      236,
+      0.64
+    );
+}
+
+
+.wizarding-timeline__active-caption strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      230,
+      241,
+      248,
+      0.76
+    );
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.wizarding-timeline__footer {
+  position: relative;
+
+  z-index: 7;
+
+  width:
+    min(
+      700px,
+      90%
+    );
+
+  margin:
+    85px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  opacity: 0;
+}
+
+
+.wizarding-timeline__footer span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        157,
+        196,
+        226,
+        0.18
+      )
+    );
+}
+
+
+.wizarding-timeline__footer span:last-child {
+  transform:
+    rotate(
+      180deg
+    );
+}
+
+
+.wizarding-timeline__footer p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      185,
+      205,
+      219,
+      0.52
+    );
+}
+
+
+/* =========================================================
+   REVEALS
+========================================================= */
+
+.wizarding-timeline--visible
+.wizarding-timeline__intro {
+  animation:
+    timelineIntroReveal
+    1.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-timeline__archive-label {
+  animation:
+    timelineArchiveLabelReveal
+    1s
+    ease
+    0.4s
+    forwards;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-moment {
+  animation:
+    timelineMomentReveal
+    1s
+    ease
+    forwards;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-moment:nth-child(1) {
+  animation-delay:
+    0.45s;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-moment:nth-child(2) {
+  animation-delay:
+    0.62s;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-moment:nth-child(3) {
+  animation-delay:
+    0.79s;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-moment:nth-child(4) {
+  animation-delay:
+    0.96s;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-moment:nth-child(5) {
+  animation-delay:
+    1.13s;
+}
+
+
+.wizarding-timeline--visible
+.wizarding-timeline__footer {
+  animation:
+    timelineFooterReveal
+    1s
+    ease
+    1.45s
+    forwards;
+}
+
+
+/* =========================================================
+   KEYFRAMES
+========================================================= */
+
+@keyframes timelineIntroReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(38px);
+
+    filter:
+      blur(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes timelineArchiveLabelReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+}
+
+
+@keyframes timelineMomentReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(22px);
+
+    filter:
+      blur(5px);
+  }
+
+  to {
+    opacity: 0.58;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes timelineFooterReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+@keyframes timelineThreadLight {
+
+  from {
+    left: -16%;
+  }
+
+  to {
+    left: 102%;
+  }
+
+}
+
+
+@keyframes timelineOrbRipple {
+
+  0% {
+    opacity: 0.65;
+
+    transform:
+      scale(0.45);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(2.4);
+  }
+
+}
+
+
+@keyframes timelineCaptionReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+}
+
+
+@keyframes timelineMistOne {
+
+  from {
+    transform:
+      translateX(-8%);
+  }
+
+  to {
+    transform:
+      translateX(15%);
+  }
+
+}
+
+
+@keyframes timelineMistTwo {
+
+  from {
+    transform:
+      translateX(10%);
+  }
+
+  to {
+    transform:
+      translateX(-14%);
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (
+  max-width: 1150px
+) {
+
+  .wizarding-timeline__world {
+    padding-left: 35px;
+    padding-right: 35px;
+  }
+
+
+  .wizarding-moment--top
+  .wizarding-moment__copy,
+  .wizarding-moment--bottom
+  .wizarding-moment__copy {
+    width:
+      min(
+        195px,
+        120%
+      );
+  }
+
+
+  .wizarding-moment__copy h3 {
+    font-size:
+      1.3rem;
+  }
+
+
+  .wizarding-moment__details p {
+    font-size:
+      0.75rem;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET — VERTICAL TIMELINE
+========================================================= */
+
+@media (
+  max-width: 900px
+) {
+
+  .wizarding-timeline__archive {
+    min-height: auto;
+  }
+
+
+  .wizarding-timeline__world {
+    min-height: auto;
+
+    padding:
+      95px
+      45px
+      95px;
+  }
+
+
+  .wizarding-timeline__thread {
+    left: 56px;
+    right: auto;
+
+    top: 95px;
+    bottom: 95px;
+
+    width: 3px;
+    height: auto;
+
+    transform: none;
+  }
+
+
+  .wizarding-timeline__thread-base {
+    left: 1px;
+    right: auto;
+
+    top: 0;
+
+    width: 1px;
+    height: 100%;
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(
+          190,
+          219,
+          239,
+          0.3
+        )
+        10%,
+        rgba(
+          190,
+          219,
+          239,
+          0.3
+        )
+        90%,
+        transparent
+      );
+  }
+
+
+  .wizarding-timeline__thread-light {
+    left: 0;
+    top: -15%;
+
+    width: 3px;
+    height: 15%;
+
+    background:
+      linear-gradient(
+        180deg,
+        transparent,
+        rgba(
+          230,
+          247,
+          255,
+          0.95
+        ),
+        transparent
+      );
+
+    animation:
+      timelineThreadVertical
+      7s
+      linear
+      infinite;
+  }
+
+
+  .wizarding-timeline__moments {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: auto;
+
+    gap: 38px;
+  }
+
+
+  .wizarding-moment,
+  .wizarding-moment--top,
+  .wizarding-moment--bottom {
+    min-height: 155px;
+
+    padding:
+      10px
+      0
+      10px
+      92px;
+  }
+
+
+  .wizarding-moment--top
+  .wizarding-moment__copy,
+  .wizarding-moment--bottom
+  .wizarding-moment__copy {
+    position: relative;
+
+    left: auto;
+    top: auto;
+    bottom: auto;
+
+    width: 100%;
+
+    transform: none;
+
+    text-align: left;
+  }
+
+
+  .wizarding-moment__copy h3 {
+    max-width: none;
+
+    margin-left: 0;
+
+    font-size:
+      1.65rem;
+  }
+
+
+  .wizarding-moment__details p {
+    max-width: 500px;
+
+    margin-left: 0;
+
+    font-size:
+      0.87rem;
+  }
+
+
+  .wizarding-moment__orb {
+    left: 57px;
+    top: 33px;
+  }
+
+
+  .wizarding-moment__connector,
+  .wizarding-moment__number {
+    display: none;
+  }
+
+
+  .wizarding-timeline__active-caption {
+    display: none;
+  }
+
+
+  /* memory still fills entire archive */
+
+  .wizarding-memory,
+  .wizarding-memory--dark,
+  .wizarding-memory--hogwarts,
+  .wizarding-memory--battle {
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+
+/* vertical moving light */
+
+@keyframes timelineThreadVertical {
+
+  from {
+    top: -15%;
+  }
+
+  to {
+    top: 100%;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+  max-width: 650px
+) {
+
+  .wizarding-timeline {
+    min-height: auto;
+
+    padding:
+      95px
+      6%
+      110px;
+  }
+
+
+  /* right → left for readability */
+
+  .wizarding-timeline__intro {
+    width: 100%;
+
+    margin:
+      0 0 65px;
+
+    text-align: left;
+  }
+
+
+  .wizarding-timeline__eyebrow {
+    font-size:
+      0.48rem;
+
+    line-height:
+      1.8;
+
+    letter-spacing:
+      0.25em;
+  }
+
+
+  .wizarding-timeline__title {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.7rem
+      );
+  }
+
+
+  .wizarding-timeline__title span {
+    margin-right: 0;
+  }
+
+
+  .wizarding-timeline__description {
+    margin:
+      26px 0 0;
+
+    max-width: 95%;
+
+    font-size:
+      0.96rem;
+  }
+
+
+  .wizarding-timeline__archive-label {
+    width: 82%;
+  }
+
+
+  .wizarding-timeline__archive-label p {
+    font-size:
+      0.34rem;
+
+    letter-spacing:
+      0.2em;
+  }
+
+
+  .wizarding-timeline__world {
+    padding:
+      85px
+      18px
+      70px;
+  }
+
+
+  .wizarding-timeline__thread {
+    left: 25px;
+  }
+
+
+  .wizarding-moment,
+  .wizarding-moment--top,
+  .wizarding-moment--bottom {
+    min-height:
+      170px;
+
+    padding-left:
+      67px;
+  }
+
+
+  .wizarding-moment__orb {
+    left: 26px;
+  }
+
+
+  .wizarding-moment__copy h3 {
+    font-size:
+      1.5rem;
+  }
+
+
+  .wizarding-moment__details {
+    max-height: none;
+
+    opacity: 1;
+
+    transform: none;
+  }
+
+
+  .wizarding-moment__details p {
+    font-size:
+      0.83rem;
+  }
+
+
+  /* memory image visible but darker */
+
+  .wizarding-timeline__archive--dark
+  .wizarding-memory--dark,
+
+  .wizarding-timeline__archive--hogwarts
+  .wizarding-memory--hogwarts,
+
+  .wizarding-timeline__archive--battle
+  .wizarding-memory--battle {
+    opacity: 0.36;
+  }
+
+
+  .wizarding-memory img {
+    filter:
+      saturate(0.65)
+      brightness(0.42)
+      contrast(1.08);
+  }
+
+
+  .wizarding-timeline__footer {
+    margin-top:
+      75px;
+  }
+
+
+  .wizarding-timeline__footer p {
+    white-space: normal;
+
+    font-size:
+      0.9rem;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (
+  max-width: 420px
+) {
+
+  .wizarding-timeline__archive-label span {
+    display: none;
+  }
+
+
+  .wizarding-timeline__archive-label {
+    justify-content:
+      center;
+  }
+
+
+  .wizarding-timeline__footer span {
+    display: none;
+  }
+
+
+  .wizarding-timeline__footer {
+    justify-content:
+      center;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .wizarding-timeline__intro,
+  .wizarding-timeline__archive-label,
+  .wizarding-moment,
+  .wizarding-timeline__footer {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .wizarding-timeline__thread-light,
+  .wizarding-timeline__mist,
+  .wizarding-moment__orb-ring {
+    animation: none;
+  }
+
+
+  .wizarding-memory {
+    transition: none;
+  }
+
+}

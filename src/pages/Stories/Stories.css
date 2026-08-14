@@ -1,0 +1,4504 @@
+/* =========================================================
+   STORIES
+   PURPLE + WHITE MAGICAL STORY ARCHIVE
+========================================================= */
+
+.stories-page {
+  --stories-bg:
+    #0c0712;
+
+  --stories-bg-soft:
+    #150b20;
+
+  --stories-purple:
+    167, 91, 227;
+
+  --stories-purple-light:
+    211, 167, 246;
+
+  --stories-white:
+    250, 247, 255;
+
+  --stories-white-soft:
+    rgba(
+      250,
+      247,
+      255,
+      0.68
+    );
+
+  position: relative;
+
+  min-height: 100vh;
+
+  overflow-x: hidden;
+
+  isolation: isolate;
+
+  color:
+    rgb(
+      var(--stories-white)
+    );
+
+  background:
+    radial-gradient(
+      circle at 13% 12%,
+      rgba(
+        var(--stories-purple),
+        0.14
+      ),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 88% 45%,
+      rgba(
+        var(--stories-purple-light),
+        0.08
+      ),
+      transparent 26%
+    ),
+
+    linear-gradient(
+      180deg,
+      #120817 0%,
+      #0c0712 42%,
+      #14091b 76%,
+      #09050d 100%
+    );
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+.stories-page *,
+.stories-page *::before,
+.stories-page *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TAMIL
+========================================================= */
+
+.stories-page[data-language="ta"] {
+  font-family:
+    "Noto Serif Tamil",
+    "Noto Sans Tamil",
+    Latha,
+    serif;
+}
+
+
+/* =========================================================
+   OVERLAY BODY LOCK
+========================================================= */
+
+body.stories-overlay-open {
+  overflow: hidden !important;
+}
+
+
+/* =========================================================
+   GLOBAL FLOATING PARTICLES
+========================================================= */
+
+.stories-particles {
+  position: fixed;
+
+  z-index: 1;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.stories-particles span {
+  position: absolute;
+
+  left:
+    var(--particle-left);
+
+  top:
+    var(--particle-top);
+
+  width:
+    var(--particle-size);
+
+  height:
+    var(--particle-size);
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      245,
+      229,
+      255,
+      0.72
+    );
+
+  box-shadow:
+    0 0 8px
+      rgba(
+        205,
+        155,
+        243,
+        0.8
+      ),
+
+    0 0 20px
+      rgba(
+        169,
+        93,
+        224,
+        0.24
+      );
+
+  opacity: 0;
+
+  animation:
+    storiesParticleFloat
+    var(--particle-duration)
+    ease-in-out
+    var(--particle-delay)
+    infinite;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.stories-hero {
+  position: relative;
+
+  z-index: 3;
+
+  min-height: 100svh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.stories-hero__background {
+  position: absolute;
+
+  z-index: -10;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  filter:
+    brightness(1.18)
+    saturate(1.04)
+    contrast(0.93);
+
+  transform:
+    scale(1.03);
+
+  animation:
+    storiesHeroImage
+    1.8s ease both;
+}
+
+
+/* =========================================================
+   HERO VEIL
+========================================================= */
+
+.stories-hero__veil {
+  position: absolute;
+
+  z-index: -9;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(
+        209,
+        168,
+        244,
+        0.05
+      ),
+      transparent 37%
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(
+        20,
+        8,
+        28,
+        0.62
+      ),
+      rgba(
+        18,
+        7,
+        25,
+        0.12
+      ) 50%,
+      rgba(
+        20,
+        8,
+        28,
+        0.62
+      )
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(
+        13,
+        5,
+        19,
+        0.04
+      ),
+      transparent 52%,
+      #0c0712 100%
+    );
+}
+
+
+/* =========================================================
+   HERO GLOW
+========================================================= */
+
+.stories-hero__glow {
+  position: absolute;
+
+  z-index: -5;
+
+  width: 620px;
+  height: 280px;
+
+  border-radius: 50%;
+
+  filter:
+    blur(100px);
+
+  pointer-events: none;
+
+  animation:
+    storiesGlowDrift
+    11s ease-in-out
+    infinite alternate;
+}
+
+
+.stories-hero__glow--left {
+  left: -9%;
+  bottom: 5%;
+
+  background:
+    rgba(
+      156,
+      72,
+      215,
+      0.2
+    );
+}
+
+
+.stories-hero__glow--right {
+  right: -9%;
+  top: 14%;
+
+  background:
+    rgba(
+      225,
+      194,
+      246,
+      0.14
+    );
+
+  animation-duration:
+    14s;
+
+  animation-direction:
+    alternate-reverse;
+}
+
+
+/* =========================================================
+   LANGUAGE
+========================================================= */
+
+.stories-language {
+  position: absolute;
+
+  z-index: 20;
+
+  top: 30px;
+  right: 38px;
+
+  min-height: 44px;
+
+  padding:
+    0 15px;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      218,
+      249,
+      0.24
+    );
+
+  border-radius: 30px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  background:
+    rgba(
+      24,
+      10,
+      34,
+      0.55
+    );
+
+  backdrop-filter:
+    blur(15px);
+
+  -webkit-backdrop-filter:
+    blur(15px);
+
+  box-shadow:
+    0 14px 35px
+      rgba(
+        0,
+        0,
+        0,
+        0.2
+      );
+
+  color:
+    rgba(
+      246,
+      236,
+      252,
+      0.72
+    );
+}
+
+
+.stories-language button {
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color:
+    rgba(
+      246,
+      236,
+      252,
+      0.46
+    );
+
+  cursor: pointer;
+
+  font: inherit;
+
+  font-size: 0.67rem;
+
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+
+.stories-language button.is-active {
+  color: #ffffff;
+
+  text-shadow:
+    0 0 12px
+      rgba(
+        211,
+        166,
+        244,
+        0.7
+      );
+}
+
+
+.stories-language i {
+  width: 1px;
+  height: 16px;
+
+  background:
+    rgba(
+      245,
+      233,
+      252,
+      0.16
+    );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.stories-hero__content {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(
+      900px,
+      90%
+    );
+
+  text-align: center;
+}
+
+
+.stories-eyebrow {
+  margin:
+    0 0 14px;
+
+  font-size: 0.52rem;
+
+  letter-spacing: 0.34em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      219,
+      176,
+      247,
+      0.92
+    );
+}
+
+
+.stories-page[data-language="ta"]
+.stories-eyebrow {
+  letter-spacing: 0.04em;
+
+  text-transform: none;
+}
+
+
+/* =========================================================
+   HERO ORNAMENT
+========================================================= */
+
+.stories-hero__ornament {
+  margin-bottom: 20px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  color:
+    rgba(
+      246,
+      230,
+      255,
+      0.88
+    );
+}
+
+
+.stories-hero__ornament span {
+  width: 75px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        219,
+        177,
+        244,
+        0.68
+      )
+    );
+}
+
+
+.stories-hero__ornament span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.stories-hero__ornament svg {
+  animation:
+    storiesStarPulse
+    2.4s ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.stories-hero h1 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      4.5rem,
+      8.7vw,
+      8.8rem
+    );
+
+  line-height: 0.83;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.045em;
+
+  color: #ffffff;
+
+  text-shadow:
+    0 20px 60px
+      rgba(
+        8,
+        2,
+        12,
+        0.58
+      );
+}
+
+
+.stories-hero h1 em {
+  display: block;
+
+  margin-top: 13px;
+
+  font-weight: 400;
+
+  background:
+    linear-gradient(
+      90deg,
+      #ffffff,
+      #d9a8f3,
+      #ffffff
+    );
+
+  -webkit-background-clip:
+    text;
+
+  background-clip:
+    text;
+
+  color: transparent;
+}
+
+
+.stories-page[data-language="ta"]
+.stories-hero h1 {
+  font-size:
+    clamp(
+      2.7rem,
+      6vw,
+      5rem
+    );
+
+  line-height: 1.3;
+
+  letter-spacing: 0;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.stories-hero__description {
+  width:
+    min(
+      650px,
+      92%
+    );
+
+  margin:
+    28px auto 0;
+
+  font-size: 0.98rem;
+
+  line-height: 1.85;
+
+  color:
+    rgba(
+      251,
+      246,
+      255,
+      0.75
+    );
+}
+
+
+/* =========================================================
+   HERO BUTTON
+========================================================= */
+
+.stories-hero__button {
+  margin-top: 30px;
+
+  min-height: 50px;
+
+  padding:
+    0 22px;
+
+  border:
+    1px solid
+    rgba(
+      221,
+      181,
+      247,
+      0.42
+    );
+
+  border-radius: 30px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        158,
+        75,
+        215,
+        0.28
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.07
+      )
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 15px 38px
+      rgba(
+        0,
+        0,
+        0,
+        0.25
+      );
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+.stories-hero__button:hover {
+  transform:
+    translateY(-4px)
+    scale(1.02);
+
+  border-color:
+    rgba(
+      244,
+      229,
+      255,
+      0.72
+    );
+
+  box-shadow:
+    0 18px 50px
+      rgba(
+        167,
+        88,
+        224,
+        0.2
+      );
+}
+
+
+/* =========================================================
+   HERO STARS
+========================================================= */
+
+.stories-hero__star {
+  position: absolute;
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  color:
+    rgba(
+      247,
+      236,
+      255,
+      0.56
+    );
+
+  text-shadow:
+    0 0 15px
+      rgba(
+        190,
+        126,
+        235,
+        0.7
+      );
+
+  animation:
+    storiesFloatingStar
+    5s ease-in-out
+    infinite;
+}
+
+
+.stories-hero__star--1 {
+  left: 11%;
+  top: 28%;
+
+  font-size: 1.3rem;
+}
+
+
+.stories-hero__star--2 {
+  right: 14%;
+  top: 39%;
+
+  font-size: 1.7rem;
+
+  animation-delay: 1.3s;
+}
+
+
+.stories-hero__star--3 {
+  right: 25%;
+  bottom: 16%;
+
+  animation-delay: 2.5s;
+}
+
+
+/* =========================================================
+   HERO ENTRY
+========================================================= */
+
+.stories-hero-entry {
+  opacity: 0;
+
+  transform:
+    translateY(30px);
+
+  animation:
+    storiesHeroEntry
+    0.9s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.stories-hero-entry--1 {
+  animation-delay: 0.12s;
+}
+
+
+.stories-hero-entry--2 {
+  animation-delay: 0.24s;
+}
+
+
+.stories-hero-entry--3 {
+  animation-delay: 0.36s;
+}
+
+
+.stories-hero-entry--4 {
+  animation-delay: 0.48s;
+}
+
+
+.stories-hero-entry--5 {
+  animation-delay: 0.62s;
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.stories-reveal {
+  opacity: 0;
+
+  transform:
+    translateY(46px)
+    scale(0.985);
+
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+
+.stories-reveal--visible {
+  opacity: 1;
+
+  transform:
+    translateY(0)
+    scale(1);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.stories-intro {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      1180px,
+      calc(
+        100% - 80px
+      )
+    );
+
+  margin:
+    55px auto 0;
+
+  padding:
+    40px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    58px
+    1fr
+    auto;
+
+  align-items: center;
+
+  gap: 25px;
+
+  border-top:
+    1px solid
+    rgba(
+      224,
+      192,
+      245,
+      0.15
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      224,
+      192,
+      245,
+      0.15
+    );
+}
+
+
+.stories-intro__icon {
+  width: 48px;
+  height: 48px;
+
+  border:
+    1px solid
+    rgba(
+      213,
+      169,
+      241,
+      0.3
+    );
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      164,
+      79,
+      220,
+      0.08
+    );
+
+  color:
+    #e3c2f8;
+
+  box-shadow:
+    0 0 30px
+      rgba(
+        167,
+        91,
+        226,
+        0.08
+      );
+
+  animation:
+    storiesIconFloat
+    4s ease-in-out
+    infinite;
+}
+
+
+.stories-intro__content > span {
+  font-size: 0.44rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(
+      214,
+      169,
+      243,
+      0.73
+    );
+}
+
+
+.stories-intro h2 {
+  margin:
+    8px 0 10px;
+
+  font-size:
+    clamp(
+      2.9rem,
+      5vw,
+      4.8rem
+    );
+
+  line-height: 0.91;
+
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+
+.stories-intro h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    #d8a8f3;
+}
+
+
+.stories-intro p {
+  max-width: 620px;
+
+  margin: 0;
+
+  font-size: 0.88rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(
+      241,
+      225,
+      249,
+      0.58
+    );
+}
+
+
+.stories-intro__count {
+  text-align: right;
+}
+
+
+.stories-intro__count strong {
+  display: block;
+
+  font-size: 2rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      219,
+      176,
+      244,
+      0.48
+    );
+}
+
+
+.stories-intro__count span {
+  font-size: 0.42rem;
+
+  letter-spacing: 0.14em;
+
+  color:
+    rgba(
+      240,
+      223,
+      249,
+      0.35
+    );
+}
+
+
+/* =========================================================
+   CHAPTERS
+========================================================= */
+
+.stories-chapters {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      1280px,
+      calc(
+        100% - 60px
+      )
+    );
+
+  margin:
+    85px auto 0;
+}
+
+
+/* =========================================================
+   CHAPTER
+========================================================= */
+
+.stories-chapter {
+  position: relative;
+
+  min-height: 570px;
+
+  margin-bottom: 90px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      350px,
+      0.82fr
+    )
+    minmax(
+      430px,
+      1.18fr
+    );
+
+  align-items: center;
+
+  gap:
+    clamp(
+      45px,
+      7vw,
+      105px
+    );
+}
+
+
+.stories-chapter--reverse {
+  grid-template-columns:
+    minmax(
+      430px,
+      1.18fr
+    )
+    minmax(
+      350px,
+      0.82fr
+    );
+}
+
+
+.stories-chapter--reverse
+.stories-chapter__visual {
+  order: 2;
+}
+
+
+.stories-chapter--reverse
+.stories-chapter__content {
+  order: 1;
+}
+
+
+/* =========================================================
+   CHAPTER VISUAL
+========================================================= */
+
+.stories-chapter__visual {
+  position: relative;
+
+  width:
+    min(
+      440px,
+      100%
+    );
+
+  margin-inline: auto;
+}
+
+
+.stories-chapter__image {
+  position: relative;
+
+  aspect-ratio:
+    4 / 5;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      216,
+      170,
+      244,
+      0.28
+    );
+
+  border-radius:
+    32px 8px
+    32px 8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.03
+    );
+
+  box-shadow:
+    0 35px 80px
+      rgba(
+        0,
+        0,
+        0,
+        0.45
+      ),
+
+    0 0 55px
+      rgba(
+        169,
+        91,
+        226,
+        0.08
+      );
+
+  transform:
+    rotate(-1deg);
+
+  transition:
+    transform 0.6s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    box-shadow 0.55s ease;
+}
+
+
+.stories-chapter--reverse
+.stories-chapter__image {
+  transform:
+    rotate(1deg);
+}
+
+
+.stories-chapter:hover
+.stories-chapter__image {
+  transform:
+    translateY(-9px)
+    rotate(0)
+    scale(1.01);
+
+  box-shadow:
+    0 42px 100px
+      rgba(
+        0,
+        0,
+        0,
+        0.52
+      ),
+
+    0 0 75px
+      rgba(
+        169,
+        91,
+        226,
+        0.14
+      );
+}
+
+
+.stories-chapter__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(1.12)
+    saturate(1.04)
+    contrast(0.95);
+
+  transition:
+    transform 0.8s ease;
+}
+
+
+.stories-chapter:hover
+.stories-chapter__image img {
+  transform:
+    scale(1.055);
+}
+
+
+.stories-chapter__image-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        13,
+        6,
+        18,
+        0.02
+      ),
+      transparent 46%,
+      rgba(
+        11,
+        4,
+        16,
+        0.68
+      )
+    );
+}
+
+
+.stories-chapter__image-glow {
+  position: absolute;
+
+  left: 14%;
+  right: 14%;
+  bottom: -15%;
+
+  height: 35%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      177,
+      99,
+      229,
+      0.23
+    );
+
+  filter:
+    blur(48px);
+
+  animation:
+    storiesImageGlow
+    4s ease-in-out
+    infinite alternate;
+}
+
+
+/* =========================================================
+   VIDEO FLOAT
+========================================================= */
+
+.stories-chapter__video-float {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 18px;
+  bottom: 18px;
+
+  min-height: 50px;
+
+  padding:
+    7px 15px 7px 7px;
+
+  border:
+    1px solid
+    rgba(
+      244,
+      229,
+      255,
+      0.3
+    );
+
+  border-radius: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  background:
+    rgba(
+      19,
+      8,
+      27,
+      0.72
+    );
+
+  backdrop-filter:
+    blur(15px);
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px
+      rgba(
+        0,
+        0,
+        0,
+        0.25
+      );
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.stories-chapter__video-float:hover {
+  transform:
+    translateY(-3px)
+    scale(1.04);
+
+  background:
+    rgba(
+      126,
+      57,
+      177,
+      0.82
+    );
+
+  border-color:
+    rgba(
+      251,
+      243,
+      255,
+      0.55
+    );
+}
+
+
+.stories-chapter__video-float > span {
+  width: 35px;
+  height: 35px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.12
+    );
+
+  color:
+    #f3dcff;
+}
+
+
+.stories-chapter__video-float div {
+  text-align: left;
+}
+
+
+.stories-chapter__video-float small {
+  display: block;
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.16em;
+
+  color:
+    rgba(
+      246,
+      233,
+      252,
+      0.52
+    );
+}
+
+
+.stories-chapter__video-float strong {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 0.68rem;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   YEAR
+========================================================= */
+
+.stories-chapter__year {
+  position: absolute;
+
+  right: -14px;
+  bottom: 30px;
+
+  padding:
+    9px 13px;
+
+  border:
+    1px solid
+    rgba(
+      220,
+      179,
+      245,
+      0.3
+    );
+
+  border-radius: 20px;
+
+  background:
+    rgba(
+      22,
+      9,
+      31,
+      0.86
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  color:
+    rgba(
+      252,
+      247,
+      255,
+      0.86
+    );
+
+  font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   CHAPTER CONTENT
+========================================================= */
+
+.stories-chapter__record {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    rgba(
+      215,
+      171,
+      243,
+      0.78
+    );
+}
+
+
+.stories-chapter__record span {
+  font-size: 0.43rem;
+
+  letter-spacing: 0.2em;
+}
+
+
+.stories-chapter__record i {
+  width: 48px;
+  height: 1px;
+
+  background:
+    rgba(
+      215,
+      171,
+      243,
+      0.32
+    );
+}
+
+
+.stories-chapter__record strong {
+  font-size: 0.8rem;
+
+  font-weight: 400;
+}
+
+
+.stories-chapter__subtitle {
+  display: block;
+
+  margin-top: 17px;
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.15em;
+
+  text-transform: uppercase;
+
+  color: #d4a1ef;
+}
+
+
+.stories-page[data-language="ta"]
+.stories-chapter__subtitle {
+  letter-spacing: 0.02em;
+
+  text-transform: none;
+}
+
+
+.stories-chapter h2 {
+  max-width: 620px;
+
+  margin:
+    9px 0 17px;
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      5rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+
+.stories-page[data-language="ta"]
+.stories-chapter h2 {
+  font-size:
+    clamp(
+      2.2rem,
+      4vw,
+      3.8rem
+    );
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   CHAPTER TEXT
+========================================================= */
+
+.stories-chapter__summary {
+  max-width: 570px;
+
+  margin: 0;
+
+  padding-left: 16px;
+
+  border-left:
+    2px solid
+    #b564e5;
+
+  font-size: 1rem;
+
+  line-height: 1.7;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      247,
+      238,
+      252,
+      0.77
+    );
+}
+
+
+.stories-chapter__intro {
+  max-width: 575px;
+
+  margin:
+    18px 0 0;
+
+  font-size: 0.88rem;
+
+  line-height: 1.82;
+
+  color:
+    rgba(
+      237,
+      220,
+      245,
+      0.57
+    );
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.stories-chapter__actions {
+  margin-top: 26px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+
+.stories-chapter__read,
+.stories-chapter__trailer {
+  min-height: 46px;
+
+  border-radius: 25px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font: inherit;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.32s ease,
+    border-color 0.32s ease,
+    background 0.32s ease;
+}
+
+
+/* READ */
+
+.stories-chapter__read {
+  padding:
+    0 16px 0 7px;
+
+  border:
+    1px solid
+    rgba(
+      219,
+      179,
+      245,
+      0.4
+    );
+
+  background:
+    rgba(
+      167,
+      91,
+      227,
+      0.1
+    );
+
+  color: #ffffff;
+}
+
+
+.stories-chapter__read > span {
+  width: 31px;
+  height: 31px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  color:
+    #e4c2f8;
+}
+
+
+.stories-chapter__read strong {
+  font-weight: 400;
+}
+
+
+.stories-chapter__read:hover {
+  transform:
+    translateY(-3px);
+
+  background:
+    rgba(
+      167,
+      91,
+      227,
+      0.18
+    );
+
+  border-color:
+    rgba(
+      245,
+      229,
+      255,
+      0.65
+    );
+}
+
+
+/* TRAILER */
+
+.stories-chapter__trailer {
+  padding:
+    0 15px 0 7px;
+
+  border:
+    1px solid
+    rgba(
+      245,
+      230,
+      255,
+      0.15
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+  color:
+    rgba(
+      244,
+      230,
+      252,
+      0.72
+    );
+}
+
+
+.stories-chapter__trailer > span {
+  width: 31px;
+  height: 31px;
+
+  border:
+    1px solid
+    rgba(
+      214,
+      169,
+      243,
+      0.3
+    );
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  color:
+    #dbaaf3;
+}
+
+
+.stories-chapter__trailer strong {
+  font-weight: 400;
+}
+
+
+.stories-chapter__trailer:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    rgba(
+      226,
+      194,
+      247,
+      0.5
+    );
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   GIANT NUMBER
+========================================================= */
+
+.stories-chapter__number {
+  position: absolute;
+
+  z-index: -1;
+
+  top: -20px;
+  right: 1%;
+
+  font-size: 10rem;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      220,
+      180,
+      246,
+      0.045
+    );
+
+  pointer-events: none;
+}
+
+
+.stories-chapter--reverse
+.stories-chapter__number {
+  left: 1%;
+  right: auto;
+}
+
+
+/* =========================================================
+   ENDING
+========================================================= */
+
+.stories-ending {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      800px,
+      calc(
+        100% - 40px
+      )
+    );
+
+  margin:
+    25px auto 100px;
+
+  padding:
+    70px 30px;
+
+  text-align: center;
+
+  border-top:
+    1px solid
+    rgba(
+      221,
+      184,
+      246,
+      0.15
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      221,
+      184,
+      246,
+      0.15
+    );
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        157,
+        73,
+        215,
+        0.09
+      ),
+      transparent 58%
+    );
+}
+
+
+.stories-ending__star {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color:
+    #e1bbf7;
+
+  animation:
+    storiesStarPulse
+    2.4s ease-in-out
+    infinite;
+}
+
+
+.stories-ending > svg {
+  font-size: 2rem;
+
+  color:
+    #c981ec;
+}
+
+
+.stories-ending h2 {
+  margin:
+    20px 0 0;
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      5rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+
+.stories-ending h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    #d6a3f0;
+}
+
+
+.stories-ending p {
+  max-width: 600px;
+
+  margin:
+    22px auto 0;
+
+  font-size: 0.88rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(
+      240,
+      224,
+      247,
+      0.56
+    );
+}
+
+
+.stories-ending__line {
+  margin-top: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  color:
+    #deb7f4;
+}
+
+
+.stories-ending__line span {
+  width: 80px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        218,
+        176,
+        244,
+        0.4
+      )
+    );
+}
+
+
+.stories-ending__line span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+/* =========================================================
+   STORY READER OVERLAY
+========================================================= */
+
+.story-reader-overlay {
+  position: fixed;
+
+  z-index: 2147482000;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding:
+    24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    rgba(
+      8,
+      3,
+      12,
+      0.92
+    );
+
+  backdrop-filter:
+    blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  animation:
+    storiesOverlayIn
+    0.3s ease both;
+}
+
+
+/* =========================================================
+   STORY READER
+========================================================= */
+
+.story-reader {
+  position: relative;
+
+  width:
+    min(
+      1220px,
+      calc(
+        100vw - 48px
+      )
+    );
+
+  height:
+    min(
+      790px,
+      calc(
+        100dvh - 48px
+      )
+    );
+
+  overflow: hidden;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      330px,
+      0.82fr
+    )
+    minmax(
+      470px,
+      1.18fr
+    );
+
+  border:
+    1px solid
+    rgba(
+      207,
+      155,
+      240,
+      0.36
+    );
+
+  border-radius: 24px;
+
+  background: #f8f4fb;
+
+  box-shadow:
+    0 50px 150px
+      rgba(
+        0,
+        0,
+        0,
+        0.76
+      ),
+
+    0 0 70px
+      rgba(
+        160,
+        81,
+        216,
+        0.12
+      );
+
+  animation:
+    storiesModalIn
+    0.52s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+
+/* =========================================================
+   READER CLOSE
+========================================================= */
+
+.story-reader__close {
+  position: absolute;
+
+  z-index: 50;
+
+  top: 15px;
+  right: 15px;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      83,
+      47,
+      102,
+      0.15
+    );
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
+  color: #59346b;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 24px
+      rgba(
+        54,
+        29,
+        65,
+        0.12
+      );
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.story-reader__close:hover {
+  transform:
+    rotate(90deg)
+    scale(1.05);
+
+  border-color:
+    rgba(
+      163,
+      87,
+      215,
+      0.55
+    );
+}
+
+
+/* =========================================================
+   READER VISUAL
+========================================================= */
+
+.story-reader__visual {
+  position: relative;
+
+  overflow: hidden;
+
+  background: #16091d;
+}
+
+
+.story-reader__visual img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(1.08)
+    saturate(1.05)
+    contrast(0.95);
+}
+
+
+.story-reader__visual-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 44%,
+      rgba(
+        12,
+        4,
+        16,
+        0.84
+      )
+    );
+}
+
+
+.story-reader__chapter-tag {
+  position: absolute;
+
+  top: 22px;
+  left: 22px;
+
+  padding:
+    8px 12px;
+
+  border:
+    1px solid
+    rgba(
+      245,
+      229,
+      255,
+      0.24
+    );
+
+  border-radius: 20px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background:
+    rgba(
+      19,
+      7,
+      25,
+      0.58
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  color: #ffffff;
+}
+
+
+.story-reader__chapter-tag span {
+  font-size: 0.41rem;
+
+  letter-spacing: 0.15em;
+}
+
+
+.story-reader__chapter-tag strong {
+  color:
+    #d9a5f2;
+}
+
+
+/* =========================================================
+   VISUAL COPY
+========================================================= */
+
+.story-reader__visual-copy {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 30px;
+
+  color: #ffffff;
+}
+
+
+.story-reader__visual-copy small {
+  color:
+    rgba(
+      231,
+      203,
+      247,
+      0.68
+    );
+}
+
+
+.story-reader__visual-copy h2 {
+  margin:
+    8px 0 18px;
+
+  font-size:
+    clamp(
+      2.5rem,
+      4vw,
+      4rem
+    );
+
+  line-height: 0.92;
+
+  font-weight: 400;
+
+  text-shadow:
+    0 12px 34px
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      );
+}
+
+
+/* =========================================================
+   READER WATCH
+========================================================= */
+
+.story-reader__watch {
+  min-height: 43px;
+
+  padding:
+    0 15px 0 6px;
+
+  border:
+    1px solid
+    rgba(
+      250,
+      240,
+      255,
+      0.25
+    );
+
+  border-radius: 24px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  background:
+    rgba(
+      19,
+      7,
+      25,
+      0.58
+    );
+
+  backdrop-filter:
+    blur(10px);
+
+  color: #ffffff;
+
+  cursor: pointer;
+}
+
+
+.story-reader__watch span {
+  width: 31px;
+  height: 31px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.1
+    );
+
+  color:
+    #dfb5f5;
+}
+
+
+/* =========================================================
+   READER CONTENT
+========================================================= */
+
+.story-reader__content {
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+
+.story-reader__scroll {
+  height: 100%;
+
+  padding:
+    50px;
+
+  overflow-y: auto;
+
+  color:
+    #3c2945;
+
+  background:
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(
+        174,
+        102,
+        219,
+        0.13
+      ),
+      transparent 28%
+    ),
+
+    linear-gradient(
+      145deg,
+      #ffffff,
+      #f3eafb
+    );
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(
+      159,
+      83,
+      210,
+      0.4
+    )
+    transparent;
+}
+
+
+.story-reader__scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+
+.story-reader__scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+
+  background:
+    rgba(
+      159,
+      83,
+      210,
+      0.4
+    );
+}
+
+
+/* =========================================================
+   READER LANGUAGE
+========================================================= */
+
+.story-reader__language {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 23px;
+
+  color:
+    rgba(
+      89,
+      54,
+      103,
+      0.42
+    );
+}
+
+
+.story-reader__language button {
+  padding:
+    7px 10px;
+
+  border:
+    1px solid
+    rgba(
+      84,
+      49,
+      99,
+      0.1
+    );
+
+  border-radius: 17px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+
+  color:
+    rgba(
+      72,
+      42,
+      86,
+      0.58
+    );
+
+  cursor: pointer;
+
+  font: inherit;
+}
+
+
+.story-reader__language button.is-active {
+  color:
+    #4d2d5b;
+
+  border-color:
+    rgba(
+      163,
+      88,
+      216,
+      0.48
+    );
+
+  background:
+    rgba(
+      170,
+      98,
+      220,
+      0.11
+    );
+}
+
+
+.story-reader__language i {
+  width: 1px;
+  height: 18px;
+
+  background:
+    rgba(
+      85,
+      51,
+      99,
+      0.14
+    );
+}
+
+
+/* =========================================================
+   READER TEXT
+========================================================= */
+
+.story-reader__eyebrow {
+  margin:
+    0 0 12px;
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    #a25dcb;
+}
+
+
+.story-reader__subtitle {
+  font-size: 0.53rem;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  color:
+    #a25dcb;
+}
+
+
+.story-reader__scroll h1 {
+  margin:
+    8px 0 19px;
+
+  font-size:
+    clamp(
+      2.7rem,
+      4vw,
+      4.2rem
+    );
+
+  line-height: 0.96;
+
+  font-weight: 400;
+
+  color:
+    #382340;
+}
+
+
+.story-reader__lead {
+  padding-left: 15px;
+
+  border-left:
+    2px solid
+    #ad64d5;
+
+  font-size: 0.94rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(
+      57,
+      36,
+      68,
+      0.76
+    );
+}
+
+
+.story-reader__story p {
+  margin:
+    0 0 18px;
+
+  font-size: 0.88rem;
+
+  line-height: 1.92;
+
+  color:
+    rgba(
+      57,
+      38,
+      67,
+      0.7
+    );
+}
+
+
+.story-reader__story
+p:first-child::first-letter {
+  float: left;
+
+  margin:
+    5px 8px 0 0;
+
+  font-size: 3.3rem;
+
+  line-height: 0.78;
+
+  color:
+    #a25dcb;
+}
+
+
+/* =========================================================
+   READER SECTION
+========================================================= */
+
+.story-reader__section {
+  margin-top: 30px;
+
+  padding-top: 20px;
+
+  border-top:
+    1px solid
+    rgba(
+      83,
+      49,
+      98,
+      0.11
+    );
+}
+
+
+.story-reader__section > header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color:
+    #a25dcb;
+}
+
+
+.story-reader__section > header > span {
+  width: 28px;
+  height: 28px;
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      165,
+      91,
+      210,
+      0.09
+    );
+}
+
+
+/* =========================================================
+   MOMENTS
+========================================================= */
+
+.story-reader__moments {
+  margin-top: 13px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 8px;
+}
+
+
+.story-reader__moments article {
+  min-height: 58px;
+
+  padding: 11px;
+
+  border:
+    1px solid
+    rgba(
+      79,
+      47,
+      93,
+      0.08
+    );
+
+  border-radius: 10px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.5
+    );
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.story-reader__moments article:hover {
+  transform:
+    translateY(-2px);
+
+  background:
+    rgba(
+      172,
+      98,
+      220,
+      0.08
+    );
+}
+
+
+.story-reader__moments article > span {
+  color:
+    #a25dcb;
+}
+
+
+.story-reader__moments p {
+  margin: 0;
+
+  font-size: 0.72rem;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.story-reader__meta {
+  margin-top: 22px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+  gap: 10px;
+}
+
+
+.story-reader__meta section {
+  padding: 14px;
+
+  border:
+    1px solid
+    rgba(
+      80,
+      48,
+      94,
+      0.09
+    );
+
+  border-radius: 11px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.37
+    );
+}
+
+
+.story-reader__meta header {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    #a25dcb;
+}
+
+
+.story-reader__meta
+section > div {
+  margin-top: 10px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 5px;
+}
+
+
+.story-reader__meta
+section > div span {
+  padding:
+    6px 8px;
+
+  border-radius: 14px;
+
+  background:
+    rgba(
+      171,
+      98,
+      219,
+      0.09
+    );
+
+  font-size: 0.63rem;
+}
+
+
+/* =========================================================
+   READER NAVIGATION
+========================================================= */
+
+.story-reader__navigation {
+  margin-top: 28px;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid
+    rgba(
+      80,
+      48,
+      94,
+      0.1
+    );
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+.story-reader__navigation button {
+  border: none;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  background: transparent;
+
+  color:
+    #a25dcb;
+
+  cursor: pointer;
+
+  font: inherit;
+}
+
+
+.story-reader__navigation > div {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color:
+    rgba(
+      79,
+      47,
+      93,
+      0.48
+    );
+}
+
+
+.story-reader__navigation > div i {
+  width: 25px;
+  height: 1px;
+
+  background:
+    rgba(
+      79,
+      47,
+      93,
+      0.2
+    );
+}
+
+
+/* =========================================================
+   =========================================================
+   TRAILER OVERLAY
+   =========================================================
+========================================================= */
+
+.story-trailer-overlay {
+  position: fixed;
+
+  z-index: 2147483000;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100dvh;
+
+  padding:
+    24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(
+        129,
+        60,
+        175,
+        0.16
+      ),
+      transparent 45%
+    ),
+
+    rgba(
+      7,
+      2,
+      10,
+      0.95
+    );
+
+  backdrop-filter:
+    blur(20px);
+
+  -webkit-backdrop-filter:
+    blur(20px);
+
+  animation:
+    storiesOverlayIn
+    0.3s ease;
+}
+
+
+/* =========================================================
+   TRAILER
+========================================================= */
+
+.story-trailer {
+  position: relative;
+
+  width:
+    min(
+      1120px,
+      calc(
+        100vw - 48px
+      )
+    );
+
+  max-height:
+    calc(
+      100dvh - 48px
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      222,
+      184,
+      247,
+      0.3
+    );
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #130817,
+      #0d0711
+    );
+
+  box-shadow:
+    0 50px 150px
+      rgba(
+        0,
+        0,
+        0,
+        0.85
+      ),
+
+    0 0 85px
+      rgba(
+        169,
+        91,
+        226,
+        0.1
+      );
+
+  animation:
+    storiesTrailerIn
+    0.55s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+
+/* =========================================================
+   TRAILER PARTICLES
+========================================================= */
+
+.story-trailer__particles {
+  position: absolute;
+
+  z-index: 1;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.story-trailer__particles span {
+  position: absolute;
+
+  left:
+    var(--particle-left);
+
+  top:
+    var(--particle-top);
+
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      246,
+      229,
+      255,
+      0.7
+    );
+
+  box-shadow:
+    0 0 10px
+      rgba(
+        204,
+        150,
+        238,
+        0.8
+      );
+
+  opacity: 0;
+
+  animation:
+    storiesTrailerParticle
+    5s ease-in-out
+    var(--particle-delay)
+    infinite;
+}
+
+
+/* =========================================================
+   TRAILER TOPBAR
+========================================================= */
+
+.story-trailer__topbar {
+  position: relative;
+
+  z-index: 5;
+
+  min-height: 64px;
+
+  padding:
+    0 18px 0 24px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      231,
+      207,
+      247,
+      0.1
+    );
+}
+
+
+.story-trailer__label {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.story-trailer__label-icon {
+  width: 36px;
+  height: 36px;
+
+  border:
+    1px solid
+    rgba(
+      221,
+      183,
+      246,
+      0.25
+    );
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      169,
+      91,
+      226,
+      0.08
+    );
+
+  color:
+    #dfb6f5;
+}
+
+
+.story-trailer__label small {
+  display: block;
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(
+      221,
+      190,
+      239,
+      0.52
+    );
+}
+
+
+.story-trailer__label strong {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 0.85rem;
+
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   TRAILER CLOSE
+========================================================= */
+
+.story-trailer__close {
+  width: 39px;
+  height: 39px;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      236,
+      218,
+      248,
+      0.18
+    );
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.story-trailer__close:hover {
+  transform:
+    rotate(90deg);
+
+  background:
+    rgba(
+      173,
+      98,
+      220,
+      0.15
+    );
+}
+
+
+/* =========================================================
+   VIDEO STAGE
+========================================================= */
+
+.story-trailer__stage {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+
+  padding:
+    24px 30px 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   VIDEO SHELL
+========================================================= */
+
+.story-trailer__video-shell {
+  width:
+    min(
+      100%,
+      1010px
+    );
+
+  margin:
+    0 auto;
+
+  padding: 6px;
+
+  border:
+    1px solid
+    rgba(
+      220,
+      181,
+      244,
+      0.2
+    );
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        179,
+        105,
+        222,
+        0.12
+      ),
+      rgba(
+        255,
+        255,
+        255,
+        0.03
+      )
+    );
+
+  box-shadow:
+    0 25px 70px
+      rgba(
+        0,
+        0,
+        0,
+        0.5
+      ),
+
+    0 0 45px
+      rgba(
+        169,
+        91,
+        226,
+        0.08
+      );
+}
+
+
+/* =========================================================
+   PERFECT 16:9 VIDEO
+========================================================= */
+
+.story-trailer__video {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio:
+    16 / 9;
+
+  overflow: hidden;
+
+  border-radius: 13px;
+
+  background: #000000;
+}
+
+
+.story-trailer__video iframe {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border: 0;
+
+  display: block;
+}
+
+
+/* =========================================================
+   UNAVAILABLE VIDEO
+========================================================= */
+
+.story-trailer__unavailable {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        170,
+        90,
+        220,
+        0.17
+      ),
+      transparent 42%
+    ),
+
+    #0d0711;
+
+  color:
+    rgba(
+      241,
+      223,
+      250,
+      0.7
+    );
+}
+
+
+.story-trailer__unavailable > span {
+  width: 70px;
+  height: 70px;
+
+  border:
+    1px solid
+    rgba(
+      220,
+      181,
+      244,
+      0.32
+    );
+
+  border-radius: 50%;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 1.5rem;
+
+  color:
+    #daa9f2;
+}
+
+
+/* =========================================================
+   TRAILER FOOTER
+========================================================= */
+
+.story-trailer__footer {
+  position: relative;
+
+  z-index: 5;
+
+  padding:
+    18px 28px 24px;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 25px;
+}
+
+
+.story-trailer__meta-line {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.16em;
+
+  color:
+    rgba(
+      219,
+      184,
+      240,
+      0.52
+    );
+}
+
+
+.story-trailer__meta-line i {
+  width: 30px;
+  height: 1px;
+
+  background:
+    rgba(
+      218,
+      181,
+      239,
+      0.25
+    );
+}
+
+
+.story-trailer__meta > small {
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    rgba(
+      224,
+      193,
+      243,
+      0.58
+    );
+}
+
+
+.story-trailer__meta h2 {
+  margin:
+    4px 0 0;
+
+  font-size:
+    clamp(
+      2rem,
+      4vw,
+      3.7rem
+    );
+
+  line-height: 0.95;
+
+  font-weight: 400;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   READ FROM VIDEO
+========================================================= */
+
+.story-trailer__read {
+  flex-shrink: 0;
+
+  min-height: 46px;
+
+  padding:
+    0 16px;
+
+  border:
+    1px solid
+    rgba(
+      218,
+      177,
+      244,
+      0.34
+    );
+
+  border-radius: 24px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  background:
+    rgba(
+      164,
+      84,
+      218,
+      0.12
+    );
+
+  color:
+    #f8edff;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.story-trailer__read:hover {
+  transform:
+    translateY(-3px);
+
+  background:
+    rgba(
+      164,
+      84,
+      218,
+      0.2
+    );
+
+  border-color:
+    rgba(
+      240,
+      219,
+      252,
+      0.55
+    );
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes storiesParticleFloat {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        0,
+        30px,
+        0
+      )
+      scale(0.55);
+  }
+
+  25% {
+    opacity: 0.65;
+  }
+
+  55% {
+    transform:
+      translate3d(
+        10px,
+        -18px,
+        0
+      )
+      scale(1);
+  }
+
+  78% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      translate3d(
+        -8px,
+        -65px,
+        0
+      )
+      scale(0.72);
+  }
+
+}
+
+
+@keyframes storiesHeroImage {
+
+  from {
+    opacity: 0;
+
+    transform:
+      scale(1.1);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1.03);
+  }
+
+}
+
+
+@keyframes storiesGlowDrift {
+
+  from {
+    transform:
+      translateX(-25px)
+      scale(0.92);
+  }
+
+  to {
+    transform:
+      translateX(35px)
+      scale(1.08);
+  }
+
+}
+
+
+@keyframes storiesHeroEntry {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes storiesStarPulse {
+
+  0%,
+  100% {
+    opacity: 0.55;
+
+    transform:
+      scale(0.92)
+      rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.14)
+      rotate(12deg);
+  }
+
+}
+
+
+@keyframes storiesFloatingStar {
+
+  0%,
+  100% {
+    transform:
+      translateY(0)
+      rotate(0);
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      rotate(12deg);
+  }
+
+}
+
+
+@keyframes storiesIconFloat {
+
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(-6px);
+  }
+
+}
+
+
+@keyframes storiesImageGlow {
+
+  from {
+    opacity: 0.45;
+
+    transform:
+      scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1.1);
+  }
+
+}
+
+
+@keyframes storiesOverlayIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes storiesModalIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(28px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes storiesTrailerIn {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px)
+      scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes storiesTrailerParticle {
+
+  0%,
+  100% {
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+  }
+
+  50% {
+    opacity: 0.75;
+
+    transform:
+      translateY(-18px);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (
+  max-width: 1020px
+) {
+
+  .stories-chapter,
+  .stories-chapter--reverse {
+    grid-template-columns:
+      minmax(
+        310px,
+        0.8fr
+      )
+      minmax(
+        390px,
+        1.2fr
+      );
+
+    gap: 45px;
+  }
+
+
+  .story-reader {
+    grid-template-columns:
+      minmax(
+        285px,
+        0.72fr
+      )
+      minmax(
+        420px,
+        1.28fr
+      );
+  }
+
+
+  .story-reader__scroll {
+    padding:
+      46px 38px 32px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL TABLET
+========================================================= */
+
+@media (
+  max-width: 820px
+) {
+
+  .stories-intro {
+    width:
+      calc(
+        100% - 40px
+      );
+  }
+
+
+  .stories-chapters {
+    width:
+      calc(
+        100% - 40px
+      );
+  }
+
+
+  .stories-chapter,
+  .stories-chapter--reverse {
+    grid-template-columns:
+      1fr;
+
+    min-height: auto;
+
+    gap: 35px;
+
+    margin-bottom: 75px;
+  }
+
+
+  .stories-chapter--reverse
+  .stories-chapter__visual,
+  .stories-chapter--reverse
+  .stories-chapter__content {
+    order: initial;
+  }
+
+
+  .stories-chapter__visual {
+    width:
+      min(
+        440px,
+        90%
+      );
+  }
+
+
+  .stories-chapter__content {
+    text-align: center;
+  }
+
+
+  .stories-chapter__record,
+  .stories-chapter__actions {
+    justify-content: center;
+  }
+
+
+  .stories-chapter__summary {
+    margin-inline: auto;
+
+    text-align: left;
+  }
+
+
+  .stories-chapter__intro {
+    margin-inline: auto;
+  }
+
+
+  /* READER */
+
+  .story-reader-overlay {
+    padding: 10px;
+
+    align-items:
+      flex-start;
+  }
+
+
+  .story-reader {
+    width:
+      calc(
+        100vw - 20px
+      );
+
+    height:
+      calc(
+        100dvh - 20px
+      );
+
+    display: block;
+
+    overflow-y: auto;
+
+    border-radius: 18px;
+  }
+
+
+  .story-reader__visual {
+    height: 430px;
+  }
+
+
+  .story-reader__content {
+    overflow: visible;
+  }
+
+
+  .story-reader__scroll {
+    height: auto;
+
+    overflow: visible;
+  }
+
+
+  /* TRAILER */
+
+  .story-trailer-overlay {
+    padding: 10px;
+
+    align-items:
+      flex-start;
+  }
+
+
+  .story-trailer {
+    width:
+      calc(
+        100vw - 20px
+      );
+
+    max-height:
+      calc(
+        100dvh - 20px
+      );
+
+    overflow-y: auto;
+  }
+
+
+  .story-trailer__stage {
+    padding:
+      18px 18px 14px;
+  }
+
+
+  .story-trailer__footer {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .story-trailer__read {
+    justify-content: center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+  max-width: 560px
+) {
+
+  .stories-language {
+    top: 17px;
+    right: 17px;
+  }
+
+
+  .stories-hero {
+    min-height: 760px;
+  }
+
+
+  .stories-hero__content {
+    width: 92%;
+  }
+
+
+  .stories-hero h1 {
+    font-size:
+      clamp(
+        3.4rem,
+        16vw,
+        5.2rem
+      );
+  }
+
+
+  .stories-page[data-language="ta"]
+  .stories-hero h1 {
+    font-size:
+      clamp(
+        2.2rem,
+        9vw,
+        3.3rem
+      );
+  }
+
+
+  .stories-intro {
+    grid-template-columns:
+      1fr;
+
+    gap: 14px;
+  }
+
+
+  .stories-intro__count {
+    display: none;
+  }
+
+
+  .stories-chapters {
+    width:
+      calc(
+        100% - 24px
+      );
+  }
+
+
+  .stories-chapter__visual {
+    width: 94%;
+  }
+
+
+  .stories-chapter h2 {
+    font-size:
+      clamp(
+        2.5rem,
+        13vw,
+        4rem
+      );
+  }
+
+
+  .stories-page[data-language="ta"]
+  .stories-chapter h2 {
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        3rem
+      );
+  }
+
+
+  .stories-chapter__actions {
+    flex-direction: column;
+
+    align-items: stretch;
+  }
+
+
+  .stories-chapter__read,
+  .stories-chapter__trailer {
+    justify-content: center;
+  }
+
+
+  /* READER */
+
+  .story-reader__visual {
+    height: 340px;
+  }
+
+
+  .story-reader__scroll {
+    padding:
+      42px 20px 26px;
+  }
+
+
+  .story-reader__moments,
+  .story-reader__meta {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .story-reader__navigation
+  button span {
+    display: none;
+  }
+
+
+  /* TRAILER */
+
+  .story-trailer {
+    border-radius: 18px;
+  }
+
+
+  .story-trailer__topbar {
+    min-height: 58px;
+
+    padding:
+      0 13px 0 16px;
+  }
+
+
+  .story-trailer__stage {
+    padding:
+      14px 12px 12px;
+  }
+
+
+  .story-trailer__video-shell {
+    padding: 4px;
+
+    border-radius: 13px;
+  }
+
+
+  .story-trailer__video {
+    border-radius: 9px;
+  }
+
+
+  .story-trailer__footer {
+    padding:
+      16px 17px 20px;
+  }
+
+
+  .story-trailer__meta h2 {
+    font-size:
+      clamp(
+        2rem,
+        10vw,
+        3rem
+      );
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .stories-hero-entry,
+  .stories-reveal {
+    opacity: 1;
+
+    transform: none;
+
+    animation: none;
+
+    transition: none;
+  }
+
+
+  .stories-particles,
+  .story-trailer__particles {
+    display: none;
+  }
+
+
+  .stories-hero__background,
+  .stories-hero__glow,
+  .stories-hero__star,
+  .stories-intro__icon,
+  .stories-chapter__image-glow,
+  .stories-ending__star {
+    animation: none;
+  }
+
+
+  .story-reader-overlay,
+  .story-reader,
+  .story-trailer-overlay,
+  .story-trailer {
+    animation: none;
+  }
+
+}

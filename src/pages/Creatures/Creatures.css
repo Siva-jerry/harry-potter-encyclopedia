@@ -1,0 +1,3311 @@
+/* =========================================================
+   CREATURES — THE LIVING MENAGERIE
+========================================================= */
+
+.creature-menagerie {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: #03070a;
+  color: #edf5fb;
+}
+
+.creature-menagerie > section {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.creature-menagerie__hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.creature-menagerie__hero-image {
+  position: absolute;
+  z-index: -5;
+  inset: 0;
+
+  background:
+    url("/images/creatures/worlds/menagerie-gate.png")
+    center / cover no-repeat;
+
+  transform: scale(1.05);
+
+  animation:
+    creatureHeroDrift
+    18s ease-in-out infinite alternate;
+}
+
+.creature-menagerie__hero-shadow {
+  position: absolute;
+  z-index: -4;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(1, 5, 7, 0.88),
+      rgba(2, 8, 12, 0.36) 48%,
+      rgba(1, 5, 7, 0.82)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2, 6, 9, 0.25),
+      rgba(2, 6, 9, 0.2) 55%,
+      #03070a 100%
+    );
+}
+
+.creature-menagerie__hero-vignette {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+
+  box-shadow:
+    inset 0 0 180px 55px rgba(0, 0, 0, 0.82);
+
+  pointer-events: none;
+}
+
+.creature-menagerie__hero-content {
+  width: min(900px, 88%);
+  text-align: center;
+  padding-top: 20px;
+}
+
+.creature-menagerie__hero-sigil {
+  width: min(320px, 70%);
+  margin: 0 auto 28px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  color: rgba(186, 220, 241, 0.58);
+}
+
+.creature-menagerie__hero-sigil span {
+  flex: 1;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(181, 217, 241, 0.35)
+    );
+}
+
+.creature-menagerie__hero-sigil span:last-child {
+  transform: rotate(180deg);
+}
+
+.creature-menagerie__hero-sigil i {
+  font-style: normal;
+  font-size: 0.75rem;
+
+  animation:
+    creatureSigilPulse
+    3s ease-in-out infinite;
+}
+
+.creature-menagerie__eyebrow {
+  margin: 0 0 22px;
+
+  font-family: var(--font-magic);
+  font-size: 0.55rem;
+  letter-spacing: 0.46em;
+
+  color: rgba(174, 207, 230, 0.64);
+}
+
+.creature-menagerie__hero-title {
+  margin: 0;
+
+  font-family: var(--font-story);
+
+  font-size:
+    clamp(4.4rem, 8.4vw, 9rem);
+
+  line-height: 0.82;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+
+  color: #eef6fb;
+
+  text-shadow:
+    0 15px 50px rgba(0, 0, 0, 0.55);
+}
+
+.creature-menagerie__hero-title span {
+  display: block;
+  margin-top: 18px;
+
+  font-size: 0.74em;
+  font-style: italic;
+
+  color: rgba(174, 205, 226, 0.76);
+}
+
+.creature-menagerie__hero-description {
+  width: min(530px, 92%);
+  margin: 35px auto 0;
+
+  font-family: var(--font-story);
+  font-size: 1.05rem;
+  line-height: 1.8;
+
+  color: rgba(198, 216, 228, 0.65);
+}
+
+.creature-menagerie__enter {
+  margin-top: 38px;
+  padding: 15px 24px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+
+  border: 1px solid rgba(178, 213, 237, 0.24);
+  background: rgba(5, 13, 19, 0.32);
+
+  backdrop-filter: blur(12px);
+
+  font-family: var(--font-magic);
+  font-size: 0.48rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  color: rgba(226, 241, 251, 0.82);
+
+  cursor: pointer;
+
+  transition:
+    background 0.4s ease,
+    border-color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.creature-menagerie__enter:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(202, 231, 249, 0.5);
+
+  background: rgba(73, 119, 150, 0.15);
+}
+
+.creature-menagerie__enter svg {
+  animation:
+    creatureArrow
+    2s ease-in-out infinite;
+}
+
+.creature-menagerie__hero-coordinate {
+  position: absolute;
+  left: clamp(25px, 4vw, 65px);
+  bottom: 40px;
+
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  font-family: var(--font-magic);
+  font-size: 0.36rem;
+  letter-spacing: 0.25em;
+
+  color: rgba(153, 188, 211, 0.35);
+}
+
+.creature-menagerie__hero-coordinate strong {
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   HABITATS
+========================================================= */
+
+.creature-menagerie__habitats {
+  min-height: 110vh;
+
+  padding:
+    130px
+    clamp(28px, 6vw, 110px)
+    140px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+.creature-menagerie__habitat-world {
+  position: absolute;
+  z-index: -5;
+  inset: 0;
+
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0.18;
+
+  transition:
+    background-image 1s ease,
+    opacity 0.8s ease;
+}
+
+.creature-menagerie__habitat-overlay {
+  position: absolute;
+  z-index: -4;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 55% 55%,
+      transparent,
+      rgba(2, 7, 11, 0.55) 60%
+    ),
+    linear-gradient(
+      180deg,
+      #03070a,
+      rgba(3, 8, 12, 0.75) 20%,
+      rgba(3, 8, 12, 0.68) 80%,
+      #03070a
+    );
+}
+
+.creature-menagerie__section-heading {
+  width: min(670px, 94%);
+}
+
+.creature-menagerie__section-heading > p,
+.creature-menagerie__beings-heading > p,
+.creature-menagerie__dark-heading > p,
+.creature-menagerie__familiars-heading > p,
+.creature-menagerie__index-heading > div > p {
+  margin: 0 0 19px;
+
+  font-family: var(--font-magic);
+  font-size: 0.52rem;
+  letter-spacing: 0.4em;
+
+  color: rgba(153, 192, 220, 0.58);
+}
+
+.creature-menagerie__section-heading h2,
+.creature-menagerie__beings-heading h2,
+.creature-menagerie__dark-heading h2,
+.creature-menagerie__familiars-heading h2,
+.creature-menagerie__index-heading h2 {
+  margin: 0;
+
+  font-family: var(--font-story);
+
+  font-size:
+    clamp(3.5rem, 6vw, 6.5rem);
+
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.creature-menagerie__section-heading h2 span,
+.creature-menagerie__beings-heading h2 span,
+.creature-menagerie__dark-heading h2 span,
+.creature-menagerie__familiars-heading h2 span,
+.creature-menagerie__index-heading h2 span {
+  display: block;
+  margin-top: 8px;
+  margin-left: 8%;
+
+  font-size: 0.78em;
+  font-style: italic;
+
+  color: rgba(165, 199, 223, 0.72);
+}
+
+.creature-menagerie__section-heading > small,
+.creature-menagerie__beings-heading > small {
+  display: block;
+
+  width: min(500px, 100%);
+  margin-top: 25px;
+
+  font-family: var(--font-story);
+  font-size: 1rem;
+  line-height: 1.7;
+
+  color: rgba(187, 208, 223, 0.55);
+}
+
+
+/* =========================================================
+   COMPASS
+========================================================= */
+
+.creature-menagerie__compass-area {
+  width: min(1180px, 100%);
+  margin: 90px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(480px, 680px)
+    minmax(250px, 1fr);
+
+  align-items: center;
+
+  gap: clamp(55px, 8vw, 120px);
+}
+
+.creature-menagerie__compass {
+  position: relative;
+
+  width: min(620px, 70vw);
+  aspect-ratio: 1;
+
+  margin: auto;
+}
+
+.creature-menagerie__compass-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(163, 204, 232, 0.12);
+}
+
+.creature-menagerie__compass-ring--outer {
+  width: 100%;
+  height: 100%;
+
+  border-style: dashed;
+
+  animation:
+    creatureCompassSpin
+    60s linear infinite;
+}
+
+.creature-menagerie__compass-ring--middle {
+  width: 76%;
+  height: 76%;
+}
+
+.creature-menagerie__compass-ring--inner {
+  width: 38%;
+  height: 38%;
+
+  border-color:
+    rgba(181, 218, 242, 0.19);
+
+  box-shadow:
+    0 0 70px rgba(85, 145, 186, 0.08);
+}
+
+.creature-menagerie__compass-line {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(163, 203, 231, 0.15),
+      transparent
+    );
+}
+
+.creature-menagerie__compass-line--horizontal {
+  width: 92%;
+  height: 1px;
+
+  transform: translate(-50%, -50%);
+}
+
+.creature-menagerie__compass-line--vertical {
+  width: 92%;
+  height: 1px;
+
+  transform:
+    translate(-50%, -50%)
+    rotate(90deg);
+}
+
+.creature-menagerie__compass-core {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 118px;
+  height: 118px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(191, 224, 246, 0.25);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(92, 154, 197, 0.22),
+      rgba(5, 13, 20, 0.88) 68%
+    );
+
+  box-shadow:
+    0 0 45px rgba(90, 157, 203, 0.15);
+}
+
+.creature-menagerie__compass-core span {
+  position: absolute;
+
+  inset: 12px;
+
+  border:
+    1px dashed
+    rgba(180, 216, 240, 0.2);
+
+  border-radius: 50%;
+
+  animation:
+    creatureCompassSpin
+    15s linear infinite reverse;
+}
+
+.creature-menagerie__compass-core strong {
+  font-family: var(--font-story);
+  font-size: 2.4rem;
+  font-weight: 400;
+
+  color: rgba(222, 240, 251, 0.9);
+}
+
+
+/* =========================================================
+   HABITAT NODES
+========================================================= */
+
+.creature-menagerie__habitat-node {
+  position: absolute;
+  z-index: 8;
+
+  width: 112px;
+  min-height: 76px;
+
+  padding: 8px;
+
+  border: 0;
+  background: transparent;
+
+  text-align: center;
+
+  color: rgba(185, 213, 232, 0.55);
+
+  cursor: pointer;
+
+  transition:
+    color 0.4s ease,
+    transform 0.4s ease;
+}
+
+.creature-menagerie__habitat-node i {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family: var(--font-story);
+  font-size: 1.4rem;
+  font-style: normal;
+}
+
+.creature-menagerie__habitat-node span {
+  display: block;
+
+  font-family: var(--font-magic);
+  font-size: 0.45rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.creature-menagerie__habitat-node small {
+  display: block;
+
+  margin-top: 5px;
+
+  font-family: var(--font-magic);
+  font-size: 0.31rem;
+  letter-spacing: 0.18em;
+
+  opacity: 0.4;
+}
+
+.creature-menagerie__habitat-node:hover,
+.creature-menagerie__habitat-node--active {
+  color: #edf8ff;
+
+  text-shadow:
+    0 0 15px rgba(145, 201, 239, 0.6);
+}
+
+.creature-menagerie__habitat-node--forest {
+  left: -5%;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.creature-menagerie__habitat-node--sky {
+  left: 50%;
+  top: -5%;
+
+  transform: translateX(-50%);
+}
+
+.creature-menagerie__habitat-node--water {
+  right: -5%;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
+
+.creature-menagerie__habitat-node--dark {
+  left: 50%;
+  bottom: -5%;
+
+  transform: translateX(-50%);
+}
+
+.creature-menagerie__habitat-node--domestic {
+  right: 3%;
+  bottom: 8%;
+}
+
+.creature-menagerie__habitat-copy {
+  padding-left: clamp(0px, 3vw, 40px);
+
+  border-left:
+    1px solid
+    rgba(164, 202, 229, 0.12);
+}
+
+.creature-menagerie__habitat-copy small {
+  font-family: var(--font-magic);
+  font-size: 0.4rem;
+  letter-spacing: 0.3em;
+
+  color: rgba(150, 188, 215, 0.5);
+}
+
+.creature-menagerie__habitat-copy h3 {
+  margin: 13px 0 15px;
+
+  font-family: var(--font-story);
+  font-size: clamp(2.7rem, 4vw, 4.4rem);
+  font-weight: 400;
+
+  color: rgba(231, 243, 251, 0.92);
+}
+
+.creature-menagerie__habitat-copy p {
+  max-width: 330px;
+
+  margin: 0;
+
+  font-family: var(--font-story);
+  font-size: 1rem;
+  line-height: 1.65;
+
+  color: rgba(183, 205, 220, 0.55);
+}
+
+.creature-menagerie__habitat-copy > span {
+  display: block;
+  margin-top: 22px;
+
+  font-family: var(--font-magic);
+  font-size: 0.38rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: rgba(143, 181, 208, 0.42);
+}
+
+
+/* =========================================================
+   ENCOUNTER
+========================================================= */
+
+.creature-menagerie__encounter {
+  min-height: 100vh;
+
+  padding:
+    60px
+    clamp(28px, 6vw, 110px)
+    70px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.creature-menagerie__encounter-world {
+  position: absolute;
+  z-index: -5;
+  inset: 0;
+
+  background-position: center;
+  background-size: cover;
+
+  opacity: 0.24;
+
+  transform: scale(1.05);
+}
+
+.creature-menagerie__encounter-darkness {
+  position: absolute;
+  z-index: -4;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 67% 48%,
+      rgba(28, 55, 72, 0.08),
+      transparent 30%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(2, 7, 11, 0.97) 0%,
+      rgba(3, 8, 13, 0.76) 48%,
+      rgba(3, 8, 12, 0.48) 70%,
+      rgba(2, 6, 10, 0.9) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #03070a,
+      transparent 15%,
+      transparent 80%,
+      #03070a
+    );
+}
+
+.creature-menagerie__encounter-top {
+  width: min(1380px, 100%);
+  margin: 0 auto 30px;
+
+  display: flex;
+  justify-content: space-between;
+
+  font-family: var(--font-magic);
+  font-size: 0.38rem;
+  letter-spacing: 0.26em;
+
+  color: rgba(146, 183, 209, 0.4);
+}
+
+.creature-menagerie__encounter-top p {
+  margin: 0;
+}
+
+.creature-menagerie__encounter-layout {
+  width: min(1380px, 100%);
+  min-height: 610px;
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(340px, 0.8fr)
+    minmax(500px, 1.2fr);
+
+  align-items: center;
+
+  gap: clamp(40px, 6vw, 100px);
+
+  animation:
+    creatureEncounterReveal
+    0.85s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.creature-menagerie__encounter-copy {
+  position: relative;
+  z-index: 10;
+}
+
+.creature-menagerie__encounter-copy > small {
+  font-family: var(--font-magic);
+  font-size: 0.46rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+
+  color: rgba(155, 195, 223, 0.58);
+}
+
+.creature-menagerie__encounter-copy h2 {
+  margin: 15px 0 8px;
+
+  font-family: var(--font-story);
+
+  font-size:
+    clamp(3.7rem, 6vw, 7rem);
+
+  line-height: 0.9;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+
+  color: #eef7fc;
+}
+
+.creature-menagerie__example {
+  margin: 0;
+
+  font-family: var(--font-story);
+  font-size: 1rem;
+  font-style: italic;
+
+  color: rgba(168, 200, 222, 0.52);
+}
+
+.creature-menagerie__encounter-description {
+  width: min(500px, 100%);
+
+  margin: 26px 0 0;
+
+  font-family: var(--font-story);
+  font-size: 1rem;
+  line-height: 1.75;
+
+  color: rgba(192, 212, 226, 0.63);
+}
+
+
+/* =========================================================
+   FACTS
+========================================================= */
+
+.creature-menagerie__facts {
+  margin-top: 34px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 1px;
+
+  border:
+    1px solid
+    rgba(161, 200, 228, 0.09);
+
+  background:
+    rgba(159, 200, 228, 0.08);
+}
+
+.creature-menagerie__facts > div {
+  min-height: 85px;
+  padding: 18px;
+
+  background:
+    rgba(3, 9, 14, 0.8);
+}
+
+.creature-menagerie__facts span,
+.creature-menagerie__levels > div > span {
+  display: block;
+  margin-bottom: 7px;
+
+  font-family: var(--font-magic);
+  font-size: 0.33rem;
+  letter-spacing: 0.22em;
+
+  color: rgba(143, 181, 208, 0.42);
+}
+
+.creature-menagerie__facts strong {
+  font-family: var(--font-story);
+  font-size: 0.96rem;
+  font-weight: 400;
+
+  color: rgba(221, 236, 246, 0.78);
+}
+
+.creature-menagerie__levels {
+  margin-top: 22px;
+
+  display: flex;
+  gap: 45px;
+}
+
+.creature-menagerie__rating {
+  display: flex;
+  gap: 7px;
+}
+
+.creature-menagerie__rating-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(173, 210, 235, 0.25);
+}
+
+.creature-menagerie__rating-dot--active {
+  background:
+    rgba(207, 234, 251, 0.85);
+
+  box-shadow:
+    0 0 9px rgba(121, 188, 232, 0.55);
+}
+
+
+/* =========================================================
+   SPECIMEN
+========================================================= */
+
+.creature-menagerie__specimen {
+  position: relative;
+
+  height: 610px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creature-menagerie__specimen img {
+  position: relative;
+  z-index: 7;
+
+  width: min(680px, 95%);
+  height: min(570px, 78vh);
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.86)
+    saturate(0.78)
+    drop-shadow(
+      0 35px 45px rgba(0, 0, 0, 0.72)
+    );
+
+  animation:
+    creatureSpecimenArrival
+    1.1s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.creature-menagerie__specimen-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 70%;
+  height: 70%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(102, 166, 209, 0.11),
+      transparent 68%
+    );
+
+  filter: blur(35px);
+
+  animation:
+    creatureSpecimenGlow
+    5s ease-in-out infinite;
+}
+
+.creature-menagerie__specimen-orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(160, 201, 229, 0.09);
+}
+
+.creature-menagerie__specimen-orbit--one {
+  width: 68%;
+  aspect-ratio: 1;
+
+  border-style: dashed;
+
+  animation:
+    creatureCompassSpin
+    45s linear infinite;
+}
+
+.creature-menagerie__specimen-orbit--two {
+  width: 50%;
+  aspect-ratio: 1;
+
+  animation:
+    creatureCompassSpin
+    32s linear infinite reverse;
+}
+
+.creature-menagerie__specimen-ground {
+  position: absolute;
+  z-index: 2;
+
+  left: 50%;
+  bottom: 12%;
+
+  width: 58%;
+  height: 45px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(102, 162, 202, 0.13),
+      transparent 68%
+    );
+
+  filter: blur(10px);
+}
+
+.creature-menagerie__specimen > p {
+  position: absolute;
+
+  right: 2%;
+  bottom: 4%;
+
+  margin: 0;
+
+  font-family: var(--font-magic);
+  font-size: 0.33rem;
+  letter-spacing: 0.22em;
+
+  color: rgba(143, 179, 204, 0.3);
+}
+
+
+/* =========================================================
+   ENCOUNTER NAVIGATION
+========================================================= */
+
+.creature-menagerie__encounter-navigation {
+  width: min(1380px, 100%);
+  margin: 20px auto 0;
+
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+
+  align-items: center;
+}
+
+.creature-menagerie__encounter-navigation > button {
+  padding: 10px 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 0;
+  background: transparent;
+
+  font-family: var(--font-magic);
+  font-size: 0.38rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  color: rgba(174, 207, 229, 0.55);
+
+  cursor: pointer;
+}
+
+.creature-menagerie__encounter-navigation > button:last-child {
+  justify-content: flex-end;
+}
+
+.creature-menagerie__encounter-dots {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.creature-menagerie__encounter-dot {
+  width: 5px;
+  height: 5px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border: 0;
+
+  background:
+    rgba(167, 205, 231, 0.25);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.creature-menagerie__encounter-dot--active {
+  transform: scale(1.8);
+
+  background: #d9effc;
+
+  box-shadow:
+    0 0 10px rgba(134, 199, 241, 0.7);
+}
+
+
+/* =========================================================
+   SENTIENT BEINGS
+========================================================= */
+
+.creature-menagerie__beings {
+  min-height: 110vh;
+
+  padding:
+    140px
+    clamp(28px, 6vw, 110px)
+    150px;
+}
+
+.creature-menagerie__beings-heading {
+  width: min(680px, 94%);
+  margin-left: auto;
+
+  text-align: right;
+}
+
+.creature-menagerie__beings-heading h2 span {
+  margin-left: 0;
+  margin-right: 8%;
+}
+
+.creature-menagerie__beings-heading > small {
+  margin-left: auto;
+}
+
+.creature-menagerie__being-orbit {
+  position: relative;
+
+  width: min(1000px, 90vw);
+  height: 700px;
+
+  margin: 80px auto 0;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(161, 201, 228, 0.08);
+}
+
+.creature-menagerie__being-orbit::before,
+.creature-menagerie__being-orbit::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  border:
+    1px dashed
+    rgba(161, 201, 228, 0.07);
+}
+
+.creature-menagerie__being-orbit::before {
+  width: 72%;
+  height: 72%;
+}
+
+.creature-menagerie__being-orbit::after {
+  width: 42%;
+  height: 42%;
+}
+
+.creature-menagerie__being-center {
+  position: absolute;
+  z-index: 4;
+
+  left: 50%;
+  top: 50%;
+
+  width: 180px;
+  height: 180px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(178, 215, 239, 0.15);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(70, 121, 156, 0.12),
+      rgba(4, 10, 15, 0.88)
+    );
+}
+
+.creature-menagerie__being-center > span {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+
+  color: rgba(207, 233, 250, 0.75);
+}
+
+.creature-menagerie__being-center strong,
+.creature-menagerie__being-center small {
+  font-family: var(--font-magic);
+  letter-spacing: 0.25em;
+  font-weight: 400;
+}
+
+.creature-menagerie__being-center strong {
+  font-size: 0.55rem;
+}
+
+.creature-menagerie__being-center small {
+  margin-top: 5px;
+  font-size: 0.32rem;
+
+  color: rgba(149, 186, 211, 0.45);
+}
+
+.creature-menagerie__being {
+  position: absolute;
+
+  width: 170px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  text-align: center;
+
+  color: #edf5fb;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.5s ease;
+}
+
+.creature-menagerie__being:hover {
+  transform: translateY(-10px);
+}
+
+.creature-menagerie__being > div {
+  width: 135px;
+  height: 135px;
+
+  margin: 0 auto 14px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(78, 132, 168, 0.13),
+      transparent 67%
+    );
+}
+
+.creature-menagerie__being img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.8)
+    saturate(0.7)
+    drop-shadow(
+      0 20px 20px rgba(0, 0, 0, 0.6)
+    );
+}
+
+.creature-menagerie__being > span {
+  display: block;
+
+  font-family: var(--font-story);
+  font-size: 1.35rem;
+}
+
+.creature-menagerie__being > small {
+  display: block;
+
+  margin-top: 5px;
+
+  font-family: var(--font-magic);
+  font-size: 0.31rem;
+  letter-spacing: 0.15em;
+
+  color: rgba(148, 185, 211, 0.42);
+}
+
+.creature-menagerie__being--1 {
+  left: 5%;
+  top: 13%;
+}
+
+.creature-menagerie__being--2 {
+  right: 5%;
+  top: 13%;
+}
+
+.creature-menagerie__being--3 {
+  left: -2%;
+  top: 55%;
+}
+
+.creature-menagerie__being--4 {
+  right: -2%;
+  top: 55%;
+}
+
+.creature-menagerie__being--5 {
+  left: 28%;
+  bottom: -3%;
+}
+
+.creature-menagerie__being--6 {
+  right: 28%;
+  bottom: -3%;
+}
+
+
+/* =========================================================
+   DARK ENTITIES
+========================================================= */
+
+.creature-menagerie__dark {
+  min-height: 110vh;
+
+  padding:
+    140px
+    clamp(28px, 6vw, 110px)
+    150px;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+.creature-menagerie__dark-background {
+  position: absolute;
+  z-index: -5;
+  inset: 0;
+
+  background:
+    url("/images/creatures/worlds/dark-entities.png")
+    center / cover no-repeat;
+
+  opacity: 0.2;
+}
+
+.creature-menagerie__dark::after {
+  content: "";
+
+  position: absolute;
+  z-index: -4;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #03070a,
+      rgba(2, 5, 8, 0.66) 20%,
+      rgba(2, 5, 8, 0.55) 70%,
+      #03070a
+    );
+}
+
+.creature-menagerie__dark-heading {
+  width: min(700px, 94%);
+}
+
+.creature-menagerie__dark-list {
+  width: min(1150px, 100%);
+  margin: 85px auto 0;
+}
+
+.creature-menagerie__dark-entity {
+  position: relative;
+
+  width: 100%;
+  min-height: 145px;
+
+  padding: 20px 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    55px 140px 1fr 50px;
+
+  align-items: center;
+
+  gap: 25px;
+
+  border: 0;
+  border-bottom:
+    1px solid
+    rgba(157, 193, 219, 0.09);
+
+  background: transparent;
+
+  text-align: left;
+
+  color: #edf5fb;
+
+  cursor: pointer;
+
+  transition:
+    padding 0.5s ease,
+    background 0.5s ease;
+}
+
+.creature-menagerie__dark-entity:hover {
+  padding-left: 45px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(80, 112, 132, 0.08),
+      transparent
+    );
+}
+
+.creature-menagerie__dark-entity > span {
+  font-family: var(--font-magic);
+  font-size: 0.38rem;
+  letter-spacing: 0.2em;
+
+  color: rgba(139, 170, 192, 0.32);
+}
+
+.creature-menagerie__dark-image {
+  height: 110px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.creature-menagerie__dark-image img {
+  max-width: 130px;
+  max-height: 110px;
+
+  object-fit: contain;
+
+  filter:
+    grayscale(0.25)
+    brightness(0.55)
+    drop-shadow(
+      0 15px 20px rgba(0, 0, 0, 0.7)
+    );
+
+  transition:
+    filter 0.5s ease,
+    transform 0.5s ease;
+}
+
+.creature-menagerie__dark-entity:hover img {
+  transform: scale(1.08);
+
+  filter:
+    grayscale(0.05)
+    brightness(0.82)
+    drop-shadow(
+      0 20px 25px rgba(0, 0, 0, 0.75)
+    );
+}
+
+.creature-menagerie__dark-entity small {
+  font-family: var(--font-magic);
+  font-size: 0.34rem;
+  letter-spacing: 0.23em;
+
+  color: rgba(144, 177, 201, 0.4);
+}
+
+.creature-menagerie__dark-entity h3 {
+  margin: 5px 0;
+
+  font-family: var(--font-story);
+  font-size: 2rem;
+  font-weight: 400;
+
+  color: rgba(225, 237, 245, 0.82);
+}
+
+.creature-menagerie__dark-entity p {
+  margin: 0;
+
+  font-family: var(--font-story);
+  font-size: 0.86rem;
+
+  color: rgba(162, 185, 201, 0.45);
+}
+
+.creature-menagerie__dark-entity > i {
+  justify-self: end;
+
+  font-style: normal;
+
+  color: rgba(166, 199, 222, 0.35);
+}
+
+.creature-menagerie__dark-fog {
+  position: absolute;
+  z-index: -2;
+
+  width: 70%;
+  height: 20%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(161, 185, 201, 0.04),
+      transparent 70%
+    );
+
+  filter: blur(35px);
+}
+
+.creature-menagerie__dark-fog--one {
+  left: -20%;
+  top: 45%;
+
+  animation:
+    creatureFogOne
+    18s ease-in-out infinite alternate;
+}
+
+.creature-menagerie__dark-fog--two {
+  right: -20%;
+  bottom: 15%;
+
+  animation:
+    creatureFogTwo
+    22s ease-in-out infinite alternate;
+}
+
+
+/* =========================================================
+   FAMILIARS
+========================================================= */
+
+.creature-menagerie__familiars {
+  min-height: 105vh;
+
+  padding:
+    140px
+    clamp(28px, 6vw, 110px)
+    160px;
+}
+
+.creature-menagerie__familiars-heading {
+  width: min(700px, 94%);
+  margin-left: auto;
+
+  text-align: right;
+}
+
+.creature-menagerie__familiars-heading h2 span {
+  margin-left: 0;
+  margin-right: 8%;
+}
+
+.creature-menagerie__familiar-orbit {
+  position: relative;
+
+  width: min(900px, 85vw);
+  height: 610px;
+
+  margin: 80px auto 0;
+}
+
+.creature-menagerie__familiar-path {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 72%;
+  height: 72%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  border:
+    1px dashed
+    rgba(169, 207, 233, 0.11);
+
+  animation:
+    creatureCompassSpin
+    55s linear infinite;
+}
+
+.creature-menagerie__familiar-center {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 185px;
+  height: 185px;
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(179, 216, 240, 0.14);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(86, 145, 185, 0.12),
+      rgba(4, 10, 15, 0.75)
+    );
+}
+
+.creature-menagerie__familiar-center > span {
+  margin-bottom: 10px;
+
+  color: rgba(220, 239, 251, 0.8);
+}
+
+.creature-menagerie__familiar-center small,
+.creature-menagerie__familiar-center strong {
+  font-family: var(--font-magic);
+  font-weight: 400;
+  letter-spacing: 0.2em;
+}
+
+.creature-menagerie__familiar-center small {
+  font-size: 0.3rem;
+
+  color: rgba(148, 184, 210, 0.42);
+}
+
+.creature-menagerie__familiar-center strong {
+  margin-top: 5px;
+  font-size: 0.48rem;
+}
+
+.creature-menagerie__familiar {
+  position: absolute;
+
+  width: 175px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #edf5fb;
+
+  cursor: pointer;
+
+  text-align: center;
+
+  transition:
+    transform 0.5s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.creature-menagerie__familiar:hover {
+  transform: translateY(-12px);
+}
+
+.creature-menagerie__familiar > div {
+  width: 145px;
+  height: 145px;
+
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(109, 167, 206, 0.13),
+      transparent 68%
+    );
+}
+
+.creature-menagerie__familiar img {
+  max-width: 140px;
+  max-height: 140px;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.83)
+    saturate(0.75)
+    drop-shadow(
+      0 20px 20px rgba(0, 0, 0, 0.55)
+    );
+}
+
+.creature-menagerie__familiar > strong {
+  display: block;
+
+  margin-top: 12px;
+
+  font-family: var(--font-story);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.creature-menagerie__familiar > span {
+  display: block;
+
+  margin-top: 4px;
+
+  font-family: var(--font-magic);
+  font-size: 0.31rem;
+  letter-spacing: 0.15em;
+
+  color: rgba(151, 188, 213, 0.45);
+}
+
+.creature-menagerie__familiar--1 {
+  left: 8%;
+  top: 5%;
+}
+
+.creature-menagerie__familiar--2 {
+  right: 8%;
+  top: 5%;
+}
+
+.creature-menagerie__familiar--3 {
+  left: 8%;
+  bottom: 0;
+}
+
+.creature-menagerie__familiar--4 {
+  right: 8%;
+  bottom: 0;
+}
+
+.creature-menagerie__familiar--5 {
+  left: 50%;
+  top: -3%;
+
+  transform: translateX(-50%);
+}
+
+.creature-menagerie__familiar--5:hover {
+  transform:
+    translateX(-50%)
+    translateY(-10px);
+}
+
+
+/* =========================================================
+   INDEX
+========================================================= */
+
+.creature-menagerie__index {
+  min-height: 100vh;
+
+  padding:
+    140px
+    clamp(28px, 6vw, 110px)
+    130px;
+}
+
+.creature-menagerie__index-heading {
+  width: min(1350px, 100%);
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 40px;
+}
+
+.creature-menagerie__index-heading > div {
+  width: min(600px, 100%);
+}
+
+.creature-menagerie__search {
+  width: 52px;
+  height: 52px;
+
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(166, 204, 231, 0.14);
+
+  background:
+    rgba(6, 14, 20, 0.5);
+
+  color: rgba(204, 226, 241, 0.72);
+
+  cursor: pointer;
+
+  transition:
+    width 0.6s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.creature-menagerie__search--open,
+.creature-menagerie__search:focus-within {
+  width: 300px;
+}
+
+.creature-menagerie__search input {
+  flex: 1;
+  min-width: 200px;
+
+  border: 0;
+  outline: 0;
+  background: transparent;
+
+  font-family: var(--font-story);
+  font-size: 0.95rem;
+
+  color: #edf5fb;
+}
+
+.creature-menagerie__search input::placeholder {
+  color: rgba(166, 194, 213, 0.4);
+}
+
+.creature-menagerie__search > span {
+  display: flex;
+
+  cursor: pointer;
+}
+
+.creature-menagerie__index-grid {
+  width: min(1350px, 100%);
+  margin: 75px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  border-top:
+    1px solid
+    rgba(161, 199, 226, 0.09);
+
+  border-left:
+    1px solid
+    rgba(161, 199, 226, 0.09);
+}
+
+.creature-menagerie__index-item {
+  min-height: 125px;
+
+  padding: 20px;
+
+  display: grid;
+
+  grid-template-columns:
+    35px 1fr 25px;
+
+  align-items: center;
+
+  gap: 13px;
+
+  border: 0;
+
+  border-right:
+    1px solid
+    rgba(161, 199, 226, 0.09);
+
+  border-bottom:
+    1px solid
+    rgba(161, 199, 226, 0.09);
+
+  background: transparent;
+
+  text-align: left;
+
+  color: #edf5fb;
+
+  cursor: pointer;
+
+  transition:
+    background 0.4s ease;
+}
+
+.creature-menagerie__index-item:hover {
+  background:
+    rgba(91, 142, 177, 0.06);
+}
+
+.creature-menagerie__index-item > span {
+  font-family: var(--font-magic);
+  font-size: 0.3rem;
+  letter-spacing: 0.15em;
+
+  color: rgba(143, 176, 199, 0.3);
+}
+
+.creature-menagerie__index-item small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family: var(--font-magic);
+  font-size: 0.3rem;
+  letter-spacing: 0.18em;
+
+  color: rgba(146, 183, 209, 0.4);
+}
+
+.creature-menagerie__index-item strong {
+  display: block;
+
+  font-family: var(--font-story);
+  font-size: 1.35rem;
+  font-weight: 400;
+
+  color: rgba(225, 238, 247, 0.83);
+}
+
+.creature-menagerie__index-item p {
+  margin: 4px 0 0;
+
+  font-family: var(--font-story);
+  font-size: 0.77rem;
+
+  color: rgba(163, 188, 205, 0.4);
+}
+
+.creature-menagerie__index-item > svg {
+  color: rgba(155, 190, 214, 0.3);
+
+  transition:
+    transform 0.3s ease;
+}
+
+.creature-menagerie__index-item:hover > svg {
+  transform: translateX(4px);
+}
+
+.creature-menagerie__empty {
+  padding: 100px 20px;
+
+  text-align: center;
+
+  font-family: var(--font-story);
+
+  color: rgba(176, 201, 219, 0.55);
+}
+
+.creature-menagerie__empty span {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.creature-menagerie__index-footer {
+  width: min(700px, 90%);
+  margin: 90px auto 0;
+
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.creature-menagerie__index-footer span {
+  flex: 1;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(161, 200, 228, 0.16)
+    );
+}
+
+.creature-menagerie__index-footer span:last-child {
+  transform: rotate(180deg);
+}
+
+.creature-menagerie__index-footer p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-family: var(--font-story);
+  font-size: 1rem;
+  font-style: italic;
+
+  color: rgba(181, 203, 218, 0.45);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes creatureHeroDrift {
+  from {
+    transform: scale(1.05);
+  }
+
+  to {
+    transform:
+      scale(1.1)
+      translateY(-1%);
+  }
+}
+
+@keyframes creatureSigilPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes creatureArrow {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes creatureCompassSpin {
+  from {
+    rotate: 0deg;
+  }
+
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes creatureEncounterReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px);
+
+    filter: blur(7px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter: blur(0);
+  }
+}
+
+@keyframes creatureSpecimenArrival {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.92);
+
+    filter:
+      blur(8px)
+      brightness(0.5);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes creatureSpecimenGlow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform:
+      translate(-50%, -50%)
+      scale(0.92);
+  }
+
+  50% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      scale(1.08);
+  }
+}
+
+@keyframes creatureFogOne {
+  from {
+    transform: translateX(-10%);
+  }
+
+  to {
+    transform: translateX(20%);
+  }
+}
+
+@keyframes creatureFogTwo {
+  from {
+    transform: translateX(12%);
+  }
+
+  to {
+    transform: translateX(-18%);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+  .creature-menagerie__compass-area {
+    grid-template-columns: 1fr;
+  }
+
+  .creature-menagerie__habitat-copy {
+    width: min(500px, 90%);
+    margin: auto;
+
+    padding: 30px 0 0;
+
+    border-left: 0;
+    border-top:
+      1px solid
+      rgba(164, 202, 229, 0.12);
+
+    text-align: center;
+  }
+
+  .creature-menagerie__habitat-copy p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .creature-menagerie__encounter-layout {
+    grid-template-columns: 1fr;
+
+    gap: 20px;
+  }
+
+  .creature-menagerie__specimen {
+    grid-row: 1;
+    height: 480px;
+  }
+
+  .creature-menagerie__encounter-copy {
+    width: min(650px, 100%);
+  }
+
+  .creature-menagerie__being-orbit {
+    height: 780px;
+  }
+
+  .creature-menagerie__index-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+  .creature-menagerie__hero-title {
+    font-size:
+      clamp(3.8rem, 18vw, 5.8rem);
+  }
+
+  .creature-menagerie__eyebrow {
+    font-size: 0.43rem;
+    letter-spacing: 0.28em;
+  }
+
+  .creature-menagerie__hero-coordinate {
+    display: none;
+  }
+
+  .creature-menagerie__habitats,
+  .creature-menagerie__beings,
+  .creature-menagerie__dark,
+  .creature-menagerie__familiars,
+  .creature-menagerie__index {
+    min-height: auto;
+
+    padding:
+      100px
+      6%
+      110px;
+  }
+
+  .creature-menagerie__section-heading h2,
+  .creature-menagerie__beings-heading h2,
+  .creature-menagerie__dark-heading h2,
+  .creature-menagerie__familiars-heading h2,
+  .creature-menagerie__index-heading h2 {
+    font-size:
+      clamp(3rem, 14vw, 4.7rem);
+  }
+
+  .creature-menagerie__compass {
+    width: 82vw;
+  }
+
+  .creature-menagerie__compass-core {
+    width: 80px;
+    height: 80px;
+  }
+
+  .creature-menagerie__habitat-node {
+    width: 85px;
+  }
+
+  .creature-menagerie__habitat-node--forest {
+    left: -10%;
+  }
+
+  .creature-menagerie__habitat-node--water {
+    right: -10%;
+  }
+
+  .creature-menagerie__habitat-node--domestic {
+    right: -4%;
+    bottom: 3%;
+  }
+
+  .creature-menagerie__encounter {
+    min-height: auto;
+
+    padding:
+      85px
+      6%
+      90px;
+  }
+
+  .creature-menagerie__specimen {
+    height: 380px;
+  }
+
+  .creature-menagerie__specimen img {
+    max-height: 360px;
+  }
+
+  .creature-menagerie__encounter-copy h2 {
+    font-size:
+      clamp(3rem, 14vw, 5rem);
+  }
+
+  .creature-menagerie__facts {
+    grid-template-columns: 1fr;
+  }
+
+  .creature-menagerie__encounter-navigation {
+    grid-template-columns:
+      80px 1fr 80px;
+  }
+
+  .creature-menagerie__encounter-navigation
+    > button
+    span {
+    display: none;
+  }
+
+  .creature-menagerie__encounter-navigation
+    > button:last-child {
+    justify-content: flex-end;
+  }
+
+  .creature-menagerie__being-orbit,
+  .creature-menagerie__familiar-orbit {
+    width: 100%;
+    height: auto;
+
+    margin-top: 65px;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+
+    gap: 55px 20px;
+
+    border: 0;
+  }
+
+  .creature-menagerie__being-orbit::before,
+  .creature-menagerie__being-orbit::after,
+  .creature-menagerie__being-center,
+  .creature-menagerie__familiar-center,
+  .creature-menagerie__familiar-path {
+    display: none;
+  }
+
+  .creature-menagerie__being,
+  .creature-menagerie__familiar,
+  .creature-menagerie__being--1,
+  .creature-menagerie__being--2,
+  .creature-menagerie__being--3,
+  .creature-menagerie__being--4,
+  .creature-menagerie__being--5,
+  .creature-menagerie__being--6,
+  .creature-menagerie__familiar--1,
+  .creature-menagerie__familiar--2,
+  .creature-menagerie__familiar--3,
+  .creature-menagerie__familiar--4,
+  .creature-menagerie__familiar--5 {
+    position: relative;
+
+    left: auto;
+    right: auto;
+    top: auto;
+    bottom: auto;
+
+    width: 100%;
+
+    transform: none;
+  }
+
+  .creature-menagerie__familiar--5:hover {
+    transform: translateY(-10px);
+  }
+
+  .creature-menagerie__dark-entity {
+    grid-template-columns:
+      35px 90px 1fr;
+
+    gap: 14px;
+
+    padding:
+      18px 5px;
+  }
+
+  .creature-menagerie__dark-image {
+    height: 90px;
+  }
+
+  .creature-menagerie__dark-image img {
+    max-width: 85px;
+    max-height: 85px;
+  }
+
+  .creature-menagerie__dark-entity > i {
+    display: none;
+  }
+
+  .creature-menagerie__dark-entity h3 {
+    font-size: 1.5rem;
+  }
+
+  .creature-menagerie__index-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .creature-menagerie__search,
+  .creature-menagerie__search--open {
+    width: 100%;
+  }
+
+  .creature-menagerie__index-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .creature-menagerie__index-footer span {
+    display: none;
+  }
+
+  .creature-menagerie__index-footer {
+    justify-content: center;
+  }
+
+  .creature-menagerie__index-footer p {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+  .creature-menagerie__compass {
+    width: 78vw;
+  }
+
+  .creature-menagerie__habitat-node span {
+    font-size: 0.36rem;
+  }
+
+  .creature-menagerie__habitat-node small {
+    display: none;
+  }
+
+  .creature-menagerie__levels {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .creature-menagerie__being-orbit,
+  .creature-menagerie__familiar-orbit {
+    grid-template-columns: 1fr;
+  }
+
+  .creature-menagerie__being > div,
+  .creature-menagerie__familiar > div {
+    width: 165px;
+    height: 165px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .creature-menagerie *,
+  .creature-menagerie *::before,
+  .creature-menagerie *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   2026 CREATURES VISUAL REFRESH
+   Palette:
+   - Forest Emerald
+   - Moonlit Teal
+   - Antique Amber
+   - Bone Ivory
+   This layer intentionally overrides only presentation.
+========================================================= */
+
+.creature-menagerie {
+  --cm-bg: #040907;
+  --cm-panel: rgba(7, 17, 13, 0.82);
+  --cm-panel-strong: rgba(5, 13, 10, 0.94);
+
+  --cm-emerald: #75b89a;
+  --cm-emerald-soft: rgba(117, 184, 154, 0.62);
+  --cm-teal: #7dc9c2;
+  --cm-teal-soft: rgba(125, 201, 194, 0.48);
+  --cm-amber: #d4aa63;
+  --cm-amber-soft: rgba(212, 170, 99, 0.54);
+  --cm-ivory: #efe7d7;
+  --cm-muted: rgba(219, 226, 214, 0.56);
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(79, 139, 108, 0.13),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      #030806 0%,
+      #040b08 45%,
+      #020504 100%
+    );
+
+  color: var(--cm-ivory);
+  isolation: isolate;
+}
+
+.creature-menagerie::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0 49.9%,
+      rgba(220, 239, 224, 0.018) 50%,
+      transparent 50.1%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 5px,
+      rgba(255,255,255,0.012) 6px
+    );
+}
+
+.creature-menagerie > .magical-background {
+  opacity: 0.72;
+}
+
+/* =========================================================
+   HERO — NATURAL HISTORY MUSEUM FEEL
+========================================================= */
+
+.creature-menagerie__hero {
+  min-height: 100svh;
+}
+
+.creature-menagerie__hero-image {
+  filter:
+    saturate(0.92)
+    contrast(1.05)
+    brightness(0.82);
+}
+
+.creature-menagerie__hero-shadow {
+  background:
+    radial-gradient(
+      circle at 50% 44%,
+      rgba(26, 71, 51, 0.08),
+      transparent 32%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(2, 7, 5, 0.88),
+      rgba(3, 12, 8, 0.28) 50%,
+      rgba(2, 7, 5, 0.87)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(1, 5, 3, 0.28),
+      rgba(1, 6, 4, 0.16) 55%,
+      #030806 100%
+    );
+}
+
+.creature-menagerie__hero-vignette {
+  box-shadow:
+    inset 0 0 180px 58px rgba(0, 0, 0, 0.78),
+    inset 0 -120px 160px rgba(3, 10, 7, 0.68);
+}
+
+.creature-menagerie__hero-content {
+  width: min(980px, 91%);
+  padding-top: 10px;
+}
+
+.creature-menagerie__hero-sigil {
+  color: var(--cm-amber-soft);
+}
+
+.creature-menagerie__hero-sigil span {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 170, 99, 0.34)
+    );
+}
+
+.creature-menagerie__hero-sigil i {
+  color: var(--cm-amber);
+  text-shadow:
+    0 0 18px rgba(212, 170, 99, 0.42);
+}
+
+.creature-menagerie__eyebrow {
+  color: var(--cm-emerald-soft);
+}
+
+.creature-menagerie__hero-title {
+  color: var(--cm-ivory);
+  text-shadow:
+    0 18px 55px rgba(0,0,0,0.62);
+}
+
+.creature-menagerie__hero-title span {
+  color: var(--cm-amber);
+  text-shadow:
+    0 0 34px rgba(212, 170, 99, 0.12);
+}
+
+.creature-menagerie__hero-description {
+  max-width: 580px;
+  color: rgba(225, 230, 219, 0.65);
+}
+
+.creature-menagerie__hero-census {
+  width: min(780px, 94%);
+  margin: 30px auto 0;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr) 1px
+    minmax(0, 1fr);
+  align-items: center;
+  gap: 15px;
+  padding: 15px 18px;
+  border-top: 1px solid rgba(212, 170, 99, 0.12);
+  border-bottom: 1px solid rgba(117, 184, 154, 0.11);
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(5, 18, 12, 0.36),
+      transparent
+    );
+  backdrop-filter: blur(9px);
+}
+
+.creature-menagerie__hero-census > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.creature-menagerie__hero-census strong {
+  font-family: var(--font-story);
+  font-size: 1.18rem;
+  font-weight: 400;
+  color: rgba(239, 231, 215, 0.9);
+}
+
+.creature-menagerie__hero-census span {
+  font-family: var(--font-magic);
+  font-size: 0.3rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: rgba(154, 198, 174, 0.5);
+}
+
+.creature-menagerie__hero-census > i {
+  width: 1px;
+  height: 25px;
+  background:
+    linear-gradient(
+      transparent,
+      rgba(212, 170, 99, 0.24),
+      transparent
+    );
+}
+
+.creature-menagerie__enter {
+  margin-top: 30px;
+  border-color: rgba(212, 170, 99, 0.24);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(10, 31, 21, 0.42),
+      rgba(20, 18, 10, 0.2)
+    );
+  color: rgba(244, 235, 219, 0.86);
+  box-shadow:
+    inset 0 0 25px rgba(117, 184, 154, 0.035);
+}
+
+.creature-menagerie__enter:hover {
+  border-color: rgba(212, 170, 99, 0.58);
+  background: rgba(72, 117, 86, 0.16);
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.22),
+    0 0 24px rgba(117, 184, 154, 0.1);
+}
+
+.creature-menagerie__hero-coordinate {
+  color: rgba(128, 177, 151, 0.4);
+}
+
+/* =========================================================
+   SHARED HEADINGS
+========================================================= */
+
+.creature-menagerie__section-heading > p,
+.creature-menagerie__beings-heading > p,
+.creature-menagerie__dark-heading > p,
+.creature-menagerie__familiars-heading > p,
+.creature-menagerie__index-heading > div > p {
+  color: var(--cm-emerald-soft);
+}
+
+.creature-menagerie__section-heading h2,
+.creature-menagerie__beings-heading h2,
+.creature-menagerie__dark-heading h2,
+.creature-menagerie__familiars-heading h2,
+.creature-menagerie__index-heading h2 {
+  color: rgba(239, 231, 215, 0.94);
+}
+
+.creature-menagerie__section-heading h2 span,
+.creature-menagerie__beings-heading h2 span,
+.creature-menagerie__dark-heading h2 span,
+.creature-menagerie__familiars-heading h2 span,
+.creature-menagerie__index-heading h2 span {
+  color: var(--cm-amber);
+}
+
+.creature-menagerie__section-heading > small,
+.creature-menagerie__beings-heading > small {
+  color: var(--cm-muted);
+}
+
+/* =========================================================
+   HABITAT MAP — FIELD CARTOGRAPHY
+========================================================= */
+
+.creature-menagerie__habitat-world {
+  opacity: 0.25;
+  filter:
+    saturate(0.9)
+    brightness(0.72);
+}
+
+.creature-menagerie__habitat-overlay {
+  background:
+    radial-gradient(
+      circle at 52% 52%,
+      rgba(67, 128, 91, 0.03),
+      rgba(2, 7, 5, 0.48) 62%
+    ),
+    linear-gradient(
+      180deg,
+      #030806,
+      rgba(4, 12, 8, 0.64) 18%,
+      rgba(4, 12, 8, 0.65) 82%,
+      #030806
+    );
+}
+
+.creature-menagerie__compass-ring {
+  border-color: rgba(117, 184, 154, 0.16);
+  box-shadow:
+    0 0 50px rgba(76, 139, 104, 0.025);
+}
+
+.creature-menagerie__compass-ring--inner {
+  border-color: rgba(212, 170, 99, 0.23);
+  box-shadow:
+    0 0 65px rgba(117, 184, 154, 0.09),
+    inset 0 0 35px rgba(212, 170, 99, 0.03);
+}
+
+.creature-menagerie__compass-line {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(117, 184, 154, 0.2),
+      transparent
+    );
+}
+
+.creature-menagerie__compass-core {
+  border-color: rgba(212, 170, 99, 0.32);
+  background:
+    radial-gradient(
+      circle,
+      rgba(71, 130, 95, 0.24),
+      rgba(5, 15, 10, 0.9) 68%
+    );
+  box-shadow:
+    0 0 52px rgba(84, 151, 111, 0.18),
+    inset 0 0 22px rgba(212, 170, 99, 0.035);
+}
+
+.creature-menagerie__compass-core span {
+  border-color: rgba(212, 170, 99, 0.2);
+}
+
+.creature-menagerie__compass-core strong {
+  color: var(--cm-ivory);
+  text-shadow:
+    0 0 14px rgba(212, 170, 99, 0.26);
+}
+
+.creature-menagerie__habitat-node {
+  color: rgba(181, 211, 192, 0.58);
+}
+
+.creature-menagerie__habitat-node:hover,
+.creature-menagerie__habitat-node--active {
+  color: var(--cm-ivory);
+  text-shadow:
+    0 0 14px rgba(117, 184, 154, 0.55),
+    0 0 28px rgba(212, 170, 99, 0.12);
+}
+
+.creature-menagerie__habitat-node--active i {
+  color: var(--cm-amber);
+}
+
+.creature-menagerie__habitat-copy {
+  border-left-color: rgba(212, 170, 99, 0.16);
+}
+
+.creature-menagerie__habitat-copy small,
+.creature-menagerie__habitat-copy > span {
+  color: rgba(133, 186, 157, 0.5);
+}
+
+.creature-menagerie__habitat-copy h3 {
+  color: var(--cm-ivory);
+}
+
+.creature-menagerie__habitat-copy p {
+  color: rgba(213, 221, 208, 0.57);
+}
+
+/* =========================================================
+   ENCOUNTER — UNIQUE COLOR PER HABITAT
+========================================================= */
+
+.creature-menagerie__encounter {
+  --habitat-accent: 117, 184, 154;
+  --habitat-second: 212, 170, 99;
+}
+
+.creature-menagerie__encounter--forest {
+  --habitat-accent: 101, 179, 122;
+  --habitat-second: 207, 168, 83;
+}
+
+.creature-menagerie__encounter--sky {
+  --habitat-accent: 128, 196, 214;
+  --habitat-second: 222, 205, 147;
+}
+
+.creature-menagerie__encounter--water {
+  --habitat-accent: 74, 174, 181;
+  --habitat-second: 137, 213, 197;
+}
+
+.creature-menagerie__encounter--dark {
+  --habitat-accent: 132, 108, 154;
+  --habitat-second: 167, 76, 73;
+}
+
+.creature-menagerie__encounter--domestic {
+  --habitat-accent: 197, 157, 95;
+  --habitat-second: 146, 190, 142;
+}
+
+.creature-menagerie__encounter-world {
+  opacity: 0.3;
+  filter:
+    saturate(0.92)
+    brightness(0.7)
+    contrast(1.04);
+}
+
+.creature-menagerie__encounter-darkness {
+  background:
+    radial-gradient(
+      circle at 68% 48%,
+      rgba(var(--habitat-accent), 0.12),
+      transparent 29%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(2, 7, 5, 0.98) 0%,
+      rgba(3, 9, 7, 0.76) 48%,
+      rgba(3, 9, 7, 0.43) 71%,
+      rgba(2, 6, 5, 0.91) 100%
+    ),
+    linear-gradient(
+      180deg,
+      #030806,
+      transparent 14%,
+      transparent 81%,
+      #030806
+    );
+}
+
+.creature-menagerie__encounter-top {
+  align-items: center;
+  color: rgba(var(--habitat-accent), 0.5);
+}
+
+.creature-menagerie__field-seal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  margin-right: 20px;
+  padding: 6px 10px;
+  border:
+    1px solid
+    rgba(var(--habitat-accent), 0.14);
+  background:
+    rgba(3, 11, 7, 0.32);
+}
+
+.creature-menagerie__field-seal i {
+  font-family: var(--font-story);
+  font-style: normal;
+  font-size: 0.8rem;
+  color: rgba(var(--habitat-second), 0.78);
+}
+
+.creature-menagerie__field-seal small {
+  font-family: var(--font-magic);
+  font-size: 0.29rem;
+  letter-spacing: 0.18em;
+  color: rgba(var(--habitat-accent), 0.55);
+}
+
+.creature-menagerie__encounter-copy > small {
+  color: rgba(var(--habitat-accent), 0.68);
+}
+
+.creature-menagerie__encounter-copy h2 {
+  color: var(--cm-ivory);
+  text-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.46);
+}
+
+.creature-menagerie__example {
+  color: rgba(var(--habitat-second), 0.6);
+}
+
+.creature-menagerie__encounter-description {
+  color: rgba(221, 226, 215, 0.64);
+}
+
+.creature-menagerie__facts {
+  border-color: rgba(var(--habitat-accent), 0.13);
+  background: rgba(var(--habitat-accent), 0.08);
+}
+
+.creature-menagerie__facts > div {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(5, 15, 10, 0.85),
+      rgba(3, 9, 6, 0.8)
+    );
+}
+
+.creature-menagerie__facts span,
+.creature-menagerie__levels > div > span {
+  color: rgba(var(--habitat-accent), 0.52);
+}
+
+.creature-menagerie__facts strong {
+  color: rgba(239, 231, 215, 0.82);
+}
+
+.creature-menagerie__rating-dot {
+  border-color: rgba(var(--habitat-accent), 0.31);
+}
+
+.creature-menagerie__rating-dot--active {
+  background: rgba(var(--habitat-second), 0.9);
+  border-color: rgba(var(--habitat-second), 0.8);
+  box-shadow:
+    0 0 10px rgba(var(--habitat-second), 0.5);
+}
+
+.creature-menagerie__specimen img {
+  filter:
+    brightness(0.93)
+    saturate(0.9)
+    drop-shadow(
+      0 38px 48px rgba(0, 0, 0, 0.68)
+    );
+}
+
+.creature-menagerie__specimen-glow {
+  background:
+    radial-gradient(
+      circle,
+      rgba(var(--habitat-accent), 0.14),
+      transparent 68%
+    );
+}
+
+.creature-menagerie__specimen-orbit {
+  border-color: rgba(var(--habitat-accent), 0.13);
+}
+
+.creature-menagerie__specimen-orbit--two {
+  border-color: rgba(var(--habitat-second), 0.1);
+}
+
+.creature-menagerie__specimen-ground {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(var(--habitat-accent), 0.17),
+      transparent 68%
+    );
+}
+
+.creature-menagerie__specimen > p {
+  color: rgba(var(--habitat-accent), 0.38);
+}
+
+.creature-menagerie__encounter-navigation > button {
+  color: rgba(var(--habitat-accent), 0.64);
+}
+
+.creature-menagerie__encounter-navigation > button:hover {
+  color: rgba(239, 231, 215, 0.92);
+}
+
+.creature-menagerie__encounter-dot {
+  background: rgba(var(--habitat-accent), 0.28);
+}
+
+.creature-menagerie__encounter-dot--active {
+  background: rgba(var(--habitat-second), 0.95);
+  box-shadow:
+    0 0 11px rgba(var(--habitat-second), 0.62);
+}
+
+/* =========================================================
+   SENTIENT BEINGS — CELESTIAL EMERALD
+========================================================= */
+
+.creature-menagerie__beings {
+  background:
+    radial-gradient(
+      circle at 50% 58%,
+      rgba(78, 135, 101, 0.07),
+      transparent 35%
+    );
+}
+
+.creature-menagerie__being-orbit {
+  border-color: rgba(117, 184, 154, 0.11);
+}
+
+.creature-menagerie__being-orbit::before,
+.creature-menagerie__being-orbit::after {
+  border-color: rgba(212, 170, 99, 0.075);
+}
+
+.creature-menagerie__being-center {
+  border-color: rgba(212, 170, 99, 0.19);
+  background:
+    radial-gradient(
+      circle,
+      rgba(68, 126, 92, 0.15),
+      rgba(4, 11, 7, 0.9)
+    );
+  box-shadow:
+    0 0 55px rgba(79, 146, 106, 0.07);
+}
+
+.creature-menagerie__being-center > span {
+  color: var(--cm-amber);
+}
+
+.creature-menagerie__being-center small {
+  color: var(--cm-emerald-soft);
+}
+
+.creature-menagerie__being {
+  color: var(--cm-ivory);
+}
+
+.creature-menagerie__being > div {
+  background:
+    radial-gradient(
+      circle,
+      rgba(84, 149, 108, 0.14),
+      transparent 67%
+    );
+}
+
+.creature-menagerie__being img {
+  filter:
+    brightness(0.91)
+    saturate(0.88)
+    drop-shadow(
+      0 20px 24px rgba(0,0,0,0.58)
+    );
+}
+
+.creature-menagerie__being > small {
+  color: rgba(137, 184, 156, 0.52);
+}
+
+/* =========================================================
+   DARK ENTITIES — MUTED VIOLET / BLOOD WINE
+========================================================= */
+
+.creature-menagerie__dark {
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(81, 48, 92, 0.1),
+      transparent 40%
+    ),
+    #030504;
+}
+
+.creature-menagerie__dark-heading > p {
+  color: rgba(166, 111, 143, 0.62);
+}
+
+.creature-menagerie__dark-heading h2 span {
+  color: rgba(180, 96, 111, 0.82);
+}
+
+.creature-menagerie__dark-entity {
+  border-color: rgba(152, 95, 126, 0.09);
+}
+
+.creature-menagerie__dark-entity:hover {
+  border-color: rgba(184, 102, 118, 0.25);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(84, 34, 46, 0.08),
+      transparent
+    );
+}
+
+/* =========================================================
+   FAMILIARS — WARM AMBER
+========================================================= */
+
+.creature-menagerie__familiars {
+  background:
+    radial-gradient(
+      circle at 50% 55%,
+      rgba(177, 132, 67, 0.065),
+      transparent 38%
+    );
+}
+
+.creature-menagerie__familiar-path {
+  border-color: rgba(212, 170, 99, 0.1);
+}
+
+.creature-menagerie__familiar-center {
+  border-color: rgba(212, 170, 99, 0.2);
+  background:
+    radial-gradient(
+      circle,
+      rgba(123, 91, 47, 0.15),
+      rgba(6, 10, 7, 0.88)
+    );
+}
+
+.creature-menagerie__familiar-center > span {
+  color: var(--cm-amber);
+}
+
+.creature-menagerie__familiar strong {
+  color: rgba(239, 231, 215, 0.9);
+}
+
+.creature-menagerie__familiar > span {
+  color: rgba(193, 166, 121, 0.52);
+}
+
+/* =========================================================
+   COMPLETE INDEX — FIELD CATALOGUE
+========================================================= */
+
+.creature-menagerie__index {
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(4, 12, 8, 0.52)
+    );
+}
+
+.creature-menagerie__search {
+  border-color: rgba(117, 184, 154, 0.12);
+}
+
+.creature-menagerie__search--open {
+  border-color: rgba(212, 170, 99, 0.25);
+  background: rgba(7, 18, 12, 0.56);
+}
+
+.creature-menagerie__index-item {
+  border-color: rgba(117, 184, 154, 0.075);
+}
+
+.creature-menagerie__index-item:hover {
+  border-color: rgba(212, 170, 99, 0.2);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(62, 111, 79, 0.08),
+      rgba(133, 98, 49, 0.035),
+      transparent
+    );
+}
+
+.creature-menagerie__index-item > span,
+.creature-menagerie__index-item small {
+  color: rgba(131, 180, 152, 0.52);
+}
+
+.creature-menagerie__index-item strong {
+  color: rgba(237, 229, 214, 0.84);
+}
+
+.creature-menagerie__index-item:hover strong {
+  color: var(--cm-ivory);
+}
+
+.creature-menagerie__index-item svg {
+  color: rgba(212, 170, 99, 0.42);
+}
+
+.creature-menagerie__index-footer {
+  color: rgba(172, 187, 170, 0.4);
+}
+
+/* =========================================================
+   RESPONSIVE REFRESH
+========================================================= */
+
+@media (max-width: 900px) {
+  .creature-menagerie__hero-census {
+    grid-template-columns:
+      1fr 1px 1fr;
+    row-gap: 14px;
+  }
+
+  .creature-menagerie__hero-census > i:nth-of-type(2) {
+    display: none;
+  }
+
+  .creature-menagerie__field-seal {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .creature-menagerie__hero-title {
+    font-size:
+      clamp(4rem, 21vw, 6rem);
+  }
+
+  .creature-menagerie__hero-census {
+    width: min(420px, 96%);
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 10px;
+    padding: 14px 10px;
+  }
+
+  .creature-menagerie__hero-census > i {
+    display: none;
+  }
+
+  .creature-menagerie__hero-census span {
+    font-size: 0.27rem;
+    letter-spacing: 0.12em;
+  }
+
+  .creature-menagerie__hero-census strong {
+    font-size: 1.05rem;
+  }
+}

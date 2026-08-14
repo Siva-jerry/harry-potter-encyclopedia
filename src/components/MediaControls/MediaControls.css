@@ -1,0 +1,823 @@
+/* =========================================================
+   TOP-RIGHT MEDIA CONTROLS
+========================================================= */
+
+.media-controls-fixed {
+  position: fixed !important;
+
+  z-index: 99980;
+
+  top:
+    clamp(
+      18px,
+      2.5vw,
+      34px
+    );
+
+  right:
+    clamp(
+      18px,
+      2.5vw,
+      38px
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   WRAPPER
+========================================================= */
+
+.media-control-wrap {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   ROUND BUTTON
+========================================================= */
+
+.media-control-orb {
+  position: relative;
+
+  width: 43px;
+  height: 43px;
+
+  min-width: 43px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      192,
+      220,
+      239,
+      0.22
+    );
+
+  background:
+    rgba(
+      5,
+      14,
+      22,
+      0.78
+    );
+
+  color:
+    rgba(
+      225,
+      240,
+      250,
+      0.76
+    );
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px
+      rgba(
+        0,
+        0,
+        0,
+        0.32
+      ),
+
+    inset
+    0 0 18px
+      rgba(
+        112,
+        173,
+        215,
+        0.025
+      );
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* outer ring */
+
+.media-control-orb::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -5px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      168,
+      207,
+      234,
+      0.08
+    );
+
+  opacity: 0;
+
+  transform:
+    scale(0.82);
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+
+/* hover */
+
+.media-control-orb:hover {
+  transform:
+    translateY(-2px)
+    scale(1.06);
+
+  color: #ffffff;
+
+  border-color:
+    rgba(
+      216,
+      238,
+      252,
+      0.52
+    );
+
+  background:
+    rgba(
+      12,
+      30,
+      44,
+      0.94
+    );
+
+  box-shadow:
+    0 0 25px
+      rgba(
+        101,
+        168,
+        214,
+        0.13
+      ),
+
+    0 12px 30px
+      rgba(
+        0,
+        0,
+        0,
+        0.4
+      );
+}
+
+
+.media-control-orb:hover::before {
+  opacity: 1;
+
+  transform:
+    scale(1);
+}
+
+
+/* icon */
+
+.media-control-orb svg {
+  position: relative;
+
+  z-index: 3;
+
+  font-size: 1rem;
+}
+
+
+/* =========================================================
+   MUSIC ACTIVE
+========================================================= */
+
+.media-control-orb--active {
+  color:
+    rgba(
+      241,
+      249,
+      255,
+      1
+    );
+
+  border-color:
+    rgba(
+      202,
+      231,
+      249,
+      0.43
+    );
+
+  background:
+    rgba(
+      18,
+      41,
+      58,
+      0.92
+    );
+
+  box-shadow:
+    0 0 22px
+      rgba(
+        104,
+        175,
+        223,
+        0.13
+      );
+}
+
+
+/* =========================================================
+   TOOLTIP
+========================================================= */
+
+.media-control-tooltip {
+  position: absolute;
+
+  top:
+    calc(
+      100% + 10px
+    );
+
+  right: 0;
+
+  padding:
+    7px 9px;
+
+  white-space: nowrap;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform:
+    translateY(-4px);
+
+  border:
+    1px solid
+    rgba(
+      171,
+      207,
+      233,
+      0.1
+    );
+
+  background:
+    rgba(
+      4,
+      12,
+      19,
+      0.94
+    );
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.34rem;
+
+  letter-spacing:
+    0.16em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    rgba(
+      213,
+      232,
+      244,
+      0.65
+    );
+
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.media-control-wrap:hover
+.media-control-tooltip {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(0);
+}
+
+
+/* =========================================================
+   VIDEO POPUP
+========================================================= */
+
+.video-popup {
+  position: fixed !important;
+
+  inset: 0;
+
+  z-index: 9999999;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    clamp(
+      20px,
+      4vw,
+      60px
+    );
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   POPUP BACKGROUND
+========================================================= */
+
+.video-popup__backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+
+  background:
+    rgba(
+      1,
+      4,
+      7,
+      0.94
+    );
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   POPUP CONTENT
+========================================================= */
+
+.video-popup__content {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(
+      1050px,
+      88vw
+    );
+
+  padding: 14px;
+
+  background:
+    #050b10;
+
+  border:
+    1px solid
+    rgba(
+      190,
+      220,
+      240,
+      0.18
+    );
+
+  box-shadow:
+    0 35px 100px
+    rgba(
+      0,
+      0,
+      0,
+      0.8
+    );
+
+  animation:
+    videoPopupReveal
+    0.55s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+/* =========================================================
+   POPUP HEADER
+========================================================= */
+
+.video-popup__header {
+  width: 100%;
+
+  min-height: 45px;
+
+  padding:
+    0 2px 12px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.video-popup__heading {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.video-popup__heading small {
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.37rem;
+
+  letter-spacing:
+    0.3em;
+
+  color:
+    rgba(
+      168,
+      204,
+      229,
+      0.62
+    );
+}
+
+
+.video-popup__heading span {
+  font-family:
+    var(--font-story);
+
+  font-size:
+    0.88rem;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      197,
+      216,
+      229,
+      0.55
+    );
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.video-popup__close {
+  position: relative;
+
+  z-index: 50;
+
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  padding: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      210,
+      233,
+      248,
+      0.23
+    );
+
+  background:
+    #09141d;
+
+  color:
+    #edf7fd;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+}
+
+
+.video-popup__close:hover {
+  transform:
+    rotate(90deg);
+
+  border-color:
+    rgba(
+      219,
+      240,
+      253,
+      0.48
+    );
+
+  background:
+    rgba(
+      16,
+      37,
+      53,
+      0.95
+    );
+}
+
+
+/* =========================================================
+   VIDEO FRAME
+========================================================= */
+
+.video-popup__frame {
+  position: relative;
+
+  z-index: 20;
+
+  width: 100%;
+
+  aspect-ratio:
+    16 / 9;
+
+  overflow: hidden;
+
+  background:
+    #000;
+}
+
+
+/* =========================================================
+   ACTUAL VIDEO
+========================================================= */
+
+.video-popup__video {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 30;
+
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0;
+  padding: 0;
+
+  opacity: 1 !important;
+
+  visibility: visible !important;
+
+  object-fit: contain;
+
+  background:
+    #000;
+
+  filter: none !important;
+
+  transform: none !important;
+
+  mix-blend-mode:
+    normal !important;
+}
+
+
+/* =========================================================
+   INNER BORDER
+========================================================= */
+
+.video-popup__inner-border {
+  position: absolute;
+
+  z-index: 40;
+
+  inset: 8px;
+
+  pointer-events: none;
+
+  border:
+    1px solid
+    rgba(
+      210,
+      234,
+      249,
+      0.04
+    );
+}
+
+
+/* =========================================================
+   POPUP FOOTER
+========================================================= */
+
+.video-popup__footer {
+  padding:
+    14px 5px 2px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+}
+
+
+.video-popup__footer span {
+  width: 80px;
+  height: 1px;
+
+  background:
+    rgba(
+      170,
+      207,
+      233,
+      0.14
+    );
+}
+
+
+.video-popup__footer p {
+  margin: 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.32rem;
+
+  letter-spacing:
+    0.18em;
+
+  text-transform:
+    uppercase;
+
+  color:
+    rgba(
+      173,
+      202,
+      222,
+      0.45
+    );
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+@keyframes videoPopupReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px)
+      scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .media-controls-fixed {
+    top: 15px;
+    right: 15px;
+
+    gap: 8px;
+  }
+
+
+  .media-control-orb {
+    width: 40px;
+    height: 40px;
+
+    min-width: 40px;
+  }
+
+
+  .media-control-tooltip {
+    display: none;
+  }
+
+
+  .video-popup {
+    padding: 12px;
+  }
+
+
+  .video-popup__content {
+    width: 100%;
+
+    padding: 9px;
+  }
+
+
+  .video-popup__heading span {
+    display: none;
+  }
+
+
+  .video-popup__footer {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .media-controls-fixed {
+    top: 12px;
+    right: 12px;
+  }
+
+
+  .media-control-orb {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+  }
+
+}

@@ -1,0 +1,3458 @@
+/* =========================================================
+   MAGICAL OBJECTS & ARTIFACTS
+   UNIQUE NAMESPACE: artifact-archive
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+.artifact-archive {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  color: #edf5fb;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(3, 7, 11, 0.3),
+      rgba(3, 7, 11, 0.08)
+    );
+}
+
+
+/* =========================================================
+   EXISTING MAGICAL BACKGROUND
+========================================================= */
+
+.artifact-archive > .magical-background {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   FIXED PAGE LINES
+========================================================= */
+
+.artifact-archive__page-line {
+  position: fixed;
+
+  z-index: 5;
+
+  top: 0;
+  bottom: 0;
+
+  width: 1px;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(149, 190, 219, 0.07) 15%,
+      rgba(181, 213, 236, 0.14) 50%,
+      rgba(149, 190, 219, 0.07) 85%,
+      transparent
+    );
+}
+
+
+.artifact-archive__page-line::before,
+.artifact-archive__page-line::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  transform:
+    translateX(-50%)
+    rotate(45deg);
+
+  border:
+    1px solid
+    rgba(180, 214, 238, 0.15);
+}
+
+
+.artifact-archive__page-line::before {
+  top: 16%;
+}
+
+
+.artifact-archive__page-line::after {
+  bottom: 16%;
+}
+
+
+.artifact-archive__page-line--left {
+  left: 28px;
+}
+
+
+.artifact-archive__page-line--right {
+  right: 28px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.artifact-archive__hero {
+  position: relative;
+
+  z-index: 3;
+
+  min-height: 100vh;
+
+  padding:
+    130px
+    clamp(30px, 7vw, 130px)
+    95px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO AURA
+========================================================= */
+
+.artifact-archive__hero-aura {
+  position: absolute;
+
+  z-index: -1;
+
+  left: 50%;
+  top: 48%;
+
+  width:
+    min(950px, 94vw);
+
+  height:
+    min(720px, 85vw);
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        81,
+        142,
+        184,
+        0.1
+      ),
+      rgba(
+        40,
+        79,
+        106,
+        0.035
+      )
+      45%,
+      transparent
+      72%
+    );
+
+  filter:
+    blur(60px);
+
+  animation:
+    artifactHeroAura
+    9s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   HERO MARK
+========================================================= */
+
+.artifact-archive__hero-mark {
+  position: relative;
+
+  width: 112px;
+  height: 112px;
+
+  margin-bottom: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color:
+    rgba(
+      216,
+      237,
+      250,
+      0.82
+    );
+
+  font-size: 2rem;
+
+  text-shadow:
+    0 0 25px
+    rgba(
+      113,
+      182,
+      231,
+      0.5
+    );
+}
+
+
+.artifact-archive__hero-mark > svg {
+  animation:
+    artifactHeroSymbol
+    4.5s
+    ease-in-out
+    infinite;
+}
+
+
+.artifact-archive__hero-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.artifact-archive__hero-ring--outer {
+  inset: 0;
+
+  border:
+    1px dashed
+    rgba(
+      174,
+      211,
+      236,
+      0.2
+    );
+
+  animation:
+    artifactRotate
+    20s
+    linear
+    infinite;
+}
+
+
+.artifact-archive__hero-ring--inner {
+  inset: 16px;
+
+  border:
+    1px solid
+    rgba(
+      148,
+      193,
+      226,
+      0.13
+    );
+
+  animation:
+    artifactRotateReverse
+    13s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.artifact-archive__hero-eyebrow {
+  margin:
+    0 0 24px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.46em;
+
+  color:
+    rgba(
+      157,
+      195,
+      223,
+      0.6
+    );
+
+  animation:
+    artifactHeroReveal
+    1.2s
+    ease
+    both;
+}
+
+
+.artifact-archive__hero-title {
+  margin: 0;
+
+  max-width: 1020px;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      4.3rem,
+      8vw,
+      8.5rem
+    );
+
+  line-height: 0.82;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.05em;
+
+  color: #eef7fd;
+
+  animation:
+    artifactHeroReveal
+    1.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    0.12s
+    both;
+}
+
+
+.artifact-archive__hero-title span {
+  display: block;
+
+  margin-top: 18px;
+
+  font-size: 0.72em;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      165,
+      201,
+      227,
+      0.7
+    );
+}
+
+
+.artifact-archive__hero-description {
+  width:
+    min(620px, 92%);
+
+  margin:
+    38px auto 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.05rem;
+
+  line-height: 1.82;
+
+  color:
+    rgba(
+      190,
+      211,
+      226,
+      0.59
+    );
+
+  animation:
+    artifactHeroReveal
+    1.3s
+    ease
+    0.3s
+    both;
+}
+
+
+/* =========================================================
+   HERO COUNT
+========================================================= */
+
+.artifact-archive__hero-count {
+  margin-top: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  animation:
+    artifactHeroReveal
+    1.3s
+    ease
+    0.42s
+    both;
+}
+
+
+.artifact-archive__hero-count strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1.55rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      226,
+      240,
+      249,
+      0.83
+    );
+}
+
+
+.artifact-archive__hero-count span {
+  text-align: left;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.35rem;
+
+  line-height: 1.5;
+
+  letter-spacing: 0.22em;
+
+  color:
+    rgba(
+      143,
+      182,
+      210,
+      0.4
+    );
+}
+
+
+/* =========================================================
+   ENTER
+========================================================= */
+
+.artifact-archive__enter {
+  margin-top: 44px;
+
+  padding: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    rgba(
+      195,
+      220,
+      237,
+      0.65
+    );
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.24em;
+
+  text-transform: uppercase;
+
+  animation:
+    artifactHeroReveal
+    1.3s
+    ease
+    0.55s
+    both;
+
+  transition:
+    color
+    0.35s ease;
+}
+
+
+.artifact-archive__enter:hover {
+  color: #f4fbff;
+}
+
+
+.artifact-archive__enter svg {
+  animation:
+    artifactArrow
+    2s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   HERO RECORD
+========================================================= */
+
+.artifact-archive__hero-record {
+  position: absolute;
+
+  right:
+    clamp(
+      30px,
+      6vw,
+      105px
+    );
+
+  bottom: 45px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  letter-spacing: 0.24em;
+
+  color:
+    rgba(
+      137,
+      174,
+      201,
+      0.28
+    );
+}
+
+
+/* =========================================================
+   ACTIVE RECORD
+========================================================= */
+
+.artifact-archive__active {
+  position: fixed;
+
+  z-index: 40;
+
+  left: 42px;
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width: 26px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 13px;
+
+  pointer-events: none;
+}
+
+
+.artifact-archive__active > span {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.8rem;
+
+  color:
+    rgba(
+      194,
+      219,
+      236,
+      0.42
+    );
+}
+
+
+.artifact-archive__active > div {
+  position: relative;
+
+  width: 1px;
+  height: 55px;
+
+  overflow: hidden;
+
+  background:
+    rgba(
+      165,
+      202,
+      228,
+      0.08
+    );
+}
+
+
+.artifact-archive__active > div i {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 1px;
+  height: 22px;
+
+  background:
+    rgba(
+      213,
+      236,
+      251,
+      0.55
+    );
+
+  box-shadow:
+    0 0 8px
+    rgba(
+      116,
+      184,
+      230,
+      0.55
+    );
+
+  animation:
+    artifactActiveTravel
+    2.8s
+    ease-in-out
+    infinite;
+}
+
+
+.artifact-archive__active p {
+  margin: 0;
+
+  writing-mode:
+    vertical-rl;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31rem;
+
+  letter-spacing: 0.19em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      149,
+      186,
+      213,
+      0.3
+    );
+}
+
+
+/* =========================================================
+   COLLECTION
+========================================================= */
+
+.artifact-archive__collection {
+  position: relative;
+
+  z-index: 3;
+
+  width: 100%;
+
+  padding:
+    100px
+    clamp(
+      30px,
+      6vw,
+      110px
+    )
+    150px;
+}
+
+
+/* =========================================================
+   COLLECTION HEADING
+========================================================= */
+
+.artifact-archive__collection-heading {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(800px, 92%);
+
+  margin:
+    0 auto
+    155px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: center;
+
+  gap: 26px;
+
+  text-align: center;
+}
+
+
+.artifact-archive__collection-heading > span {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        165,
+        203,
+        231,
+        0.2
+      )
+    );
+}
+
+
+.artifact-archive__collection-heading > span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.artifact-archive__collection-heading small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.39rem;
+
+  letter-spacing: 0.32em;
+
+  color:
+    rgba(
+      145,
+      184,
+      212,
+      0.43
+    );
+}
+
+
+.artifact-archive__collection-heading h2 {
+  margin:
+    10px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.4rem,
+      4vw,
+      4rem
+    );
+
+  line-height: 1;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      228,
+      240,
+      248,
+      0.86
+    );
+}
+
+
+.artifact-archive__collection-heading h2 em {
+  display: block;
+
+  margin-top: 8px;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      159,
+      197,
+      223,
+      0.56
+    );
+}
+
+
+/* =========================================================
+   CENTRAL THREAD
+========================================================= */
+
+.artifact-archive__thread {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  top: 295px;
+  bottom: 90px;
+
+  width: 3px;
+
+  transform:
+    translateX(-50%);
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.artifact-archive__thread-base {
+  position: absolute;
+
+  left: 1px;
+  top: 0;
+
+  width: 1px;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(
+        164,
+        202,
+        230,
+        0.11
+      )
+      3%,
+      rgba(
+        178,
+        213,
+        237,
+        0.2
+      )
+      50%,
+      rgba(
+        164,
+        202,
+        230,
+        0.11
+      )
+      97%,
+      transparent
+    );
+}
+
+
+.artifact-archive__thread-light {
+  position: absolute;
+
+  left: 0;
+  top: -10%;
+
+  width: 3px;
+  height: 10%;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(
+        225,
+        244,
+        255,
+        0.92
+      ),
+      transparent
+    );
+
+  filter:
+    drop-shadow(
+      0 0 9px
+      rgba(
+        111,
+        183,
+        233,
+        0.7
+      )
+    );
+
+  animation:
+    artifactThreadTravel
+    8s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   ENTRIES WRAPPER
+========================================================= */
+
+.artifact-archive__entries {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(1430px, 100%);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   ENTRY
+========================================================= */
+
+.artifact-archive__entry {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 720px;
+
+  margin-bottom:
+    clamp(
+      130px,
+      13vw,
+      220px
+    );
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap:
+    clamp(
+      90px,
+      10vw,
+      180px
+    );
+
+  isolation: isolate;
+}
+
+
+.artifact-archive__entry:last-child {
+  margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   ALTERNATING
+========================================================= */
+
+.artifact-archive__entry--normal
+.artifact-archive__visual {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+
+.artifact-archive__entry--normal
+.artifact-archive__content {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+
+.artifact-archive__entry--reverse
+.artifact-archive__visual {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+
+.artifact-archive__entry--reverse
+.artifact-archive__content {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+
+/* =========================================================
+   CATEGORY AMBIENCE
+========================================================= */
+
+.artifact-archive__entry::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: -3;
+
+  left: 50%;
+  top: 50%;
+
+  width: 82%;
+  height: 75%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius: 50%;
+
+  opacity: 0;
+
+  filter:
+    blur(70px);
+
+  transition:
+    opacity
+    1s ease;
+}
+
+
+.artifact-archive__entry--active::before {
+  opacity: 1;
+}
+
+
+/* transportation */
+
+.artifact-archive__entry--transportation::before {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(
+        74,
+        135,
+        177,
+        0.065
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* tools */
+
+.artifact-archive__entry--magical-tools::before {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(
+        107,
+        151,
+        189,
+        0.07
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* hallows */
+
+.artifact-archive__entry--deathly-hallows::before {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(
+        155,
+        166,
+        181,
+        0.075
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* legendary */
+
+.artifact-archive__entry--legendary::before {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(
+        139,
+        154,
+        173,
+        0.065
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* horcrux */
+
+.artifact-archive__entry--horcrux::before {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(
+        67,
+        100,
+        78,
+        0.11
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* dark objects */
+
+.artifact-archive__entry--dark-objects::before {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(
+        74,
+        86,
+        92,
+        0.095
+      ),
+      transparent
+      70%
+    );
+}
+
+
+/* =========================================================
+   GHOST NUMBER
+========================================================= */
+
+.artifact-archive__ghost-number {
+  position: absolute;
+
+  z-index: -2;
+
+  top: 50%;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      12rem,
+      20vw,
+      23rem
+    );
+
+  line-height: 0.7;
+
+  color:
+    rgba(
+      126,
+      174,
+      207,
+      0.018
+    );
+
+  pointer-events: none;
+
+  user-select: none;
+}
+
+
+.artifact-archive__entry--normal
+.artifact-archive__ghost-number {
+  left: 1%;
+
+  transform:
+    translateY(-50%);
+}
+
+
+.artifact-archive__entry--reverse
+.artifact-archive__ghost-number {
+  right: 1%;
+
+  transform:
+    translateY(-50%);
+}
+
+
+/* =========================================================
+   NODE
+========================================================= */
+
+.artifact-archive__node {
+  position: absolute;
+
+  z-index: 20;
+
+  left: 50%;
+  top: 50%;
+
+  width: 26px;
+  height: 26px;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      5,
+      12,
+      18,
+      0.97
+    );
+
+  border:
+    1px solid
+    rgba(
+      166,
+      205,
+      233,
+      0.13
+    );
+}
+
+
+.artifact-archive__node-core {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      225,
+      243,
+      255,
+      0.9
+    );
+
+  box-shadow:
+    0 0 10px
+      rgba(
+        203,
+        234,
+        253,
+        0.7
+      ),
+
+    0 0 22px
+      rgba(
+        103,
+        175,
+        225,
+        0.35
+      );
+}
+
+
+.artifact-archive__node-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      174,
+      211,
+      236,
+      0.16
+    );
+
+  opacity: 0;
+}
+
+
+.artifact-archive__node-ring--one {
+  inset: -8px;
+}
+
+
+.artifact-archive__node-ring--two {
+  inset: -15px;
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__node-ring--one {
+  animation:
+    artifactNodePulse
+    2.5s
+    ease-out
+    infinite;
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__node-ring--two {
+  animation:
+    artifactNodePulse
+    2.5s
+    ease-out
+    0.7s
+    infinite;
+}
+
+
+/* =========================================================
+   VISUAL
+========================================================= */
+
+.artifact-archive__visual {
+  position: relative;
+
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+
+  filter:
+    blur(8px);
+
+  transition:
+    opacity
+      1.3s ease,
+
+    transform
+      1.5s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+
+    filter
+      1.2s ease;
+}
+
+
+.artifact-archive__entry--normal
+.artifact-archive__visual {
+  transform:
+    translateX(-70px)
+    scale(0.95);
+}
+
+
+.artifact-archive__entry--reverse
+.artifact-archive__visual {
+  transform:
+    translateX(70px)
+    scale(0.95);
+}
+
+
+.artifact-archive__entry--visible
+.artifact-archive__visual {
+  opacity: 1;
+
+  filter:
+    blur(0);
+
+  transform:
+    translateX(0)
+    scale(1);
+}
+
+
+/* =========================================================
+   VISUAL GLOW
+========================================================= */
+
+.artifact-archive__visual-glow {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 90%;
+  height: 76%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        92,
+        157,
+        201,
+        0.1
+      ),
+      rgba(
+        44,
+        84,
+        112,
+        0.03
+      )
+      50%,
+      transparent
+      74%
+    );
+
+  filter:
+    blur(48px);
+
+  opacity: 0.52;
+
+  transition:
+    opacity
+      0.7s ease,
+
+    transform
+      0.8s ease;
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__visual-glow {
+  opacity: 1;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(1.08);
+}
+
+
+/* horcrux tint */
+
+.artifact-archive__entry--horcrux
+.artifact-archive__visual-glow {
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        82,
+        125,
+        94,
+        0.13
+      ),
+      transparent
+      72%
+    );
+}
+
+
+/* =========================================================
+   ORBITS
+========================================================= */
+
+.artifact-archive__orbit {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+}
+
+
+.artifact-archive__orbit--one {
+  width: 82%;
+
+  aspect-ratio: 1;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    rotate(18deg);
+
+  border:
+    1px solid
+    rgba(
+      153,
+      196,
+      226,
+      0.055
+    );
+}
+
+
+.artifact-archive__orbit--two {
+  width: 65%;
+
+  aspect-ratio: 1;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    rotate(-25deg);
+
+  border:
+    1px dashed
+    rgba(
+      153,
+      196,
+      226,
+      0.045
+    );
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__orbit--one {
+  animation:
+    artifactVisualOrbit
+    23s
+    linear
+    infinite;
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__orbit--two {
+  animation:
+    artifactVisualOrbitReverse
+    17s
+    linear
+    infinite;
+}
+
+
+/* =========================================================
+   FIGURE
+========================================================= */
+
+.artifact-archive__figure {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      630px,
+      100%
+    );
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   IMAGE FRAME
+========================================================= */
+
+.artifact-archive__image-frame {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio:
+    16 / 9;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      165,
+      203,
+      231,
+      0.11
+    );
+
+  background:
+    rgba(
+      5,
+      11,
+      17,
+      0.36
+    );
+
+  box-shadow:
+    0 35px 80px
+      rgba(
+        0,
+        0,
+        0,
+        0.38
+      ),
+
+    inset 0 0 70px
+      rgba(
+        92,
+        149,
+        188,
+        0.025
+      );
+}
+
+
+.artifact-archive__image-frame::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 8;
+
+  inset: 11px;
+
+  border:
+    1px solid
+    rgba(
+      181,
+      215,
+      238,
+      0.045
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.artifact-archive__image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transform:
+    scale(1.025);
+
+  filter:
+    brightness(0.50)
+    saturate(0.72)
+    contrast(1.07);
+
+  transition:
+    transform
+      1.8s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+
+    filter
+      0.8s ease;
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__image {
+  transform:
+    scale(1.06);
+
+  filter:
+    brightness(0.9)
+    saturate(0.88)
+    contrast(1.05);
+}
+
+
+/* darker horcrux visual */
+
+.artifact-archive__entry--horcrux
+.artifact-archive__image {
+  filter:
+    brightness(0.63)
+    saturate(0.62)
+    contrast(1.12);
+}
+
+
+.artifact-archive__entry--horcrux.artifact-archive__entry--active
+.artifact-archive__image {
+  filter:
+    brightness(0.78)
+    saturate(0.72)
+    contrast(1.12);
+}
+
+
+/* =========================================================
+   IMAGE OVERLAYS
+========================================================= */
+
+.artifact-archive__image-vignette {
+  position: absolute;
+
+  z-index: 4;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(
+        3,
+        8,
+        12,
+        0.12
+      )
+      58%,
+      rgba(
+        3,
+        7,
+        11,
+        0.72
+      )
+      100%
+    );
+}
+
+
+.artifact-archive__image-shimmer {
+  position: absolute;
+
+  z-index: 5;
+
+  top: -30%;
+  left: -70%;
+
+  width: 31%;
+  height: 160%;
+
+  transform:
+    rotate(15deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        204,
+        231,
+        249,
+        0.06
+      ),
+      transparent
+    );
+
+  pointer-events: none;
+}
+
+
+.artifact-archive__entry--active
+.artifact-archive__image-shimmer {
+  animation:
+    artifactImageShimmer
+    6s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   FRAME CORNERS
+========================================================= */
+
+.artifact-archive__corner {
+  position: absolute;
+
+  z-index: 10;
+
+  width: 26px;
+  height: 26px;
+
+  pointer-events: none;
+}
+
+
+.artifact-archive__corner--tl {
+  left: 10px;
+  top: 10px;
+
+  border-left:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+}
+
+
+.artifact-archive__corner--tr {
+  right: 10px;
+  top: 10px;
+
+  border-right:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+}
+
+
+.artifact-archive__corner--bl {
+  left: 10px;
+  bottom: 10px;
+
+  border-left:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+}
+
+
+.artifact-archive__corner--br {
+  right: 10px;
+  bottom: 10px;
+
+  border-right:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      202,
+      228,
+      246,
+      0.3
+    );
+}
+
+
+/* =========================================================
+   FRAME NUMBER
+========================================================= */
+
+.artifact-archive__frame-number {
+  position: absolute;
+
+  z-index: 9;
+
+  left: 23px;
+  bottom: 20px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 2.8rem;
+
+  line-height: 1;
+
+  color:
+    rgba(
+      219,
+      238,
+      250,
+      0.13
+    );
+}
+
+
+/* =========================================================
+   CAPTION
+========================================================= */
+
+.artifact-archive__figure figcaption {
+  margin-top: 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.artifact-archive__figure figcaption span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.34rem;
+
+  letter-spacing: 0.19em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      144,
+      182,
+      209,
+      0.38
+    );
+}
+
+
+.artifact-archive__figure figcaption i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        153,
+        193,
+        221,
+        0.1
+      ),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.artifact-archive__content {
+  position: relative;
+
+  z-index: 6;
+
+  min-width: 0;
+
+  opacity: 0;
+
+  filter:
+    blur(7px);
+
+  transition:
+    opacity
+      1.2s ease
+      0.18s,
+
+    transform
+      1.45s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
+      0.18s,
+
+    filter
+      1.2s ease
+      0.18s;
+}
+
+
+.artifact-archive__entry--normal
+.artifact-archive__content {
+  transform:
+    translateX(
+      60px
+    );
+}
+
+
+.artifact-archive__entry--reverse
+.artifact-archive__content {
+  transform:
+    translateX(
+      -60px
+    );
+}
+
+
+.artifact-archive__entry--visible
+.artifact-archive__content {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+
+  filter: blur(0);
+}
+
+
+.artifact-archive__content-inner {
+  width:
+    min(
+      565px,
+      100%
+    );
+}
+
+
+.artifact-archive__entry--reverse
+.artifact-archive__content-inner {
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   CHAPTER
+========================================================= */
+
+.artifact-archive__chapter {
+  margin-bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  flex-wrap: wrap;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.34rem;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      146,
+      185,
+      213,
+      0.45
+    );
+}
+
+
+.artifact-archive__chapter i {
+  width: 27px;
+  height: 1px;
+
+  background:
+    rgba(
+      155,
+      194,
+      222,
+      0.2
+    );
+}
+
+
+/* =========================================================
+   NUMBER
+========================================================= */
+
+.artifact-archive__entry-number {
+  margin:
+    0 0 12px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.28em;
+
+  color:
+    rgba(
+      136,
+      174,
+      202,
+      0.34
+    );
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.artifact-archive__name {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.1rem,
+      5vw,
+      5.7rem
+    );
+
+  line-height: 0.91;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.04em;
+
+  color:
+    rgba(
+      236,
+      246,
+      253,
+      0.95
+    );
+}
+
+
+/* =========================================================
+   TAGLINE
+========================================================= */
+
+.artifact-archive__tagline {
+  width:
+    min(
+      485px,
+      100%
+    );
+
+  margin:
+    23px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.05rem;
+
+  line-height: 1.6;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      173,
+      202,
+      223,
+      0.57
+    );
+}
+
+
+/* =========================================================
+   ORNAMENT
+========================================================= */
+
+.artifact-archive__ornament {
+  width:
+    min(
+      360px,
+      82%
+    );
+
+  margin:
+    28px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.artifact-archive__ornament span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        155,
+        196,
+        224,
+        0.15
+      ),
+      transparent
+    );
+}
+
+
+.artifact-archive__ornament span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.artifact-archive__ornament svg {
+  font-size: 0.7rem;
+
+  color:
+    rgba(
+      181,
+      212,
+      234,
+      0.34
+    );
+}
+
+
+/* =========================================================
+   TYPEWRITER
+========================================================= */
+
+.artifact-archive__description {
+  width:
+    min(
+      530px,
+      100%
+    );
+
+  min-height: 130px;
+
+  padding-left: 19px;
+
+  border-left:
+    1px solid
+    rgba(
+      157,
+      197,
+      225,
+      0.13
+    );
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  line-height: 1.82;
+
+  color:
+    rgba(
+      191,
+      212,
+      226,
+      0.66
+    );
+}
+
+
+.artifact-archive__typing-cursor {
+  display: inline-block;
+
+  margin-left: 3px;
+
+  color:
+    rgba(
+      214,
+      238,
+      253,
+      0.85
+    );
+
+  text-shadow:
+    0 0 8px
+    rgba(
+      115,
+      184,
+      231,
+      0.7
+    );
+
+  animation:
+    artifactTypingCursor
+    0.72s
+    steps(1)
+    infinite;
+}
+
+
+/* =========================================================
+   FACTS
+========================================================= */
+
+.artifact-archive__facts {
+  width: 100%;
+
+  margin-top: 31px;
+
+  border-top:
+    1px solid
+    rgba(
+      155,
+      194,
+      222,
+      0.085
+    );
+}
+
+
+.artifact-archive__fact {
+  padding:
+    16px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    29px
+    1fr;
+
+  gap: 12px;
+
+  border-bottom:
+    1px solid
+    rgba(
+      155,
+      194,
+      222,
+      0.07
+    );
+}
+
+
+.artifact-archive__fact-icon {
+  padding-top: 2px;
+
+  color:
+    rgba(
+      158,
+      198,
+      226,
+      0.48
+    );
+}
+
+
+.artifact-archive__fact-icon svg {
+  font-size: 0.9rem;
+}
+
+
+.artifact-archive__fact small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  letter-spacing: 0.21em;
+
+  color:
+    rgba(
+      137,
+      176,
+      204,
+      0.38
+    );
+}
+
+
+.artifact-archive__fact p {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.84rem;
+
+  line-height: 1.55;
+
+  color:
+    rgba(
+      184,
+      206,
+      221,
+      0.55
+    );
+}
+
+
+/* =========================================================
+   HORCRUX SPECIAL CONTENT
+========================================================= */
+
+.artifact-archive__entry--horcrux
+.artifact-archive__chapter {
+  color:
+    rgba(
+      151,
+      184,
+      159,
+      0.48
+    );
+}
+
+
+.artifact-archive__entry--horcrux
+.artifact-archive__name {
+  color:
+    rgba(
+      226,
+      237,
+      229,
+      0.92
+    );
+}
+
+
+.artifact-archive__entry--horcrux
+.artifact-archive__description {
+  border-left-color:
+    rgba(
+      115,
+      154,
+      124,
+      0.15
+    );
+}
+
+
+/* =========================================================
+   END
+========================================================= */
+
+.artifact-archive__ending {
+  position: relative;
+
+  z-index: 4;
+
+  min-height: 70vh;
+
+  padding:
+    100px
+    7%
+    140px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.artifact-archive__ending-mark {
+  width:
+    min(
+      330px,
+      70vw
+    );
+
+  margin-bottom: 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  color:
+    rgba(
+      202,
+      228,
+      246,
+      0.55
+    );
+}
+
+
+.artifact-archive__ending-mark span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        168,
+        206,
+        232,
+        0.17
+      )
+    );
+}
+
+
+.artifact-archive__ending-mark span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.artifact-archive__ending > p {
+  margin:
+    0 0 22px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.39rem;
+
+  letter-spacing: 0.34em;
+
+  color:
+    rgba(
+      143,
+      181,
+      208,
+      0.4
+    );
+}
+
+
+.artifact-archive__ending h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      5.1rem
+    );
+
+  line-height: 0.97;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      231,
+      243,
+      251,
+      0.88
+    );
+}
+
+
+.artifact-archive__ending h2 span {
+  display: block;
+
+  margin-top: 9px;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      160,
+      198,
+      223,
+      0.58
+    );
+}
+
+
+.artifact-archive__ending button {
+  margin-top: 43px;
+
+  padding: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.39rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      176,
+      206,
+      227,
+      0.48
+    );
+
+  transition:
+    color
+    0.35s ease;
+}
+
+
+.artifact-archive__ending button:hover {
+  color:
+    rgba(
+      238,
+      247,
+      253,
+      0.9
+    );
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes artifactHeroReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(28px);
+
+    filter:
+      blur(7px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes artifactHeroAura {
+
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(0.94);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(1.07);
+  }
+
+}
+
+
+@keyframes artifactHeroSymbol {
+
+  0%,
+  100% {
+    transform:
+      scale(0.93);
+
+    opacity: 0.65;
+  }
+
+  50% {
+    transform:
+      scale(1.08);
+
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes artifactRotate {
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+@keyframes artifactRotateReverse {
+
+  to {
+    transform:
+      rotate(-360deg);
+  }
+
+}
+
+
+@keyframes artifactArrow {
+
+  0%,
+  100% {
+    transform:
+      translateY(-3px);
+  }
+
+  50% {
+    transform:
+      translateY(5px);
+  }
+
+}
+
+
+@keyframes artifactActiveTravel {
+
+  0% {
+    top: -22px;
+  }
+
+  100% {
+    top: 55px;
+  }
+
+}
+
+
+@keyframes artifactThreadTravel {
+
+  from {
+    top: -10%;
+  }
+
+  to {
+    top: 100%;
+  }
+
+}
+
+
+@keyframes artifactNodePulse {
+
+  0% {
+    opacity: 0.7;
+
+    transform:
+      scale(0.5);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(2);
+  }
+
+}
+
+
+@keyframes artifactVisualOrbit {
+
+  from {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(18deg);
+  }
+
+  to {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(378deg);
+  }
+
+}
+
+
+@keyframes artifactVisualOrbitReverse {
+
+  from {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(-25deg);
+  }
+
+  to {
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      rotate(-385deg);
+  }
+
+}
+
+
+@keyframes artifactImageShimmer {
+
+  0%,
+  30% {
+    left: -70%;
+  }
+
+  70%,
+  100% {
+    left: 135%;
+  }
+
+}
+
+
+@keyframes artifactTypingCursor {
+
+  0%,
+  48% {
+    opacity: 1;
+  }
+
+  49%,
+  100% {
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .artifact-archive__entry {
+    gap: 85px;
+
+    min-height: 660px;
+  }
+
+
+  .artifact-archive__name {
+    font-size:
+      clamp(
+        2.8rem,
+        4.8vw,
+        4.7rem
+      );
+  }
+
+
+  .artifact-archive__description {
+    font-size: 0.94rem;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .artifact-archive__active {
+    display: none;
+  }
+
+
+  .artifact-archive__collection {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+
+  .artifact-archive__thread {
+    left: 32px;
+
+    transform: none;
+  }
+
+
+  .artifact-archive__entry {
+    min-height: auto;
+
+    margin-bottom: 145px;
+
+    padding-left: 75px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 50px;
+  }
+
+
+  .artifact-archive__entry--reverse {
+    flex-direction: column;
+  }
+
+
+  .artifact-archive__visual,
+  .artifact-archive__content {
+    width: 100%;
+  }
+
+
+  .artifact-archive__figure {
+    width:
+      min(
+        700px,
+        100%
+      );
+
+    margin:
+      0 auto;
+  }
+
+
+  .artifact-archive__content-inner,
+  .artifact-archive__entry--reverse
+  .artifact-archive__content-inner {
+    width:
+      min(
+        650px,
+        100%
+      );
+
+    margin:
+      0 auto;
+  }
+
+
+  .artifact-archive__node {
+    left: 32px;
+    top: 20px;
+
+    transform:
+      translate(
+        -50%,
+        0
+      );
+  }
+
+
+  .artifact-archive__ghost-number {
+    top: 38%;
+
+    font-size: 16rem;
+  }
+
+
+  .artifact-archive__entry--normal
+  .artifact-archive__ghost-number,
+  .artifact-archive__entry--reverse
+  .artifact-archive__ghost-number {
+    left: 5%;
+    right: auto;
+
+    transform:
+      translateY(-50%);
+  }
+
+
+  .artifact-archive__entry--normal
+  .artifact-archive__visual,
+  .artifact-archive__entry--reverse
+  .artifact-archive__visual {
+    transform:
+      translateY(35px)
+      scale(0.97);
+  }
+
+
+  .artifact-archive__entry--normal
+  .artifact-archive__content,
+  .artifact-archive__entry--reverse
+  .artifact-archive__content {
+    transform:
+      translateY(30px);
+  }
+
+
+  .artifact-archive__entry--visible
+  .artifact-archive__visual {
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+
+  .artifact-archive__entry--visible
+  .artifact-archive__content {
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .artifact-archive__page-line {
+    display: none;
+  }
+
+
+  /* HERO */
+
+  .artifact-archive__hero {
+    min-height: 100svh;
+
+    padding:
+      110px
+      6%
+      85px;
+  }
+
+
+  .artifact-archive__hero-mark {
+    width: 84px;
+    height: 84px;
+
+    margin-bottom: 30px;
+  }
+
+
+  .artifact-archive__hero-eyebrow {
+    font-size: 0.44rem;
+
+    line-height: 1.8;
+
+    letter-spacing: 0.26em;
+  }
+
+
+  .artifact-archive__hero-title {
+    font-size:
+      clamp(
+        3.5rem,
+        16vw,
+        5.4rem
+      );
+
+    line-height: 0.87;
+  }
+
+
+  .artifact-archive__hero-title span {
+    margin-top: 11px;
+  }
+
+
+  .artifact-archive__hero-description {
+    margin-top: 30px;
+
+    font-size: 0.94rem;
+  }
+
+
+  .artifact-archive__hero-record {
+    display: none;
+  }
+
+
+  /* COLLECTION */
+
+  .artifact-archive__collection {
+    padding:
+      80px
+      6%
+      100px;
+  }
+
+
+  .artifact-archive__collection-heading {
+    width: 100%;
+
+    margin-bottom: 100px;
+
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+
+  .artifact-archive__collection-heading > span {
+    display: none;
+  }
+
+
+  .artifact-archive__collection-heading h2 {
+    font-size: 2.7rem;
+  }
+
+
+  /* remove thread */
+
+  .artifact-archive__thread {
+    display: none;
+  }
+
+
+  /* ENTRY */
+
+  .artifact-archive__entry {
+    margin-bottom: 125px;
+
+    padding-left: 0;
+
+    gap: 38px;
+  }
+
+
+  .artifact-archive__node {
+    display: none;
+  }
+
+
+  .artifact-archive__ghost-number {
+    top: 24%;
+
+    font-size: 10rem;
+  }
+
+
+  .artifact-archive__entry--normal
+  .artifact-archive__ghost-number,
+  .artifact-archive__entry--reverse
+  .artifact-archive__ghost-number {
+    left: 0;
+  }
+
+
+  /* IMAGE */
+
+  .artifact-archive__figure {
+    width: 100%;
+  }
+
+
+  .artifact-archive__image-frame {
+    aspect-ratio:
+      16 / 10;
+  }
+
+
+  .artifact-archive__orbit {
+    display: none;
+  }
+
+
+  .artifact-archive__figure figcaption {
+    gap: 8px;
+  }
+
+
+  .artifact-archive__figure figcaption span {
+    font-size: 0.28rem;
+
+    letter-spacing: 0.13em;
+  }
+
+
+  .artifact-archive__frame-number {
+    left: 16px;
+    bottom: 14px;
+
+    font-size: 2rem;
+  }
+
+
+  /* CONTENT */
+
+  .artifact-archive__content-inner {
+    width: 100%;
+  }
+
+
+  .artifact-archive__chapter {
+    font-size: 0.31rem;
+
+    letter-spacing: 0.16em;
+  }
+
+
+  .artifact-archive__name {
+    font-size:
+      clamp(
+        3rem,
+        13vw,
+        4.5rem
+      );
+  }
+
+
+  .artifact-archive__tagline {
+    font-size: 0.98rem;
+  }
+
+
+  .artifact-archive__description {
+    min-height: 0;
+
+    padding-left: 15px;
+
+    font-size: 0.93rem;
+
+    line-height: 1.75;
+  }
+
+
+  .artifact-archive__fact p {
+    font-size: 0.81rem;
+  }
+
+
+  /* END */
+
+  .artifact-archive__ending {
+    min-height: 65vh;
+
+    padding:
+      80px
+      7%
+      120px;
+  }
+
+
+  .artifact-archive__ending h2 {
+    font-size:
+      clamp(
+        2.8rem,
+        12vw,
+        4rem
+      );
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .artifact-archive__hero-title {
+    font-size: 3.4rem;
+  }
+
+
+  .artifact-archive__image-frame {
+    aspect-ratio:
+      4 / 3;
+  }
+
+
+  .artifact-archive__name {
+    font-size: 3rem;
+  }
+
+
+  .artifact-archive__figure
+  figcaption
+  span:last-child {
+    display: none;
+  }
+
+
+  .artifact-archive__entry {
+    margin-bottom: 105px;
+  }
+
+
+  .artifact-archive__hero-count {
+    margin-top: 30px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .artifact-archive__hero-aura,
+  .artifact-archive__hero-ring,
+  .artifact-archive__hero-mark > svg,
+  .artifact-archive__enter svg,
+  .artifact-archive__active > div i,
+  .artifact-archive__thread-light,
+  .artifact-archive__node-ring,
+  .artifact-archive__orbit,
+  .artifact-archive__image-shimmer,
+  .artifact-archive__typing-cursor {
+    animation: none;
+  }
+
+
+  .artifact-archive__hero-eyebrow,
+  .artifact-archive__hero-title,
+  .artifact-archive__hero-description,
+  .artifact-archive__hero-count,
+  .artifact-archive__enter {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .artifact-archive__visual,
+  .artifact-archive__content {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    transition: none;
+  }
+
+
+  .artifact-archive__image {
+    transition: none;
+  }
+
+}

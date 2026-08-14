@@ -1,0 +1,2068 @@
+/* =========================================================
+   SECTION 5 — SPELL MANUSCRIPT
+========================================================= */
+
+.spell-manuscript {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 120vh;
+
+  padding:
+    130px
+    clamp(28px, 6vw, 110px)
+    140px;
+
+  overflow: hidden;
+
+  color: #edf5fb;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.spell-manuscript__intro {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(620px, 92%);
+
+  margin-bottom: 80px;
+
+  opacity: 0;
+
+  transform:
+    translateY(38px);
+
+  filter:
+    blur(8px);
+}
+
+
+.spell-manuscript__eyebrow {
+  margin:
+    0 0 18px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.56rem;
+
+  letter-spacing: 0.4em;
+
+  color:
+    rgba(
+      164,
+      199,
+      226,
+      0.6
+    );
+}
+
+
+.spell-manuscript__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.6rem,
+      6vw,
+      6.5rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.035em;
+
+  color: #edf5fb;
+}
+
+
+.spell-manuscript__title span {
+  display: block;
+
+  margin-top: 8px;
+
+  margin-left: 13%;
+
+  color:
+    rgba(
+      166,
+      199,
+      224,
+      0.72
+    );
+
+  font-style: italic;
+}
+
+
+.spell-manuscript__description {
+  max-width: 500px;
+
+  margin-top: 26px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.08rem;
+
+  line-height: 1.7;
+
+  color:
+    rgba(
+      190,
+      210,
+      225,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   STAGE
+========================================================= */
+
+.spell-manuscript__stage {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(1450px, 100%);
+
+  margin:
+    0 auto;
+
+  min-height: 760px;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.spell-manuscript__stage-glow {
+  position: absolute;
+
+  z-index: 0;
+
+  left: 50%;
+  top: 48%;
+
+  width: 72%;
+  height: 72%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        105,
+        159,
+        201,
+        0.11
+      ),
+      rgba(
+        49,
+        85,
+        112,
+        0.035
+      )
+      45%,
+      transparent
+      74%
+    );
+
+  filter:
+    blur(65px);
+
+  animation:
+    spellStageGlow
+    8s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   MAIN THREE-COLUMN LAYOUT
+
+   LEFT          BOOK          RIGHT
+========================================================= */
+
+.spell-manuscript__layout {
+  position: relative;
+
+  z-index: 3;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 1fr)
+    minmax(520px, 760px)
+    minmax(220px, 1fr);
+
+  gap:
+    clamp(
+      28px,
+      4vw,
+      70px
+    );
+
+  min-height: 740px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   LEFT / RIGHT SPELL COLUMNS
+========================================================= */
+
+.spell-manuscript__column {
+  position: relative;
+
+  z-index: 8;
+
+  height: 610px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content:
+    space-between;
+}
+
+
+/* left copy faces inward */
+
+.spell-manuscript__column--left {
+  padding:
+    65px 0
+    45px;
+}
+
+
+/* right copy faces inward */
+
+.spell-manuscript__column--right {
+  padding:
+    55px 0
+    75px;
+}
+
+
+/* =========================================================
+   CENTER
+========================================================= */
+
+.spell-manuscript__center {
+  position: relative;
+
+  z-index: 4;
+
+  width: 100%;
+
+  min-height: 650px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   BOOK WRAPPER
+========================================================= */
+
+.spell-manuscript__book-wrap {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      100%,
+      760px
+    );
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   PARCHMENT TEXTURE
+
+   Subtle only.
+   It should not turn the whole website brown.
+========================================================= */
+
+.spell-manuscript__parchment-texture {
+  position: absolute;
+
+  z-index: 1;
+
+  inset:
+    7%
+    5%
+    9%;
+
+  background-image:
+    linear-gradient(
+      rgba(
+        5,
+        11,
+        17,
+        0.18
+      ),
+      rgba(
+        5,
+        11,
+        17,
+        0.18
+      )
+    ),
+    url(
+      "/images/home/spells/parchment-texture.png"
+    );
+
+  background-size:
+    cover;
+
+  background-position:
+    center;
+
+  opacity: 0.12;
+
+  mix-blend-mode:
+    soft-light;
+
+  filter:
+    sepia(0.12)
+    contrast(0.92)
+    brightness(0.88);
+
+  pointer-events: none;
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 55%,
+      rgba(
+        0,
+        0,
+        0,
+        0.7
+      )
+      76%,
+      transparent
+      96%
+    );
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 55%,
+      rgba(
+        0,
+        0,
+        0,
+        0.7
+      )
+      76%,
+      transparent
+      96%
+    );
+}
+
+
+/* =========================================================
+   SPELLBOOK
+========================================================= */
+
+.spell-manuscript__book {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  transform:
+    perspective(
+      1200px
+    )
+    rotateX(7deg)
+    scale(0.95);
+
+  filter:
+    brightness(0.78)
+    contrast(1.03)
+    saturate(0.88)
+    drop-shadow(
+      0 35px 50px
+      rgba(
+        0,
+        0,
+        0,
+        0.52
+      )
+    );
+}
+
+
+/* =========================================================
+   BOOK LIGHT
+========================================================= */
+
+/* =========================================================
+   BOOK MAGICAL LIGHT — ENHANCED
+========================================================= */
+
+.spell-manuscript__book-light {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 52%;
+  top: 43%;
+
+  width: 72%;
+  height: 68%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+
+      rgba(
+        235,
+        248,
+        255,
+        0.28
+      )
+      0%,
+
+      rgba(
+        183,
+        220,
+        247,
+        0.20
+      )
+      20%,
+
+      rgba(
+        107,
+        171,
+        218,
+        0.13
+      )
+      42%,
+
+      rgba(
+        54,
+        109,
+        151,
+        0.055
+      )
+      62%,
+
+      transparent
+      78%
+    );
+
+  filter:
+    blur(32px);
+
+  mix-blend-mode: screen;
+
+  box-shadow:
+    0 0 45px
+      rgba(
+        177,
+        220,
+        250,
+        0.12
+      ),
+
+    0 0 100px
+      rgba(
+        92,
+        158,
+        207,
+        0.09
+      );
+
+  animation:
+    spellBookLight
+    4.8s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   WAND ZONE
+========================================================= */
+
+.spell-manuscript__wand-zone {
+  position: absolute;
+
+  z-index: 7;
+
+  right: -5%;
+  bottom: 7%;
+
+  width:
+    min(
+      390px,
+      45%
+    );
+
+  pointer-events: none;
+}
+
+
+/* wand */
+
+.spell-manuscript__wand {
+  position: relative;
+
+  z-index: 4;
+
+  display: block;
+
+  width: 100%;
+
+  opacity: 0;
+
+  transform:
+    rotate(-22deg)
+    translateY(
+      25px
+    );
+
+  filter:
+    brightness(0.9)
+    drop-shadow(
+      0 18px 24px
+      rgba(
+        0,
+        0,
+        0,
+        0.48
+      )
+    );
+}
+
+
+/* =========================================================
+   WAND TRAIL
+========================================================= */
+
+.spell-manuscript__wand-trail {
+  position: absolute;
+
+  z-index: 3;
+
+  left: -38%;
+  top: -50%;
+
+  width: 125%;
+  height: 140%;
+
+  pointer-events: none;
+}
+
+
+.spell-manuscript__wand-trail span {
+  position: absolute;
+
+  border-radius:
+    50%;
+
+  border-top:
+    1px solid
+    rgba(
+      211,
+      237,
+      255,
+      0.48
+    );
+
+  filter:
+    drop-shadow(
+      0 0 8px
+      rgba(
+        120,
+        185,
+        233,
+        0.62
+      )
+    );
+
+  opacity: 0;
+}
+
+
+.spell-manuscript__wand-trail span:first-child {
+  inset:
+    15%
+    0
+    0;
+
+  transform:
+    rotate(-16deg);
+}
+
+
+.spell-manuscript__wand-trail span:last-child {
+  inset:
+    30%
+    12%
+    10%
+    8%;
+
+  transform:
+    rotate(-10deg);
+
+  opacity: 0.4;
+}
+
+
+/* =========================================================
+   MAGICAL INK / LIGHT POINTS
+========================================================= */
+
+.spell-manuscript__ink {
+  position: absolute;
+
+  z-index: 5;
+
+  inset: 0;
+
+  pointer-events: none;
+}
+
+
+.spell-manuscript__ink span {
+  position: absolute;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      229,
+      243,
+      255,
+      0.92
+    );
+
+  box-shadow:
+    0 0 8px
+      rgba(
+        212,
+        237,
+        255,
+        0.85
+      ),
+
+    0 0 20px
+      rgba(
+        105,
+        173,
+        224,
+        0.55
+      );
+
+  animation:
+    spellInkFloat
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+.spell-manuscript__ink span:nth-child(1) {
+  left: 32%;
+  top: 32%;
+}
+
+
+.spell-manuscript__ink span:nth-child(2) {
+  left: 61%;
+  top: 25%;
+
+  animation-delay:
+    1.2s;
+}
+
+
+.spell-manuscript__ink span:nth-child(3) {
+  left: 53%;
+  top: 67%;
+
+  animation-delay:
+    2.3s;
+}
+
+
+.spell-manuscript__ink span:nth-child(4) {
+  left: 73%;
+  top: 53%;
+
+  animation-delay:
+    3.1s;
+}
+
+
+/* =========================================================
+   SPELL ANNOTATION
+========================================================= */
+
+.spell-manuscript__spell {
+  position: relative;
+
+  z-index: 8;
+
+  width: 100%;
+
+  max-width: 280px;
+
+  opacity: 0;
+
+  transform:
+    translateY(
+      20px
+    );
+
+  filter:
+    blur(5px);
+}
+
+
+/* left side */
+
+.spell-manuscript__column--left
+.spell-manuscript__spell {
+  margin-left: auto;
+
+  padding-right: 10px;
+}
+
+
+/* right side */
+
+.spell-manuscript__column--right
+.spell-manuscript__spell {
+  margin-right: auto;
+
+  padding-left: 10px;
+}
+
+
+/* =========================================================
+   SIGIL
+========================================================= */
+
+.spell-manuscript__sigil {
+  position: relative;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      174,
+      209,
+      235,
+      0.14
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        73,
+        126,
+        168,
+        0.15
+      ),
+      rgba(
+        5,
+        12,
+        19,
+        0.5
+      )
+    );
+
+  color:
+    #e6f6ff;
+
+  cursor: pointer;
+
+  transition:
+    transform
+      0.35s ease,
+    border-color
+      0.35s ease,
+    box-shadow
+      0.35s ease;
+}
+
+
+.spell-manuscript__sigil:hover,
+.spell-manuscript__spell--active
+.spell-manuscript__sigil {
+  transform:
+    scale(1.1);
+
+  border-color:
+    rgba(
+      199,
+      229,
+      250,
+      0.45
+    );
+
+  box-shadow:
+    0 0 20px
+    rgba(
+      107,
+      172,
+      219,
+      0.13
+    );
+}
+
+
+/* pulse */
+
+.spell-manuscript__sigil-ring {
+  position: absolute;
+
+  inset: 4px;
+
+  border-radius:
+    50%;
+
+  border:
+    1px solid
+    rgba(
+      188,
+      221,
+      246,
+      0.4
+    );
+
+  animation:
+    spellSigilPulse
+    2.6s
+    ease-out
+    infinite;
+}
+
+
+/* center */
+
+.spell-manuscript__sigil-core {
+  position: relative;
+
+  z-index: 2;
+
+  font-size: 0.9rem;
+
+  text-shadow:
+    0 0 9px
+    rgba(
+      215,
+      239,
+      255,
+      0.9
+    );
+}
+
+
+/* =========================================================
+   SPELL COPY
+========================================================= */
+
+.spell-manuscript__spell-copy {
+  margin-top: 13px;
+
+  opacity: 0.6;
+
+  transition:
+    opacity
+      0.4s ease,
+    transform
+      0.4s ease;
+}
+
+
+.spell-manuscript__spell:hover
+.spell-manuscript__spell-copy,
+.spell-manuscript__spell--active
+.spell-manuscript__spell-copy {
+  opacity: 1;
+
+  transform:
+    translateY(
+      -3px
+    );
+}
+
+
+.spell-manuscript__spell-copy small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.44rem;
+
+  letter-spacing:
+    0.28em;
+
+  color:
+    rgba(
+      147,
+      187,
+      216,
+      0.62
+    );
+}
+
+
+.spell-manuscript__spell-copy h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      1.6rem,
+      2vw,
+      1.95rem
+    );
+
+  line-height: 1.05;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      237,
+      246,
+      252,
+      0.92
+    );
+}
+
+
+.spell-manuscript__spell-copy p {
+  max-width: 255px;
+
+  margin:
+    9px
+    0
+    11px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.92rem;
+
+  line-height: 1.55;
+
+  color:
+    rgba(
+      183,
+      204,
+      219,
+      0.6
+    );
+}
+
+
+/* link */
+
+.spell-manuscript__spell-link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.42rem;
+
+  letter-spacing:
+    0.18em;
+
+  text-transform:
+    uppercase;
+
+  text-decoration:
+    none;
+
+  color:
+    rgba(
+      204,
+      228,
+      245,
+      0.72
+    );
+
+  transition:
+    gap
+      0.3s ease,
+    color
+      0.3s ease;
+}
+
+
+.spell-manuscript__spell-link:hover {
+  gap: 10px;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.spell-manuscript__footer {
+  position: relative;
+
+  z-index: 6;
+
+  width:
+    min(
+      720px,
+      90%
+    );
+
+  margin:
+    45px
+    auto
+    0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  opacity: 0;
+}
+
+
+.spell-manuscript__footer span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        157,
+        196,
+        226,
+        0.18
+      )
+    );
+}
+
+
+.spell-manuscript__footer span:last-child {
+  transform:
+    rotate(
+      180deg
+    );
+}
+
+
+.spell-manuscript__footer p {
+  margin: 0;
+
+  text-align: center;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      185,
+      205,
+      219,
+      0.54
+    );
+}
+
+
+/* =========================================================
+   SCROLL REVEALS
+========================================================= */
+
+.spell-manuscript--visible
+.spell-manuscript__intro {
+  animation:
+    spellIntroReveal
+    1.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__book {
+  animation:
+    spellBookReveal
+    1.7s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    0.3s
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__wand {
+  animation:
+    spellWandReveal
+    1.2s
+    ease
+    0.75s
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__wand-trail span:first-child {
+  animation:
+    spellTrailReveal
+    3.2s
+    ease-in-out
+    1.2s
+    infinite;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__wand-trail span:last-child {
+  animation:
+    spellTrailRevealTwo
+    3.8s
+    ease-in-out
+    1.7s
+    infinite;
+}
+
+
+/* annotations */
+
+.spell-manuscript--visible
+.spell-manuscript__column--left
+.spell-manuscript__spell--top {
+  animation:
+    spellLeftReveal
+    1s
+    ease
+    0.85s
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__column--right
+.spell-manuscript__spell--top {
+  animation:
+    spellRightReveal
+    1s
+    ease
+    1.1s
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__column--left
+.spell-manuscript__spell--bottom {
+  animation:
+    spellLeftReveal
+    1s
+    ease
+    1.35s
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__column--right
+.spell-manuscript__spell--bottom {
+  animation:
+    spellRightReveal
+    1s
+    ease
+    1.6s
+    forwards;
+}
+
+
+.spell-manuscript--visible
+.spell-manuscript__footer {
+  animation:
+    spellFooterReveal
+    1s
+    ease
+    1.95s
+    forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes spellIntroReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        38px
+      );
+
+    filter:
+      blur(
+        8px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      );
+
+    filter:
+      blur(
+        0
+      );
+  }
+
+}
+
+
+@keyframes spellBookReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      perspective(
+        1200px
+      )
+      rotateX(
+        11deg
+      )
+      scale(
+        0.94
+      );
+
+    filter:
+      blur(
+        8px
+      )
+      brightness(
+        0.62
+      );
+  }
+
+  to {
+    opacity: 0.96;
+
+    transform:
+      perspective(
+        1200px
+      )
+      rotateX(
+        7deg
+      )
+      scale(
+        1
+      );
+
+    filter:
+      blur(
+        0
+      )
+      brightness(
+        0.78
+      )
+      contrast(
+        1.03
+      )
+      saturate(
+        0.88
+      )
+      drop-shadow(
+        0 35px 50px
+        rgba(
+          0,
+          0,
+          0,
+          0.52
+        )
+      );
+  }
+
+}
+
+
+@keyframes spellWandReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      rotate(
+        -22deg
+      )
+      translateY(
+        25px
+      );
+  }
+
+  to {
+    opacity: 0.92;
+
+    transform:
+      rotate(
+        -22deg
+      )
+      translateY(
+        0
+      );
+  }
+
+}
+
+
+@keyframes spellLeftReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(
+        -28px
+      )
+      translateY(
+        10px
+      );
+
+    filter:
+      blur(
+        5px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(
+        0
+      )
+      translateY(
+        0
+      );
+
+    filter:
+      blur(
+        0
+      );
+  }
+
+}
+
+
+@keyframes spellRightReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(
+        28px
+      )
+      translateY(
+        10px
+      );
+
+    filter:
+      blur(
+        5px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(
+        0
+      )
+      translateY(
+        0
+      );
+
+    filter:
+      blur(
+        0
+      );
+  }
+
+}
+
+
+@keyframes spellFooterReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        15px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      );
+  }
+
+}
+
+
+@keyframes spellStageGlow {
+
+  0%,
+  100% {
+    opacity: 0.48;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        0.95
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1.05
+      );
+  }
+
+}
+
+
+@keyframes spellBookLight {
+
+  0%,
+  100% {
+    opacity: 0.32;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        0.92
+      );
+  }
+
+  50% {
+    opacity: 0.8;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1.08
+      );
+  }
+
+}
+
+
+@keyframes spellInkFloat {
+
+  0%,
+  100% {
+    opacity: 0.2;
+
+    transform:
+      translateY(
+        12px
+      )
+      scale(
+        0.7
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translateY(
+        -18px
+      )
+      scale(
+        1
+      );
+  }
+
+}
+
+
+@keyframes spellSigilPulse {
+
+  from {
+    opacity: 0.75;
+
+    transform:
+      scale(
+        0.55
+      );
+  }
+
+  to {
+    opacity: 0;
+
+    transform:
+      scale(
+        1.7
+      );
+  }
+
+}
+
+
+@keyframes spellTrailReveal {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      scaleX(
+        0.25
+      )
+      rotate(
+        -16deg
+      );
+  }
+
+  45% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scaleX(
+        1
+      )
+      rotate(
+        -16deg
+      );
+  }
+
+}
+
+
+@keyframes spellTrailRevealTwo {
+
+  0% {
+    opacity: 0;
+
+    transform:
+      scaleX(
+        0.2
+      )
+      rotate(
+        -10deg
+      );
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scaleX(
+        1
+      )
+      rotate(
+        -10deg
+      );
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .spell-manuscript__layout {
+    grid-template-columns:
+      minmax(
+        190px,
+        1fr
+      )
+      minmax(
+        460px,
+        650px
+      )
+      minmax(
+        190px,
+        1fr
+      );
+
+    gap: 28px;
+  }
+
+
+  .spell-manuscript__column {
+    height: 570px;
+  }
+
+
+  .spell-manuscript__spell-copy p {
+    font-size:
+      0.86rem;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+  .spell-manuscript {
+    min-height: auto;
+  }
+
+
+  .spell-manuscript__layout {
+    grid-template-columns:
+      1fr
+      1.45fr;
+
+    grid-template-areas:
+      "center center"
+      "left right";
+
+    gap:
+      65px
+      50px;
+  }
+
+
+  .spell-manuscript__center {
+    grid-area:
+      center;
+
+    min-height:
+      560px;
+  }
+
+
+  .spell-manuscript__column--left {
+    grid-area:
+      left;
+  }
+
+
+  .spell-manuscript__column--right {
+    grid-area:
+      right;
+  }
+
+
+  .spell-manuscript__column {
+    height: auto;
+
+    gap: 60px;
+
+    padding: 0;
+  }
+
+
+  .spell-manuscript__book-wrap {
+    width:
+      min(
+        720px,
+        88vw
+      );
+  }
+
+
+  .spell-manuscript__wand-zone {
+    right: 1%;
+
+    width: 34%;
+  }
+
+
+  .spell-manuscript__spell {
+    max-width:
+      290px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .spell-manuscript {
+    padding:
+      95px
+      6%
+      110px;
+  }
+
+
+  .spell-manuscript__intro {
+    width: 100%;
+
+    margin-bottom:
+      65px;
+  }
+
+
+  .spell-manuscript__eyebrow {
+    font-size:
+      0.48rem;
+
+    line-height:
+      1.8;
+
+    letter-spacing:
+      0.25em;
+  }
+
+
+  .spell-manuscript__title {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.7rem
+      );
+  }
+
+
+  .spell-manuscript__title span {
+    margin-left: 0;
+  }
+
+
+  .spell-manuscript__description {
+    max-width: 95%;
+
+    font-size:
+      0.96rem;
+  }
+
+
+  .spell-manuscript__stage {
+    min-height: auto;
+  }
+
+
+  .spell-manuscript__layout {
+    display: flex;
+
+    flex-direction:
+      column;
+
+    gap: 70px;
+  }
+
+
+  /* Book first */
+
+  .spell-manuscript__center {
+    order: 1;
+
+    width: 100%;
+
+    min-height:
+      430px;
+  }
+
+
+  /* left spells */
+
+  .spell-manuscript__column--left {
+    order: 2;
+  }
+
+
+  /* right spells */
+
+  .spell-manuscript__column--right {
+    order: 3;
+  }
+
+
+  .spell-manuscript__book-wrap {
+    width: 132%;
+  }
+
+
+  .spell-manuscript__wand-zone {
+    right: -7%;
+
+    bottom: 3%;
+
+    width:
+      min(
+        62vw,
+        290px
+      );
+  }
+
+
+  .spell-manuscript__column {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      1fr;
+
+    gap: 60px;
+  }
+
+
+  .spell-manuscript__spell {
+    width: 100%;
+
+    max-width: none;
+
+    padding: 0 !important;
+
+    margin: 0 !important;
+  }
+
+
+  .spell-manuscript__spell-copy {
+    opacity: 1;
+  }
+
+
+  .spell-manuscript__footer {
+    width: 100%;
+
+    margin-top:
+      85px;
+  }
+
+
+  .spell-manuscript__footer p {
+    max-width:
+      230px;
+
+    font-size:
+      0.88rem;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .spell-manuscript__center {
+    min-height:
+      370px;
+  }
+
+
+  .spell-manuscript__book-wrap {
+    width: 145%;
+  }
+
+
+  .spell-manuscript__wand-zone {
+    width:
+      min(
+        68vw,
+        260px
+      );
+  }
+
+
+  .spell-manuscript__footer span {
+    display: none;
+  }
+
+
+  .spell-manuscript__footer {
+    justify-content:
+      center;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .spell-manuscript__intro,
+  .spell-manuscript__book,
+  .spell-manuscript__wand,
+  .spell-manuscript__spell,
+  .spell-manuscript__footer {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .spell-manuscript__stage-glow,
+  .spell-manuscript__book-light,
+  .spell-manuscript__ink span,
+  .spell-manuscript__sigil-ring,
+  .spell-manuscript__wand-trail span {
+    animation: none;
+  }
+
+}

@@ -1,0 +1,2900 @@
+/* =========================================================
+   VILLAINS — FORBIDDEN ARCHIVE
+========================================================= */
+
+.villains-page {
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  color: #dcd5ca;
+
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(97, 26, 24, 0.17),
+      transparent 31%
+    ),
+
+    linear-gradient(
+      180deg,
+      #080707,
+      #0a0808 44%,
+      #060606
+    );
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.villains-page__atmosphere {
+  position: fixed;
+
+  z-index: 0;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.villains-page__atmosphere::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  opacity: 0.12;
+
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 4px,
+      rgba(255,255,255,0.018) 5px
+    );
+}
+
+
+.villains-page__fog {
+  position: absolute;
+
+  width: 65vw;
+  height: 65vw;
+
+  border-radius: 50%;
+
+  background:
+    rgba(112, 30, 27, 0.15);
+
+  filter: blur(110px);
+}
+
+
+.villains-page__fog--one {
+  left: -32%;
+  top: 20%;
+
+  animation:
+    villainsFogOne
+    20s
+    ease-in-out
+    infinite alternate;
+}
+
+
+.villains-page__fog--two {
+  right: -35%;
+  top: 58%;
+
+  animation:
+    villainsFogTwo
+    25s
+    ease-in-out
+    infinite alternate;
+}
+
+
+.villains-page__glow {
+  position: absolute;
+
+  left: 50%;
+  top: 14%;
+
+  width: 700px;
+  height: 700px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(110, 36, 32, 0.08),
+      transparent 70%
+    );
+
+  filter: blur(60px);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.villains-hero {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 92vh;
+
+  padding:
+    125px 25px
+    100px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.villains-hero__symbol {
+  margin-bottom: 25px;
+
+  font-size: 2rem;
+
+  color:
+    rgba(175, 72, 63, 0.64);
+
+  filter:
+    drop-shadow(
+      0 0 20px
+      rgba(124, 31, 28, 0.25)
+    );
+}
+
+
+.villains-hero__eyebrow {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+.villains-hero__eyebrow span {
+  width: 55px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(171, 101, 89, 0.34)
+    );
+}
+
+
+.villains-hero__eyebrow
+span:last-child {
+  transform: rotate(180deg);
+}
+
+
+.villains-hero__eyebrow p {
+  margin: 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.34em;
+
+  color:
+    rgba(198, 179, 159, 0.47);
+}
+
+
+.villains-hero h1 {
+  margin:
+    24px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      5rem,
+      12vw,
+      10rem
+    );
+
+  line-height: 0.75;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.055em;
+
+  color: #e7dfd3;
+}
+
+
+.villains-hero h1 em {
+  display: block;
+
+  margin-top: 28px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31em;
+
+  font-style: normal;
+
+  letter-spacing: 0.3em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(157, 54, 47, 0.93);
+}
+
+
+.villains-hero__description {
+  width:
+    min(
+      620px,
+      92%
+    );
+
+  margin:
+    43px auto 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.98rem;
+
+  line-height: 1.85;
+
+  color:
+    rgba(208, 199, 185, 0.57);
+}
+
+
+.villains-hero__warning {
+  margin-top: 34px;
+
+  padding:
+    11px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border:
+    1px solid
+    rgba(157, 72, 63, 0.18);
+
+  background:
+    rgba(86, 28, 24, 0.09);
+}
+
+
+.villains-hero__warning svg {
+  color:
+    rgba(176, 83, 70, 0.65);
+}
+
+
+.villains-hero__warning div {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 3px;
+}
+
+
+.villains-hero__warning small {
+  font-size: 0.44rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(190, 171, 149, 0.37);
+}
+
+
+.villains-hero__warning strong {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.56rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.13em;
+
+  color:
+    rgba(217, 201, 179, 0.72);
+}
+
+
+/* =========================================================
+   VOLDEMORT FEATURE
+========================================================= */
+
+.villains-feature {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(
+      1320px,
+      calc(100% - 60px)
+    );
+
+  min-height: 720px;
+
+  margin:
+    20px auto
+    160px;
+
+  display: grid;
+
+  grid-template-columns:
+    58% 42%;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(175, 136, 111, 0.12);
+
+  background: #0b0909;
+
+  box-shadow:
+    0 40px 100px
+    rgba(0, 0, 0, 0.4);
+}
+
+
+/* IMAGE */
+
+.villains-feature__visual {
+  position: relative;
+
+  min-height: 720px;
+
+  overflow: hidden;
+}
+
+
+.villains-feature__visual img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center 25%;
+
+  filter:
+    saturate(0.75)
+    brightness(0.82)
+    contrast(1.04);
+
+  transform:
+    scale(1.015);
+}
+
+
+.villains-feature__visual-shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 48%,
+      rgba(11, 9, 9, 0.95) 100%
+    ),
+
+    linear-gradient(
+      0deg,
+      rgba(8, 7, 7, 0.35),
+      transparent 45%
+    );
+}
+
+
+/* CONTENT */
+
+.villains-feature__content {
+  position: relative;
+
+  padding:
+    75px
+    clamp(
+      42px,
+      4vw,
+      68px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: flex-start;
+
+  text-align: left;
+}
+
+
+.villains-feature__classification {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.villains-feature__classification span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.47rem;
+
+  letter-spacing: 0.21em;
+
+  color:
+    rgba(187, 161, 139, 0.45);
+}
+
+
+.villains-feature__classification strong {
+  width: 27px;
+  height: 27px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(174, 72, 62, 0.36);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-family: serif;
+
+  font-size: 0.75rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(195, 80, 69, 0.79);
+}
+
+
+.villains-feature__record {
+  margin-top: 37px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.46rem;
+
+  letter-spacing: 0.24em;
+
+  color:
+    rgba(164, 66, 58, 0.7);
+}
+
+
+.villains-feature__content h2 {
+  width: 100%;
+
+  margin:
+    13px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.6rem,
+      5.5vw,
+      6.2rem
+    );
+
+  line-height: 0.82;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.045em;
+
+  color: #e4ddd3;
+}
+
+
+.villains-feature__content
+h2 span {
+  display: block;
+
+  margin-top: 11px;
+
+  color:
+    rgba(189, 70, 61, 0.94);
+}
+
+
+.villains-feature__real-name {
+  margin:
+    25px 0 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.49rem;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(211, 194, 171, 0.4);
+}
+
+
+.villains-feature__divider {
+  width: 95px;
+
+  margin:
+    27px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.villains-feature__divider span {
+  width: 65px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(164, 77, 67, 0.55),
+      transparent
+    );
+}
+
+
+.villains-feature__divider i {
+  font-size: 0.42rem;
+
+  font-style: normal;
+
+  color:
+    rgba(171, 78, 67, 0.52);
+}
+
+
+.villains-feature__tagline {
+  width: 100%;
+  max-width: 420px;
+
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.12rem;
+
+  font-style: italic;
+
+  line-height: 1.55;
+
+  color:
+    rgba(232, 221, 205, 0.83);
+}
+
+
+.villains-feature__description {
+  width: 100%;
+  max-width: 465px;
+
+  margin:
+    21px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.88rem;
+
+  line-height: 1.72;
+
+  color:
+    rgba(208, 197, 180, 0.53);
+}
+
+
+.villains-feature__open {
+  margin-top: 31px;
+
+  padding:
+    11px 0 8px;
+
+  border: 0;
+
+  border-bottom:
+    1px solid
+    rgba(169, 78, 67, 0.4);
+
+  background: transparent;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    rgba(222, 207, 188, 0.73);
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.48rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  transition:
+    gap 0.3s ease,
+    color 0.3s ease;
+}
+
+
+.villains-feature__open:hover {
+  gap: 15px;
+
+  color: #f0e5d7;
+}
+
+
+/* =========================================================
+   REGISTRY HEADING
+========================================================= */
+
+.villains-registry-heading {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      680px,
+      calc(100% - 40px)
+    );
+
+  margin:
+    0 auto
+    55px;
+
+  text-align: center;
+}
+
+
+.villains-registry-heading > svg {
+  margin-bottom: 15px;
+
+  font-size: 1.25rem;
+
+  color:
+    rgba(153, 67, 59, 0.57);
+}
+
+
+.villains-registry-heading > small {
+  display: block;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.47rem;
+
+  letter-spacing: 0.27em;
+
+  color:
+    rgba(193, 174, 152, 0.4);
+}
+
+
+.villains-registry-heading h2 {
+  margin:
+    13px 0 20px;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.3rem,
+      6vw,
+      5.6rem
+    );
+
+  line-height: 0.87;
+
+  font-weight: 400;
+
+  color: #ded7cd;
+}
+
+
+.villains-registry-heading
+h2 em {
+  display: block;
+
+  margin-top: 13px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.31em;
+
+  font-style: normal;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(166, 61, 54, 0.88);
+}
+
+
+.villains-registry-heading p {
+  margin: 0 auto;
+
+  max-width: 570px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.9rem;
+
+  line-height: 1.72;
+
+  color:
+    rgba(207, 197, 181, 0.48);
+}
+
+
+/* =========================================================
+   FILTERS
+========================================================= */
+
+.villains-filter {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(
+      1100px,
+      calc(100% - 40px)
+    );
+
+  margin:
+    0 auto
+    58px;
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.villains-filter__button {
+  padding:
+    10px 16px;
+
+  border:
+    1px solid
+    rgba(180, 148, 119, 0.1);
+
+  background:
+    rgba(255, 255, 255, 0.012);
+
+  color:
+    rgba(207, 193, 174, 0.39);
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.46rem;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.villains-filter__button:hover,
+.villains-filter__button--active {
+  color:
+    rgba(237, 220, 198, 0.84);
+
+  border-color:
+    rgba(164, 73, 63, 0.4);
+
+  background:
+    rgba(112, 37, 31, 0.09);
+}
+
+
+/* =========================================================
+   REGISTRY
+========================================================= */
+
+.villains-registry {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      1280px,
+      calc(100% - 50px)
+    );
+
+  margin: 0 auto;
+}
+
+
+.villains-registry__header {
+  padding:
+    0 4px 17px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom:
+    1px solid
+    rgba(189, 157, 127, 0.09);
+}
+
+
+.villains-registry__header span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.44rem;
+
+  letter-spacing: 0.24em;
+
+  color:
+    rgba(194, 176, 155, 0.32);
+}
+
+
+.villains-registry__header strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1.05rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(164, 67, 58, 0.72);
+}
+
+
+.villains-registry__grid {
+  padding-top: 38px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    34px 22px;
+}
+
+
+/* =========================================================
+   VILLAIN RECORD
+========================================================= */
+
+.villain-record {
+  opacity: 0;
+
+  transform:
+    translateY(35px);
+
+  transition:
+    opacity
+      0.7s ease
+      var(--villain-delay),
+
+    transform
+      0.8s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      )
+      var(--villain-delay);
+}
+
+
+.villain-record--visible {
+  opacity: 1;
+
+  transform:
+    translateY(0);
+}
+
+
+.villain-record__inner {
+  position: relative;
+
+  min-height: 505px;
+
+  padding: 9px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(181, 150, 121, 0.12);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(29, 26, 23, 0.98),
+      rgba(15, 14, 13, 0.99)
+    );
+
+  box-shadow:
+    0 22px 50px
+    rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+
+.villain-record__inner:hover {
+  transform:
+    translateY(-7px);
+
+  border-color:
+    rgba(163, 75, 64, 0.33);
+
+  box-shadow:
+    0 33px 65px
+    rgba(0, 0, 0, 0.4);
+}
+
+
+/* TOP */
+
+.villain-record__top {
+  position: absolute;
+
+  z-index: 5;
+
+  left: 15px;
+  right: 15px;
+  top: 17px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  pointer-events: none;
+}
+
+
+.villain-record__restricted {
+  padding:
+    5px 7px;
+
+  background:
+    rgba(7, 7, 7, 0.72);
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(184, 84, 72, 0.69);
+}
+
+
+.villain-record__number {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.67rem;
+
+  color:
+    rgba(234, 220, 201, 0.7);
+}
+
+
+/* IMAGE */
+
+.villain-record__image {
+  position: relative;
+
+  width: 100%;
+  height: 290px;
+
+  overflow: hidden;
+
+  background: #070707;
+}
+
+
+.villain-record__image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  object-position: center 18%;
+
+  filter:
+    saturate(0.72)
+    brightness(0.83)
+    contrast(1.04);
+
+  transform:
+    scale(1.01);
+
+  transition:
+    transform 0.75s ease,
+    filter 0.5s ease;
+}
+
+
+.villain-record__inner:hover
+.villain-record__image img {
+  transform:
+    scale(1.055);
+
+  filter:
+    saturate(0.85)
+    brightness(0.92)
+    contrast(1.03);
+}
+
+
+.villain-record__image-shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      0deg,
+      rgba(14, 12, 11, 0.76),
+      transparent 43%
+    );
+}
+
+
+.villain-record__image-scan {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: -25%;
+
+  height: 20%;
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(171, 71, 61, 0.07),
+      transparent
+    );
+}
+
+
+.villain-record__inner:hover
+.villain-record__image-scan {
+  opacity: 1;
+
+  animation:
+    villainRecordScan
+    1.7s linear
+    infinite;
+}
+
+
+/* CONTENT */
+
+.villain-record__content {
+  padding:
+    20px
+    13px
+    13px;
+
+  text-align: left;
+}
+
+
+.villain-record__content > small {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.37rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(158, 67, 59, 0.68);
+}
+
+
+.villain-record__content h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      1.2rem,
+      1.45vw,
+      1.55rem
+    );
+
+  line-height: 1.08;
+
+  font-weight: 400;
+
+  color:
+    rgba(230, 219, 204, 0.9);
+}
+
+
+.villain-record__role {
+  min-height: 18px;
+
+  margin:
+    7px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.68rem;
+
+  color:
+    rgba(198, 185, 167, 0.37);
+}
+
+
+.villain-record__divider {
+  height: 1px;
+
+  margin:
+    16px 0
+    12px;
+
+  background:
+    rgba(190, 159, 126, 0.08);
+}
+
+
+.villain-record__threat {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.villain-record__threat span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.35rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(194, 178, 156, 0.27);
+}
+
+
+.villain-record__threat strong {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(177, 76, 65, 0.7);
+}
+
+
+/* EXAMINE */
+
+.villain-record__examine {
+  position: relative;
+
+  z-index: 8;
+
+  width: 100%;
+
+  margin-top: 16px;
+
+  padding:
+    13px 0 5px;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(190, 159, 126, 0.08);
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color:
+    rgba(210, 194, 174, 0.43);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+
+.villain-record__examine:hover {
+  gap: 12px;
+
+  color:
+    rgba(239, 219, 193, 0.9);
+}
+
+
+.villain-record__stamp {
+  position: absolute;
+
+  right: -21px;
+  bottom: 68px;
+
+  padding:
+    4px 20px;
+
+  border:
+    1px solid
+    rgba(133, 41, 36, 0.14);
+
+  transform:
+    rotate(-18deg);
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.48rem;
+
+  letter-spacing: 0.17em;
+
+  color:
+    rgba(143, 44, 38, 0.13);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.villain-popup {
+  position: fixed;
+
+  z-index: 100000;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    clamp(
+      16px,
+      3vw,
+      40px
+    );
+}
+
+
+/* =========================================================
+   POPUP BACKDROP
+========================================================= */
+
+.villain-popup__backdrop {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(61, 17, 15, 0.13),
+      rgba(1, 1, 1, 0.93) 65%
+    );
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+  cursor: default;
+
+  animation:
+    villainPopupBackdrop
+    0.35s ease
+    forwards;
+}
+
+
+/* =========================================================
+   POPUP WINDOW
+========================================================= */
+
+.villain-popup__window {
+  position: relative;
+
+  z-index: 2;
+
+  width:
+    min(
+      1150px,
+      96vw
+    );
+
+  height:
+    min(
+      760px,
+      90vh
+    );
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      330px,
+      43%
+    )
+    minmax(
+      0,
+      57%
+    );
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(191, 153, 119, 0.18);
+
+  background:
+    #110e0d;
+
+  box-shadow:
+    0 60px 160px
+    rgba(0, 0, 0, 0.82);
+
+  animation:
+    villainPopupEnter
+    0.52s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+/* =========================================================
+   POPUP FRAME
+========================================================= */
+
+.villain-popup__frame {
+  position: absolute;
+
+  z-index: 50;
+
+  inset: 10px;
+
+  border:
+    1px solid
+    rgba(204, 177, 144, 0.04);
+
+  pointer-events: none;
+}
+
+
+.villain-popup__corner {
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+}
+
+
+.villain-popup__corner::before,
+.villain-popup__corner::after {
+  content: "";
+
+  position: absolute;
+
+  background:
+    rgba(182, 98, 80, 0.37);
+}
+
+
+.villain-popup__corner::before {
+  width: 36px;
+  height: 1px;
+}
+
+
+.villain-popup__corner::after {
+  width: 1px;
+  height: 36px;
+}
+
+
+.villain-popup__corner--tl {
+  left: -1px;
+  top: -1px;
+}
+
+
+.villain-popup__corner--tr {
+  right: -1px;
+  top: -1px;
+
+  transform:
+    rotate(90deg);
+}
+
+
+.villain-popup__corner--bl {
+  left: -1px;
+  bottom: -1px;
+
+  transform:
+    rotate(-90deg);
+}
+
+
+.villain-popup__corner--br {
+  right: -1px;
+  bottom: -1px;
+
+  transform:
+    rotate(180deg);
+}
+
+
+/* =========================================================
+   CLOSE
+========================================================= */
+
+.villain-popup__close {
+  position: absolute;
+
+  z-index: 100;
+
+  right: 20px;
+  top: 19px;
+
+  width: 39px;
+  height: 39px;
+
+  padding: 0;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(208, 179, 145, 0.17);
+
+  background:
+    rgba(7, 7, 7, 0.7);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color:
+    rgba(233, 218, 197, 0.72);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.villain-popup__close svg {
+  font-size: 1.15rem;
+}
+
+
+.villain-popup__close:hover {
+  transform:
+    rotate(90deg);
+
+  color: #fff;
+
+  border-color:
+    rgba(186, 79, 67, 0.58);
+}
+
+
+/* =========================================================
+   POPUP PORTRAIT
+========================================================= */
+
+.villain-popup__portrait {
+  position: relative;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  background: #060606;
+}
+
+
+.villain-popup__portrait > img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center 18%;
+
+  filter:
+    saturate(0.72)
+    brightness(0.82)
+    contrast(1.04);
+
+  animation:
+    villainPopupImage
+    10s ease-out
+    forwards;
+}
+
+
+.villain-popup__portrait-shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(6, 6, 6, 0.04) 20%,
+      transparent 45%,
+      rgba(10, 8, 8, 0.95) 100%
+    );
+}
+
+
+.villain-popup__portrait-number {
+  position: absolute;
+
+  left: 29px;
+  top: 27px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 4.5rem;
+
+  line-height: 1;
+
+  color:
+    rgba(246, 231, 209, 0.12);
+}
+
+
+.villain-popup__portrait-copy {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 35px;
+  right: 30px;
+  bottom: 37px;
+
+  text-align: left;
+}
+
+
+.villain-popup__portrait-copy small {
+  display: block;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(189, 80, 68, 0.87);
+}
+
+
+.villain-popup__portrait-copy h2 {
+  margin:
+    10px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.6rem,
+      4vw,
+      4.4rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.035em;
+
+  color: #eee4d8;
+}
+
+
+.villain-popup__portrait-copy p {
+  margin:
+    10px 0 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(213, 193, 168, 0.44);
+}
+
+
+/* =========================================================
+   POPUP CONTENT
+========================================================= */
+
+.villain-popup__content {
+  min-width: 0;
+
+  padding:
+    55px
+    48px
+    35px;
+
+  overflow-y: auto;
+
+  scrollbar-width: thin;
+
+  scrollbar-color:
+    rgba(157, 75, 63, 0.25)
+    transparent;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.villain-popup__header {
+  padding-right: 45px;
+  padding-bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(191, 159, 124, 0.11);
+}
+
+
+.villain-popup__header div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+.villain-popup__header span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.52rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(222, 205, 183, 0.67);
+}
+
+
+.villain-popup__header small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.16em;
+
+  color:
+    rgba(169, 67, 58, 0.59);
+}
+
+
+.villain-popup__header svg {
+  font-size: 1.2rem;
+
+  color:
+    rgba(160, 65, 56, 0.52);
+}
+
+
+/* =========================================================
+   RECORD LINE
+========================================================= */
+
+.villain-popup__record-line {
+  margin-top: 19px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.villain-popup__record-line span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  letter-spacing: 0.17em;
+
+  color:
+    rgba(193, 177, 156, 0.34);
+}
+
+
+.villain-popup__record-line strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.7rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(190, 78, 67, 0.7);
+}
+
+
+.villain-popup__record-line i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    rgba(190, 157, 121, 0.08);
+}
+
+
+/* =========================================================
+   ROLE
+========================================================= */
+
+.villain-popup__role {
+  margin:
+    30px 0 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.47rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(178, 78, 67, 0.77);
+}
+
+
+/* =========================================================
+   QUOTE
+========================================================= */
+
+.villain-popup blockquote {
+  margin:
+    17px 0 0;
+
+  padding:
+    3px 0 3px
+    18px;
+
+  border-left:
+    1px solid
+    rgba(174, 73, 62, 0.49);
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.15rem;
+
+  font-style: italic;
+
+  line-height: 1.55;
+
+  color:
+    rgba(234, 222, 204, 0.82);
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.villain-popup__description {
+  margin:
+    21px 0 0;
+
+  max-width: 570px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.88rem;
+
+  line-height: 1.72;
+
+  color:
+    rgba(207, 195, 177, 0.57);
+}
+
+
+/* =========================================================
+   FACTS
+========================================================= */
+
+.villain-popup__facts {
+  margin-top: 28px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  border-top:
+    1px solid
+    rgba(193, 159, 122, 0.09);
+
+  border-left:
+    1px solid
+    rgba(193, 159, 122, 0.09);
+}
+
+
+.villain-popup__facts > div {
+  min-height: 83px;
+
+  padding:
+    15px 16px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  border-right:
+    1px solid
+    rgba(193, 159, 122, 0.09);
+
+  border-bottom:
+    1px solid
+    rgba(193, 159, 122, 0.09);
+}
+
+
+.villain-popup__facts small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.33rem;
+
+  letter-spacing: 0.17em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(191, 172, 149, 0.31);
+}
+
+
+.villain-popup__facts strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.79rem;
+
+  line-height: 1.3;
+
+  font-weight: 400;
+
+  color:
+    rgba(229, 214, 194, 0.75);
+}
+
+
+.villain-popup__facts
+.villain-popup__danger {
+  color:
+    rgba(204, 87, 73, 0.88);
+}
+
+
+/* =========================================================
+   KNOWN RECORD
+========================================================= */
+
+.villain-popup__known {
+  margin-top: 30px;
+}
+
+
+.villain-popup__known-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.villain-popup__known-title span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(183, 146, 111, 0.12)
+    );
+}
+
+
+.villain-popup__known-title
+span:last-child {
+  transform: rotate(180deg);
+}
+
+
+.villain-popup__known-title small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.34rem;
+
+  letter-spacing: 0.19em;
+
+  white-space: nowrap;
+
+  color:
+    rgba(174, 73, 63, 0.66);
+}
+
+
+.villain-popup__known-list {
+  margin-top: 12px;
+}
+
+
+.villain-popup__known-item {
+  min-height: 44px;
+
+  padding:
+    9px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    34px
+    1fr;
+
+  align-items: center;
+
+  border-bottom:
+    1px solid
+    rgba(190, 157, 120, 0.065);
+}
+
+
+.villain-popup__known-item
+> span {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.65rem;
+
+  color:
+    rgba(171, 70, 61, 0.52);
+}
+
+
+.villain-popup__known-item p {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.76rem;
+
+  color:
+    rgba(210, 197, 179, 0.57);
+}
+
+
+/* =========================================================
+   POPUP NAVIGATION
+========================================================= */
+
+.villain-popup__navigation {
+  margin-top: 28px;
+
+  padding-top: 17px;
+
+  border-top:
+    1px solid
+    rgba(190, 157, 120, 0.08);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+
+.villain-popup__navigation
+button {
+  padding:
+    7px 0;
+
+  border: 0;
+
+  background: transparent;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color:
+    rgba(214, 198, 177, 0.49);
+
+  cursor: pointer;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.13em;
+
+  text-transform: uppercase;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+
+.villain-popup__navigation
+button:hover {
+  color:
+    rgba(240, 222, 199, 0.9);
+}
+
+
+.villain-popup__navigation
+button:first-child:hover {
+  transform:
+    translateX(-3px);
+}
+
+
+.villain-popup__navigation
+button:last-child:hover {
+  transform:
+    translateX(3px);
+}
+
+
+.villain-popup__progress {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+}
+
+
+.villain-popup__progress strong,
+.villain-popup__progress small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(214, 197, 176, 0.53);
+}
+
+
+.villain-popup__progress span {
+  width: 40px;
+  height: 1px;
+
+  background:
+    rgba(184, 150, 114, 0.14);
+}
+
+
+/* =========================================================
+   ENDING
+========================================================= */
+
+.villains-ending {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 72vh;
+
+  padding:
+    130px 24px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.villains-ending > svg {
+  font-size: 1.8rem;
+
+  color:
+    rgba(154, 63, 55, 0.5);
+}
+
+
+.villains-ending > small {
+  margin-top: 18px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.24em;
+
+  color:
+    rgba(190, 173, 151, 0.3);
+}
+
+
+.villains-ending h2 {
+  margin:
+    22px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.7rem,
+      5vw,
+      5rem
+    );
+
+  line-height: 1;
+
+  font-weight: 400;
+
+  color:
+    rgba(226, 216, 201, 0.82);
+}
+
+
+.villains-ending h2 span {
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    rgba(168, 61, 54, 0.85);
+}
+
+
+.villains-ending p {
+  max-width: 590px;
+
+  margin:
+    25px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.87rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(207, 196, 179, 0.4);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes villainsFogOne {
+
+  from {
+    transform:
+      translateX(-5%)
+      scale(1);
+  }
+
+  to {
+    transform:
+      translateX(12%)
+      scale(1.1);
+  }
+
+}
+
+
+@keyframes villainsFogTwo {
+
+  from {
+    transform:
+      translateX(8%)
+      scale(1);
+  }
+
+  to {
+    transform:
+      translateX(-12%)
+      scale(1.1);
+  }
+
+}
+
+
+@keyframes villainRecordScan {
+
+  from {
+    top: -25%;
+  }
+
+  to {
+    top: 110%;
+  }
+
+}
+
+
+@keyframes villainPopupBackdrop {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+
+}
+
+
+@keyframes villainPopupEnter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(28px)
+      scale(0.975);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+@keyframes villainPopupImage {
+
+  from {
+    transform:
+      scale(1.01);
+  }
+
+  to {
+    transform:
+      scale(1.055);
+  }
+
+}
+
+
+/* =========================================================
+   LAPTOP
+========================================================= */
+
+@media (max-width: 1180px) {
+
+  .villains-feature {
+    grid-template-columns:
+      55% 45%;
+  }
+
+
+  .villains-feature__content {
+    padding:
+      55px 42px;
+  }
+
+
+  .villains-registry__grid {
+    grid-template-columns:
+      repeat(
+        3,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  .villain-popup__window {
+    width: 95vw;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .villains-feature {
+    width:
+      calc(100% - 34px);
+
+    grid-template-columns: 1fr;
+
+    min-height: auto;
+  }
+
+
+  .villains-feature__visual {
+    min-height: 600px;
+  }
+
+
+  .villains-feature__visual-shade {
+    background:
+      linear-gradient(
+        180deg,
+        transparent 45%,
+        rgba(11, 9, 9, 0.98)
+        100%
+      );
+  }
+
+
+  .villains-feature__content {
+    padding:
+      42px
+      34px
+      50px;
+  }
+
+
+  .villains-feature__content
+  h2 {
+    font-size:
+      clamp(
+        3.5rem,
+        10vw,
+        5.5rem
+      );
+  }
+
+
+  .villains-registry__grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+
+  /* POPUP */
+
+  .villain-popup {
+    padding: 20px;
+  }
+
+
+  .villain-popup__window {
+    height: 92vh;
+
+    grid-template-columns:
+      42% 58%;
+  }
+
+
+  .villain-popup__content {
+    padding:
+      52px
+      31px
+      30px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .villains-hero {
+    min-height: 88vh;
+
+    padding:
+      100px 18px
+      75px;
+  }
+
+
+  .villains-hero h1 {
+    font-size:
+      clamp(
+        4.2rem,
+        22vw,
+        6rem
+      );
+  }
+
+
+  .villains-hero__description {
+    font-size: 0.87rem;
+  }
+
+
+  .villains-feature {
+    width:
+      calc(100% - 20px);
+
+    margin-bottom:
+      110px;
+  }
+
+
+  .villains-feature__visual {
+    min-height: 485px;
+  }
+
+
+  .villains-feature__content {
+    padding:
+      33px
+      22px
+      42px;
+  }
+
+
+  .villains-feature__content
+  h2 {
+    font-size: 3.25rem;
+  }
+
+
+  .villains-feature__tagline {
+    font-size: 1rem;
+  }
+
+
+  .villains-filter {
+    width:
+      calc(100% - 24px);
+
+    flex-wrap: nowrap;
+
+    justify-content:
+      flex-start;
+
+    overflow-x: auto;
+
+    padding-bottom: 5px;
+
+    scrollbar-width: none;
+  }
+
+
+  .villains-filter::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  .villains-filter__button {
+    flex:
+      0 0 auto;
+  }
+
+
+  .villains-registry {
+    width:
+      calc(100% - 22px);
+  }
+
+
+  .villains-registry__grid {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+  }
+
+
+  .villain-record__inner {
+    min-height: 0;
+  }
+
+
+  .villain-record__image {
+    height: 440px;
+  }
+
+
+  /* =======================================================
+     MOBILE POPUP
+  ======================================================= */
+
+  .villain-popup {
+    padding: 0;
+  }
+
+
+  .villain-popup__window {
+    width: 100%;
+    height: 100dvh;
+
+    max-height: none;
+
+    display: block;
+
+    overflow-y: auto;
+
+    border: 0;
+  }
+
+
+  .villain-popup__portrait {
+    height: 58vh;
+
+    min-height: 470px;
+  }
+
+
+  .villain-popup__portrait-copy {
+    left: 23px;
+    right: 23px;
+    bottom: 27px;
+  }
+
+
+  .villain-popup__portrait-copy
+  h2 {
+    font-size:
+      clamp(
+        2.6rem,
+        12vw,
+        4rem
+      );
+  }
+
+
+  .villain-popup__content {
+    overflow: visible;
+
+    padding:
+      38px
+      22px
+      65px;
+  }
+
+
+  .villain-popup__header {
+    padding-right: 0;
+  }
+
+
+  .villain-popup__facts {
+    grid-template-columns: 1fr;
+  }
+
+
+  .villain-popup__facts
+  > div {
+    min-height: 70px;
+  }
+
+
+  .villain-popup__navigation {
+    position: sticky;
+
+    bottom: 0;
+
+    margin:
+      28px -22px
+      -65px;
+
+    padding:
+      13px 18px;
+
+    background:
+      rgba(12, 9, 9, 0.95);
+
+    backdrop-filter:
+      blur(10px);
+  }
+
+
+  .villain-popup__close {
+    position: fixed;
+
+    right: 16px;
+    top: 16px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .villain-record__image {
+    height: 400px;
+  }
+
+
+  .villain-popup__portrait {
+    min-height: 430px;
+  }
+
+
+  .villain-popup__navigation
+  button span {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .villains-page__fog,
+  .villain-record__image-scan,
+  .villain-popup__portrait img {
+    animation: none;
+  }
+
+
+  .villain-record {
+    opacity: 1;
+
+    transform: none;
+
+    transition: none;
+  }
+
+}

@@ -1,0 +1,3590 @@
+/* =========================================================
+   HOGWARTS
+   CINEMATIC CASTLE TOUR
+========================================================= */
+
+.hogwarts-page {
+  --hogwarts-black: #020506;
+  --hogwarts-surface: #060a0c;
+
+  --hogwarts-gold:
+    207, 164, 91;
+
+  --hogwarts-blue:
+    78, 121, 153;
+
+  --hogwarts-green:
+    71, 124, 95;
+
+  --hogwarts-red:
+    156, 68, 61;
+
+  --hogwarts-ivory:
+    237, 229, 214;
+
+  position: relative;
+
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  color:
+    rgb(
+      var(--hogwarts-ivory)
+    );
+
+  background:
+    #020506;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+}
+
+
+.hogwarts-page *,
+.hogwarts-page *::before,
+.hogwarts-page *::after {
+  box-sizing: border-box;
+}
+
+
+.hogwarts-page button {
+  font: inherit;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hogwarts-hero {
+  --hero-shift: 0px;
+
+  position: relative;
+
+  height:
+    min(
+      950px,
+      100svh
+    );
+
+  min-height: 720px;
+
+  overflow: hidden;
+
+  display: flex;
+
+  align-items: center;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.hogwarts-hero__image {
+  position: absolute;
+
+  z-index: -5;
+
+  left: 0;
+  top:
+    calc(
+      var(--hero-shift) * -0.25
+    );
+
+  width: 100%;
+  height:
+    calc(
+      100% + 100px
+    );
+
+  object-fit: cover;
+  object-position:
+    center 48%;
+
+  filter:
+    brightness(0.74)
+    saturate(0.9)
+    contrast(1.06);
+
+  transform:
+    scale(1.02);
+}
+
+
+/* =========================================================
+   HERO VEIL
+========================================================= */
+
+.hogwarts-hero__veil {
+  position: absolute;
+
+  z-index: -4;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(1, 4, 5, 0.96)
+        0%,
+      rgba(1, 4, 5, 0.78)
+        27%,
+      rgba(1, 4, 5, 0.25)
+        59%,
+      rgba(1, 4, 5, 0.38)
+        100%
+    ),
+
+    linear-gradient(
+      180deg,
+      rgba(1, 4, 5, 0.16),
+      transparent 53%,
+      rgba(2, 5, 6, 0.94)
+    );
+
+  box-shadow:
+    inset 0 0 180px
+      rgba(0, 0, 0, 0.56);
+}
+
+
+/* =========================================================
+   HERO FOG
+========================================================= */
+
+.hogwarts-hero__fog {
+  position: absolute;
+
+  z-index: -2;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter:
+    blur(100px);
+
+  opacity: 0.11;
+
+  background:
+    rgba(
+      120,
+      158,
+      179,
+      0.7
+    );
+
+  animation:
+    hogwartsFog
+    10s ease-in-out
+    infinite alternate;
+}
+
+
+.hogwarts-hero__fog--one {
+  width: 600px;
+  height: 260px;
+
+  left: 5%;
+  bottom: 2%;
+}
+
+
+.hogwarts-hero__fog--two {
+  width: 500px;
+  height: 240px;
+
+  right: 5%;
+  top: 18%;
+
+  opacity: 0.06;
+
+  background:
+    rgba(
+      204,
+      166,
+      98,
+      0.65
+    );
+
+  animation-direction:
+    alternate-reverse;
+}
+
+
+/* =========================================================
+   HERO MARK
+========================================================= */
+
+.hogwarts-hero__mark {
+  position: absolute;
+
+  z-index: 5;
+
+  top:
+    clamp(
+      30px,
+      5vw,
+      60px
+    );
+
+  left:
+    clamp(
+      30px,
+      6vw,
+      100px
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.62
+    );
+}
+
+
+.hogwarts-hero__mark span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.46rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+}
+
+
+.hogwarts-hero__mark i {
+  width: 50px;
+  height: 1px;
+
+  background:
+    rgba(
+      var(--hogwarts-gold),
+      0.24
+    );
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hogwarts-hero__content {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(
+      680px,
+      50vw
+    );
+
+  margin-left:
+    clamp(
+      40px,
+      9vw,
+      150px
+    );
+}
+
+
+.hogwarts-hero__eyebrow {
+  display: block;
+
+  margin-bottom: 17px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.29em;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.72
+    );
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hogwarts-hero h1 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      5rem,
+      9vw,
+      9rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.76;
+
+  letter-spacing:
+    -0.055em;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.98
+    );
+
+  text-shadow:
+    0 25px 60px
+      rgba(0, 0, 0, 0.6);
+}
+
+
+.hogwarts-hero h1 em {
+  display: block;
+
+  margin-left:
+    clamp(
+      20px,
+      4vw,
+      70px
+    );
+
+  font-weight: 400;
+  font-style: italic;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.92
+    );
+}
+
+
+/* =========================================================
+   HERO COPY
+========================================================= */
+
+.hogwarts-hero__content
+> p {
+  max-width: 540px;
+
+  margin:
+    28px 0 0
+    clamp(
+      0px,
+      3vw,
+      45px
+    );
+
+  font-size: 0.96rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(
+      222,
+      221,
+      211,
+      0.65
+    );
+}
+
+
+/* =========================================================
+   HERO BUTTON
+========================================================= */
+
+.hogwarts-hero__enter {
+  margin:
+    28px 0 0
+    clamp(
+      0px,
+      3vw,
+      45px
+    );
+
+  padding:
+    0 0 9px;
+
+  border: 0;
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.46
+    );
+
+  background:
+    transparent;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.85
+    );
+
+  cursor: pointer;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  transition:
+    gap 0.35s ease,
+    color 0.35s ease;
+}
+
+
+.hogwarts-hero__enter:hover {
+  gap: 21px;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   HERO SIDE RAIL
+========================================================= */
+
+.hogwarts-hero__rail {
+  position: absolute;
+
+  z-index: 5;
+
+  right:
+    clamp(
+      28px,
+      4vw,
+      70px
+    );
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 10px;
+
+  font-size: 0.55rem;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.42
+    );
+}
+
+
+.hogwarts-hero__rail i {
+  width: 1px;
+  height: 120px;
+
+  background:
+    linear-gradient(
+      transparent,
+      rgba(
+        var(--hogwarts-gold),
+        0.28
+      ),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   HERO BOTTOM
+========================================================= */
+
+.hogwarts-hero__bottom {
+  position: absolute;
+
+  z-index: 5;
+
+  left:
+    clamp(
+      30px,
+      6vw,
+      100px
+    );
+
+  right:
+    clamp(
+      30px,
+      6vw,
+      100px
+    );
+
+  bottom: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.17em;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.29
+    );
+}
+
+
+.hogwarts-hero__bottom i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--hogwarts-gold),
+        0.14
+      ),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   TOUR INTRO
+========================================================= */
+
+.hogwarts-tour-intro {
+  width:
+    min(
+      1260px,
+      calc(100% - 80px)
+    );
+
+  margin:
+    35px auto 0;
+
+  padding:
+    38px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    75px
+    minmax(
+      400px,
+      1fr
+    )
+    110px;
+
+  align-items: center;
+
+  gap: 30px;
+
+  border-top:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.12
+    );
+
+  border-bottom:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.12
+    );
+}
+
+
+.hogwarts-tour-intro__number {
+  font-size: 3rem;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.2
+    );
+}
+
+
+.hogwarts-tour-intro__copy
+> span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.58
+    );
+}
+
+
+.hogwarts-tour-intro h2 {
+  margin:
+    7px 0 10px;
+
+  font-size:
+    clamp(
+      2.6rem,
+      4.7vw,
+      4.5rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.92
+    );
+}
+
+
+.hogwarts-tour-intro
+h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.88
+    );
+}
+
+
+.hogwarts-tour-intro
+p {
+  max-width: 600px;
+
+  margin: 0;
+
+  font-size: 0.88rem;
+
+  line-height: 1.7;
+
+  color:
+    rgba(
+      217,
+      216,
+      206,
+      0.56
+    );
+}
+
+
+.hogwarts-tour-intro__seal {
+  width: 75px;
+  height: 75px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.2
+    );
+
+  transform:
+    rotate(45deg);
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.66
+    );
+}
+
+
+.hogwarts-tour-intro__seal
+svg {
+  transform:
+    rotate(-45deg);
+
+  font-size: 1.45rem;
+}
+
+
+/* =========================================================
+   SHARED INDEX
+========================================================= */
+
+.hogwarts-section-index {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.46rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.62
+    );
+}
+
+
+/* =========================================================
+   GREAT HALL
+========================================================= */
+
+.hogwarts-great-hall {
+  width:
+    min(
+      1420px,
+      calc(100% - 70px)
+    );
+
+  margin:
+    65px auto 0;
+
+  min-height: 600px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      0,
+      1.15fr
+    )
+    minmax(
+      380px,
+      0.85fr
+    );
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.11
+    );
+
+  background:
+    #06090a;
+}
+
+
+/* =========================================================
+   GREAT HALL IMAGE
+========================================================= */
+
+.hogwarts-great-hall__image {
+  position: relative;
+
+  min-height: 600px;
+
+  overflow: hidden;
+}
+
+
+.hogwarts-great-hall__image
+img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position:
+    center;
+
+  filter:
+    brightness(0.87)
+    saturate(0.96);
+}
+
+
+.hogwarts-great-hall__shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 60%,
+      #06090a
+    ),
+
+    linear-gradient(
+      180deg,
+      transparent 67%,
+      rgba(4, 7, 8, 0.58)
+    );
+}
+
+
+/* =========================================================
+   FLOATING CANDLES
+========================================================= */
+
+.hogwarts-great-hall__candles
+span {
+  position: absolute;
+
+  width: 3px;
+  height: 18px;
+
+  border-radius: 2px;
+
+  background:
+    rgba(
+      246,
+      225,
+      177,
+      0.7
+    );
+
+  box-shadow:
+    0 -6px 14px
+      rgba(
+        255,
+        192,
+        95,
+        0.55
+      );
+
+  animation:
+    hogwartsCandleFloat
+    4s ease-in-out
+    infinite alternate;
+}
+
+
+.hogwarts-great-hall__candles
+span:nth-child(1) {
+  top: 15%;
+  left: 18%;
+}
+
+
+.hogwarts-great-hall__candles
+span:nth-child(2) {
+  top: 25%;
+  left: 35%;
+
+  animation-delay: 1s;
+}
+
+
+.hogwarts-great-hall__candles
+span:nth-child(3) {
+  top: 12%;
+  left: 53%;
+
+  animation-delay: 1.7s;
+}
+
+
+.hogwarts-great-hall__candles
+span:nth-child(4) {
+  top: 23%;
+  left: 70%;
+
+  animation-delay: 0.6s;
+}
+
+
+.hogwarts-great-hall__candles
+span:nth-child(5) {
+  top: 34%;
+  left: 82%;
+
+  animation-delay: 1.4s;
+}
+
+
+/* =========================================================
+   GREAT HALL CONTENT
+========================================================= */
+
+.hogwarts-great-hall__content {
+  padding:
+    clamp(
+      45px,
+      6vw,
+      90px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        var(--hogwarts-gold),
+        0.04
+      ),
+      rgba(
+        5,
+        9,
+        10,
+        0.97
+      )
+    );
+}
+
+
+.hogwarts-great-hall__icon {
+  width: 45px;
+  height: 45px;
+
+  margin:
+    22px 0;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.18
+    );
+
+  transform:
+    rotate(45deg);
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.68
+    );
+}
+
+
+.hogwarts-great-hall__icon
+svg {
+  transform:
+    rotate(-45deg);
+}
+
+
+.hogwarts-great-hall h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      3rem,
+      5.2vw,
+      5.1rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.94
+    );
+}
+
+
+.hogwarts-great-hall h2
+em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.88
+    );
+}
+
+
+.hogwarts-great-hall__content
+> p {
+  margin:
+    20px 0 0;
+
+  max-width: 470px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      217,
+      215,
+      205,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   GREAT HALL DETAILS
+========================================================= */
+
+.hogwarts-great-hall__details {
+  margin-top: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.53
+    );
+}
+
+
+.hogwarts-great-hall__details
+i {
+  width: 18px;
+  height: 1px;
+
+  background:
+    rgba(
+      var(--hogwarts-gold),
+      0.22
+    );
+}
+
+
+/* =========================================================
+   STAIRCASE
+========================================================= */
+
+.hogwarts-staircase {
+  width:
+    min(
+      1270px,
+      calc(100% - 90px)
+    );
+
+  margin:
+    75px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      320px,
+      0.8fr
+    )
+    minmax(
+      500px,
+      1.2fr
+    );
+
+  align-items: center;
+
+  gap:
+    clamp(
+      40px,
+      8vw,
+      110px
+    );
+}
+
+
+/* =========================================================
+   STAIRCASE COPY
+========================================================= */
+
+.hogwarts-staircase__copy
+> svg {
+  margin:
+    20px 0;
+
+  font-size: 2rem;
+
+  color:
+    rgba(
+      var(--hogwarts-blue),
+      0.65
+    );
+}
+
+
+.hogwarts-staircase h2 {
+  margin: 0;
+
+  font-size:
+    clamp(
+      3.2rem,
+      5.3vw,
+      5.3rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.92
+    );
+}
+
+
+.hogwarts-staircase h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-blue),
+      0.9
+    );
+}
+
+
+.hogwarts-staircase__copy
+> p {
+  margin:
+    19px 0 0;
+
+  max-width: 460px;
+
+  font-size: 0.88rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      216,
+      216,
+      208,
+      0.58
+    );
+}
+
+
+.hogwarts-staircase__note {
+  margin-top: 25px;
+
+  padding:
+    13px 15px;
+
+  border-left:
+    1px solid
+    rgba(
+      var(--hogwarts-blue),
+      0.4
+    );
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--hogwarts-blue),
+        0.07
+      ),
+      transparent
+    );
+}
+
+
+.hogwarts-staircase__note
+span {
+  font-size: 0.74rem;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      215,
+      218,
+      215,
+      0.52
+    );
+}
+
+
+/* =========================================================
+   STAIRCASE VISUAL
+========================================================= */
+
+.hogwarts-staircase__visual {
+  position: relative;
+}
+
+
+.hogwarts-staircase__frame {
+  position: relative;
+
+  aspect-ratio:
+    16 / 10;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-blue),
+      0.14
+    );
+}
+
+
+.hogwarts-staircase__frame
+img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(0.86)
+    saturate(0.88);
+}
+
+
+.hogwarts-staircase__overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        3,
+        7,
+        9,
+        0.2
+      ),
+      rgba(
+        3,
+        7,
+        9,
+        0.5
+      )
+    );
+}
+
+
+.hogwarts-staircase__line {
+  position: absolute;
+
+  width: 50%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        var(--hogwarts-blue),
+        0.45
+      )
+    );
+
+  transform-origin:
+    left center;
+}
+
+
+.hogwarts-staircase__line--one {
+  left: 15%;
+  top: 40%;
+
+  transform:
+    rotate(-25deg);
+}
+
+
+.hogwarts-staircase__line--two {
+  left: 35%;
+  bottom: 35%;
+
+  transform:
+    rotate(22deg);
+}
+
+
+.hogwarts-staircase__arrow {
+  position: absolute;
+
+  right: 20px;
+  bottom: 20px;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-blue),
+      0.25
+    );
+
+  border-radius: 50%;
+
+  color:
+    rgba(
+      var(--hogwarts-blue),
+      0.72
+    );
+
+  background:
+    rgba(
+      3,
+      7,
+      9,
+      0.55
+    );
+}
+
+
+/* =========================================================
+   LIBRARY
+========================================================= */
+
+.hogwarts-library {
+  width:
+    min(
+      1380px,
+      calc(100% - 70px)
+    );
+
+  margin:
+    90px auto 0;
+}
+
+
+/* =========================================================
+   LIBRARY HEADER
+========================================================= */
+
+.hogwarts-library__header {
+  margin-bottom: 30px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content:
+    space-between;
+
+  gap: 25px;
+}
+
+
+.hogwarts-library__header
+h2 {
+  margin:
+    8px 0 0;
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      4.8rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.91
+    );
+}
+
+
+.hogwarts-library__header
+h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.86
+    );
+}
+
+
+.hogwarts-library__header
+> svg {
+  font-size: 2rem;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.46
+    );
+}
+
+
+/* =========================================================
+   LIBRARY GALLERY
+========================================================= */
+
+.hogwarts-library__gallery {
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    0.85fr;
+
+  gap: 13px;
+}
+
+
+/* =========================================================
+   LIBRARY CARD
+========================================================= */
+
+.hogwarts-library-card {
+  position: relative;
+
+  min-height: 560px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.1
+    );
+
+  background:
+    #06090a;
+}
+
+
+.hogwarts-library-card
+img {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(0.77)
+    saturate(0.9);
+
+  transition:
+    transform 0.7s ease,
+    filter 0.7s ease;
+}
+
+
+.hogwarts-library-card:hover
+img {
+  transform:
+    scale(1.035);
+
+  filter:
+    brightness(0.87)
+    saturate(0.96);
+}
+
+
+.hogwarts-library-card__shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 35%,
+      rgba(
+        3,
+        6,
+        7,
+        0.93
+      )
+    );
+}
+
+
+/* =========================================================
+   LIBRARY CARD COPY
+========================================================= */
+
+.hogwarts-library-card__content {
+  position: absolute;
+
+  z-index: 3;
+
+  left: 30px;
+  right: 30px;
+  bottom: 30px;
+}
+
+
+.hogwarts-library-card__content
+> span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.19em;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.64
+    );
+}
+
+
+.hogwarts-library-card__content
+h3 {
+  margin:
+    9px 0 11px;
+
+  max-width: 430px;
+
+  font-size:
+    clamp(
+      2.4rem,
+      4vw,
+      4rem
+    );
+
+  line-height: 0.92;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.93
+    );
+}
+
+
+.hogwarts-library-card__content
+p {
+  margin: 0;
+
+  max-width: 420px;
+
+  font-size: 0.8rem;
+
+  line-height: 1.65;
+
+  color:
+    rgba(
+      215,
+      214,
+      205,
+      0.57
+    );
+}
+
+
+/* =========================================================
+   RESTRICTED LOCK
+========================================================= */
+
+.hogwarts-library-card__lock {
+  position: absolute;
+
+  right: 20px;
+  top: 20px;
+
+  width: 45px;
+  height: 45px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(
+      158,
+      65,
+      55,
+      0.24
+    );
+
+  color:
+    rgba(
+      184,
+      78,
+      65,
+      0.72
+    );
+
+  background:
+    rgba(
+      5,
+      7,
+      8,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   ASTRONOMY
+========================================================= */
+
+.hogwarts-astronomy {
+  position: relative;
+
+  width:
+    min(
+      1450px,
+      calc(100% - 50px)
+    );
+
+  margin:
+    85px auto 0;
+
+  min-height: 590px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-blue),
+      0.12
+    );
+}
+
+
+/* =========================================================
+   ASTRONOMY IMAGE
+========================================================= */
+
+.hogwarts-astronomy__image {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(0.78)
+    saturate(0.9);
+}
+
+
+.hogwarts-astronomy__shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        2,
+        5,
+        8,
+        0.93
+      ),
+      rgba(
+        2,
+        5,
+        8,
+        0.55
+      )
+        42%,
+      rgba(
+        2,
+        5,
+        8,
+        0.18
+      )
+        72%
+    ),
+
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(
+        2,
+        5,
+        8,
+        0.68
+      )
+    );
+}
+
+
+/* =========================================================
+   STARS
+========================================================= */
+
+.hogwarts-astronomy__stars
+i {
+  position: absolute;
+
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #ddecff;
+
+  box-shadow:
+    0 0 10px
+      rgba(
+        202,
+        230,
+        255,
+        0.75
+      );
+
+  animation:
+    hogwartsStarPulse
+    2.5s ease-in-out
+    infinite alternate;
+}
+
+
+.hogwarts-astronomy__stars
+i:nth-child(1) {
+  left: 58%;
+  top: 18%;
+}
+
+
+.hogwarts-astronomy__stars
+i:nth-child(2) {
+  left: 72%;
+  top: 28%;
+
+  animation-delay: 0.5s;
+}
+
+
+.hogwarts-astronomy__stars
+i:nth-child(3) {
+  left: 81%;
+  top: 15%;
+
+  animation-delay: 1s;
+}
+
+
+.hogwarts-astronomy__stars
+i:nth-child(4) {
+  left: 68%;
+  top: 48%;
+
+  animation-delay: 1.5s;
+}
+
+
+.hogwarts-astronomy__stars
+i:nth-child(5) {
+  left: 90%;
+  top: 38%;
+
+  animation-delay: 0.8s;
+}
+
+
+.hogwarts-astronomy__stars
+i:nth-child(6) {
+  left: 78%;
+  top: 62%;
+
+  animation-delay: 1.2s;
+}
+
+
+/* =========================================================
+   ASTRONOMY COPY
+========================================================= */
+
+.hogwarts-astronomy__content {
+  position: absolute;
+
+  z-index: 3;
+
+  left:
+    clamp(
+      35px,
+      7vw,
+      110px
+    );
+
+  top: 50%;
+
+  transform:
+    translateY(-50%);
+
+  width:
+    min(
+      520px,
+      42%
+    );
+}
+
+
+.hogwarts-astronomy__content
+> svg {
+  margin-bottom: 20px;
+
+  font-size: 2rem;
+
+  color:
+    rgba(
+      var(--hogwarts-blue),
+      0.75
+    );
+}
+
+
+.hogwarts-astronomy h2 {
+  margin:
+    12px 0 0;
+
+  font-size:
+    clamp(
+      3.6rem,
+      6vw,
+      5.7rem
+    );
+
+  line-height: 0.86;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.93
+    );
+}
+
+
+.hogwarts-astronomy h2
+em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-blue),
+      0.9
+    );
+}
+
+
+.hogwarts-astronomy__content
+p {
+  margin:
+    20px 0 0;
+
+  max-width: 460px;
+
+  font-size: 0.88rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      217,
+      218,
+      211,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   SECRETS
+========================================================= */
+
+.hogwarts-secrets {
+  width:
+    min(
+      1300px,
+      calc(100% - 80px)
+    );
+
+  margin:
+    90px auto 0;
+}
+
+
+/* =========================================================
+   SECRETS HEADING
+========================================================= */
+
+.hogwarts-secrets__heading {
+  margin-bottom: 28px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content:
+    space-between;
+}
+
+
+.hogwarts-secrets__heading
+h2 {
+  margin:
+    8px 0 0;
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      4.8rem
+    );
+
+  line-height: 0.9;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.92
+    );
+}
+
+
+.hogwarts-secrets__heading
+h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.84
+    );
+}
+
+
+.hogwarts-secrets__heading
+> svg {
+  font-size: 2rem;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.5
+    );
+}
+
+
+/* =========================================================
+   SECRET SWITCHER
+========================================================= */
+
+.hogwarts-secrets__switch {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-green),
+      0.11
+    );
+
+  border-bottom: 0;
+}
+
+
+.hogwarts-secrets__switch
+button {
+  min-height: 70px;
+
+  padding:
+    0 22px;
+
+  border: 0;
+
+  border-right:
+    1px solid
+    rgba(
+      var(--hogwarts-green),
+      0.08
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  background:
+    rgba(
+      5,
+      10,
+      9,
+      0.65
+    );
+
+  color:
+    rgba(
+      210,
+      217,
+      207,
+      0.5
+    );
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+}
+
+
+.hogwarts-secrets__switch
+button:last-child {
+  border-right: 0;
+}
+
+
+.hogwarts-secrets__switch
+button.is-active {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        var(--hogwarts-green),
+        0.12
+      ),
+      rgba(
+        5,
+        10,
+        9,
+        0.8
+      )
+    );
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.9
+    );
+}
+
+
+.hogwarts-secrets__switch
+button span {
+  font-size: 0.65rem;
+
+  opacity: 0.55;
+}
+
+
+/* =========================================================
+   SECRET DISPLAY
+========================================================= */
+
+.hogwarts-secret-display {
+  min-height: 570px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.15fr
+    0.85fr;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-green),
+      0.11
+    );
+
+  background:
+    #050908;
+}
+
+
+/* =========================================================
+   SECRET IMAGE
+========================================================= */
+
+.hogwarts-secret-display__image {
+  position: relative;
+
+  min-height: 570px;
+
+  overflow: hidden;
+}
+
+
+.hogwarts-secret-display__image
+img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  animation:
+    hogwartsSecretReveal
+    0.55s ease both;
+}
+
+
+.hogwarts-secret-display__shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 60%,
+      #050908
+    );
+}
+
+
+/* =========================================================
+   SECRET CONTENT
+========================================================= */
+
+.hogwarts-secret-display__content {
+  padding:
+    clamp(
+      45px,
+      6vw,
+      85px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+.hogwarts-secret-display__content
+> span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.62
+    );
+}
+
+
+.hogwarts-secret-display__content
+h3 {
+  margin:
+    10px 0 18px;
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      4.8rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.93
+    );
+}
+
+
+.hogwarts-secret-display__content
+p {
+  margin: 0;
+
+  max-width: 470px;
+
+  font-size: 0.87rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      214,
+      217,
+      207,
+      0.58
+    );
+}
+
+
+/* =========================================================
+   SECRET FACTS
+========================================================= */
+
+.hogwarts-secret-display__facts {
+  margin-top: 25px;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.hogwarts-secret-display__facts
+span {
+  padding:
+    8px 10px;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-green),
+      0.13
+    );
+
+  background:
+    rgba(
+      var(--hogwarts-green),
+      0.04
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.12em;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.62
+    );
+}
+
+
+/* =========================================================
+   GROUNDS
+========================================================= */
+
+.hogwarts-grounds {
+  width:
+    min(
+      1440px,
+      calc(100% - 50px)
+    );
+
+  margin:
+    85px auto 0;
+
+  min-height: 590px;
+
+  display: grid;
+
+  grid-template-columns:
+    1.25fr
+    0.75fr;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-green),
+      0.1
+    );
+
+  background:
+    #050807;
+}
+
+
+/* =========================================================
+   GROUNDS IMAGE
+========================================================= */
+
+.hogwarts-grounds__image {
+  position: relative;
+
+  min-height: 590px;
+}
+
+
+.hogwarts-grounds__image
+img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(0.83)
+    saturate(0.9);
+}
+
+
+.hogwarts-grounds__shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 60%,
+      #050807
+    );
+}
+
+
+/* =========================================================
+   GROUNDS CONTENT
+========================================================= */
+
+.hogwarts-grounds__content {
+  padding:
+    clamp(
+      45px,
+      6vw,
+      80px
+    );
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+.hogwarts-grounds__content
+> svg {
+  margin-bottom: 20px;
+
+  font-size: 2rem;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.7
+    );
+}
+
+
+.hogwarts-grounds h2 {
+  margin:
+    12px 0 0;
+
+  font-size:
+    clamp(
+      3.1rem,
+      5vw,
+      4.9rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.91
+    );
+}
+
+
+.hogwarts-grounds
+h2 em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.85
+    );
+}
+
+
+.hogwarts-grounds__content
+> p {
+  margin:
+    20px 0 0;
+
+  max-width: 430px;
+
+  font-size: 0.86rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      214,
+      216,
+      207,
+      0.58
+    );
+}
+
+
+/* =========================================================
+   GROUNDS PLACES
+========================================================= */
+
+.hogwarts-grounds__places {
+  margin-top: 25px;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      1fr
+    );
+
+  gap: 7px;
+}
+
+
+.hogwarts-grounds__places
+span {
+  padding:
+    10px;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-green),
+      0.1
+    );
+
+  background:
+    rgba(
+      var(--hogwarts-green),
+      0.035
+    );
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.1em;
+
+  color:
+    rgba(
+      var(--hogwarts-green),
+      0.62
+    );
+}
+
+
+/* =========================================================
+   FINALE
+========================================================= */
+
+.hogwarts-finale {
+  width:
+    min(
+      1200px,
+      calc(100% - 80px)
+    );
+
+  margin:
+    95px auto 0;
+
+  padding:
+    55px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(
+      330px,
+      0.8fr
+    )
+    minmax(
+      450px,
+      1.2fr
+    );
+
+  align-items: center;
+
+  gap:
+    clamp(
+      40px,
+      8vw,
+      100px
+    );
+
+  border-top:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.12
+    );
+}
+
+
+/* =========================================================
+   FINALE CREST
+========================================================= */
+
+.hogwarts-finale__crest {
+  position: relative;
+
+  height: 430px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content:
+    center;
+}
+
+
+.hogwarts-finale__glow {
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(
+        var(--hogwarts-gold),
+        0.18
+      ),
+      transparent 68%
+    );
+
+  filter:
+    blur(15px);
+}
+
+
+.hogwarts-finale__ring {
+  position: absolute;
+
+  width: 330px;
+  height: 330px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(
+      var(--hogwarts-gold),
+      0.14
+    );
+
+  animation:
+    hogwartsRing
+    20s linear
+    infinite;
+}
+
+
+.hogwarts-finale__ring::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 22px;
+
+  border-radius: 50%;
+
+  border:
+    1px dashed
+    rgba(
+      var(--hogwarts-gold),
+      0.08
+    );
+}
+
+
+.hogwarts-finale__ring--two {
+  width: 250px;
+  height: 250px;
+
+  animation-direction:
+    reverse;
+
+  animation-duration:
+    14s;
+}
+
+
+.hogwarts-finale__crest
+img {
+  position: relative;
+
+  z-index: 3;
+
+  width: 280px;
+  height: 350px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(
+      0 28px 30px
+      rgba(0, 0, 0, 0.65)
+    );
+}
+
+
+/* =========================================================
+   FINALE COPY
+========================================================= */
+
+.hogwarts-finale__content
+> span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.58
+    );
+}
+
+
+.hogwarts-finale h2 {
+  margin:
+    10px 0 18px;
+
+  font-size:
+    clamp(
+      3.2rem,
+      5vw,
+      5rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-ivory),
+      0.92
+    );
+}
+
+
+.hogwarts-finale h2
+em {
+  display: block;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.87
+    );
+}
+
+
+.hogwarts-finale__content
+> p {
+  margin: 0;
+
+  max-width: 530px;
+
+  font-size: 0.9rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(
+      216,
+      215,
+      206,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   FINALE SIGNATURE
+========================================================= */
+
+.hogwarts-finale__signature {
+  margin-top: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.6
+    );
+}
+
+
+.hogwarts-finale__signature
+span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   END
+========================================================= */
+
+.hogwarts-end {
+  width:
+    min(
+      1280px,
+      calc(100% - 60px)
+    );
+
+  margin:
+    15px auto 70px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color:
+    rgba(
+      var(--hogwarts-gold),
+      0.3
+    );
+}
+
+
+.hogwarts-end span {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.16em;
+}
+
+
+.hogwarts-end i {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(
+        var(--hogwarts-gold),
+        0.12
+      ),
+      transparent
+    );
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes hogwartsFog {
+  from {
+    transform:
+      translateX(-25px)
+      scale(0.96);
+  }
+
+  to {
+    transform:
+      translateX(30px)
+      scale(1.06);
+  }
+}
+
+
+@keyframes hogwartsCandleFloat {
+  from {
+    transform:
+      translateY(-5px);
+  }
+
+  to {
+    transform:
+      translateY(7px);
+  }
+}
+
+
+@keyframes hogwartsStarPulse {
+  from {
+    opacity: 0.35;
+
+    transform:
+      scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1.35);
+  }
+}
+
+
+@keyframes hogwartsSecretReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(1.03);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+}
+
+
+@keyframes hogwartsRing {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (
+  max-width: 1000px
+) {
+
+  .hogwarts-hero__content {
+    width: 55vw;
+
+    margin-left: 65px;
+  }
+
+
+  .hogwarts-tour-intro {
+    width:
+      calc(100% - 50px);
+
+    grid-template-columns:
+      60px 1fr 80px;
+  }
+
+
+  .hogwarts-great-hall {
+    width:
+      calc(100% - 40px);
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-great-hall__image {
+    min-height: 470px;
+  }
+
+
+  .hogwarts-great-hall__shade {
+    background:
+      linear-gradient(
+        180deg,
+        transparent 60%,
+        #06090a
+      );
+  }
+
+
+  .hogwarts-staircase {
+    width:
+      calc(100% - 50px);
+
+    grid-template-columns:
+      1fr;
+
+    gap: 35px;
+  }
+
+
+  .hogwarts-library {
+    width:
+      calc(100% - 40px);
+  }
+
+
+  .hogwarts-secret-display {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-secret-display__image {
+    min-height: 430px;
+  }
+
+
+  .hogwarts-secret-display__shade {
+    background:
+      linear-gradient(
+        180deg,
+        transparent 60%,
+        #050908
+      );
+  }
+
+
+  .hogwarts-grounds {
+    width:
+      calc(100% - 40px);
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-grounds__image {
+    min-height: 470px;
+  }
+
+
+  .hogwarts-grounds__shade {
+    background:
+      linear-gradient(
+        180deg,
+        transparent 65%,
+        #050807
+      );
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE / TABLET
+========================================================= */
+
+@media (
+  max-width: 760px
+) {
+
+  /* HERO */
+
+  .hogwarts-hero {
+    height: auto;
+
+    min-height: 800px;
+
+    align-items:
+      flex-end;
+  }
+
+
+  .hogwarts-hero__image {
+    object-position:
+      58% center;
+  }
+
+
+  .hogwarts-hero__veil {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          1,
+          4,
+          5,
+          0.15
+        ),
+        rgba(
+          1,
+          4,
+          5,
+          0.35
+        )
+          35%,
+        rgba(
+          1,
+          4,
+          5,
+          0.9
+        )
+          73%,
+        #020506
+      );
+  }
+
+
+  .hogwarts-hero__content {
+    width:
+      calc(100% - 60px);
+
+    margin:
+      0 30px 90px;
+  }
+
+
+  .hogwarts-hero__rail {
+    display: none;
+  }
+
+
+  .hogwarts-hero__bottom {
+    display: none;
+  }
+
+
+  /* TOUR */
+
+  .hogwarts-tour-intro {
+    grid-template-columns:
+      45px 1fr;
+
+    gap: 15px;
+  }
+
+
+  .hogwarts-tour-intro__seal {
+    display: none;
+  }
+
+
+  /* LIBRARY */
+
+  .hogwarts-library__gallery {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-library-card {
+    min-height: 470px;
+  }
+
+
+  /* ASTRONOMY */
+
+  .hogwarts-astronomy {
+    width:
+      calc(100% - 30px);
+
+    min-height: 620px;
+  }
+
+
+  .hogwarts-astronomy__shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(
+          2,
+          5,
+          8,
+          0.15
+        ),
+        rgba(
+          2,
+          5,
+          8,
+          0.88
+        )
+          65%
+      );
+  }
+
+
+  .hogwarts-astronomy__content {
+    left: 30px;
+    right: 30px;
+    top: auto;
+    bottom: 45px;
+
+    transform: none;
+
+    width: auto;
+  }
+
+
+  /* SECRETS */
+
+  .hogwarts-secrets {
+    width:
+      calc(100% - 40px);
+  }
+
+
+  .hogwarts-secrets__switch {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-secrets__switch
+  button {
+    border-right: 0;
+
+    border-bottom:
+      1px solid
+      rgba(
+        var(--hogwarts-green),
+        0.08
+      );
+  }
+
+
+  /* FINALE */
+
+  .hogwarts-finale {
+    width:
+      calc(100% - 50px);
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-finale__content {
+    text-align: center;
+  }
+
+
+  .hogwarts-finale__content
+  > p {
+    margin-inline:
+      auto;
+  }
+
+
+  .hogwarts-finale__signature {
+    justify-content:
+      center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (
+  max-width: 520px
+) {
+
+  .hogwarts-hero {
+    min-height: 760px;
+  }
+
+
+  .hogwarts-hero__mark {
+    left: 18px;
+
+    top: 25px;
+  }
+
+
+  .hogwarts-hero__mark
+  span:last-child,
+  .hogwarts-hero__mark i {
+    display: none;
+  }
+
+
+  .hogwarts-hero__content {
+    width:
+      calc(100% - 36px);
+
+    margin:
+      0 18px 70px;
+  }
+
+
+  .hogwarts-hero h1 {
+    font-size:
+      clamp(
+        4.3rem,
+        21vw,
+        6rem
+      );
+  }
+
+
+  .hogwarts-hero__content
+  > p {
+    margin-left: 0;
+
+    font-size: 0.84rem;
+  }
+
+
+  .hogwarts-hero__enter {
+    margin-left: 0;
+  }
+
+
+  /* INTRO */
+
+  .hogwarts-tour-intro {
+    width:
+      calc(100% - 30px);
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .hogwarts-tour-intro__number {
+    font-size: 2rem;
+  }
+
+
+  /* GREAT HALL */
+
+  .hogwarts-great-hall {
+    width:
+      calc(100% - 20px);
+
+    margin-top: 45px;
+  }
+
+
+  .hogwarts-great-hall__image {
+    min-height: 350px;
+  }
+
+
+  .hogwarts-great-hall__content {
+    padding:
+      38px 24px;
+  }
+
+
+  /* STAIRCASE */
+
+  .hogwarts-staircase {
+    width:
+      calc(100% - 30px);
+
+    margin-top: 55px;
+  }
+
+
+  /* LIBRARY */
+
+  .hogwarts-library {
+    width:
+      calc(100% - 20px);
+
+    margin-top: 60px;
+  }
+
+
+  .hogwarts-library__header {
+    align-items:
+      flex-start;
+  }
+
+
+  .hogwarts-library-card {
+    min-height: 400px;
+  }
+
+
+  .hogwarts-library-card__content {
+    left: 20px;
+    right: 20px;
+    bottom: 22px;
+  }
+
+
+  /* ASTRONOMY */
+
+  .hogwarts-astronomy {
+    width:
+      calc(100% - 20px);
+
+    margin-top: 60px;
+
+    min-height: 540px;
+  }
+
+
+  /* SECRETS */
+
+  .hogwarts-secrets {
+    width:
+      calc(100% - 30px);
+
+    margin-top: 60px;
+  }
+
+
+  .hogwarts-secret-display__image {
+    min-height: 340px;
+  }
+
+
+  .hogwarts-secret-display__content {
+    padding:
+      38px 24px;
+  }
+
+
+  /* GROUNDS */
+
+  .hogwarts-grounds {
+    width:
+      calc(100% - 20px);
+
+    margin-top: 60px;
+  }
+
+
+  .hogwarts-grounds__image {
+    min-height: 350px;
+  }
+
+
+  .hogwarts-grounds__content {
+    padding:
+      40px 24px;
+  }
+
+
+  .hogwarts-grounds__places {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  /* FINALE */
+
+  .hogwarts-finale {
+    width:
+      calc(100% - 30px);
+
+    margin-top: 60px;
+  }
+
+
+  .hogwarts-finale__crest {
+    height: 340px;
+  }
+
+
+  .hogwarts-finale__ring {
+    width: 260px;
+    height: 260px;
+  }
+
+
+  .hogwarts-finale__ring--two {
+    width: 190px;
+    height: 190px;
+  }
+
+
+  .hogwarts-finale__crest
+  img {
+    width: 215px;
+    height: 270px;
+  }
+
+
+  .hogwarts-end {
+    width:
+      calc(100% - 30px);
+  }
+
+
+  .hogwarts-end span {
+    font-size: 0.3rem;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .hogwarts-hero__fog,
+  .hogwarts-great-hall__candles
+  span,
+  .hogwarts-astronomy__stars
+  i,
+  .hogwarts-finale__ring {
+    animation: none;
+  }
+
+}

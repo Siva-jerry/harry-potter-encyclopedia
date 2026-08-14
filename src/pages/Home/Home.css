@@ -1,0 +1,2280 @@
+/* =========================================================
+   HOME PAGE
+========================================================= */
+
+.home-page {
+  position: relative;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+
+  background: #04070b;
+
+  color: #f1f5f8;
+}
+
+
+/* =========================================================
+   HERO — MAGICAL ARRIVAL
+========================================================= */
+
+.home-arrival {
+  position: relative;
+
+  width: 100%;
+  height: 100vh;
+  min-height: 680px;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   HERO BACKGROUND VIDEO
+========================================================= */
+
+.home-arrival__video {
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center center;
+
+  transform: scale(1.02);
+
+  backface-visibility: hidden;
+
+  will-change: transform;
+
+  filter:
+    contrast(1.08)
+    brightness(1.08)
+    saturate(2.04);
+
+  image-rendering: auto;
+}
+
+
+/* =========================================================
+   HERO DARK CINEMATIC OVERLAY
+========================================================= */
+
+.home-arrival__darkness {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 6, 10, 0.86) 0%,
+      rgba(3, 6, 10, 0.55) 38%,
+      rgba(3, 6, 10, 0.12) 70%,
+      rgba(3, 6, 10, 0.22) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(2, 5, 9, 0.3) 0%,
+      transparent 35%,
+      rgba(2, 5, 8, 0.62) 100%
+    );
+}
+
+
+/* =========================================================
+   HERO VIGNETTE
+========================================================= */
+
+.home-arrival__vignette {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 160px 40px rgba(0, 0, 0, 0.56);
+}
+
+
+/* =========================================================
+   HERO LOW FOG
+========================================================= */
+
+.home-arrival__mist {
+  position: absolute;
+
+  z-index: 3;
+
+  left: -15%;
+  bottom: -13%;
+
+  width: 130%;
+  height: 38%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(168, 194, 216, 0.15),
+      rgba(92, 124, 151, 0.07) 38%,
+      transparent 72%
+    );
+
+  filter: blur(35px);
+
+  animation:
+    homeMist
+    10s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.home-arrival__content {
+  position: relative;
+
+  z-index: 10;
+
+  width: min(720px, 90%);
+
+  margin-left:
+    clamp(30px, 8vw, 150px);
+
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   HERO EYEBROW
+========================================================= */
+
+.home-arrival__eyebrow {
+  margin:
+    0 0 22px;
+
+  color:
+    rgba(204, 222, 238, 0.72);
+
+  font-size: 0.7rem;
+  font-weight: 500;
+
+  letter-spacing: 0.48em;
+
+  opacity: 0;
+
+  transform:
+    translateY(16px);
+
+  animation:
+    heroEyebrowReveal
+    1s
+    ease
+    0.25s
+    forwards;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.home-arrival__title {
+  margin: 0;
+
+  max-width: 700px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(
+      3.2rem,
+      6vw,
+      6.8rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.045em;
+
+  color: #f3f5f7;
+
+  text-shadow:
+    0 5px 30px
+    rgba(0, 0, 0, 0.7);
+
+  opacity: 0;
+
+  transform:
+    translateY(38px)
+    scale(0.985);
+
+  filter:
+    blur(8px);
+
+  animation:
+    heroTitleReveal
+    1.6s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.45s
+    forwards;
+}
+
+
+/* second title line */
+
+.home-arrival__title span {
+  display: block;
+
+  margin-top: 10px;
+
+  color:
+    rgba(205, 222, 237, 0.88);
+
+  font-size: 0.66em;
+
+  font-style: italic;
+
+  opacity: 0;
+
+  transform:
+    translateY(24px);
+
+  animation:
+    heroTitleSecondLine
+    1.35s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.95s
+    forwards;
+}
+
+
+/* =========================================================
+   HERO DESCRIPTION
+========================================================= */
+
+.home-arrival__description {
+  max-width: 560px;
+
+  margin:
+    30px 0 0;
+
+  color:
+    rgba(225, 233, 239, 0.72);
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.025em;
+
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+
+  animation:
+    heroContentReveal
+    1.1s
+    ease
+    1.15s
+    forwards;
+}
+
+
+/* =========================================================
+   HERO ACTIONS
+========================================================= */
+
+.home-arrival__actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 30px;
+
+  margin-top: 38px;
+
+  opacity: 0;
+
+  transform:
+    translateY(18px);
+
+  animation:
+    heroContentReveal
+    1.1s
+    ease
+    1.4s
+    forwards;
+}
+
+
+/* =========================================================
+   ENTER HOGWARTS BUTTON
+========================================================= */
+
+.home-arrival__enter {
+  position: relative;
+
+  min-width: 185px;
+
+  padding:
+    15px 25px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(184, 213, 236, 0.38);
+
+  color: #edf7ff;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.15em;
+
+  transition:
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease,
+    transform 0.4s ease;
+}
+
+
+.home-arrival__enter span {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* wand sweep */
+
+.home-arrival__wand-light {
+  position: absolute;
+
+  left: -60%;
+  top: 0;
+
+  width: 40%;
+  height: 100%;
+
+  transform:
+    skewX(-22deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(194, 226, 250, 0.18),
+      transparent
+    );
+
+  transition:
+    left 0.7s ease;
+}
+
+
+.home-arrival__enter:hover {
+  transform:
+    translateY(-2px);
+
+  background:
+    rgba(138, 186, 224, 0.08);
+
+  border-color:
+    rgba(204, 230, 250, 0.72);
+
+  box-shadow:
+    0 0 28px
+    rgba(100, 161, 207, 0.12);
+}
+
+
+.home-arrival__enter:hover
+.home-arrival__wand-light {
+  left: 120%;
+}
+
+
+/* =========================================================
+   EXPLORE STORIES LINK
+========================================================= */
+
+.home-arrival__explore {
+  position: relative;
+
+  padding-bottom: 6px;
+
+  color:
+    rgba(230, 238, 244, 0.72);
+
+  text-decoration: none;
+
+  font-size: 0.74rem;
+
+  letter-spacing: 0.12em;
+
+  transition:
+    color 0.3s ease;
+}
+
+
+.home-arrival__explore::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  transform:
+    scaleX(0.3);
+
+  transform-origin:
+    left center;
+
+  background:
+    rgba(192, 222, 244, 0.65);
+
+  transition:
+    transform 0.4s ease;
+}
+
+
+.home-arrival__explore:hover {
+  color: #ffffff;
+}
+
+
+.home-arrival__explore:hover::after {
+  transform:
+    scaleX(1);
+}
+
+
+/* =========================================================
+   HERO SCROLL INDICATOR
+========================================================= */
+
+.home-arrival__scroll {
+  position: absolute;
+
+  z-index: 10;
+
+  right:
+    clamp(30px, 5vw, 85px);
+
+  bottom: 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 0;
+
+  border: 0;
+
+  outline: none;
+
+  background: transparent;
+
+  color:
+    rgba(219, 232, 242, 0.55);
+
+  cursor: pointer;
+
+  font-size: 0.64rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  opacity: 0;
+
+  animation:
+    heroScrollReveal
+    1s
+    ease
+    1.8s
+    forwards;
+
+  transition:
+    color 0.3s ease;
+}
+
+
+.home-arrival__scroll svg {
+  font-size: 1rem;
+
+  animation:
+    scrollArrow
+    1.8s
+    ease-in-out
+    infinite;
+}
+
+
+.home-arrival__scroll:hover {
+  color: #eef8ff;
+}
+
+
+/* =========================================================
+   MAGICAL WORLD AFTER HERO
+
+   MagicalBackground exists inside this wrapper.
+========================================================= */
+
+.home-magical-world {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* all actual sections remain above MagicalBackground */
+
+.home-magical-world > section {
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   COMMON FUTURE HOME SECTION
+========================================================= */
+
+.home-section {
+  position: relative;
+
+  min-height: 100vh;
+
+  padding:
+    120px
+    clamp(25px, 7vw, 120px);
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+.home-section__content {
+  position: relative;
+
+  z-index: 3;
+
+  max-width: 720px;
+}
+
+
+.home-section__eyebrow {
+  margin-bottom: 18px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.45em;
+
+  color:
+    rgba(166, 201, 228, 0.65);
+}
+
+
+.home-section__content h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3rem,
+      6vw,
+      6rem
+    );
+
+  line-height: 0.95;
+
+  font-weight: 400;
+
+  color: #edf5fb;
+}
+
+
+.home-section__content p {
+  max-width: 560px;
+
+  margin-top: 25px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.15rem;
+
+  line-height: 1.7;
+
+  color:
+    rgba(196, 214, 227, 0.65);
+}
+
+
+/* =========================================================
+   SECTION 2
+   A WORLD WRITTEN IN MAGIC
+========================================================= */
+
+.world-story {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 125vh;
+
+  padding:
+    130px
+    clamp(28px, 7vw, 120px)
+    150px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SECTION 2 INTRO
+========================================================= */
+
+.world-story__top {
+  position: relative;
+
+  z-index: 4;
+
+  max-width: 760px;
+
+  margin:
+    0 auto 110px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   SECTION 2 EYEBROW
+========================================================= */
+
+.world-story__eyebrow {
+  margin:
+    0 0 24px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.5em;
+
+  color:
+    rgba(164, 201, 229, 0.62);
+
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+
+  filter:
+    blur(3px);
+}
+
+
+/* =========================================================
+   SECTION 2 TITLE
+========================================================= */
+
+.world-story__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.7rem,
+      7vw,
+      7.4rem
+    );
+
+  font-weight: 400;
+
+  line-height: 0.85;
+
+  letter-spacing: -0.035em;
+
+  color: #edf5fb;
+
+  text-shadow:
+    0 0 45px
+    rgba(126, 180, 218, 0.06);
+
+  opacity: 0;
+
+  transform:
+    translateY(45px)
+    scale(0.98);
+
+  filter:
+    blur(10px);
+}
+
+
+/* Written in Magic */
+
+.world-story__title span {
+  display: block;
+
+  margin-top: 12px;
+
+  color:
+    rgba(164, 195, 219, 0.72);
+
+  font-size: 0.76em;
+
+  font-style: italic;
+
+  opacity: 0;
+
+  transform:
+    translateY(24px);
+}
+
+
+/* =========================================================
+   SECTION 2 TYPEWRITER
+========================================================= */
+
+.world-story__typewriter {
+  display: flex;
+
+  justify-content: center;
+
+  width: 100%;
+
+  margin-top: 34px;
+
+  overflow: hidden;
+}
+
+
+.world-story__typewriter span {
+  display: inline-block;
+
+  width: 0;
+
+  max-width: 100%;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.6rem;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(183, 209, 228, 0.57);
+
+  border-right:
+    1px solid transparent;
+}
+
+
+/* =========================================================
+   JOURNEY FIELD
+========================================================= */
+
+.world-story__journey {
+  position: relative;
+
+  width:
+    min(1180px, 100%);
+
+  min-height: 700px;
+
+  margin:
+    0 auto;
+}
+
+
+/* =========================================================
+   CENTER MAGICAL THREAD
+========================================================= */
+
+.world-story__thread {
+  position: absolute;
+
+  left: 50%;
+  top: 0;
+
+  width: 1px;
+  height: 100%;
+
+  transform:
+    translateX(-50%);
+
+  transform-origin:
+    top center;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(155, 201, 235, 0.12) 8%,
+      rgba(180, 219, 247, 0.32) 50%,
+      rgba(155, 201, 235, 0.12) 92%,
+      transparent 100%
+    );
+
+  opacity: 0;
+}
+
+
+/* =========================================================
+   TRAVELLING MAGIC
+========================================================= */
+
+.world-story__thread-light {
+  position: absolute;
+
+  left: 50%;
+  top: -8%;
+
+  width: 3px;
+  height: 90px;
+
+  transform:
+    translateX(-50%);
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(220, 242, 255, 0.95),
+      transparent
+    );
+
+  box-shadow:
+    0 0 10px
+      rgba(211, 238, 255, 0.8),
+
+    0 0 25px
+      rgba(105, 174, 224, 0.5);
+
+  opacity: 0;
+}
+
+
+/* =========================================================
+   MAGICAL NODES
+========================================================= */
+
+.world-story__node {
+  position: absolute;
+
+  left: 50%;
+
+  width: 42px;
+  height: 42px;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-style: normal;
+
+  font-size: 0.85rem;
+
+  color: #dff3ff;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(93, 151, 196, 0.25),
+      rgba(6, 13, 20, 0.92) 70%
+    );
+
+  border:
+    1px solid
+    rgba(177, 216, 244, 0.2);
+
+  box-shadow:
+    0 0 20px
+    rgba(100, 171, 224, 0.16);
+
+  opacity: 0;
+}
+
+
+.node-one {
+  top: 12%;
+}
+
+
+.node-two {
+  top: 50%;
+}
+
+
+.node-three {
+  top: 88%;
+}
+
+
+/* =========================================================
+   STORY FRAGMENTS
+========================================================= */
+
+.world-fragment {
+  position: absolute;
+
+  width:
+    min(370px, 35vw);
+
+  opacity: 0;
+
+  filter:
+    blur(5px);
+}
+
+
+.world-fragment small {
+  display: block;
+
+  margin-bottom: 12px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.4em;
+
+  color:
+    rgba(140, 180, 211, 0.62);
+}
+
+
+.world-fragment strong {
+  display: block;
+
+  margin-bottom: 13px;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.2rem,
+      3.8vw,
+      4rem
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  color:
+    rgba(229, 240, 248, 0.92);
+}
+
+
+.world-fragment p {
+  max-width: 330px;
+
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.08rem;
+
+  line-height: 1.65;
+
+  color:
+    rgba(180, 202, 219, 0.58);
+}
+
+
+/* =========================================================
+   LEFT STORY — 1991
+========================================================= */
+
+.fragment-1991 {
+  left: 3%;
+  top: 7%;
+
+  text-align: right;
+
+  transform:
+    translateX(-38px);
+}
+
+
+.fragment-1991 p {
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   LEFT STORY — SEVEN YEARS
+========================================================= */
+
+.fragment-years {
+  left: 8%;
+  bottom: 8%;
+
+  text-align: right;
+
+  transform:
+    translateX(-38px);
+}
+
+
+.fragment-years p {
+  margin-left: auto;
+}
+
+
+/* =========================================================
+   RIGHT STORY — FOUR HOUSES
+========================================================= */
+
+.fragment-houses {
+  right: 3%;
+  top: 29%;
+
+  transform:
+    translateX(38px);
+}
+
+
+/* =========================================================
+   RIGHT STORY — SECRETS
+========================================================= */
+
+.fragment-secrets {
+  right: 7%;
+  bottom: 4%;
+
+  transform:
+    translateX(38px);
+}
+
+
+/* =========================================================
+   CONNECTOR LINES
+========================================================= */
+
+.world-fragment::after {
+  content: "";
+
+  position: absolute;
+
+  top: 28px;
+
+  width:
+    clamp(30px, 6vw, 90px);
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(154, 196, 226, 0.3),
+      transparent
+    );
+
+  opacity: 0.45;
+}
+
+
+.fragment-1991::after,
+.fragment-years::after {
+  right:
+    calc(
+      clamp(30px, 6vw, 90px)
+      * -1
+      - 16px
+    );
+}
+
+
+.fragment-houses::after,
+.fragment-secrets::after {
+  left:
+    calc(
+      clamp(30px, 6vw, 90px)
+      * -1
+      - 16px
+    );
+
+  transform:
+    rotate(180deg);
+}
+
+
+/* =========================================================
+   SECTION CLOSING
+========================================================= */
+
+.world-story__closing {
+  position: relative;
+
+  z-index: 4;
+
+  max-width: 690px;
+
+  margin:
+    90px auto 0;
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform:
+    translateY(30px);
+
+  filter:
+    blur(4px);
+}
+
+
+.world-story__closing-mark {
+  display: block;
+
+  margin-bottom: 18px;
+
+  color:
+    rgba(202, 230, 249, 0.73);
+
+  text-shadow:
+    0 0 18px
+    rgba(117, 181, 227, 0.6);
+}
+
+
+.world-story__closing p {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      1.5rem,
+      2.5vw,
+      2.25rem
+    );
+
+  line-height: 1.45;
+
+  color:
+    rgba(214, 228, 239, 0.7);
+}
+
+
+.world-story__closing em {
+  display: block;
+
+  color: #edf5fb;
+
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   SECTION 2 — SCROLL REVEAL
+========================================================= */
+
+.world-story--visible
+.world-story__eyebrow {
+  animation:
+    storyEyebrowReveal
+    1s
+    ease
+    0.05s
+    forwards;
+}
+
+
+/* Main title fade-in */
+
+.world-story--visible
+.world-story__title {
+  animation:
+    storyTitleReveal
+    1.55s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.2s
+    forwards;
+}
+
+
+/* second line fade */
+
+.world-story--visible
+.world-story__title span {
+  animation:
+    storyTitleLineReveal
+    1.25s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.7s
+    forwards;
+}
+
+
+/* typewriter */
+
+.world-story--visible
+.world-story__typewriter span {
+  border-right-color:
+    rgba(214, 236, 251, 0.7);
+
+  animation:
+    storyTyping
+      3.3s
+      steps(38, end)
+      1.15s
+      forwards,
+
+    storyCursor
+      0.8s
+      step-end
+      1.15s
+      infinite;
+}
+
+
+/* thread */
+
+.world-story--visible
+.world-story__thread {
+  animation:
+    storyThreadReveal
+    1.8s
+    ease
+    1.1s
+    forwards;
+}
+
+
+/* moving light */
+
+.world-story--visible
+.world-story__thread-light {
+  opacity: 1;
+
+  animation:
+    storyThreadTravel
+    6s
+    ease-in-out
+    2.2s
+    infinite;
+}
+
+
+/* nodes */
+
+.world-story--visible
+.world-story__node {
+  animation:
+    storyNodeReveal
+    0.8s
+    ease
+    forwards;
+}
+
+
+.world-story--visible
+.node-one {
+  animation-delay: 1.4s;
+}
+
+
+.world-story--visible
+.node-two {
+  animation-delay: 2s;
+}
+
+
+.world-story--visible
+.node-three {
+  animation-delay: 2.6s;
+}
+
+
+/* left fragments */
+
+.world-story--visible
+.fragment-1991 {
+  animation:
+    storyLeftReveal
+    1.1s
+    ease
+    1.45s
+    forwards;
+}
+
+
+.world-story--visible
+.fragment-years {
+  animation:
+    storyLeftReveal
+    1.1s
+    ease
+    2.25s
+    forwards;
+}
+
+
+/* right fragments */
+
+.world-story--visible
+.fragment-houses {
+  animation:
+    storyRightReveal
+    1.1s
+    ease
+    1.85s
+    forwards;
+}
+
+
+.world-story--visible
+.fragment-secrets {
+  animation:
+    storyRightReveal
+    1.1s
+    ease
+    2.65s
+    forwards;
+}
+
+
+/* closing */
+
+.world-story--visible
+.world-story__closing {
+  animation:
+    storyClosingReveal
+    1.3s
+    ease
+    3.05s
+    forwards;
+}
+
+
+/* =========================================================
+   HERO ANIMATIONS
+========================================================= */
+
+@keyframes heroEyebrowReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes heroTitleReveal {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(38px)
+      scale(0.985);
+
+    filter:
+      blur(8px);
+  }
+
+  45% {
+    opacity: 0.7;
+
+    filter:
+      blur(2px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+@keyframes heroTitleSecondLine {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+
+    filter:
+      blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+@keyframes heroContentReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes heroScrollReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   SECTION 2 TITLE ANIMATIONS
+========================================================= */
+
+@keyframes storyEyebrowReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px);
+
+    filter:
+      blur(3px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+@keyframes storyTitleReveal {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateY(45px)
+      scale(0.98);
+
+    filter:
+      blur(10px);
+  }
+
+  40% {
+    opacity: 0.55;
+
+    filter:
+      blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+@keyframes storyTitleLineReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+
+    filter:
+      blur(6px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+/* =========================================================
+   TYPEWRITER ANIMATIONS
+========================================================= */
+
+@keyframes storyTyping {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+@keyframes storyCursor {
+  50% {
+    border-color:
+      transparent;
+  }
+}
+
+
+/* =========================================================
+   MAGICAL THREAD ANIMATIONS
+========================================================= */
+
+@keyframes storyThreadReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      scaleY(0);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scaleY(1);
+  }
+}
+
+
+@keyframes storyThreadTravel {
+  0% {
+    top: -8%;
+
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 98%;
+
+    opacity: 0;
+  }
+}
+
+
+/* =========================================================
+   NODE ANIMATION
+========================================================= */
+
+@keyframes storyNodeReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.3);
+
+    filter:
+      blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+/* =========================================================
+   LEFT FRAGMENT ANIMATION
+========================================================= */
+
+@keyframes storyLeftReveal {
+  from {
+    opacity: 0;
+
+    filter:
+      blur(6px);
+
+    transform:
+      translateX(-38px)
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    filter:
+      blur(0);
+
+    transform:
+      translateX(0)
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   RIGHT FRAGMENT ANIMATION
+========================================================= */
+
+@keyframes storyRightReveal {
+  from {
+    opacity: 0;
+
+    filter:
+      blur(6px);
+
+    transform:
+      translateX(38px)
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    filter:
+      blur(0);
+
+    transform:
+      translateX(0)
+      translateY(0);
+  }
+}
+
+
+/* =========================================================
+   CLOSING ANIMATION
+========================================================= */
+
+@keyframes storyClosingReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px);
+
+    filter:
+      blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+/* =========================================================
+   HERO ENVIRONMENT ANIMATIONS
+========================================================= */
+
+@keyframes homeMist {
+  from {
+    transform:
+      translateX(-3%)
+      scaleX(1);
+  }
+
+  to {
+    transform:
+      translateX(3%)
+      scaleX(1.08);
+  }
+}
+
+
+@keyframes scrollArrow {
+  0%,
+  100% {
+    transform:
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translateY(7px);
+  }
+}
+
+
+/* =========================================================
+   TABLET — HERO
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .home-arrival__content {
+    margin-left: 7vw;
+  }
+
+
+  .home-arrival__title {
+    font-size:
+      clamp(
+        3rem,
+        9vw,
+        5rem
+      );
+  }
+
+
+  .world-story {
+    padding-top: 110px;
+  }
+
+
+  .world-story__journey {
+    min-height: 650px;
+  }
+
+
+  .world-fragment {
+    width: 38%;
+  }
+
+
+  .world-fragment p {
+    font-size: 0.96rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — HERO
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .home-arrival {
+    min-height: 650px;
+  }
+
+
+  .home-arrival__video {
+    object-position:
+      center center;
+
+    transform:
+      scale(1.05);
+
+    filter:
+      contrast(1.05)
+      brightness(0.86)
+      saturate(1);
+  }
+
+
+  .home-arrival__darkness {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 6, 10, 0.3),
+        rgba(3, 6, 10, 0.58) 40%,
+        rgba(3, 6, 10, 0.92)
+      );
+  }
+
+
+  .home-arrival__vignette {
+    box-shadow:
+      inset 0 0 100px 15px
+      rgba(0, 0, 0, 0.42);
+  }
+
+
+  .home-arrival__content {
+    width: 88%;
+
+    margin:
+      auto 6% 130px;
+  }
+
+
+  .home-arrival__eyebrow {
+    font-size: 0.58rem;
+
+    letter-spacing: 0.34em;
+  }
+
+
+  .home-arrival__title {
+    font-size:
+      clamp(
+        2.8rem,
+        13vw,
+        4.3rem
+      );
+  }
+
+
+  .home-arrival__description {
+    max-width: 92%;
+
+    margin-top: 22px;
+
+    font-size: 0.88rem;
+
+    line-height: 1.7;
+  }
+
+
+  .home-arrival__actions {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    gap: 20px;
+
+    margin-top: 30px;
+  }
+
+
+  .home-arrival__scroll {
+    right: 6%;
+
+    bottom: 28px;
+  }
+
+
+  .home-arrival__scroll span {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — COMMON SECTIONS
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .home-section {
+    min-height: 90vh;
+
+    padding:
+      90px
+      7%;
+  }
+
+
+  .home-section__content h2 {
+    font-size:
+      clamp(
+        2.7rem,
+        13vw,
+        4.5rem
+      );
+  }
+
+
+  .home-section__content p {
+    font-size: 1rem;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE — WORLD STORY
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .world-story {
+    min-height: auto;
+
+    padding:
+      100px 7%
+      120px;
+  }
+
+
+  .world-story__top {
+    margin-bottom: 80px;
+  }
+
+
+  .world-story__eyebrow {
+    font-size: 0.52rem;
+
+    letter-spacing: 0.32em;
+  }
+
+
+  .world-story__title {
+    font-size:
+      clamp(
+        3.4rem,
+        15vw,
+        5.2rem
+      );
+
+    line-height: 0.9;
+  }
+
+
+  .world-story__title span {
+    margin-top: 9px;
+  }
+
+
+  .world-story__typewriter {
+    width: 100%;
+  }
+
+
+  .world-story__typewriter span {
+    font-size: 0.48rem;
+
+    letter-spacing: 0.12em;
+  }
+
+
+  /* journey becomes vertical */
+
+  .world-story__journey {
+    min-height: auto;
+
+    padding-left: 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 70px;
+  }
+
+
+  /* timeline moves to left */
+
+  .world-story__thread {
+    left: 17px;
+  }
+
+
+  .world-story__node {
+    left: 17px;
+
+    width: 32px;
+    height: 32px;
+
+    font-size: 0.68rem;
+  }
+
+
+  .node-one {
+    top: 10%;
+  }
+
+
+  .node-two {
+    top: 50%;
+  }
+
+
+  .node-three {
+    top: 90%;
+  }
+
+
+  /* fragments */
+
+  .world-fragment {
+    position: relative;
+
+    inset: auto;
+
+    width: 100%;
+
+    text-align: left;
+
+    transform: none;
+  }
+
+
+  .world-fragment p {
+    max-width: 100%;
+
+    margin-left: 0;
+
+    font-size: 0.96rem;
+  }
+
+
+  .world-fragment::after {
+    display: none;
+  }
+
+
+  .world-fragment strong {
+    font-size:
+      clamp(
+        2.3rem,
+        11vw,
+        3.4rem
+      );
+  }
+
+
+  .world-story__closing {
+    margin-top: 95px;
+  }
+
+
+  .world-story__closing p {
+    font-size:
+      clamp(
+        1.35rem,
+        6vw,
+        1.8rem
+      );
+  }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .home-arrival__content {
+    width: 90%;
+
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+
+  .home-arrival__title {
+    font-size:
+      clamp(
+        2.55rem,
+        12.5vw,
+        3.5rem
+      );
+  }
+
+
+  .home-arrival__enter {
+    min-width: 170px;
+
+    padding:
+      14px 20px;
+  }
+
+
+  .world-story {
+    padding-left: 6%;
+    padding-right: 6%;
+  }
+
+
+  .world-story__title {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4rem
+      );
+  }
+
+
+  .world-story__typewriter span {
+    font-size: 0.43rem;
+
+    letter-spacing: 0.08em;
+  }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .home-arrival__mist,
+  .home-arrival__scroll svg,
+  .world-story__thread-light {
+    animation: none;
+  }
+
+
+  .home-arrival__eyebrow,
+  .home-arrival__title,
+  .home-arrival__title span,
+  .home-arrival__description,
+  .home-arrival__actions,
+  .home-arrival__scroll,
+  .world-story__eyebrow,
+  .world-story__title,
+  .world-story__title span,
+  .world-story__typewriter span,
+  .world-story__thread,
+  .world-story__node,
+  .world-fragment,
+  .world-story__closing {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .world-story__typewriter span {
+    width: auto;
+
+    border-right: 0;
+  }
+
+}

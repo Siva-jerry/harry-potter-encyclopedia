@@ -1,0 +1,1266 @@
+/* =========================================================
+   SECTION 3
+   HOGWARTS EXPLORATION
+========================================================= */
+
+.hogwarts-explore {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 120vh;
+
+  padding:
+    130px
+    clamp(25px, 6vw, 105px)
+    130px;
+
+  overflow: hidden;
+
+  color: #edf5fb;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.hogwarts-explore__intro {
+  position: relative;
+
+  z-index: 8;
+
+  width: min(620px, 90%);
+
+  margin-bottom: 60px;
+
+  opacity: 0;
+
+  transform:
+    translateY(35px);
+
+  filter:
+    blur(8px);
+}
+
+
+.hogwarts-explore__eyebrow {
+  margin:
+    0 0 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.38em;
+
+  color:
+    rgba(165, 201, 228, 0.62);
+}
+
+
+.hogwarts-explore__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.4rem,
+      6vw,
+      6.6rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.035em;
+
+  color: #edf5fb;
+}
+
+
+.hogwarts-explore__title span {
+  display: block;
+
+  margin-top: 10px;
+
+  margin-left: 10%;
+
+  color:
+    rgba(166, 199, 224, 0.72);
+
+  font-style: italic;
+}
+
+
+.hogwarts-explore__description {
+  max-width: 520px;
+
+  margin:
+    28px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.08rem;
+
+  line-height: 1.7;
+
+  color:
+    rgba(190, 210, 225, 0.62);
+}
+
+
+/* =========================================================
+   WORLD
+========================================================= */
+
+.hogwarts-explore__world {
+  position: relative;
+
+  z-index: 3;
+
+  width:
+    min(1450px, 100%);
+
+  min-height: 720px;
+
+  margin:
+    0 auto;
+}
+
+
+/* =========================================================
+   AURA
+========================================================= */
+
+.hogwarts-explore__aura {
+  position: absolute;
+
+  left: 50%;
+  top: 48%;
+
+  width: 75%;
+  height: 72%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(101, 158, 201, 0.1),
+      rgba(40, 76, 105, 0.04) 45%,
+      transparent 72%
+    );
+
+  filter:
+    blur(55px);
+
+  pointer-events: none;
+
+  animation:
+    hogwartsAura
+    8s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   IMAGE WRAPPER
+========================================================= */
+
+.hogwarts-explore__image-wrapper {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform
+    1.4s
+    cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change:
+    transform;
+}
+
+
+/* =========================================================
+   IMPORTANT
+   IMAGE + MARKERS SHARE THIS CONTAINER
+========================================================= */
+
+.hogwarts-explore__castle {
+  position: relative;
+
+  width:
+    min(1180px, 94%);
+}
+
+
+/* =========================================================
+   CASTLE IMAGE
+========================================================= */
+
+.hogwarts-explore__image {
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  transform:
+    scale(0.97);
+
+  filter:
+    contrast(1.05)
+    brightness(0.74)
+    saturate(0.82)
+    drop-shadow(
+      0 40px 55px
+      rgba(0, 0, 0, 0.55)
+    );
+
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 48%,
+      rgba(0, 0, 0, 0.92) 62%,
+      transparent 91%
+    );
+
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 48%,
+      rgba(0, 0, 0, 0.92) 62%,
+      transparent 91%
+    );
+}
+
+
+/* =========================================================
+   FOG
+========================================================= */
+
+.hogwarts-explore__fog {
+  position: absolute;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(188, 216, 238, 0.16),
+      rgba(106, 147, 179, 0.06) 45%,
+      transparent 75%
+    );
+
+  filter:
+    blur(34px);
+}
+
+
+.hogwarts-explore__fog--one {
+  width: 72%;
+  height: 28%;
+
+  left: -5%;
+  bottom: 8%;
+
+  animation:
+    hogwartsFogOne
+    12s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+.hogwarts-explore__fog--two {
+  width: 65%;
+  height: 23%;
+
+  right: -6%;
+  bottom: 22%;
+
+  opacity: 0.55;
+
+  animation:
+    hogwartsFogTwo
+    15s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+
+/* =========================================================
+   LOCATION LAYER
+
+   This now exactly covers the image.
+========================================================= */
+
+.hogwarts-explore__locations {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 7;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.hogwarts-location {
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: auto;
+
+  opacity: 0;
+}
+
+
+/* =========================================================
+   LOCATION MARKER
+========================================================= */
+
+.hogwarts-location__marker {
+  position: relative;
+
+  z-index: 4;
+
+  width: 36px;
+  height: 36px;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(87, 150, 198, 0.14),
+      rgba(5, 12, 19, 0.38)
+    );
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #e7f7ff;
+
+  transition:
+    transform 0.35s ease,
+    background 0.35s ease;
+}
+
+
+.hogwarts-location__marker:hover {
+  transform:
+    scale(1.1);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(112, 181, 232, 0.24),
+      rgba(5, 12, 19, 0.45)
+    );
+}
+
+
+/* =========================================================
+   MAGIC ICON
+========================================================= */
+
+.hogwarts-location__icon {
+  position: relative;
+
+  z-index: 3;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.05rem;
+
+  color: #e7f7ff;
+
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(214, 240, 255, 0.95)
+    )
+    drop-shadow(
+      0 0 14px
+      rgba(106, 178, 231, 0.75)
+    );
+
+  transition:
+    transform 0.35s ease,
+    color 0.35s ease;
+}
+
+
+.hogwarts-location--active
+.hogwarts-location__icon {
+  transform:
+    scale(1.2)
+    rotate(10deg);
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   PULSE
+========================================================= */
+
+.hogwarts-location__pulse {
+  position: absolute;
+
+  inset: 4px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(190, 224, 248, 0.45);
+
+  animation:
+    hogwartsMarkerPulse
+    2.4s
+    ease-out
+    infinite;
+}
+
+
+/* =========================================================
+   CONNECTOR
+========================================================= */
+
+.hogwarts-location__connector {
+  position: absolute;
+
+  left: 27px;
+  top: 50%;
+
+  width: 0;
+  height: 1px;
+
+  transform:
+    translateY(-50%);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(202, 231, 250, 0.8),
+      rgba(130, 181, 220, 0.25)
+    );
+
+  opacity: 0;
+
+  transition:
+    width 0.55s ease,
+    opacity 0.35s ease;
+}
+
+
+/* =========================================================
+   INFORMATION PANEL
+========================================================= */
+
+.hogwarts-location__info {
+  position: absolute;
+
+  left: 142px;
+  top: 50%;
+
+  width: 270px;
+
+  padding:
+    16px 18px;
+
+  transform:
+    translateY(-50%)
+    translateX(-12px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(12, 24, 35, 0.9),
+      rgba(5, 11, 17, 0.78)
+    );
+
+  border:
+    1px solid
+    rgba(174, 209, 235, 0.13);
+
+  backdrop-filter:
+    blur(14px);
+
+  box-shadow:
+    0 15px 35px
+    rgba(0, 0, 0, 0.35);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease,
+    visibility 0.45s ease;
+}
+
+
+.hogwarts-location__info small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.46rem;
+
+  letter-spacing: 0.28em;
+
+  color:
+    rgba(150, 191, 221, 0.62);
+}
+
+
+.hogwarts-location__info h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.65rem;
+
+  font-weight: 400;
+
+  color: #eff7fc;
+}
+
+
+.hogwarts-location__info p {
+  margin:
+    8px 0 13px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.9rem;
+
+  line-height: 1.55;
+
+  color:
+    rgba(184, 205, 220, 0.66);
+}
+
+
+.hogwarts-location__link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.48rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(211, 233, 248, 0.82);
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  transition:
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+
+.hogwarts-location__link:hover {
+  color: #ffffff;
+
+  gap: 10px;
+}
+
+
+/* =========================================================
+   ACTIVE LOCATION
+========================================================= */
+
+.hogwarts-location--active
+.hogwarts-location__connector {
+  width: 110px;
+
+  opacity: 1;
+}
+
+
+.hogwarts-location--active
+.hogwarts-location__info {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+
+/* =========================================================
+   FOOTER MESSAGE
+========================================================= */
+
+.hogwarts-explore__footer {
+  position: relative;
+
+  z-index: 8;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  max-width: 620px;
+
+  margin:
+    15px auto 0;
+
+  opacity: 0;
+
+  transform:
+    translateY(20px);
+}
+
+
+.hogwarts-explore__footer-symbol {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+
+  color:
+    rgba(218, 239, 252, 0.72);
+
+  filter:
+    drop-shadow(
+      0 0 12px
+      rgba(112, 180, 230, 0.55)
+    );
+
+  animation:
+    hogwartsFooterSymbol
+    2.5s
+    ease-in-out
+    infinite;
+}
+
+
+.hogwarts-explore__footer-line {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(154, 194, 224, 0.24)
+    );
+}
+
+
+.hogwarts-explore__footer-line:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.hogwarts-explore__footer-copy {
+  text-align: center;
+}
+
+
+.hogwarts-explore__footer-copy small {
+  display: block;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.48rem;
+
+  letter-spacing: 0.32em;
+
+  color:
+    rgba(152, 188, 215, 0.55);
+}
+
+
+.hogwarts-explore__footer-copy p {
+  margin:
+    7px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  color:
+    rgba(192, 211, 225, 0.58);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.hogwarts-explore--visible
+.hogwarts-explore__intro {
+  animation:
+    hogwartsIntroReveal
+    1.4s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    forwards;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-explore__image {
+  animation:
+    hogwartsImageReveal
+    1.8s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.35s
+    forwards;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-location {
+  animation:
+    hogwartsLocationReveal
+    0.8s
+    ease
+    forwards;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-location:nth-child(1) {
+  animation-delay: 1.1s;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-location:nth-child(2) {
+  animation-delay: 1.35s;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-location:nth-child(3) {
+  animation-delay: 1.6s;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-location:nth-child(4) {
+  animation-delay: 1.85s;
+}
+
+
+.hogwarts-explore--visible
+.hogwarts-explore__footer {
+  animation:
+    hogwartsFooterReveal
+    1s
+    ease
+    2.1s
+    forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes hogwartsIntroReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(35px);
+
+    filter:
+      blur(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+}
+
+
+@keyframes hogwartsImageReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.97);
+
+    filter:
+      blur(8px)
+      contrast(1.05)
+      brightness(0.6)
+      saturate(0.8);
+  }
+
+  to {
+    opacity: 0.88;
+
+    transform:
+      scale(1);
+
+    filter:
+      blur(0)
+      contrast(1.05)
+      brightness(0.74)
+      saturate(0.82)
+      drop-shadow(
+        0 40px 55px
+        rgba(0, 0, 0, 0.55)
+      );
+  }
+}
+
+
+@keyframes hogwartsLocationReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+}
+
+
+@keyframes hogwartsMarkerPulse {
+  0% {
+    opacity: 0.8;
+
+    transform:
+      scale(0.55);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform:
+      scale(1.8);
+  }
+}
+
+
+@keyframes hogwartsFogOne {
+  from {
+    transform:
+      translateX(-6%)
+      scaleX(1);
+  }
+
+  to {
+    transform:
+      translateX(9%)
+      scaleX(1.15);
+  }
+}
+
+
+@keyframes hogwartsFogTwo {
+  from {
+    transform:
+      translateX(8%);
+  }
+
+  to {
+    transform:
+      translateX(-9%);
+  }
+}
+
+
+@keyframes hogwartsAura {
+  0%,
+  100% {
+    opacity: 0.55;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.96);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.05);
+  }
+}
+
+
+@keyframes hogwartsFooterReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+@keyframes hogwartsFooterSymbol {
+  0%,
+  100% {
+    opacity: 0.4;
+
+    transform:
+      scale(0.85)
+      rotate(-5deg);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      scale(1.1)
+      rotate(8deg);
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .hogwarts-explore {
+    min-height: 105vh;
+
+    padding-top: 110px;
+  }
+
+
+  .hogwarts-explore__world {
+    min-height: 620px;
+  }
+
+
+  .hogwarts-location__info {
+    width: 230px;
+
+    left: 105px;
+  }
+
+
+  .hogwarts-location--active
+  .hogwarts-location__connector {
+    width: 75px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .hogwarts-explore {
+    min-height: auto;
+
+    padding:
+      95px 5%
+      115px;
+  }
+
+
+  .hogwarts-explore__intro {
+    width: 100%;
+
+    margin-bottom: 45px;
+  }
+
+
+  .hogwarts-explore__eyebrow {
+    font-size: 0.48rem;
+
+    letter-spacing: 0.24em;
+  }
+
+
+  .hogwarts-explore__title {
+    font-size:
+      clamp(
+        3.1rem,
+        14vw,
+        4.8rem
+      );
+
+    line-height: 0.9;
+  }
+
+
+  .hogwarts-explore__title span {
+    margin-left: 0;
+  }
+
+
+  .hogwarts-explore__description {
+    max-width: 95%;
+
+    font-size: 0.98rem;
+  }
+
+
+  .hogwarts-explore__world {
+    min-height: 520px;
+
+    margin-top: 20px;
+  }
+
+
+  /* Bigger image on mobile */
+
+  .hogwarts-explore__castle {
+    width: 145%;
+  }
+
+
+  .hogwarts-explore__image-wrapper {
+    transform: none !important;
+  }
+
+
+  /* Bigger touch targets */
+
+  .hogwarts-location,
+  .hogwarts-location__marker {
+    width: 42px;
+    height: 42px;
+  }
+
+
+  /* No connector on small screen */
+
+  .hogwarts-location__connector {
+    display: none;
+  }
+
+
+  /* ========================================
+     MOBILE LOCATION PANEL
+  ======================================== */
+
+  .hogwarts-location__info {
+    position: fixed;
+
+    z-index: 60000;
+
+    left: 5%;
+    right: 5%;
+
+    top: auto;
+
+    bottom: 95px;
+
+    width: auto;
+
+    padding:
+      18px 20px;
+
+    transform:
+      translateY(20px);
+
+    border-radius: 4px;
+
+    background:
+      rgba(6, 14, 22, 0.95);
+
+    backdrop-filter:
+      blur(18px);
+
+    box-shadow:
+      0 20px 55px
+      rgba(0, 0, 0, 0.5);
+  }
+
+
+  .hogwarts-location--active
+  .hogwarts-location__info {
+    transform:
+      translateY(0);
+  }
+
+
+  .hogwarts-location__info h3 {
+    font-size: 1.7rem;
+  }
+
+
+  .hogwarts-location__info p {
+    font-size: 0.88rem;
+  }
+
+
+  .hogwarts-explore__footer {
+    width: 100%;
+
+    margin-top: 35px;
+  }
+
+
+  .hogwarts-explore__footer-line {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .hogwarts-explore__world {
+    min-height: 460px;
+  }
+
+
+  .hogwarts-explore__castle {
+    width: 165%;
+  }
+
+
+  .hogwarts-explore__footer-copy p {
+    font-size: 0.9rem;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hogwarts-explore__intro,
+  .hogwarts-explore__image,
+  .hogwarts-location,
+  .hogwarts-explore__footer {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .hogwarts-location__pulse,
+  .hogwarts-explore__fog,
+  .hogwarts-explore__aura,
+  .hogwarts-explore__footer-symbol {
+    animation: none;
+  }
+
+
+  .hogwarts-explore__image-wrapper {
+    transform: none !important;
+  }
+
+}

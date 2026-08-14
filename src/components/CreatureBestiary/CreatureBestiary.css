@@ -1,0 +1,1186 @@
+/* =========================================================
+   SECTION 9 — CREATURE BESTIARY
+========================================================= */
+
+.creature-bestiary {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 110vh;
+
+  padding:
+    135px
+    clamp(28px, 6vw, 110px)
+    135px;
+
+  overflow: hidden;
+
+  color: #edf5fb;
+}
+
+
+/* =========================================================
+   INTRO — LEFT
+========================================================= */
+
+.creature-bestiary__intro {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(760px, 94%);
+
+  margin:
+    0 0
+    clamp(70px, 7vw, 105px);
+
+  text-align: left;
+
+  opacity: 0;
+
+  transform:
+    translateY(38px);
+
+  filter:
+    blur(8px);
+}
+
+
+.creature-bestiary__eyebrow {
+  margin:
+    0 0 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.44em;
+
+  color:
+    rgba(164, 199, 226, 0.62);
+}
+
+
+.creature-bestiary__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.6rem,
+      6vw,
+      6.5rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  letter-spacing: -0.038em;
+
+  color: #edf5fb;
+}
+
+
+.creature-bestiary__title span {
+  display: block;
+
+  margin-top: 10px;
+  margin-left: 9%;
+
+  color:
+    rgba(166, 199, 224, 0.72);
+
+  font-size: 0.78em;
+
+  font-style: italic;
+}
+
+
+.creature-bestiary__description {
+  width:
+    min(540px, 100%);
+
+  margin:
+    29px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.04rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(190, 210, 225, 0.6);
+}
+
+
+/* =========================================================
+   JOURNAL
+========================================================= */
+
+.creature-bestiary__journal {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(1320px, 100%);
+
+  min-height: 690px;
+
+  margin:
+    0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(220px, 0.85fr)
+    minmax(420px, 1.5fr)
+    minmax(240px, 0.9fr);
+
+  align-items: center;
+
+  gap:
+    clamp(30px, 5vw, 80px);
+
+  padding:
+    55px
+    clamp(30px, 4vw, 65px);
+
+  border:
+    1px solid
+    rgba(171, 208, 235, 0.09);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(9, 18, 27, 0.16),
+      rgba(4, 9, 14, 0.08)
+    );
+
+  box-shadow:
+    inset
+    0 0 85px
+    rgba(73, 111, 139, 0.025);
+}
+
+
+/* =========================================================
+   JOURNAL GLOW
+========================================================= */
+
+.creature-bestiary__journal-glow {
+  position: absolute;
+
+  z-index: 0;
+
+  left: 50%;
+  top: 50%;
+
+  width: 65%;
+  height: 70%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(91, 145, 182, 0.09),
+      transparent 72%
+    );
+
+  filter:
+    blur(55px);
+
+  pointer-events: none;
+
+  animation:
+    creatureJournalGlow
+    9s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   INDEX
+========================================================= */
+
+.creature-bestiary__index {
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+
+.creature-bestiary__index-item {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    15px 0;
+
+  display: grid;
+
+  grid-template-columns:
+    28px 1fr;
+
+  gap: 12px;
+
+  align-items: start;
+
+  border: 0;
+
+  border-bottom:
+    1px solid
+    rgba(164, 200, 226, 0.08);
+
+  background:
+    transparent;
+
+  text-align: left;
+
+  color: inherit;
+
+  cursor: pointer;
+
+  opacity: 0.52;
+
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.creature-bestiary__index-item:hover,
+.creature-bestiary__index-item--active {
+  opacity: 1;
+
+  transform:
+    translateX(8px);
+
+  border-color:
+    rgba(182, 216, 240, 0.22);
+}
+
+
+.creature-bestiary__index-item > span {
+  padding-top: 4px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.15em;
+
+  color:
+    rgba(143, 180, 207, 0.48);
+}
+
+
+.creature-bestiary__index-item small {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.39rem;
+
+  letter-spacing: 0.23em;
+
+  color:
+    rgba(144, 181, 208, 0.5);
+}
+
+
+.creature-bestiary__index-item strong {
+  display: block;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.45rem;
+
+  line-height: 1.1;
+
+  font-weight: 400;
+
+  color:
+    rgba(224, 237, 246, 0.82);
+}
+
+
+/* =========================================================
+   SPECIMEN
+========================================================= */
+
+.creature-bestiary__specimen {
+  position: relative;
+
+  z-index: 4;
+
+  min-height: 530px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   STUDY RINGS
+========================================================= */
+
+.creature-bestiary__specimen-ring {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+
+.creature-bestiary__specimen-ring--outer {
+  width: 430px;
+  height: 430px;
+
+  border:
+    1px solid
+    rgba(159, 199, 227, 0.09);
+
+  animation:
+    creatureRingRotate
+    30s linear infinite;
+}
+
+
+.creature-bestiary__specimen-ring--outer::before,
+.creature-bestiary__specimen-ring--outer::after {
+  content: "";
+
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(213, 237, 252, 0.5);
+
+  box-shadow:
+    0 0 12px
+    rgba(121, 186, 232, 0.55);
+}
+
+
+.creature-bestiary__specimen-ring--outer::before {
+  left: 50%;
+  top: -3px;
+}
+
+
+.creature-bestiary__specimen-ring--outer::after {
+  right: -3px;
+  top: 50%;
+}
+
+
+.creature-bestiary__specimen-ring--inner {
+  width: 330px;
+  height: 330px;
+
+  border:
+    1px dashed
+    rgba(159, 199, 227, 0.075);
+
+  animation:
+    creatureRingRotateReverse
+    24s linear infinite;
+}
+
+
+/* =========================================================
+   CREATURE IMAGE
+========================================================= */
+
+.creature-bestiary__image {
+  position: relative;
+
+  z-index: 5;
+
+  display: block;
+
+  width:
+    min(390px, 90%);
+
+  max-height: 510px;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.8)
+    saturate(0.78)
+    drop-shadow(
+      0 32px 38px
+      rgba(0, 0, 0, 0.54)
+    );
+
+  animation:
+    creatureImageChange
+    0.65s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+/* =========================================================
+   FIELD NOTES
+========================================================= */
+
+.creature-bestiary__observation {
+  position: absolute;
+
+  z-index: 7;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(149, 185, 211, 0.39);
+}
+
+
+.creature-bestiary__observation--one {
+  left: 0;
+  top: 19%;
+
+  transform:
+    rotate(-7deg);
+}
+
+
+.creature-bestiary__observation--two {
+  right: -5%;
+  bottom: 15%;
+
+  transform:
+    rotate(5deg);
+}
+
+
+/* =========================================================
+   RECORD
+========================================================= */
+
+.creature-bestiary__record {
+  position: relative;
+
+  z-index: 6;
+
+  padding-left:
+    clamp(8px, 2vw, 25px);
+
+  animation:
+    creatureRecordChange
+    0.65s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.creature-bestiary__record-type {
+  margin:
+    0 0 10px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.29em;
+
+  color:
+    rgba(149, 187, 215, 0.55);
+}
+
+
+.creature-bestiary__record h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.5rem,
+      4vw,
+      4.2rem
+    );
+
+  line-height: 0.95;
+
+  font-weight: 400;
+
+  color:
+    rgba(236, 245, 251, 0.93);
+}
+
+
+.creature-bestiary__record-description {
+  max-width: 320px;
+
+  margin:
+    20px 0 20px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.96rem;
+
+  line-height: 1.65;
+
+  color:
+    rgba(184, 204, 218, 0.6);
+}
+
+
+/* =========================================================
+   LINK
+========================================================= */
+
+.creature-bestiary__link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.19em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  color:
+    rgba(204, 228, 245, 0.72);
+
+  transition:
+    color 0.3s ease,
+    gap 0.3s ease;
+}
+
+
+.creature-bestiary__link:hover {
+  gap: 11px;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   ANNOTATION
+========================================================= */
+
+.creature-bestiary__annotation {
+  margin-top: 48px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+.creature-bestiary__annotation span {
+  width: 42px;
+  height: 1px;
+
+  background:
+    rgba(157, 195, 222, 0.19);
+}
+
+
+.creature-bestiary__annotation small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.37rem;
+
+  letter-spacing: 0.26em;
+
+  color:
+    rgba(148, 183, 208, 0.38);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.creature-bestiary__footer {
+  position: relative;
+
+  z-index: 6;
+
+  width:
+    min(700px, 90%);
+
+  margin:
+    90px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  opacity: 0;
+}
+
+
+.creature-bestiary__footer span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(157, 196, 226, 0.18)
+    );
+}
+
+
+.creature-bestiary__footer span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.creature-bestiary__footer p {
+  margin: 0;
+
+  text-align: center;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  color:
+    rgba(185, 205, 219, 0.52);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+.creature-bestiary--visible
+.creature-bestiary__intro {
+  animation:
+    creatureIntroReveal
+    1.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.creature-bestiary--visible
+.creature-bestiary__journal {
+  animation:
+    creatureJournalReveal
+    1.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    0.3s
+    both;
+}
+
+
+.creature-bestiary--visible
+.creature-bestiary__footer {
+  animation:
+    creatureFooterReveal
+    1s ease
+    1.25s forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes creatureIntroReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(38px);
+
+    filter:
+      blur(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes creatureJournalReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(28px)
+      scale(0.98);
+
+    filter:
+      blur(7px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes creatureImageChange {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(0.96);
+
+    filter:
+      blur(6px)
+      brightness(0.65);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      blur(0)
+      brightness(0.8)
+      saturate(0.78)
+      drop-shadow(
+        0 32px 38px
+        rgba(0, 0, 0, 0.54)
+      );
+  }
+
+}
+
+
+@keyframes creatureRecordChange {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(0);
+  }
+
+}
+
+
+@keyframes creatureRingRotate {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(360deg);
+  }
+
+}
+
+
+@keyframes creatureRingRotateReverse {
+
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(360deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
+
+}
+
+
+@keyframes creatureJournalGlow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.05);
+  }
+
+}
+
+
+@keyframes creatureFooterReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .creature-bestiary__journal {
+    grid-template-columns:
+      210px
+      1fr;
+
+    grid-template-areas:
+      "index specimen"
+      "record record";
+
+    gap: 45px;
+  }
+
+
+  .creature-bestiary__index {
+    grid-area: index;
+  }
+
+
+  .creature-bestiary__specimen {
+    grid-area: specimen;
+  }
+
+
+  .creature-bestiary__record {
+    grid-area: record;
+
+    max-width: 600px;
+
+    padding-left: 0;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .creature-bestiary {
+    min-height: auto;
+
+    padding:
+      95px
+      6%
+      110px;
+  }
+
+
+  .creature-bestiary__intro {
+    width: 100%;
+
+    margin-bottom: 65px;
+  }
+
+
+  .creature-bestiary__eyebrow {
+    font-size: 0.48rem;
+
+    line-height: 1.8;
+
+    letter-spacing: 0.25em;
+  }
+
+
+  .creature-bestiary__title {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.7rem
+      );
+  }
+
+
+  .creature-bestiary__title span {
+    margin-left: 0;
+  }
+
+
+  .creature-bestiary__description {
+    max-width: 95%;
+
+    font-size: 0.96rem;
+  }
+
+
+  .creature-bestiary__journal {
+    display: flex;
+
+    flex-direction: column;
+
+    min-height: auto;
+
+    padding:
+      40px
+      22px;
+
+    gap: 55px;
+  }
+
+
+  .creature-bestiary__index {
+    width: 100%;
+  }
+
+
+  .creature-bestiary__specimen {
+    order: -1;
+
+    min-height: 400px;
+  }
+
+
+  .creature-bestiary__specimen-ring--outer {
+    width: 330px;
+    height: 330px;
+  }
+
+
+  .creature-bestiary__specimen-ring--inner {
+    width: 250px;
+    height: 250px;
+  }
+
+
+  .creature-bestiary__image {
+    width:
+      min(300px, 86%);
+
+    max-height: 390px;
+  }
+
+
+  .creature-bestiary__record {
+    width: 100%;
+  }
+
+
+  .creature-bestiary__record h3 {
+    font-size:
+      clamp(
+        2.5rem,
+        11vw,
+        3.7rem
+      );
+  }
+
+
+  .creature-bestiary__observation {
+    display: none;
+  }
+
+
+  .creature-bestiary__footer {
+    margin-top: 75px;
+  }
+
+
+  .creature-bestiary__footer p {
+    white-space: normal;
+
+    font-size: 0.9rem;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .creature-bestiary__specimen {
+    min-height: 340px;
+  }
+
+
+  .creature-bestiary__specimen-ring--outer {
+    width: 280px;
+    height: 280px;
+  }
+
+
+  .creature-bestiary__specimen-ring--inner {
+    width: 210px;
+    height: 210px;
+  }
+
+
+  .creature-bestiary__footer span {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .creature-bestiary__intro,
+  .creature-bestiary__journal,
+  .creature-bestiary__footer,
+  .creature-bestiary__image,
+  .creature-bestiary__record {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .creature-bestiary__journal-glow,
+  .creature-bestiary__specimen-ring {
+    animation: none;
+  }
+
+}

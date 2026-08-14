@@ -1,0 +1,4555 @@
+/* =========================================================
+   SPELLS PAGE
+========================================================= */
+
+.spells-page {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  color: #edf6fb;
+
+  background: #03070b;
+
+  isolation: isolate;
+}
+
+
+.spells-page > .magical-background {
+  position: fixed;
+}
+
+
+/* =========================================================
+   ATMOSPHERE
+========================================================= */
+
+.spells-atmosphere {
+  position: fixed;
+
+  z-index: 1;
+
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.spells-atmosphere__halo {
+  position: absolute;
+
+  left: 50%;
+  top: 38%;
+
+  width: 75vw;
+  height: 75vw;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(74, 131, 171, 0.08),
+      rgba(30, 67, 93, 0.025) 45%,
+      transparent 70%
+    );
+
+  filter: blur(60px);
+}
+
+
+.spells-atmosphere__mist {
+  position: absolute;
+
+  width: 60vw;
+  height: 18vw;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(148, 190, 218, 0.035),
+      transparent 72%
+    );
+
+  filter: blur(40px);
+}
+
+
+.spells-atmosphere__mist--one {
+  left: -20%;
+  top: 32%;
+
+  animation:
+    spellMistOne
+    18s ease-in-out
+    infinite alternate;
+}
+
+
+.spells-atmosphere__mist--two {
+  right: -22%;
+  top: 62%;
+
+  animation:
+    spellMistTwo
+    22s ease-in-out
+    infinite alternate;
+}
+
+
+.spells-atmosphere__dark-smoke {
+  position: absolute;
+
+  right: -8%;
+  top: 18%;
+
+  width: 68vw;
+  height: 70vh;
+
+  object-fit: contain;
+
+  opacity: 0;
+
+  filter:
+    brightness(0.42)
+    contrast(1.2);
+
+  transform:
+    scale(1.08);
+
+  transition:
+    opacity 1.5s ease,
+    transform 2s ease;
+}
+
+
+.spells-page--dark
+.spells-atmosphere__dark-smoke {
+  opacity: 0.24;
+
+  transform:
+    scale(1);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.spells-hero {
+  position: relative;
+
+  z-index: 5;
+
+  min-height: 92vh;
+
+  padding:
+    120px
+    clamp(30px, 7vw, 125px)
+    100px;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+.spells-hero__coordinates {
+  position: absolute;
+
+  left:
+    clamp(30px, 7vw, 125px);
+
+  right:
+    clamp(30px, 7vw, 125px);
+
+  top: 48px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.31em;
+
+  color:
+    rgba(148, 187, 215, 0.34);
+}
+
+
+.spells-hero__content {
+  width:
+    min(850px, 88%);
+
+  opacity: 0;
+
+  transform:
+    translateY(45px);
+
+  filter: blur(9px);
+}
+
+
+.spells-page--visible
+.spells-hero__content {
+  animation:
+    spellsHeroReveal
+    1.5s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.spells-hero__eyebrow {
+  margin:
+    0 0 23px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.43em;
+
+  color:
+    rgba(158, 199, 228, 0.58);
+}
+
+
+.spells-hero__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      4.5rem,
+      8vw,
+      8.8rem
+    );
+
+  line-height: 0.78;
+
+  font-weight: 400;
+
+  letter-spacing: -0.05em;
+
+  color:
+    rgba(238, 247, 252, 0.96);
+}
+
+
+.spells-hero__title span {
+  display: block;
+
+  margin-top: 24px;
+  margin-left: 10%;
+
+  font-size: 0.62em;
+
+  font-style: italic;
+
+  color:
+    rgba(164, 199, 223, 0.65);
+}
+
+
+.spells-hero__description {
+  width:
+    min(510px, 90%);
+
+  margin:
+    43px 0 0 11%;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.03rem;
+
+  line-height: 1.8;
+
+  color:
+    rgba(188, 208, 222, 0.57);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.spell-search {
+  position: absolute;
+
+  z-index: 30;
+
+  right:
+    clamp(30px, 7vw, 125px);
+
+  top: 50%;
+
+  width: 165px;
+
+  transform:
+    translateY(-50%);
+}
+
+
+.spell-search__trigger {
+  width: 100%;
+
+  padding:
+    13px 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 10px;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    rgba(180, 211, 232, 0.6);
+
+  cursor: pointer;
+}
+
+
+.spell-search__trigger svg {
+  width: 15px;
+  height: 15px;
+}
+
+
+.spell-search__trigger span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.24em;
+}
+
+
+.spell-search__field {
+  position: absolute;
+
+  right: 0;
+  top: 100%;
+
+  width: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition:
+    width 0.7s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    opacity 0.4s ease;
+}
+
+
+.spell-search--open
+.spell-search__field {
+  width: 320px;
+
+  opacity: 1;
+}
+
+
+.spell-search__field input {
+  width: 100%;
+
+  padding:
+    14px 3px;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  color: #edf7fc;
+}
+
+
+.spell-search__field input::placeholder {
+  color:
+    rgba(174, 199, 216, 0.34);
+}
+
+
+.spell-search__line {
+  display: block;
+
+  width: 100%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(174, 215, 240, 0.5)
+    );
+}
+
+
+/* =========================================================
+   HERO SCROLL MARK
+========================================================= */
+
+.spells-hero__scroll {
+  position: absolute;
+
+  left:
+    clamp(30px, 7vw, 125px);
+
+  bottom: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+}
+
+
+.spells-hero__scroll span {
+  width: 75px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(164, 205, 232, 0.35),
+      transparent
+    );
+}
+
+
+.spells-hero__scroll p {
+  margin: 0;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.37rem;
+
+  letter-spacing: 0.27em;
+
+  color:
+    rgba(158, 193, 217, 0.38);
+}
+
+
+/* =========================================================
+   CONSTELLATION SECTION
+========================================================= */
+
+.spell-constellation-section {
+  position: relative;
+
+  z-index: 5;
+
+  min-height: 130vh;
+
+  padding:
+    110px
+    clamp(25px, 5vw, 90px)
+    150px;
+}
+
+
+.spell-constellation-section__intro {
+  position: relative;
+
+  z-index: 10;
+
+  margin-bottom: 55px;
+
+  text-align: center;
+}
+
+
+.spell-constellation-section__intro > p {
+  margin:
+    0 0 17px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.38em;
+
+  color:
+    rgba(151, 190, 217, 0.48);
+}
+
+
+.spell-constellation-section__intro h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3rem,
+      5vw,
+      5.7rem
+    );
+
+  line-height: 0.92;
+
+  font-weight: 400;
+}
+
+
+.spell-constellation-section__intro h2 span {
+  display: block;
+
+  margin-top: 7px;
+
+  font-size: 0.72em;
+
+  font-style: italic;
+
+  color:
+    rgba(162, 198, 223, 0.64);
+}
+
+
+/* =========================================================
+   CONSTELLATION WORLD
+========================================================= */
+
+.spell-constellation {
+  position: relative;
+
+  width:
+    min(1450px, 100%);
+
+  height:
+    min(780px, 70vw);
+
+  min-height: 690px;
+
+  margin: 0 auto;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(166, 205, 231, 0.07);
+
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(39, 78, 105, 0.1),
+      rgba(4, 10, 15, 0.16)
+      46%,
+      rgba(2, 6, 9, 0.34)
+      100%
+    );
+
+  box-shadow:
+    inset
+    0 0 130px
+    rgba(0, 0, 0, 0.42);
+
+  isolation: isolate;
+}
+
+
+.spell-constellation::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 20;
+
+  inset: 13px;
+
+  border:
+    1px solid
+    rgba(171, 210, 235, 0.025);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CURSOR LIGHT
+========================================================= */
+
+.spell-constellation__cursor-light {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 220px;
+  height: 220px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(126, 190, 228, 0.08),
+      transparent 70%
+    );
+
+  filter: blur(12px);
+
+  transition:
+    left 0.12s linear,
+    top 0.12s linear;
+}
+
+
+/* =========================================================
+   RUNES
+========================================================= */
+
+.spell-constellation__runes {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  top: 50%;
+
+  width:
+    min(590px, 52vw);
+
+  aspect-ratio: 1;
+
+  object-fit: contain;
+
+  transform:
+    translate(-50%, -50%);
+
+  opacity: 0.045;
+
+  filter:
+    brightness(1.2)
+    saturate(0.6);
+
+  animation:
+    spellRuneRotate
+    70s linear
+    infinite;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   WAND
+========================================================= */
+
+.spell-constellation__wand {
+  position: absolute;
+
+  z-index: 3;
+
+  left: -3%;
+  bottom: -21%;
+
+  width:
+    clamp(
+      220px,
+      25vw,
+      390px
+    );
+
+  transform:
+    rotate(24deg);
+
+  transform-origin:
+    50% 100%;
+
+  opacity: 0.4;
+
+  filter:
+    brightness(0.72)
+    saturate(0.75)
+    drop-shadow(
+      0 30px 40px
+      rgba(0, 0, 0, 0.55)
+    );
+
+  pointer-events: none;
+
+  animation:
+    spellWandFloat
+    7s ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   ORBITS
+========================================================= */
+
+.spell-orbits {
+  position: absolute;
+
+  z-index: 2;
+
+  left: 50%;
+  top: 50%;
+
+  width: 380px;
+  height: 380px;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+}
+
+
+.spell-orbits__ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(157, 202, 232, 0.055);
+}
+
+
+.spell-orbits__ring--one {
+  inset: 33%;
+
+  animation:
+    spellOrbitPulse
+    5s ease-in-out
+    infinite;
+}
+
+
+.spell-orbits__ring--two {
+  inset: 15%;
+
+  border-style: dashed;
+
+  animation:
+    spellOrbitRotate
+    25s linear
+    infinite;
+}
+
+
+.spell-orbits__ring--three {
+  inset: -12%;
+
+  opacity: 0.5;
+
+  animation:
+    spellOrbitRotateReverse
+    38s linear
+    infinite;
+}
+
+
+.spell-orbits > i {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(230, 246, 255, 0.9);
+
+  box-shadow:
+    0 0 12px
+      rgba(211, 239, 255, 0.8),
+
+    0 0 45px
+      rgba(102, 177, 221, 0.45);
+}
+
+
+/* =========================================================
+   PATHS
+========================================================= */
+
+.spell-constellation__paths {
+  position: absolute;
+
+  z-index: 2;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+}
+
+
+.spell-constellation__paths path {
+  fill: none;
+
+  stroke:
+    rgba(142, 190, 222, 0.085);
+
+  stroke-width: 0.7;
+
+  stroke-dasharray:
+    3 7;
+
+  vector-effect:
+    non-scaling-stroke;
+
+  animation:
+    spellPathMove
+    18s linear
+    infinite;
+}
+
+
+/* =========================================================
+   SPELL NODES
+========================================================= */
+
+.spell-constellation__nodes {
+  position: absolute;
+
+  z-index: 8;
+
+  inset: 0;
+}
+
+
+.spell-node {
+  position: absolute;
+
+  width: 34px;
+  height: 34px;
+
+  padding: 0;
+
+  transform:
+    translate(-50%, -50%);
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color:
+    rgba(225, 242, 252, 0.8);
+
+  cursor: pointer;
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.5s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    filter 0.6s ease;
+}
+
+
+.spell-node--muted {
+  opacity: 0.07;
+
+  pointer-events: none;
+
+  filter: blur(1.5px);
+}
+
+
+.spell-node--available {
+  opacity: 1;
+}
+
+
+.spell-node__core {
+  position: absolute;
+
+  z-index: 5;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(181, 217, 240, 0.2);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(119, 180, 218, 0.2),
+      rgba(7, 15, 21, 0.9)
+      68%
+    );
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.65rem;
+
+  box-shadow:
+    0 0 15px
+    rgba(101, 172, 215, 0.08);
+}
+
+
+.spell-node__pulse {
+  position: absolute;
+
+  inset: -7px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(165, 207, 233, 0.12);
+
+  opacity: 0;
+}
+
+
+.spell-node__orbit {
+  position: absolute;
+
+  inset: -13px;
+
+  border-radius: 50%;
+
+  border:
+    1px dashed
+    rgba(167, 209, 235, 0.08);
+
+  opacity: 0;
+
+  transition:
+    opacity 0.4s ease;
+}
+
+
+.spell-node:hover {
+  z-index: 20;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.18);
+}
+
+
+.spell-node:hover
+.spell-node__orbit,
+.spell-node--active
+.spell-node__orbit {
+  opacity: 1;
+
+  animation:
+    spellNodeOrbit
+    8s linear
+    infinite;
+}
+
+
+.spell-node:hover
+.spell-node__pulse,
+.spell-node--active
+.spell-node__pulse {
+  animation:
+    spellNodePulse
+    2.4s ease-out
+    infinite;
+}
+
+
+.spell-node--active {
+  z-index: 25;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.25);
+}
+
+
+.spell-node--active
+.spell-node__core {
+  color: #ffffff;
+
+  border-color:
+    rgba(211, 237, 251, 0.55);
+
+  box-shadow:
+    0 0 18px
+      rgba(150, 211, 244, 0.35),
+
+    0 0 50px
+      rgba(80, 156, 201, 0.18);
+}
+
+
+/* =========================================================
+   DARK NODES
+========================================================= */
+
+.spell-node--dark
+.spell-node__core {
+  border-color:
+    rgba(165, 187, 178, 0.16);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(79, 116, 100, 0.2),
+      rgba(8, 13, 12, 0.94)
+      70%
+    );
+}
+
+
+/* =========================================================
+   NODE LABEL
+========================================================= */
+
+.spell-node__label {
+  position: absolute;
+
+  left: 50%;
+  top: calc(100% + 11px);
+
+  width: 155px;
+
+  transform:
+    translateX(-50%);
+
+  text-align: center;
+
+  pointer-events: none;
+}
+
+
+.spell-node__label small {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.28rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(141, 179, 205, 0.38);
+}
+
+
+.spell-node__label strong {
+  display: block;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.85rem;
+
+  font-weight: 400;
+
+  white-space: nowrap;
+
+  color:
+    rgba(203, 223, 236, 0.62);
+
+  transition:
+    color 0.4s ease;
+}
+
+
+.spell-node:hover
+.spell-node__label strong,
+.spell-node--active
+.spell-node__label strong {
+  color:
+    rgba(242, 249, 253, 0.95);
+}
+
+
+/* =========================================================
+   SPELL EXAMINATION
+========================================================= */
+
+.spell-examination {
+  position: absolute;
+
+  z-index: 50;
+
+  right: 0;
+  top: 0;
+
+  width:
+    min(440px, 38%);
+
+  height: 100%;
+
+  padding:
+    65px
+    45px
+    50px;
+
+  overflow-y: auto;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8, 18, 26, 0.97),
+      rgba(3, 9, 14, 0.96)
+    );
+
+  border-left:
+    1px solid
+    rgba(176, 214, 238, 0.1);
+
+  box-shadow:
+    -35px 0 90px
+    rgba(0, 0, 0, 0.36);
+
+  backdrop-filter:
+    blur(22px);
+
+  transform:
+    translateX(105%);
+
+  visibility: hidden;
+
+  transition:
+    transform 0.85s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    visibility 0.85s;
+}
+
+
+.spell-examination--open {
+  visibility: visible;
+
+  transform:
+    translateX(0);
+}
+
+
+.spell-examination__close {
+  position: absolute;
+
+  right: 27px;
+  top: 27px;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(177, 212, 235, 0.13);
+
+  background:
+    rgba(11, 24, 33, 0.5);
+
+  color:
+    rgba(216, 235, 247, 0.68);
+
+  cursor: pointer;
+}
+
+
+.spell-examination__number {
+  margin-bottom: 30px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.36rem;
+
+  letter-spacing: 0.32em;
+
+  color:
+    rgba(145, 184, 211, 0.4);
+}
+
+
+.spell-examination__sigil {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 21px;
+}
+
+
+.spell-examination__sigil span {
+  width: 40px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(168, 209, 235, 0.22)
+    );
+}
+
+
+.spell-examination__sigil span:last-child {
+  transform: rotate(180deg);
+}
+
+
+.spell-examination__sigil strong {
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(218, 239, 251, 0.76);
+}
+
+
+.spell-examination__type {
+  margin:
+    0 0 8px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.26em;
+
+  color:
+    rgba(151, 190, 216, 0.5);
+}
+
+
+.spell-examination__name {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      2.5rem,
+      3vw,
+      3.7rem
+    );
+
+  line-height: 0.95;
+
+  font-weight: 400;
+
+  color:
+    rgba(239, 248, 253, 0.95);
+}
+
+
+.spell-examination__pronunciation {
+  margin:
+    10px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.88rem;
+
+  font-style: italic;
+
+  color:
+    rgba(171, 199, 218, 0.47);
+}
+
+
+.spell-examination__divider {
+  margin:
+    28px 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+}
+
+
+.spell-examination__divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    rgba(166, 205, 230, 0.09);
+}
+
+
+.spell-examination__divider i {
+  font-style: normal;
+
+  font-size: 0.38rem;
+
+  color:
+    rgba(180, 215, 237, 0.38);
+}
+
+
+.spell-examination__facts {
+  display: grid;
+
+  gap: 20px;
+}
+
+
+.spell-examination__facts small,
+.spell-examination__users small,
+.spell-examination__memory small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.34rem;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(144, 184, 211, 0.47);
+}
+
+
+.spell-examination__facts p,
+.spell-examination__memory p {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.91rem;
+
+  line-height: 1.6;
+
+  color:
+    rgba(187, 207, 221, 0.62);
+}
+
+
+.spell-examination__facts strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(220, 236, 246, 0.75);
+}
+
+
+.spell-examination__users,
+.spell-examination__memory {
+  margin-top: 27px;
+
+  padding-top: 23px;
+
+  border-top:
+    1px solid
+    rgba(166, 205, 230, 0.07);
+}
+
+
+.spell-examination__users > div {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+
+.spell-examination__users span {
+  padding:
+    6px 9px;
+
+  border:
+    1px solid
+    rgba(165, 203, 228, 0.09);
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.75rem;
+
+  color:
+    rgba(190, 211, 225, 0.57);
+}
+
+
+/* =========================================================
+   EMPTY SEARCH
+========================================================= */
+
+.spell-constellation__empty {
+  position: absolute;
+
+  z-index: 40;
+
+  left: 50%;
+  top: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  text-align: center;
+}
+
+
+.spell-constellation__empty span {
+  font-size: 1rem;
+
+  color:
+    rgba(193, 222, 240, 0.4);
+}
+
+
+.spell-constellation__empty p {
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  color:
+    rgba(179, 201, 216, 0.47);
+}
+
+
+/* =========================================================
+   ARCANE DIAL
+========================================================= */
+
+.arcane-dial {
+  position: relative;
+
+  width:
+    min(1000px, 94%);
+
+  margin:
+    90px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    55px
+    250px
+    55px;
+
+  justify-content: center;
+
+  align-items: center;
+
+  column-gap: 25px;
+}
+
+
+.arcane-dial__arrow {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(169, 208, 233, 0.11);
+
+  background:
+    rgba(8, 18, 25, 0.35);
+
+  color:
+    rgba(202, 226, 241, 0.6);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.arcane-dial__arrow:hover {
+  transform: scale(1.08);
+
+  border-color:
+    rgba(195, 225, 243, 0.32);
+}
+
+
+.arcane-dial__instrument {
+  position: relative;
+
+  width: 250px;
+  height: 250px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.arcane-dial__outer,
+.arcane-dial__middle,
+.arcane-dial__inner {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(159, 200, 228, 0.09);
+}
+
+
+.arcane-dial__outer {
+  inset: 0;
+
+  border-style: dashed;
+
+  animation:
+    spellOrbitRotate
+    30s linear
+    infinite;
+}
+
+
+.arcane-dial__middle {
+  inset: 23px;
+
+  animation:
+    spellOrbitRotateReverse
+    22s linear
+    infinite;
+}
+
+
+.arcane-dial__inner {
+  inset: 52px;
+
+  border-style: dotted;
+}
+
+
+.arcane-dial__center {
+  position: relative;
+
+  z-index: 5;
+
+  width: 135px;
+  height: 135px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(38, 76, 101, 0.2),
+      rgba(5, 12, 18, 0.82)
+      70%
+    );
+
+  text-align: center;
+}
+
+
+.arcane-dial__center small {
+  margin-bottom: 8px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.28rem;
+
+  letter-spacing: 0.2em;
+
+  color:
+    rgba(147, 184, 210, 0.4);
+}
+
+
+.arcane-dial__center strong {
+  max-width: 105px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.15rem;
+
+  line-height: 1.05;
+
+  font-weight: 400;
+
+  color:
+    rgba(225, 239, 248, 0.78);
+}
+
+
+.arcane-dial__center span {
+  margin-top: 8px;
+
+  font-size: 0.38rem;
+
+  color:
+    rgba(184, 217, 238, 0.4);
+}
+
+
+.arcane-dial__categories {
+  grid-column:
+    1 / -1;
+
+  margin-top: 32px;
+
+  display: flex;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+
+.arcane-dial__category {
+  padding:
+    9px 15px;
+
+  border:
+    1px solid transparent;
+
+  background: transparent;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.34rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(154, 190, 215, 0.4);
+
+  cursor: pointer;
+
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+
+.arcane-dial__category:hover,
+.arcane-dial__category--active {
+  color:
+    rgba(226, 241, 250, 0.84);
+
+  border-color:
+    rgba(171, 210, 235, 0.13);
+}
+
+
+/* =========================================================
+   MAGICAL THEORY
+========================================================= */
+
+.spell-theory {
+  position: relative;
+
+  z-index: 5;
+
+  min-height: 100vh;
+
+  padding:
+    140px
+    clamp(30px, 7vw, 125px);
+}
+
+
+.spell-theory__heading {
+  width:
+    min(730px, 90%);
+
+  margin-left: auto;
+
+  text-align: right;
+}
+
+
+.spell-theory__heading > p {
+  margin:
+    0 0 18px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.45rem;
+
+  letter-spacing: 0.39em;
+
+  color:
+    rgba(151, 190, 216, 0.5);
+}
+
+
+.spell-theory__heading h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.5rem,
+      6vw,
+      6.5rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+}
+
+
+.spell-theory__heading h2 span {
+  display: block;
+
+  margin-top: 10px;
+
+  font-size: 0.72em;
+
+  font-style: italic;
+
+  color:
+    rgba(161, 198, 222, 0.63);
+}
+
+
+.spell-theory__system {
+  position: relative;
+
+  width:
+    min(1200px, 100%);
+
+  margin:
+    110px auto 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 1px;
+
+  background:
+    rgba(164, 203, 229, 0.07);
+}
+
+
+.spell-theory__item {
+  position: relative;
+
+  min-height: 330px;
+
+  padding:
+    55px
+    45px;
+
+  background:
+    rgba(4, 10, 15, 0.92);
+
+  overflow: hidden;
+}
+
+
+.spell-theory__item > span {
+  position: absolute;
+
+  right: 25px;
+  top: 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.34rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(147, 183, 207, 0.25);
+}
+
+
+.spell-theory__item small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.38rem;
+
+  letter-spacing: 0.3em;
+
+  color:
+    rgba(153, 191, 217, 0.48);
+}
+
+
+.spell-theory__item h3 {
+  margin:
+    35px 0 18px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 2.6rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(228, 240, 248, 0.83);
+}
+
+
+.spell-theory__item p {
+  margin: 0;
+
+  max-width: 280px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.92rem;
+
+  line-height: 1.7;
+
+  color:
+    rgba(180, 201, 215, 0.52);
+}
+
+
+.spell-theory__energy {
+  position: absolute;
+
+  z-index: 10;
+
+  left: 0;
+  right: 0;
+
+  top: 50%;
+
+  height: 1px;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+.spell-theory__energy span {
+  position: absolute;
+
+  left: -20%;
+
+  width: 20%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(216, 239, 253, 0.65),
+      transparent
+    );
+
+  animation:
+    spellTheoryEnergy
+    7s linear
+    infinite;
+}
+
+
+/* =========================================================
+   FORBIDDEN MAGIC
+========================================================= */
+
+.forbidden-magic {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(1500px, 92%);
+
+  min-height: 780px;
+
+  margin:
+    70px auto
+    150px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(161, 190, 177, 0.08);
+
+  background: #040807;
+}
+
+
+.forbidden-magic__image {
+  position: absolute;
+
+  z-index: 0;
+
+  inset: 0;
+}
+
+
+.forbidden-magic__image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  filter:
+    brightness(0.4)
+    saturate(0.55)
+    contrast(1.08);
+
+  transform: scale(1.03);
+}
+
+
+.forbidden-magic__image-shade {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 8, 7, 0.97)
+      0%,
+
+      rgba(3, 8, 7, 0.82)
+      38%,
+
+      rgba(3, 8, 7, 0.38)
+      70%,
+
+      rgba(3, 8, 7, 0.65)
+      100%
+    );
+}
+
+
+.forbidden-magic__content {
+  position: relative;
+
+  z-index: 5;
+
+  width:
+    min(720px, 70%);
+
+  padding:
+    100px
+    clamp(45px, 7vw, 110px);
+}
+
+
+.forbidden-magic__eyebrow {
+  margin:
+    0 0 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.4em;
+
+  color:
+    rgba(159, 188, 175, 0.48);
+}
+
+
+.forbidden-magic__content h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.8rem,
+      6vw,
+      6.7rem
+    );
+
+  line-height: 0.86;
+
+  font-weight: 400;
+
+  color:
+    rgba(229, 237, 232, 0.9);
+}
+
+
+.forbidden-magic__content h2 span {
+  display: block;
+
+  margin-top: 12px;
+
+  font-size: 0.67em;
+
+  font-style: italic;
+
+  color:
+    rgba(157, 181, 169, 0.62);
+}
+
+
+.forbidden-magic__description {
+  width:
+    min(520px, 100%);
+
+  margin:
+    35px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(180, 197, 188, 0.56);
+}
+
+
+.forbidden-magic__curses {
+  margin-top: 55px;
+
+  display: flex;
+
+  gap: 10px;
+}
+
+
+.forbidden-magic__curses button {
+  width: 170px;
+  min-height: 125px;
+
+  padding:
+    18px;
+
+  text-align: left;
+
+  border:
+    1px solid
+    rgba(161, 190, 176, 0.09);
+
+  background:
+    rgba(5, 12, 10, 0.48);
+
+  color:
+    rgba(215, 226, 220, 0.75);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.4s ease,
+    background 0.4s ease,
+    border-color 0.4s ease;
+}
+
+
+.forbidden-magic__curses button:hover {
+  transform:
+    translateY(-6px);
+
+  background:
+    rgba(13, 25, 20, 0.7);
+
+  border-color:
+    rgba(178, 205, 192, 0.22);
+}
+
+
+.forbidden-magic__curses small {
+  display: block;
+
+  margin-bottom: 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.3rem;
+
+  letter-spacing: 0.25em;
+
+  color:
+    rgba(150, 178, 165, 0.42);
+}
+
+
+.forbidden-magic__curses strong {
+  display: block;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.35rem;
+
+  font-weight: 400;
+}
+
+
+.forbidden-magic__curses span {
+  display: block;
+
+  margin-top: 6px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.72rem;
+
+  color:
+    rgba(160, 182, 172, 0.43);
+}
+
+
+/* =========================================================
+   SPELL INDEX
+========================================================= */
+
+.spell-index {
+  position: relative;
+
+  z-index: 5;
+
+  padding:
+    130px
+    clamp(30px, 7vw, 125px)
+    160px;
+}
+
+
+.spell-index__heading {
+  width:
+    min(690px, 90%);
+
+  margin-bottom: 80px;
+}
+
+
+.spell-index__heading > p:first-child {
+  margin:
+    0 0 18px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.43rem;
+
+  letter-spacing: 0.39em;
+
+  color:
+    rgba(151, 190, 216, 0.48);
+}
+
+
+.spell-index__heading h2 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.8rem,
+      6vw,
+      6.5rem
+    );
+
+  line-height: 0.86;
+
+  font-weight: 400;
+}
+
+
+.spell-index__heading h2 span {
+  font-style: italic;
+
+  color:
+    rgba(161, 198, 222, 0.63);
+}
+
+
+.spell-index__description {
+  width:
+    min(460px, 100%);
+
+  margin:
+    27px 0 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.96rem;
+
+  line-height: 1.7;
+
+  color:
+    rgba(182, 203, 217, 0.52);
+}
+
+
+.spell-index__list {
+  width:
+    min(1250px, 100%);
+
+  margin-left: auto;
+}
+
+
+.spell-index__row {
+  width: 100%;
+
+  min-height: 78px;
+
+  padding:
+    0 18px;
+
+  display: grid;
+
+  grid-template-columns:
+    55px
+    45px
+    1.2fr
+    1fr
+    150px
+    30px;
+
+  align-items: center;
+
+  gap: 12px;
+
+  border: 0;
+
+  border-top:
+    1px solid
+    rgba(165, 204, 230, 0.07);
+
+  background: transparent;
+
+  text-align: left;
+
+  color:
+    rgba(200, 221, 234, 0.62);
+
+  cursor: pointer;
+
+  transition:
+    padding 0.4s ease,
+    background 0.4s ease,
+    color 0.4s ease;
+}
+
+
+.spell-index__row:last-child {
+  border-bottom:
+    1px solid
+    rgba(165, 204, 230, 0.07);
+}
+
+
+.spell-index__row:hover {
+  padding-left: 28px;
+
+  background:
+    rgba(63, 105, 133, 0.055);
+
+  color:
+    rgba(238, 247, 252, 0.9);
+}
+
+
+.spell-index__number {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.32rem;
+
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(142, 179, 204, 0.3);
+}
+
+
+.spell-index__symbol {
+  font-size: 0.7rem;
+
+  color:
+    rgba(178, 215, 238, 0.52);
+}
+
+
+.spell-index__row strong {
+  font-family:
+    var(--font-story);
+
+  font-size: 1.35rem;
+
+  font-weight: 400;
+}
+
+
+.spell-index__classification,
+.spell-index__category {
+  font-family:
+    var(--font-story);
+
+  font-size: 0.82rem;
+
+  color:
+    rgba(164, 190, 207, 0.46);
+}
+
+
+.spell-index__row svg {
+  justify-self: end;
+}
+
+
+/* =========================================================
+   CLOSING
+========================================================= */
+
+.spell-index__closing {
+  width:
+    min(700px, 90%);
+
+  margin:
+    100px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+}
+
+
+.spell-index__closing span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(162, 201, 227, 0.17)
+    );
+}
+
+
+.spell-index__closing span:last-child {
+  transform: rotate(180deg);
+}
+
+
+.spell-index__closing p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  color:
+    rgba(180, 201, 215, 0.5);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes spellsHeroReveal {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(45px);
+
+    filter: blur(9px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter: blur(0);
+  }
+}
+
+
+@keyframes spellRuneRotate {
+  from {
+    transform:
+      translate(-50%, -50%)
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      translate(-50%, -50%)
+      rotate(360deg);
+  }
+}
+
+
+@keyframes spellOrbitRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes spellOrbitRotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+
+@keyframes spellOrbitPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: scale(1.08);
+  }
+}
+
+
+@keyframes spellPathMove {
+  from {
+    stroke-dashoffset: 0;
+  }
+
+  to {
+    stroke-dashoffset: -80;
+  }
+}
+
+
+@keyframes spellNodePulse {
+  0% {
+    opacity: 0.7;
+
+    transform: scale(0.6);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: scale(2.2);
+  }
+}
+
+
+@keyframes spellNodeOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes spellWandFloat {
+  0%,
+  100% {
+    transform:
+      rotate(24deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      rotate(27deg)
+      translateY(-12px);
+  }
+}
+
+
+@keyframes spellMistOne {
+  from {
+    transform:
+      translateX(-10%);
+  }
+
+  to {
+    transform:
+      translateX(20%);
+  }
+}
+
+
+@keyframes spellMistTwo {
+  from {
+    transform:
+      translateX(10%);
+  }
+
+  to {
+    transform:
+      translateX(-18%);
+  }
+}
+
+
+@keyframes spellTheoryEnergy {
+  from {
+    left: -20%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .spell-search {
+    top: auto;
+    bottom: 110px;
+
+    transform: none;
+  }
+
+
+  .spell-constellation {
+    min-height: 720px;
+  }
+
+
+  .spell-examination {
+    width: 52%;
+  }
+
+
+  .spell-theory__system {
+    grid-template-columns: 1fr;
+  }
+
+
+  .spell-theory__item {
+    min-height: 250px;
+  }
+
+
+  .spell-theory__energy {
+    display: none;
+  }
+
+
+  .spell-index__row {
+    grid-template-columns:
+      45px
+      35px
+      1fr
+      180px
+      30px;
+  }
+
+
+  .spell-index__category {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .spells-hero {
+    min-height: 100vh;
+
+    padding:
+      120px
+      7%
+      120px;
+  }
+
+
+  .spells-hero__coordinates {
+    left: 7%;
+    right: 7%;
+  }
+
+
+  .spells-hero__coordinates span:last-child {
+    display: none;
+  }
+
+
+  .spells-hero__content {
+    width: 100%;
+  }
+
+
+  .spells-hero__title {
+    font-size:
+      clamp(
+        3.8rem,
+        18vw,
+        6rem
+      );
+
+    line-height: 0.82;
+  }
+
+
+  .spells-hero__title span {
+    margin-left: 0;
+
+    font-size: 0.62em;
+  }
+
+
+  .spells-hero__description {
+    margin-left: 0;
+
+    width: 94%;
+  }
+
+
+  .spell-search {
+    left: 7%;
+    right: auto;
+
+    bottom: 65px;
+  }
+
+
+  .spell-search__trigger {
+    justify-content: flex-start;
+  }
+
+
+  .spell-search__field {
+    left: 0;
+    right: auto;
+  }
+
+
+  .spell-search--open
+  .spell-search__field {
+    width: 260px;
+  }
+
+
+  .spells-hero__scroll {
+    display: none;
+  }
+
+
+  /* CONSTELLATION */
+
+  .spell-constellation-section {
+    padding:
+      90px
+      4%
+      110px;
+  }
+
+
+  .spell-constellation {
+    height: 760px;
+
+    min-height: 760px;
+  }
+
+
+  .spell-constellation__runes {
+    width: 620px;
+  }
+
+
+  .spell-constellation__wand {
+    width: 230px;
+
+    left: -70px;
+    bottom: -70px;
+  }
+
+
+  .spell-node__label {
+    width: 110px;
+  }
+
+
+  .spell-node__label small {
+    display: none;
+  }
+
+
+  .spell-node__label strong {
+    font-size: 0.7rem;
+
+    white-space: normal;
+  }
+
+
+  /* DETAIL BECOMES BOTTOM SHEET */
+
+  .spell-examination {
+    position: fixed;
+
+    z-index: 80000;
+
+    left: 4%;
+    right: 4%;
+
+    top: auto;
+    bottom: 18px;
+
+    width: auto;
+    height: auto;
+
+    max-height: 75vh;
+
+    padding:
+      55px
+      25px
+      30px;
+
+    border:
+      1px solid
+      rgba(176, 214, 238, 0.12);
+
+    transform:
+      translateY(115%);
+  }
+
+
+  .spell-examination--open {
+    transform:
+      translateY(0);
+  }
+
+
+  /* DIAL */
+
+  .arcane-dial {
+    grid-template-columns:
+      45px
+      200px
+      45px;
+
+    column-gap: 8px;
+  }
+
+
+  .arcane-dial__instrument {
+    width: 200px;
+    height: 200px;
+  }
+
+
+  .arcane-dial__center {
+    width: 115px;
+    height: 115px;
+  }
+
+
+  /* THEORY */
+
+  .spell-theory {
+    min-height: auto;
+
+    padding:
+      110px
+      7%;
+  }
+
+
+  .spell-theory__heading {
+    width: 100%;
+
+    text-align: left;
+  }
+
+
+  .spell-theory__heading h2 {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        5rem
+      );
+  }
+
+
+  .spell-theory__system {
+    margin-top: 70px;
+  }
+
+
+  .spell-theory__item {
+    padding:
+      45px
+      30px;
+  }
+
+
+  /* FORBIDDEN */
+
+  .forbidden-magic {
+    width: 92%;
+
+    min-height: 780px;
+
+    align-items: flex-end;
+  }
+
+
+  .forbidden-magic__image-shade {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 8, 7, 0.3),
+        rgba(3, 8, 7, 0.96)
+        62%
+      );
+  }
+
+
+  .forbidden-magic__content {
+    width: 100%;
+
+    padding:
+      60px
+      28px;
+  }
+
+
+  .forbidden-magic__content h2 {
+    font-size:
+      clamp(
+        3.2rem,
+        14vw,
+        5rem
+      );
+  }
+
+
+  .forbidden-magic__curses {
+    display: grid;
+
+    grid-template-columns: 1fr;
+  }
+
+
+  .forbidden-magic__curses button {
+    width: 100%;
+
+    min-height: 95px;
+  }
+
+
+  /* INDEX */
+
+  .spell-index {
+    padding:
+      100px
+      7%
+      130px;
+  }
+
+
+  .spell-index__row {
+    min-height: 82px;
+
+    grid-template-columns:
+      35px
+      1fr
+      25px;
+
+    gap: 10px;
+  }
+
+
+  .spell-index__symbol,
+  .spell-index__classification,
+  .spell-index__category {
+    display: none;
+  }
+
+
+  .spell-index__row strong {
+    font-size: 1.18rem;
+  }
+
+
+  .spell-index__closing span {
+    display: none;
+  }
+
+
+  .spell-index__closing {
+    justify-content: center;
+  }
+
+
+  .spell-index__closing p {
+    white-space: normal;
+
+    text-align: center;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+
+  .spell-constellation {
+    height: 700px;
+
+    min-height: 700px;
+  }
+
+
+  .spell-node {
+    width: 30px;
+    height: 30px;
+  }
+
+
+  .spell-node__label {
+    width: 85px;
+  }
+
+
+  .arcane-dial {
+    grid-template-columns:
+      40px
+      170px
+      40px;
+  }
+
+
+  .arcane-dial__instrument {
+    width: 170px;
+    height: 170px;
+  }
+
+
+  .arcane-dial__middle {
+    inset: 18px;
+  }
+
+
+  .arcane-dial__inner {
+    inset: 38px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .spells-hero__content {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .spell-constellation__runes,
+  .spell-constellation__wand,
+  .spell-orbits__ring,
+  .arcane-dial__outer,
+  .arcane-dial__middle,
+  .spell-constellation__paths path,
+  .spell-theory__energy span,
+  .spells-atmosphere__mist {
+    animation: none;
+  }
+
+
+  .spell-node,
+  .spell-examination {
+    transition-duration: 0.01ms;
+  }
+
+}
+/* =========================================================
+   SPELLS V2 — ARCANE VIOLET / CYAN IDENTITY
+   UI refinement layer
+========================================================= */
+
+.spells-page {
+  --spell-bg: #05040b;
+  --spell-panel: rgba(10, 8, 22, 0.82);
+  --spell-panel-deep: rgba(6, 5, 14, 0.96);
+  --spell-violet: #9d7cff;
+  --spell-violet-soft: rgba(157, 124, 255, 0.58);
+  --spell-cyan: #7ee7ff;
+  --spell-cyan-soft: rgba(126, 231, 255, 0.46);
+  --spell-lilac: #d9ccff;
+  --spell-text: #f1eeff;
+  --spell-muted: rgba(215, 210, 235, 0.58);
+  --spell-line: rgba(166, 148, 231, 0.16);
+  --spell-glow: rgba(130, 93, 255, 0.22);
+
+  color: var(--spell-text);
+
+  background:
+    radial-gradient(
+      circle at 72% 13%,
+      rgba(91, 64, 175, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 17% 48%,
+      rgba(45, 138, 169, 0.07),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      #070511 0%,
+      #05040b 48%,
+      #030308 100%
+    );
+}
+
+.spells-page--dark {
+  --spell-violet: #91d5a5;
+  --spell-violet-soft: rgba(116, 200, 140, 0.56);
+  --spell-cyan: #b3ffbf;
+  --spell-cyan-soft: rgba(147, 239, 163, 0.42);
+  --spell-lilac: #d7ffe0;
+  --spell-line: rgba(118, 192, 132, 0.15);
+  --spell-glow: rgba(73, 157, 90, 0.18);
+}
+
+/* category nuance without changing layout */
+.spells-page--charms {
+  --spell-violet: #a888ff;
+  --spell-cyan: #8edfff;
+}
+
+.spells-page--defensive-magic {
+  --spell-violet: #78a9ff;
+  --spell-cyan: #91f1ff;
+}
+
+.spells-page--transfiguration {
+  --spell-violet: #d18bff;
+  --spell-cyan: #ffc6f5;
+}
+
+.spells-page--healing-magic {
+  --spell-violet: #71d7c6;
+  --spell-cyan: #b8ffe9;
+}
+
+.spells-page--dark-magic,
+.spells-page--unforgivable {
+  background:
+    radial-gradient(
+      circle at 72% 13%,
+      rgba(49, 103, 58, 0.15),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 20% 55%,
+      rgba(54, 89, 62, 0.08),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #050807 0%,
+      #040605 52%,
+      #020403 100%
+    );
+}
+
+/* =========================================================
+   ATMOSPHERE — MORE LAYERED, LESS FLAT
+========================================================= */
+
+.spells-atmosphere__halo {
+  width: 82vw;
+  height: 82vw;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(123, 89, 230, 0.14),
+      rgba(69, 105, 164, 0.035) 42%,
+      transparent 71%
+    );
+
+  filter: blur(75px);
+}
+
+.spells-atmosphere__mist {
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(164, 137, 255, 0.055),
+      transparent 72%
+    );
+}
+
+.spells-page::before {
+  content: "";
+
+  position: fixed;
+  z-index: 2;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.22;
+
+  background-image:
+    linear-gradient(
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.01) 1px,
+      transparent 1px
+    );
+
+  background-size: 74px 74px;
+
+  mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.65),
+      transparent 72%
+    );
+}
+
+/* =========================================================
+   HERO — ARCANE OBSERVATORY
+========================================================= */
+
+.spells-hero {
+  min-height: 96vh;
+  overflow: hidden;
+}
+
+.spells-hero::before {
+  content: "";
+
+  position: absolute;
+  right: -12vw;
+  top: 50%;
+
+  width: min(70vw, 920px);
+  height: min(70vw, 920px);
+
+  transform: translateY(-50%);
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(157, 124, 255, 0.075);
+
+  box-shadow:
+    0 0 0 55px rgba(157, 124, 255, 0.018),
+    0 0 0 115px rgba(126, 231, 255, 0.01);
+
+  pointer-events: none;
+}
+
+.spells-hero::after {
+  content: "";
+
+  position: absolute;
+  right: -4%;
+  top: 24%;
+
+  width: 46%;
+  height: 52%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      var(--spell-glow),
+      transparent 68%
+    );
+
+  filter: blur(30px);
+}
+
+.spells-hero__coordinates {
+  color:
+    rgba(194, 181, 230, 0.42);
+}
+
+.spells-hero__eyebrow {
+  color: var(--spell-violet-soft);
+}
+
+.spells-hero__title {
+  max-width: 900px;
+
+  color: var(--spell-text);
+
+  text-shadow:
+    0 18px 60px rgba(0, 0, 0, 0.35);
+}
+
+.spells-hero__title span {
+  color:
+    rgba(185, 161, 247, 0.82);
+}
+
+.spells-hero__description {
+  color: var(--spell-muted);
+}
+
+/* new rotating arcane seal */
+.spells-hero__arcane-seal {
+  position: absolute;
+  z-index: 3;
+
+  right:
+    clamp(40px, 10vw, 175px);
+  top: 50%;
+
+  width:
+    clamp(250px, 28vw, 450px);
+  aspect-ratio: 1;
+
+  transform:
+    translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  opacity: 0.62;
+
+  pointer-events: none;
+}
+
+.spells-hero__arcane-seal::before,
+.spells-hero__arcane-seal::after {
+  content: "";
+
+  position: absolute;
+
+  border-radius: 50%;
+}
+
+.spells-hero__arcane-seal::before {
+  inset: 16%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 107, 241, 0.11),
+      transparent 67%
+    );
+
+  filter: blur(18px);
+}
+
+.spells-hero__arcane-seal::after {
+  inset: 36%;
+
+  box-shadow:
+    0 0 50px rgba(130, 93, 255, 0.24),
+    0 0 90px rgba(126, 231, 255, 0.08);
+}
+
+.spells-hero__arcane-seal > i {
+  position: relative;
+  z-index: 5;
+
+  font-style: normal;
+  font-size: 1.15rem;
+
+  color: var(--spell-cyan);
+
+  text-shadow:
+    0 0 12px var(--spell-cyan),
+    0 0 35px var(--spell-violet);
+
+  animation:
+    spellsArcaneCore 3.6s ease-in-out infinite;
+}
+
+.spells-hero__arcane-ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(173, 149, 245, 0.14);
+}
+
+.spells-hero__arcane-ring--one {
+  inset: 5%;
+
+  border-style: dashed;
+
+  animation:
+    spellOrbitRotate 38s linear infinite;
+}
+
+.spells-hero__arcane-ring--two {
+  inset: 23%;
+
+  border-color:
+    rgba(126, 231, 255, 0.13);
+
+  animation:
+    spellOrbitRotateReverse 27s linear infinite;
+}
+
+.spells-hero__arcane-ring--three {
+  inset: 39%;
+
+  border-style: dotted;
+
+  box-shadow:
+    inset 0 0 25px rgba(126, 231, 255, 0.04);
+
+  animation:
+    spellOrbitRotate 17s linear infinite;
+}
+
+/* new stats */
+.spells-hero__stats {
+  width:
+    min(720px, 96%);
+
+  margin:
+    42px 0 0 11%;
+
+  display: grid;
+  grid-template-columns:
+    0.8fr 1fr 1.4fr;
+
+  border-top:
+    1px solid var(--spell-line);
+  border-bottom:
+    1px solid var(--spell-line);
+}
+
+.spells-hero__stats > div {
+  min-height: 76px;
+
+  padding:
+    15px 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 5px;
+
+  border-right:
+    1px solid var(--spell-line);
+}
+
+.spells-hero__stats > div:last-child {
+  border-right: 0;
+}
+
+.spells-hero__stats strong {
+  overflow: hidden;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(0.95rem, 1.3vw, 1.18rem);
+
+  font-weight: 400;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color:
+    rgba(237, 232, 255, 0.9);
+}
+
+.spells-hero__stats span {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.3rem;
+
+  letter-spacing: 0.2em;
+
+  text-transform: uppercase;
+
+  color:
+    rgba(168, 149, 222, 0.48);
+}
+
+.spell-search__trigger {
+  color:
+    rgba(202, 188, 240, 0.66);
+}
+
+.spell-search__trigger:hover {
+  color: var(--spell-cyan);
+}
+
+.spell-search__field input {
+  color: var(--spell-text);
+}
+
+.spell-search__line {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--spell-violet),
+      var(--spell-cyan)
+    );
+
+  box-shadow:
+    0 0 15px var(--spell-glow);
+}
+
+.spells-hero__scroll span {
+  background:
+    linear-gradient(
+      90deg,
+      var(--spell-violet-soft),
+      transparent
+    );
+}
+
+.spells-hero__scroll p {
+  color:
+    rgba(183, 165, 225, 0.48);
+}
+
+/* =========================================================
+   CONSTELLATION — ARCANE GLASS CHAMBER
+========================================================= */
+
+.spell-constellation-section {
+  padding-top: 125px;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(40, 27, 86, 0.035) 42%,
+      transparent 90%
+    );
+}
+
+.spell-constellation-section__intro > p {
+  color: var(--spell-violet-soft);
+}
+
+.spell-constellation-section__intro h2 span {
+  color:
+    rgba(192, 169, 249, 0.79);
+}
+
+/* new status strip */
+.spell-constellation-status {
+  position: relative;
+  z-index: 9;
+
+  width:
+    min(1450px, 100%);
+
+  margin:
+    0 auto 14px;
+
+  min-height: 58px;
+
+  padding:
+    0 20px;
+
+  display: grid;
+  grid-template-columns:
+    auto 1fr auto 1fr auto;
+
+  align-items: center;
+
+  gap: 17px;
+
+  border:
+    1px solid var(--spell-line);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(28, 19, 61, 0.28),
+      rgba(10, 8, 23, 0.68),
+      rgba(15, 18, 34, 0.38)
+    );
+
+  backdrop-filter:
+    blur(14px);
+}
+
+.spell-constellation-status > div {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.spell-constellation-status small {
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.29rem;
+  letter-spacing: 0.18em;
+
+  color:
+    rgba(175, 156, 226, 0.4);
+}
+
+.spell-constellation-status strong {
+  max-width: 180px;
+
+  overflow: hidden;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.72rem;
+  font-weight: 400;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  color:
+    rgba(229, 223, 246, 0.76);
+}
+
+.spell-constellation-status__line {
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--spell-line),
+      transparent
+    );
+}
+
+.spell-constellation {
+  border-color:
+    rgba(172, 147, 239, 0.12);
+
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(88, 59, 165, 0.14),
+      rgba(21, 17, 44, 0.22) 42%,
+      rgba(5, 5, 13, 0.56) 100%
+    );
+
+  box-shadow:
+    inset 0 0 140px rgba(0, 0, 0, 0.48),
+    0 35px 90px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(126, 231, 255, 0.015);
+}
+
+.spell-constellation::before {
+  border-color:
+    rgba(192, 170, 248, 0.045);
+}
+
+.spell-constellation::after {
+  content: "";
+
+  position: absolute;
+  z-index: 1;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 49.92%,
+      rgba(158, 133, 226, 0.035) 50%,
+      transparent 50.08%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 49.92%,
+      rgba(158, 133, 226, 0.035) 50%,
+      transparent 50.08%
+    );
+}
+
+.spell-constellation__cursor-light {
+  width: 280px;
+  height: 280px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(126, 231, 255, 0.09),
+      rgba(157, 124, 255, 0.04) 35%,
+      transparent 72%
+    );
+}
+
+.spell-constellation__runes {
+  opacity: 0.075;
+
+  filter:
+    brightness(1.4)
+    saturate(0.9)
+    hue-rotate(24deg);
+}
+
+.spell-orbits__ring {
+  border-color:
+    rgba(170, 145, 241, 0.09);
+}
+
+.spell-orbits > i {
+  background: var(--spell-cyan);
+
+  box-shadow:
+    0 0 12px var(--spell-cyan),
+    0 0 42px var(--spell-violet),
+    0 0 80px rgba(157, 124, 255, 0.2);
+}
+
+.spell-constellation__paths path {
+  stroke:
+    rgba(162, 137, 229, 0.14);
+
+  stroke-width: 0.78;
+}
+
+.spell-node {
+  color:
+    rgba(236, 230, 255, 0.84);
+}
+
+.spell-node__core {
+  border-color:
+    rgba(184, 160, 244, 0.24);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(143, 104, 236, 0.24),
+      rgba(13, 10, 30, 0.94) 68%
+    );
+
+  box-shadow:
+    0 0 17px rgba(119, 84, 211, 0.12);
+}
+
+.spell-node__pulse {
+  border-color:
+    rgba(174, 150, 238, 0.16);
+}
+
+.spell-node__orbit {
+  border-color:
+    rgba(126, 231, 255, 0.11);
+}
+
+.spell-node--active
+.spell-node__core {
+  border-color:
+    rgba(202, 183, 255, 0.72);
+
+  box-shadow:
+    0 0 20px rgba(157, 124, 255, 0.44),
+    0 0 52px rgba(126, 231, 255, 0.16);
+}
+
+.spell-node__label small {
+  color:
+    rgba(156, 137, 207, 0.48);
+}
+
+.spell-node__label strong {
+  color:
+    rgba(218, 211, 238, 0.7);
+}
+
+.spell-node:hover
+.spell-node__label strong,
+.spell-node--active
+.spell-node__label strong {
+  color: #f7f3ff;
+}
+
+/* dark nodes become toxic-green rather than the page's red villain palette */
+.spell-node--dark
+.spell-node__core {
+  border-color:
+    rgba(124, 200, 143, 0.25);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(87, 159, 104, 0.24),
+      rgba(6, 17, 10, 0.96) 70%
+    );
+
+  box-shadow:
+    0 0 18px rgba(76, 156, 95, 0.1);
+}
+
+/* =========================================================
+   EXAMINATION — REFINED SIDE DOSSIER
+========================================================= */
+
+.spell-examination {
+  width:
+    min(470px, 40%);
+
+  padding:
+    70px 46px 54px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 13, 39, 0.985),
+      rgba(8, 7, 18, 0.985) 64%,
+      rgba(6, 6, 14, 0.99)
+    );
+
+  border-left:
+    1px solid
+    rgba(173, 147, 239, 0.15);
+
+  box-shadow:
+    -40px 0 110px rgba(0, 0, 0, 0.48),
+    inset 18px 0 50px rgba(113, 78, 202, 0.025);
+}
+
+.spell-examination::before {
+  content: "";
+
+  position: absolute;
+
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+
+  border:
+    1px solid
+    rgba(184, 159, 244, 0.045);
+
+  pointer-events: none;
+}
+
+.spell-examination__close {
+  border-color:
+    rgba(184, 160, 243, 0.2);
+
+  background:
+    rgba(30, 21, 59, 0.5);
+
+  color:
+    rgba(228, 218, 255, 0.75);
+}
+
+.spell-examination__close:hover {
+  color: #fff;
+
+  border-color:
+    rgba(126, 231, 255, 0.45);
+
+  transform: rotate(90deg);
+}
+
+.spell-examination__number,
+.spell-examination__type,
+.spell-examination__facts small,
+.spell-examination__users small,
+.spell-examination__memory small {
+  color:
+    rgba(166, 144, 225, 0.58);
+}
+
+.spell-examination__sigil strong {
+  color: var(--spell-cyan);
+
+  text-shadow:
+    0 0 18px rgba(126, 231, 255, 0.34);
+}
+
+.spell-examination__sigil span {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(171, 145, 238, 0.35)
+    );
+}
+
+.spell-examination__name {
+  color: #f5f1ff;
+}
+
+.spell-examination__pronunciation,
+.spell-examination__facts p,
+.spell-examination__memory p {
+  color:
+    rgba(211, 204, 230, 0.66);
+}
+
+.spell-examination__facts strong {
+  color:
+    rgba(235, 227, 250, 0.82);
+}
+
+.spell-examination__users span {
+  border-color:
+    rgba(168, 143, 232, 0.14);
+
+  background:
+    rgba(109, 76, 191, 0.04);
+
+  color:
+    rgba(218, 209, 239, 0.67);
+}
+
+/* =========================================================
+   ARCANE DIAL — MORE LIKE AN INSTRUMENT
+========================================================= */
+
+.arcane-dial {
+  margin-top: 105px;
+}
+
+.arcane-dial::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 420px;
+  height: 420px;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(117, 83, 218, 0.07),
+      transparent 68%
+    );
+
+  filter: blur(24px);
+
+  pointer-events: none;
+}
+
+.arcane-dial__arrow {
+  position: relative;
+  z-index: 3;
+
+  border-color:
+    rgba(171, 145, 237, 0.18);
+
+  background:
+    rgba(21, 15, 43, 0.48);
+
+  color:
+    rgba(222, 211, 248, 0.72);
+}
+
+.arcane-dial__arrow:hover {
+  border-color:
+    rgba(126, 231, 255, 0.45);
+
+  color: var(--spell-cyan);
+
+  box-shadow:
+    0 0 24px rgba(126, 231, 255, 0.08);
+}
+
+.arcane-dial__outer,
+.arcane-dial__middle,
+.arcane-dial__inner {
+  border-color:
+    rgba(169, 142, 237, 0.15);
+}
+
+.arcane-dial__center {
+  background:
+    radial-gradient(
+      circle,
+      rgba(104, 73, 190, 0.12),
+      transparent 68%
+    );
+}
+
+.arcane-dial__center small {
+  color:
+    rgba(164, 143, 219, 0.5);
+}
+
+.arcane-dial__center strong {
+  color:
+    rgba(241, 234, 255, 0.9);
+}
+
+.arcane-dial__center span {
+  color: var(--spell-cyan);
+
+  text-shadow:
+    0 0 16px rgba(126, 231, 255, 0.32);
+}
+
+.arcane-dial__category {
+  color:
+    rgba(190, 179, 216, 0.44);
+}
+
+.arcane-dial__category:hover,
+.arcane-dial__category--active {
+  color:
+    rgba(242, 235, 255, 0.9);
+}
+
+.arcane-dial__category--active::after {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--spell-violet),
+      var(--spell-cyan),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px var(--spell-glow);
+}
+
+/* =========================================================
+   THEORY — GLASS MANUSCRIPT CARDS
+========================================================= */
+
+.spell-theory {
+  position: relative;
+}
+
+.spell-theory::before {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 42%;
+
+  width: 70vw;
+  height: 36vw;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(96, 65, 186, 0.06),
+      transparent 68%
+    );
+
+  pointer-events: none;
+}
+
+.spell-theory__heading > p {
+  color: var(--spell-violet-soft);
+}
+
+.spell-theory__heading h2 span {
+  color:
+    rgba(191, 168, 248, 0.78);
+}
+
+.spell-theory__item {
+  border-color:
+    rgba(169, 143, 233, 0.12);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(18, 13, 39, 0.34),
+      rgba(8, 7, 18, 0.1)
+    );
+
+  backdrop-filter:
+    blur(8px);
+
+  transition:
+    transform 0.5s ease,
+    border-color 0.4s ease,
+    background 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.spell-theory__item:hover {
+  transform:
+    translateY(-8px);
+
+  border-color:
+    rgba(184, 158, 247, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(32, 21, 68, 0.48),
+      rgba(11, 9, 24, 0.2)
+    );
+
+  box-shadow:
+    0 30px 65px rgba(0, 0, 0, 0.18),
+    0 0 35px rgba(104, 73, 190, 0.05);
+}
+
+.spell-theory__item > span,
+.spell-theory__item small {
+  color:
+    rgba(163, 142, 218, 0.52);
+}
+
+.spell-theory__item h3 {
+  color:
+    rgba(241, 235, 255, 0.9);
+}
+
+.spell-theory__item p {
+  color:
+    rgba(204, 196, 224, 0.58);
+}
+
+.spell-theory__energy span {
+  background: var(--spell-cyan);
+
+  box-shadow:
+    0 0 11px var(--spell-cyan),
+    0 0 30px var(--spell-violet);
+}
+
+/* =========================================================
+   FORBIDDEN MAGIC — DISTINCT TOXIC GREEN CHAMBER
+========================================================= */
+
+.forbidden-magic {
+  border-top:
+    1px solid rgba(106, 163, 115, 0.08);
+  border-bottom:
+    1px solid rgba(106, 163, 115, 0.08);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 9, 6, 0.82),
+      rgba(7, 15, 9, 0.68)
+    );
+}
+
+.forbidden-magic__image img {
+  filter:
+    saturate(0.7)
+    brightness(0.72)
+    contrast(1.08)
+    hue-rotate(22deg);
+}
+
+.forbidden-magic__eyebrow {
+  color:
+    rgba(119, 190, 133, 0.65);
+}
+
+.forbidden-magic__content h2 span {
+  color:
+    rgba(136, 210, 150, 0.82);
+}
+
+.forbidden-magic__description {
+  color:
+    rgba(196, 216, 199, 0.54);
+}
+
+.forbidden-magic__curses button {
+  border-color:
+    rgba(103, 170, 117, 0.14);
+
+  background:
+    rgba(9, 20, 12, 0.22);
+}
+
+.forbidden-magic__curses button:hover {
+  border-color:
+    rgba(133, 215, 149, 0.4);
+
+  background:
+    rgba(20, 48, 26, 0.32);
+
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(88, 168, 104, 0.06);
+}
+
+.forbidden-magic__curses button small {
+  color:
+    rgba(112, 185, 126, 0.53);
+}
+
+.forbidden-magic__curses button strong {
+  color:
+    rgba(222, 243, 226, 0.9);
+}
+
+/* =========================================================
+   SPELL INDEX — IMPROVED READABILITY
+========================================================= */
+
+.spell-index {
+  position: relative;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(37, 25, 78, 0.025) 35%,
+      transparent 85%
+    );
+}
+
+.spell-index__heading > p {
+  color: var(--spell-violet-soft);
+}
+
+.spell-index__heading h2 span {
+  color:
+    rgba(190, 166, 246, 0.78);
+}
+
+.spell-index__row {
+  position: relative;
+
+  border-color:
+    rgba(166, 143, 227, 0.09);
+
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.spell-index__row::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 50%;
+
+  width: 2px;
+  height: 0;
+
+  transform:
+    translateY(-50%);
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      var(--spell-violet),
+      var(--spell-cyan),
+      transparent
+    );
+
+  box-shadow:
+    0 0 12px var(--spell-glow);
+
+  transition:
+    height 0.35s ease;
+}
+
+.spell-index__row:hover {
+  transform:
+    translateX(5px);
+
+  border-color:
+    rgba(182, 157, 242, 0.2);
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(109, 78, 198, 0.065),
+      transparent 64%
+    );
+}
+
+.spell-index__row:hover::before {
+  height: 65%;
+}
+
+.spell-index__number,
+.spell-index__classification,
+.spell-index__category {
+  color:
+    rgba(173, 155, 215, 0.48);
+}
+
+.spell-index__symbol {
+  color: var(--spell-cyan);
+
+  text-shadow:
+    0 0 12px rgba(126, 231, 255, 0.25);
+}
+
+.spell-index__row strong {
+  color:
+    rgba(231, 224, 248, 0.8);
+}
+
+.spell-index__row:hover strong {
+  color: #f6f2ff;
+}
+
+.spell-index__closing span {
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      var(--spell-violet-soft)
+    );
+}
+
+/* =========================================================
+   NEW ANIMATION
+========================================================= */
+
+@keyframes spellsArcaneCore {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE V2
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .spells-hero__arcane-seal {
+    right: -7%;
+    opacity: 0.35;
+  }
+
+  .spells-hero__stats {
+    width: min(650px, 92%);
+  }
+
+  .spell-constellation-status strong {
+    max-width: 130px;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .spells-hero {
+    min-height: 92vh;
+  }
+
+  .spells-hero__arcane-seal {
+    right: -35%;
+    top: 42%;
+
+    width: 430px;
+
+    opacity: 0.2;
+  }
+
+  .spells-hero__stats {
+    margin-left: 0;
+
+    width: 100%;
+
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+
+  .spells-hero__stats > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .spells-hero__stats > div:last-child {
+    grid-column: 1 / -1;
+
+    border-top:
+      1px solid var(--spell-line);
+  }
+
+  .spell-constellation-status {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+
+    padding:
+      13px 14px;
+  }
+
+  .spell-constellation-status__line {
+    display: none;
+  }
+
+  .spell-constellation-status > div {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 4px;
+  }
+
+  .spell-constellation-status strong {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .spells-hero__arcane-seal {
+    display: none;
+  }
+
+  .spells-hero__stats {
+    margin-top: 32px;
+  }
+
+  .spells-hero__stats > div {
+    min-height: 68px;
+
+    padding:
+      12px 14px;
+  }
+
+  .spell-constellation-status {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .spell-constellation-status > div:last-child {
+    grid-column: 1 / -1;
+
+    padding-top: 8px;
+
+    border-top:
+      1px solid var(--spell-line);
+  }
+
+  .spell-examination {
+    padding:
+      62px 26px 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .spells-hero__arcane-ring,
+  .spells-hero__arcane-seal > i {
+    animation: none;
+  }
+}

@@ -1,0 +1,1570 @@
+/* =========================================================
+   SECTION 8 — MAGICAL CURIOSITIES
+========================================================= */
+
+.magical-curiosities {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 110vh;
+
+  padding:
+    130px
+    clamp(28px, 6vw, 110px)
+    130px;
+
+  overflow: hidden;
+
+  color: #edf5fb;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.magical-curiosities__intro {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(760px, 94%);
+
+  margin:
+    0 0
+    clamp(60px, 6vw, 90px)
+    auto;
+
+  text-align: right;
+
+  opacity: 0;
+
+  transform:
+    translateY(38px);
+
+  filter:
+    blur(8px);
+}
+
+.magical-curiosities__eyebrow {
+  margin:
+    0 0 20px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.55rem;
+
+  letter-spacing: 0.44em;
+
+  color:
+    rgba(
+      164,
+      199,
+      226,
+      0.62
+    );
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.magical-curiosities__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      3.6rem,
+      6vw,
+      6.5rem
+    );
+
+  line-height: 0.88;
+
+  font-weight: 400;
+
+  letter-spacing:
+    -0.038em;
+
+  color:
+    #edf5fb;
+
+  text-shadow:
+    0 0 45px
+    rgba(
+      117,
+      177,
+      220,
+      0.05
+    );
+}
+
+
+.magical-curiosities__title span {
+  display: block;
+
+  margin-top: 10px;
+
+  margin-right: 9%;
+
+  color:
+    rgba(
+      166,
+      199,
+      224,
+      0.72
+    );
+
+  font-size: 0.78em;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.magical-curiosities__description {
+  width:
+    min(540px, 100%);
+
+  margin:
+  29px 0 0 auto;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.04rem;
+
+  line-height: 1.75;
+
+  color:
+    rgba(
+      190,
+      210,
+      225,
+      0.6
+    );
+}
+
+
+/* =========================================================
+   CABINET
+========================================================= */
+
+.magical-curiosities__cabinet {
+  position: relative;
+
+  z-index: 4;
+
+  width:
+    min(1320px, 100%);
+
+  margin:
+    0 auto;
+}
+
+
+/* =========================================================
+   GLOW
+========================================================= */
+
+.magical-curiosities__cabinet-glow {
+  position: absolute;
+
+  z-index: -1;
+
+  left: 50%;
+  top: 50%;
+
+  width: 82%;
+  height: 76%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        90,
+        142,
+        180,
+        0.1
+      ),
+      rgba(
+        42,
+        75,
+        99,
+        0.03
+      )
+      48%,
+      transparent
+      74%
+    );
+
+  filter:
+    blur(65px);
+
+  animation:
+    magicalCuriosityGlow
+    9s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   CABINET TOP LABEL
+========================================================= */
+
+.magical-curiosities__cabinet-heading {
+  width:
+    min(620px, 90%);
+
+  margin:
+    0 auto 28px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  opacity: 0;
+}
+
+
+.magical-curiosities__cabinet-heading span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        160,
+        199,
+        228,
+        0.19
+      )
+    );
+}
+
+
+.magical-curiosities__cabinet-heading span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.magical-curiosities__cabinet-heading p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.42rem;
+
+  letter-spacing: 0.28em;
+
+  color:
+    rgba(
+      155,
+      192,
+      219,
+      0.5
+    );
+}
+
+
+/* =========================================================
+   FRAME
+========================================================= */
+
+.magical-curiosities__cabinet-frame {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    60px
+    clamp(35px, 5vw, 75px)
+    55px;
+
+  border:
+    1px solid
+    rgba(
+      171,
+      208,
+      235,
+      0.11
+    );
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        9,
+        18,
+        27,
+        0.2
+      ),
+      rgba(
+        4,
+        9,
+        14,
+        0.12
+      )
+    );
+
+  box-shadow:
+    inset
+    0 0 90px
+    rgba(
+      73,
+      111,
+      139,
+      0.025
+    );
+}
+
+
+/* subtle inner border */
+
+.magical-curiosities__cabinet-frame::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 12px;
+
+  border:
+    1px solid
+    rgba(
+      166,
+      202,
+      228,
+      0.035
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ROWS
+========================================================= */
+
+.magical-curiosities__row {
+  position: relative;
+
+  z-index: 4;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  align-items: end;
+
+  gap:
+    clamp(
+      35px,
+      7vw,
+      110px
+    );
+
+  min-height: 330px;
+}
+
+
+.magical-curiosities__row--bottom {
+  padding-top: 55px;
+}
+
+
+/* =========================================================
+   SHELF
+========================================================= */
+
+.magical-curiosities__shelf {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  height: 30px;
+
+  margin-top: 22px;
+}
+
+
+.magical-curiosities__shelf::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        170,
+        206,
+        232,
+        0.2
+      )
+      12%,
+      rgba(
+        170,
+        206,
+        232,
+        0.2
+      )
+      88%,
+      transparent
+    );
+}
+
+
+.magical-curiosities__shelf::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5%;
+  right: 5%;
+  top: 1px;
+
+  height: 24px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(
+        65,
+        88,
+        105,
+        0.07
+      ),
+      transparent
+    );
+
+  filter:
+    blur(2px);
+}
+
+
+.magical-curiosities__shelf--bottom {
+  margin-top: 28px;
+}
+
+
+/* =========================================================
+   ITEM
+========================================================= */
+
+.magical-curiosity {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  opacity: 0;
+
+  transform:
+    translateY(25px)
+    scale(0.96);
+
+  filter:
+    blur(5px);
+}
+
+
+/* =========================================================
+   OBJECT BUTTON
+========================================================= */
+
+.magical-curiosity__object {
+  position: relative;
+
+  width: 100%;
+
+  height: 220px;
+
+  display: flex;
+
+  align-items: flex-end;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   INDIVIDUAL IMAGE SIZES
+========================================================= */
+
+.magical-curiosity--time-turner
+.magical-curiosity__image {
+  width:
+    min(165px, 72%);
+}
+
+
+.magical-curiosity--map
+.magical-curiosity__image {
+  width:
+    min(255px, 92%);
+}
+
+
+.magical-curiosity--potion
+.magical-curiosity__image {
+  width:
+    min(145px, 64%);
+}
+
+
+.magical-curiosity--snitch
+.magical-curiosity__image {
+  width:
+    min(180px, 76%);
+}
+
+
+.magical-curiosity--feather
+.magical-curiosity__image {
+  width:
+    min(145px, 65%);
+}
+
+
+.magical-curiosity--mandrake
+.magical-curiosity__image {
+  width:
+    min(175px, 74%);
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.magical-curiosity__image {
+  position: relative;
+
+  z-index: 3;
+
+  display: block;
+
+  max-height: 215px;
+
+  object-fit: contain;
+
+  filter:
+    brightness(0.78)
+    saturate(0.76)
+    drop-shadow(
+      0 22px 28px
+      rgba(
+        0,
+        0,
+        0,
+        0.5
+      )
+    );
+
+  transform:
+    translateY(0)
+    scale(0.97);
+
+  transition:
+    transform
+      0.75s
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    filter
+      0.6s ease;
+}
+
+
+.magical-curiosity:hover
+.magical-curiosity__image,
+.magical-curiosity--active
+.magical-curiosity__image {
+  transform:
+    translateY(-11px)
+    scale(1.045);
+
+  filter:
+    brightness(0.98)
+    saturate(0.92)
+    drop-shadow(
+      0 30px 33px
+      rgba(
+        0,
+        0,
+        0,
+        0.58
+      )
+    );
+}
+
+
+/* =========================================================
+   HALO
+========================================================= */
+
+.magical-curiosity__halo {
+  position: absolute;
+
+  z-index: 1;
+
+  left: 50%;
+  bottom: 3%;
+
+  width: 180px;
+  height: 115px;
+
+  transform:
+    translateX(-50%)
+    scale(0.72);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        116,
+        177,
+        220,
+        0.115
+      ),
+      transparent
+      72%
+    );
+
+  filter:
+    blur(22px);
+
+  opacity: 0;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s ease;
+}
+
+
+.magical-curiosity:hover
+.magical-curiosity__halo,
+.magical-curiosity--active
+.magical-curiosity__halo {
+  opacity: 1;
+
+  transform:
+    translateX(-50%)
+    scale(1);
+}
+
+
+/* =========================================================
+   PERMANENT LABEL
+
+   This fixes the "blank" feeling.
+========================================================= */
+
+.magical-curiosity__label {
+  position: relative;
+
+  z-index: 7;
+
+  width: 100%;
+
+  min-height: 82px;
+
+  margin-top: 20px;
+
+  text-align: center;
+}
+
+
+.magical-curiosity__label small {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.29em;
+
+  color:
+    rgba(
+      143,
+      183,
+      212,
+      0.52
+    );
+}
+
+
+.magical-curiosity__label h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      1.35rem,
+      1.7vw,
+      1.7rem
+    );
+
+  line-height: 1.05;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      226,
+      238,
+      246,
+      0.78
+    );
+
+  transition:
+    color 0.4s ease;
+}
+
+
+.magical-curiosity:hover
+.magical-curiosity__label h3,
+.magical-curiosity--active
+.magical-curiosity__label h3 {
+  color:
+    #f0f8fd;
+}
+
+
+.magical-curiosity__label span {
+  display: block;
+
+  margin-top: 6px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.82rem;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      166,
+      195,
+      215,
+      0.4
+    );
+}
+
+
+/* =========================================================
+   INFO PANEL
+========================================================= */
+
+.magical-curiosity__info {
+  position: absolute;
+
+  z-index: 30;
+
+  left: 50%;
+
+  bottom:
+    calc(
+      100% + 15px
+    );
+
+  width:
+    min(255px, 82vw);
+
+  padding:
+    17px 18px;
+
+  transform:
+    translateX(-50%)
+    translateY(12px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(
+        10,
+        22,
+        32,
+        0.95
+      ),
+      rgba(
+        5,
+        11,
+        17,
+        0.94
+      )
+    );
+
+  border:
+    1px solid
+    rgba(
+      171,
+      208,
+      235,
+      0.14
+    );
+
+  backdrop-filter:
+    blur(16px);
+
+  box-shadow:
+    0 22px 50px
+    rgba(
+      0,
+      0,
+      0,
+      0.46
+    );
+
+  text-align: left;
+
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease,
+    transform 0.4s ease;
+}
+
+
+.magical-curiosity:hover
+.magical-curiosity__info,
+.magical-curiosity--active
+.magical-curiosity__info {
+  opacity: 1;
+
+  visibility: visible;
+
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+
+/* =========================================================
+   INFO TEXT
+========================================================= */
+
+.magical-curiosity__info small {
+  display: block;
+
+  margin-bottom: 6px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.39rem;
+
+  letter-spacing: 0.28em;
+
+  color:
+    rgba(
+      150,
+      189,
+      218,
+      0.62
+    );
+}
+
+
+.magical-curiosity__info h3 {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1.62rem;
+
+  font-weight: 400;
+
+  color:
+    rgba(
+      237,
+      246,
+      252,
+      0.94
+    );
+}
+
+
+.magical-curiosity__info p {
+  margin:
+    9px 0 12px;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 0.88rem;
+
+  line-height: 1.55;
+
+  color:
+    rgba(
+      184,
+      205,
+      220,
+      0.61
+    );
+}
+
+
+.magical-curiosity__link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size: 0.4rem;
+
+  letter-spacing: 0.18em;
+
+  text-transform:
+    uppercase;
+
+  text-decoration: none;
+
+  color:
+    rgba(
+      204,
+      228,
+      245,
+      0.74
+    );
+
+  transition:
+    gap 0.3s ease,
+    color 0.3s ease;
+}
+
+
+.magical-curiosity__link:hover {
+  gap: 10px;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.magical-curiosities__footer {
+  position: relative;
+
+  z-index: 6;
+
+  width:
+    min(700px, 90%);
+
+  margin:
+    85px auto 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  opacity: 0;
+}
+
+
+.magical-curiosities__footer span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        157,
+        196,
+        226,
+        0.18
+      )
+    );
+}
+
+
+.magical-curiosities__footer span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.magical-curiosities__footer p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  font-family:
+    var(--font-story);
+
+  font-size: 1rem;
+
+  font-style: italic;
+
+  color:
+    rgba(
+      185,
+      205,
+      219,
+      0.52
+    );
+}
+
+
+/* =========================================================
+   REVEALS
+========================================================= */
+
+.magical-curiosities--visible
+.magical-curiosities__intro {
+  animation:
+    magicalCuriosityIntro
+    1.4s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosities__cabinet-heading {
+  animation:
+    magicalCabinetHeadingReveal
+    1s
+    ease
+    0.4s
+    forwards;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity {
+  animation:
+    magicalCuriosityReveal
+    1.1s
+    ease
+    forwards;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity--time-turner {
+  animation-delay: 0.45s;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity--map {
+  animation-delay: 0.6s;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity--potion {
+  animation-delay: 0.75s;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity--snitch {
+  animation-delay: 0.9s;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity--feather {
+  animation-delay: 1.05s;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosity--mandrake {
+  animation-delay: 1.2s;
+}
+
+
+.magical-curiosities--visible
+.magical-curiosities__footer {
+  animation:
+    magicalCuriosityFooter
+    1s
+    ease
+    1.5s
+    forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes magicalCuriosityIntro {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(38px);
+
+    filter:
+      blur(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes magicalCabinetHeadingReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+@keyframes magicalCuriosityReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.96);
+
+    filter:
+      blur(5px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+
+    filter:
+      blur(0);
+  }
+
+}
+
+
+@keyframes magicalCuriosityFooter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+
+@keyframes magicalCuriosityGlow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.95);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.05);
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .magical-curiosities {
+    min-height: auto;
+
+    padding:
+      110px
+      7%
+      120px;
+  }
+
+
+  .magical-curiosities__row {
+    gap: 35px;
+  }
+
+
+  .magical-curiosity__object {
+    height: 195px;
+  }
+
+
+  .magical-curiosity--map
+  .magical-curiosity__image {
+    width:
+      min(220px, 92%);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .magical-curiosities {
+    padding:
+      95px
+      6%
+      110px;
+  }
+
+
+  .magical-curiosities__intro {
+  width: 100%;
+
+  margin:
+    0 0 65px;
+
+  text-align: left;
+}
+
+
+  .magical-curiosities__eyebrow {
+    font-size: 0.48rem;
+
+    line-height: 1.8;
+
+    letter-spacing: 0.25em;
+  }
+
+
+  .magical-curiosities__title {
+    font-size:
+      clamp(
+        3rem,
+        14vw,
+        4.7rem
+      );
+  }
+
+
+  .magical-curiosities__title span {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+  .magical-curiosities__description {
+  max-width: 95%;
+
+  margin:
+    26px 0 0;
+
+  font-size: 0.96rem;
+}
+
+
+  .magical-curiosities__cabinet-heading {
+    display: none;
+  }
+
+
+  .magical-curiosities__cabinet-frame {
+    padding:
+      45px
+      22px;
+  }
+
+
+  .magical-curiosities__row {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap:
+      65px
+      24px;
+
+    min-height: auto;
+  }
+
+
+  .magical-curiosities__row--bottom {
+    padding-top: 55px;
+  }
+
+
+  .magical-curiosities__shelf {
+    margin:
+      45px 0 0;
+  }
+
+
+  .magical-curiosity__object {
+    height: 150px;
+  }
+
+
+  .magical-curiosity__image {
+    max-height: 145px;
+  }
+
+
+  .magical-curiosity__label {
+    min-height: 75px;
+  }
+
+
+  .magical-curiosity__label h3 {
+    font-size: 1.25rem;
+  }
+
+
+  /* mobile info panel */
+
+  .magical-curiosity__info {
+    position: fixed;
+
+    z-index: 60000;
+
+    left: 5%;
+    right: 5%;
+
+    top: auto;
+
+    bottom: 95px;
+
+    width: auto;
+
+    transform:
+      translateY(20px);
+
+    border-radius: 3px;
+  }
+
+
+  .magical-curiosity:hover
+  .magical-curiosity__info,
+  .magical-curiosity--active
+  .magical-curiosity__info {
+    transform:
+      translateY(0);
+  }
+
+
+  .magical-curiosities__footer {
+    margin-top: 75px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .magical-curiosities__row {
+    grid-template-columns:
+      1fr;
+
+    gap: 65px;
+  }
+
+
+  .magical-curiosity__object {
+    height: 190px;
+  }
+
+
+  .magical-curiosity__image {
+    max-height: 185px;
+  }
+
+
+  .magical-curiosity__label h3 {
+    font-size: 1.45rem;
+  }
+
+
+  .magical-curiosities__shelf {
+    margin-top: 55px;
+  }
+
+
+  .magical-curiosities__footer span {
+    display: none;
+  }
+
+
+  .magical-curiosities__footer {
+    justify-content: center;
+  }
+
+
+  .magical-curiosities__footer p {
+    white-space: normal;
+
+    font-size: 0.9rem;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .magical-curiosities__intro,
+  .magical-curiosities__cabinet-heading,
+  .magical-curiosity,
+  .magical-curiosities__footer {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .magical-curiosities__cabinet-glow {
+    animation: none;
+  }
+
+
+  .magical-curiosity__image {
+    transition: none;
+  }
+
+}

@@ -1,0 +1,1811 @@
+/* =========================================================
+   SECTION 11 — ARCHIVE GATEWAY
+   FINAL CINEMATIC LANDING SECTION
+========================================================= */
+
+.archive-gateway {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  padding:
+    clamp(120px, 9vw, 160px)
+    clamp(25px, 6vw, 110px)
+    45px;
+
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: #edf5fb;
+}
+
+
+/* =========================================================
+   FINAL SECTION AMBIENCE
+========================================================= */
+
+.archive-gateway::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 0;
+
+  left: 50%;
+  top: 56%;
+
+  width:
+    min(
+      1250px,
+      90vw
+    );
+
+  height: 72%;
+
+  transform:
+    translate(-50%, -50%);
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        83,
+        139,
+        180,
+        0.11
+      ),
+      rgba(
+        45,
+        79,
+        106,
+        0.035
+      )
+      44%,
+      transparent
+      72%
+    );
+
+  filter:
+    blur(70px);
+}
+
+
+.archive-gateway::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 0;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 28%;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent,
+      rgba(
+        2,
+        5,
+        8,
+        0.72
+      )
+    );
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.archive-gateway__intro {
+  position: relative;
+
+  z-index: 20;
+
+  width:
+    min(
+      790px,
+      94%
+    );
+
+  margin:
+    0 auto
+    clamp(
+      55px,
+      5vw,
+      80px
+    );
+
+  text-align: center;
+
+  opacity: 0;
+
+  transform:
+    translateY(35px);
+
+  filter:
+    blur(8px);
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.archive-gateway__eyebrow {
+  margin:
+    0 0 19px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.55rem;
+
+  letter-spacing:
+    0.5em;
+
+  color:
+    rgba(
+      169,
+      204,
+      230,
+      0.66
+    );
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.archive-gateway__title {
+  margin: 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    clamp(
+      4rem,
+      7vw,
+      7.2rem
+    );
+
+  line-height:
+    0.86;
+
+  font-weight:
+    400;
+
+  letter-spacing:
+    -0.045em;
+
+  color:
+    #f2f7fb;
+
+  text-shadow:
+    0 10px 40px
+    rgba(
+      0,
+      0,
+      0,
+      0.34
+    );
+}
+
+
+.archive-gateway__title span {
+  display: block;
+
+  margin-top:
+    9px;
+
+  font-size:
+    0.7em;
+
+  font-style:
+    italic;
+
+  color:
+    rgba(
+      166,
+      200,
+      225,
+      0.76
+    );
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.archive-gateway__description {
+  width:
+    min(
+      540px,
+      95%
+    );
+
+  margin:
+    28px auto 0;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    1.04rem;
+
+  line-height:
+    1.72;
+
+  color:
+    rgba(
+      198,
+      216,
+      228,
+      0.64
+    );
+}
+
+
+/* =========================================================
+   CINEMATIC SCENE
+========================================================= */
+
+.archive-gateway__scene {
+  position: relative;
+
+  z-index: 8;
+
+  width:
+    min(
+      1480px,
+      100%
+    );
+
+  margin:
+    0 auto;
+
+  isolation:
+    isolate;
+}
+
+
+/* =========================================================
+   GLOW BEHIND IMAGE
+========================================================= */
+
+.archive-gateway__scene-glow {
+  position: absolute;
+
+  z-index: -1;
+
+  left: 50%;
+  top: 50%;
+
+  width: 90%;
+  height: 85%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius:
+    50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(
+        91,
+        151,
+        194,
+        0.14
+      ),
+      rgba(
+        52,
+        91,
+        118,
+        0.045
+      )
+      48%,
+      transparent
+      72%
+    );
+
+  filter:
+    blur(60px);
+
+  animation:
+    archiveGatewaySceneGlow
+    8s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   FRAME
+========================================================= */
+
+.archive-gateway__scene-frame {
+  position: relative;
+
+  z-index: 5;
+
+  width: 100%;
+
+  aspect-ratio:
+    16 / 9;
+
+  overflow: hidden;
+
+  background:
+    #060d13;
+
+  border:
+    1px solid
+    rgba(
+      176,
+      209,
+      232,
+      0.1
+    );
+
+  box-shadow:
+    0 45px 90px
+      rgba(
+        0,
+        0,
+        0,
+        0.5
+      ),
+
+    inset
+    0 0 70px
+      rgba(
+        80,
+        128,
+        163,
+        0.025
+      );
+}
+
+
+/* inner frame */
+
+.archive-gateway__scene-frame::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 20;
+
+  inset:
+    13px;
+
+  border:
+    1px solid
+    rgba(
+      182,
+      214,
+      236,
+      0.045
+    );
+
+  pointer-events:
+    none;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.archive-gateway__scene-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position:
+    center center;
+
+  opacity: 0;
+
+  transform:
+    scale(1.06);
+
+  filter:
+    brightness(0.8)
+    contrast(1.08)
+    saturate(0.88);
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =========================================================
+   LEFT / RIGHT DARKNESS
+========================================================= */
+
+.archive-gateway__scene-darkness {
+  position: absolute;
+
+  z-index: 8;
+
+  inset: 0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      90deg,
+
+      rgba(
+        3,
+        7,
+        11,
+        0.72
+      )
+      0%,
+
+      rgba(
+        3,
+        7,
+        11,
+        0.26
+      )
+      19%,
+
+      rgba(
+        3,
+        7,
+        11,
+        0.03
+      )
+      43%,
+
+      rgba(
+        3,
+        7,
+        11,
+        0.03
+      )
+      57%,
+
+      rgba(
+        3,
+        7,
+        11,
+        0.26
+      )
+      81%,
+
+      rgba(
+        3,
+        7,
+        11,
+        0.72
+      )
+      100%
+    );
+}
+
+
+/* =========================================================
+   VIGNETTE
+========================================================= */
+
+.archive-gateway__scene-vignette {
+  position: absolute;
+
+  z-index: 9;
+
+  inset: 0;
+
+  pointer-events:
+    none;
+
+  box-shadow:
+    inset
+    0 0 140px
+    30px
+    rgba(
+      0,
+      0,
+      0,
+      0.46
+    );
+}
+
+
+/* =========================================================
+   BOTTOM FADE
+========================================================= */
+
+.archive-gateway__scene-bottom-fade {
+  position: absolute;
+
+  z-index: 10;
+
+  inset: 0;
+
+  pointer-events:
+    none;
+
+  background:
+    linear-gradient(
+      180deg,
+
+      rgba(
+        3,
+        8,
+        12,
+        0.05
+      )
+      0%,
+
+      transparent
+      55%,
+
+      rgba(
+        3,
+        8,
+        12,
+        0.75
+      )
+      100%
+    );
+}
+
+
+/* =========================================================
+   FLOATING MAGICAL LIGHTS
+========================================================= */
+
+.archive-gateway__light {
+  position: absolute;
+
+  z-index: 14;
+
+  width:
+    4px;
+
+  height:
+    4px;
+
+  border-radius:
+    50%;
+
+  background:
+    rgba(
+      237,
+      249,
+      255,
+      0.96
+    );
+
+  box-shadow:
+    0 0 7px
+      rgba(
+        231,
+        247,
+        255,
+        0.9
+      ),
+
+    0 0 19px
+      rgba(
+        125,
+        190,
+        235,
+        0.7
+      ),
+
+    0 0 36px
+      rgba(
+        91,
+        158,
+        207,
+        0.28
+      );
+
+  animation:
+    archiveGatewayLightFloat
+    6s
+    ease-in-out
+    infinite;
+}
+
+
+.archive-gateway__light--one {
+  left: 12%;
+  top: 42%;
+}
+
+
+.archive-gateway__light--two {
+  right: 12%;
+  top: 29%;
+
+  animation-delay:
+    1.9s;
+}
+
+
+.archive-gateway__light--three {
+  right: 25%;
+  bottom: 22%;
+
+  animation-delay:
+    3.5s;
+}
+
+
+/* =========================================================
+   SCENE CAPTION
+========================================================= */
+
+.archive-gateway__scene-caption {
+  position: absolute;
+
+  z-index: 15;
+
+  left: 50%;
+  bottom: 30px;
+
+  width:
+    min(
+      520px,
+      65%
+    );
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap:
+    14px;
+
+  opacity: 0;
+}
+
+
+.archive-gateway__scene-caption span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        200,
+        225,
+        242,
+        0.28
+      )
+    );
+}
+
+
+.archive-gateway__scene-caption
+span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.archive-gateway__scene-caption p {
+  margin: 0;
+
+  white-space: nowrap;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.39rem;
+
+  letter-spacing:
+    0.3em;
+
+  color:
+    rgba(
+      207,
+      229,
+      244,
+      0.65
+    );
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.archive-gateway__actions {
+  position: relative;
+
+  z-index: 20;
+
+  margin-top:
+    -25px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    clamp(
+      22px,
+      3vw,
+      38px
+    );
+
+  opacity: 0;
+}
+
+
+/* =========================================================
+   PRIMARY CTA
+========================================================= */
+
+.archive-gateway__enter {
+  position: relative;
+
+  min-width:
+    275px;
+
+  padding:
+    18px 28px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap:
+    11px;
+
+  overflow:
+    hidden;
+
+  border:
+    1px solid
+    rgba(
+      203,
+      229,
+      247,
+      0.42
+    );
+
+  background:
+    rgba(
+      7,
+      16,
+      24,
+      0.92
+    );
+
+  box-shadow:
+    0 14px 35px
+      rgba(
+        0,
+        0,
+        0,
+        0.38
+      ),
+
+    inset
+    0 0 25px
+      rgba(
+        112,
+        173,
+        215,
+        0.035
+      );
+
+  color:
+    #f3f9fd;
+
+  text-decoration:
+    none;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.46rem;
+
+  letter-spacing:
+    0.21em;
+
+  text-transform:
+    uppercase;
+
+  transition:
+    transform
+      0.4s ease,
+
+    border-color
+      0.4s ease,
+
+    background
+      0.4s ease,
+
+    box-shadow
+      0.4s ease;
+}
+
+
+.archive-gateway__enter
+span,
+.archive-gateway__enter
+svg {
+  position: relative;
+
+  z-index: 4;
+}
+
+
+/* wand sweep */
+
+.archive-gateway__wand-sweep {
+  position: absolute;
+
+  z-index: 2;
+
+  left: -45%;
+  top: 0;
+
+  width: 30%;
+  height: 100%;
+
+  transform:
+    skewX(-22deg);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        217,
+        240,
+        254,
+        0.17
+      ),
+      transparent
+    );
+
+  transition:
+    left
+    0.75s
+    ease;
+}
+
+
+.archive-gateway__enter:hover {
+  transform:
+    translateY(-4px);
+
+  border-color:
+    rgba(
+      226,
+      242,
+      253,
+      0.72
+    );
+
+  background:
+    rgba(
+      12,
+      27,
+      40,
+      0.96
+    );
+
+  box-shadow:
+    0 0 32px
+      rgba(
+        104,
+        166,
+        209,
+        0.13
+      ),
+
+    0 17px 40px
+      rgba(
+        0,
+        0,
+        0,
+        0.42
+      );
+}
+
+
+.archive-gateway__enter:hover
+.archive-gateway__wand-sweep {
+  left: 125%;
+}
+
+
+/* =========================================================
+   SECONDARY
+========================================================= */
+
+.archive-gateway__secondary {
+  position: relative;
+
+  padding-bottom:
+    6px;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.43rem;
+
+  letter-spacing:
+    0.19em;
+
+  text-transform:
+    uppercase;
+
+  text-decoration:
+    none;
+
+  color:
+    rgba(
+      201,
+      222,
+      235,
+      0.64
+    );
+
+  transition:
+    color
+    0.35s
+    ease;
+}
+
+
+.archive-gateway__secondary::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  transform:
+    scaleX(0.25);
+
+  transform-origin:
+    left;
+
+  background:
+    rgba(
+      204,
+      230,
+      247,
+      0.58
+    );
+
+  transition:
+    transform
+    0.4s
+    ease;
+}
+
+
+.archive-gateway__secondary:hover {
+  color:
+    #f4faff;
+}
+
+
+.archive-gateway__secondary:hover::after {
+  transform:
+    scaleX(1);
+}
+
+
+/* =========================================================
+   FINAL QUOTE
+========================================================= */
+
+.archive-gateway__closing {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(
+      720px,
+      90%
+    );
+
+  margin:
+    clamp(
+      75px,
+      7vw,
+      105px
+    )
+    auto
+    0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap:
+    18px;
+
+  opacity: 0;
+}
+
+
+.archive-gateway__closing span {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(
+        159,
+        198,
+        226,
+        0.19
+      )
+    );
+}
+
+
+.archive-gateway__closing
+span:last-child {
+  transform:
+    rotate(180deg);
+}
+
+
+.archive-gateway__closing p {
+  margin: 0;
+
+  white-space:
+    nowrap;
+
+  text-align:
+    center;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    1rem;
+
+  font-style:
+    italic;
+
+  color:
+    rgba(
+      187,
+      208,
+      222,
+      0.53
+    );
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.archive-gateway__footer {
+  position: relative;
+
+  z-index: 10;
+
+  width: 100%;
+
+  margin-top:
+    clamp(
+      65px,
+      6vw,
+      90px
+    );
+
+  padding:
+    28px
+    0
+    4px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto 1fr;
+
+  align-items: center;
+
+  gap:
+    30px;
+
+  border-top:
+    1px solid
+    rgba(
+      159,
+      196,
+      223,
+      0.09
+    );
+
+  opacity: 0;
+}
+
+
+.archive-gateway__footer > p {
+  margin: 0;
+
+  justify-self: start;
+
+  font-family:
+    var(--font-magic);
+
+  font-size:
+    0.4rem;
+
+  letter-spacing:
+    0.3em;
+
+  color:
+    rgba(
+      173,
+      204,
+      226,
+      0.51
+    );
+}
+
+
+/* middle links */
+
+.archive-gateway__footer-center {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap:
+    10px;
+}
+
+
+.archive-gateway__footer-center
+span {
+  font-family:
+    var(--font-story);
+
+  font-size:
+    0.78rem;
+
+  color:
+    rgba(
+      174,
+      195,
+      209,
+      0.42
+    );
+}
+
+
+.archive-gateway__footer-center
+i {
+  width: 2px;
+  height: 2px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      179,
+      209,
+      229,
+      0.3
+    );
+}
+
+
+.archive-gateway__footer
+small {
+  justify-self: end;
+
+  font-family:
+    var(--font-story);
+
+  font-size:
+    0.78rem;
+
+  color:
+    rgba(
+      167,
+      187,
+      201,
+      0.38
+    );
+}
+
+
+/* =========================================================
+   REVEALS
+========================================================= */
+
+.archive-gateway--visible
+.archive-gateway__intro {
+  animation:
+    archiveGatewayIntroReveal
+    1.35s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+.archive-gateway--visible
+.archive-gateway__scene-image {
+  animation:
+    archiveGatewaySceneReveal
+    1.8s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    0.25s
+    forwards;
+}
+
+
+.archive-gateway--visible
+.archive-gateway__scene-caption {
+  animation:
+    archiveGatewayCaptionReveal
+    1s
+    ease
+    0.85s
+    forwards;
+}
+
+
+.archive-gateway--visible
+.archive-gateway__actions {
+  animation:
+    archiveGatewayFade
+    1s
+    ease
+    1s
+    forwards;
+}
+
+
+.archive-gateway--visible
+.archive-gateway__closing {
+  animation:
+    archiveGatewayFade
+    1s
+    ease
+    1.2s
+    forwards;
+}
+
+
+.archive-gateway--visible
+.archive-gateway__footer {
+  animation:
+    archiveGatewayFade
+    1s
+    ease
+    1.4s
+    forwards;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes archiveGatewayIntroReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        35px
+      );
+
+    filter:
+      blur(
+        8px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      );
+
+    filter:
+      blur(
+        0
+      );
+  }
+
+}
+
+
+@keyframes archiveGatewaySceneReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      scale(
+        1.06
+      );
+
+    filter:
+      blur(
+        9px
+      )
+      brightness(
+        0.55
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(
+        1
+      );
+
+    filter:
+      blur(
+        0
+      )
+      brightness(
+        0.8
+      )
+      contrast(
+        1.08
+      )
+      saturate(
+        0.88
+      );
+  }
+
+}
+
+
+@keyframes archiveGatewayCaptionReveal {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0);
+  }
+
+}
+
+
+@keyframes archiveGatewayFade {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(
+        15px
+      );
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(
+        0
+      );
+  }
+
+}
+
+
+@keyframes archiveGatewaySceneGlow {
+
+  0%,
+  100% {
+    opacity: 0.48;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        0.96
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(
+        -50%,
+        -50%
+      )
+      scale(
+        1.05
+      );
+  }
+
+}
+
+
+@keyframes archiveGatewayLightFloat {
+
+  0%,
+  100% {
+    opacity: 0.15;
+
+    transform:
+      translateY(
+        13px
+      )
+      scale(
+        0.55
+      );
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translateY(
+        -18px
+      )
+      scale(
+        1
+      );
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .archive-gateway {
+    min-height:
+      auto;
+
+    padding-top:
+      115px;
+  }
+
+
+  .archive-gateway__scene {
+    width: 100%;
+  }
+
+
+  .archive-gateway__scene-frame {
+    aspect-ratio:
+      16 / 10;
+  }
+
+
+  .archive-gateway__actions {
+    margin-top:
+      -18px;
+  }
+
+
+  .archive-gateway__footer {
+    grid-template-columns:
+      1fr;
+
+    justify-items:
+      center;
+
+    text-align:
+      center;
+
+    gap:
+      13px;
+  }
+
+
+  .archive-gateway__footer
+  > p,
+  .archive-gateway__footer
+  small {
+    justify-self:
+      center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+  .archive-gateway {
+    min-height:
+      auto;
+
+    padding:
+      95px
+      6%
+      30px;
+  }
+
+
+  .archive-gateway__intro {
+    width: 100%;
+
+    margin-bottom:
+      45px;
+  }
+
+
+  .archive-gateway__eyebrow {
+    font-size:
+      0.47rem;
+
+    line-height:
+      1.8;
+
+    letter-spacing:
+      0.28em;
+  }
+
+
+  .archive-gateway__title {
+    font-size:
+      clamp(
+        3.5rem,
+        15vw,
+        5.3rem
+      );
+  }
+
+
+  .archive-gateway__description {
+    width: 92%;
+
+    margin-top:
+      24px;
+
+    font-size:
+      0.95rem;
+  }
+
+
+  /* make image taller on phone */
+
+  .archive-gateway__scene-frame {
+    aspect-ratio:
+      4 / 5;
+  }
+
+
+  .archive-gateway__scene-image {
+    object-position:
+      center;
+  }
+
+
+  .archive-gateway__scene-caption {
+    width: 82%;
+
+    bottom:
+      18px;
+  }
+
+
+  .archive-gateway__scene-caption p {
+    font-size:
+      0.34rem;
+
+    letter-spacing:
+      0.2em;
+  }
+
+
+  /* CTA */
+
+  .archive-gateway__actions {
+    width: 100%;
+
+    margin-top:
+      25px;
+
+    flex-direction:
+      column;
+
+    gap:
+      21px;
+  }
+
+
+  .archive-gateway__enter {
+    width:
+      min(
+        310px,
+        100%
+      );
+
+    min-width: 0;
+  }
+
+
+  /* quote */
+
+  .archive-gateway__closing {
+    margin-top:
+      70px;
+  }
+
+
+  .archive-gateway__closing p {
+    white-space:
+      normal;
+
+    font-size:
+      0.9rem;
+  }
+
+
+  /* footer */
+
+  .archive-gateway__footer {
+    margin-top:
+      65px;
+  }
+
+
+  .archive-gateway__footer-center {
+    flex-wrap:
+      wrap;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .archive-gateway__scene-frame {
+    aspect-ratio:
+      3 / 4;
+  }
+
+
+  .archive-gateway__closing span {
+    display:
+      none;
+  }
+
+
+  .archive-gateway__closing {
+    justify-content:
+      center;
+  }
+
+
+  .archive-gateway__footer-center {
+    display:
+      none;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .archive-gateway__intro,
+  .archive-gateway__scene-image,
+  .archive-gateway__scene-caption,
+  .archive-gateway__actions,
+  .archive-gateway__closing,
+  .archive-gateway__footer {
+    opacity: 1;
+
+    transform: none;
+
+    filter: none;
+
+    animation: none;
+  }
+
+
+  .archive-gateway__scene-glow,
+  .archive-gateway__light {
+    animation: none;
+  }
+
+}
