@@ -879,7 +879,7 @@ const storyData = [
 
     trailer: {
       youtubeId: "I_kDb-pRCds",
-      url: "https://youtu.be/17ywQS6XO-M?si=sn_3_eCfFZsK8id1",
+      url: "https://youtu.be/euqRKhYnqFQ?si=CDOQCSH6UgKWVOWv",
       channel: "Warner Bros. Pictures",
       label: {
         en: "Official Trailer",
